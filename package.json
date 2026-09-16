@@ -1,0 +1,21 @@
+{
+  "name": "is-it-really-an-ai-tell",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Which \"AI tells\" actually separate machine text from human text, measured on dated corpora, and which ones only mean the writing was careful.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "fetch": "tsx collector/fetch.ts",
+    "measure": "tsx scripts/measure-all.ts",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "node --import tsx --test \"tests/*.test.ts\""
+  },
+  "repository": { "type": "git", "url": "https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell" },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}

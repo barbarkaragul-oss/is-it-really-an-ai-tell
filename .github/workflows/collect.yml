@@ -1,0 +1,38 @@
+name: collect
+# Rebuilds the corpora from their public sources and re-measures every marker. The corpus text is
+# never committed: out/ stays on the runner and only data/markers.json, which is ids and numbers,
+# lands in the repository.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 6 * * 1'   # Mondays, off the top of the hour
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsx collector/fetch.ts --want 4000
+      - run: npx tsx scripts/measure-all.ts
+      - run: npm test
+      - name: Commit the measurement
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git commit -m "data: weekly re-measurement ($(date -u +%Y-%m-%d))"
+          git pull --rebase -X theirs origin main
+          git push
