@@ -11,14 +11,16 @@
  * the other half of the most visible pattern here: the models write "the proposed method leverages",
  * and the people who wrote the same abstracts write "we leverage".
  */
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { MARKERS, words } from '../src/markers.js';
 import { hits, top, forms, examples, linkFor } from '../src/evidence.js';
+import { seededShuffle } from '../src/measure.js';
 import { loadArms } from './arms.js';
 
 const SEED = 20260916;
 const PER_CELL = 5;
+const DOCUMENTS = 6;
 const DATA = path.resolve('data');
 
 const loaded = loadArms();
@@ -54,6 +56,22 @@ for (const m of MARKERS.filter((x) => x.pattern)) {
   markers[m.id] = { label: m.label, arms: cells };
 }
 
+// A few whole documents as every quotable writer wrote them, for the page to open with. Drawn by the
+// same seeded shuffle from the documents the Claude arm covers, so each one has every writer.
+const sourceOf = (id: string): string => id.replace(/^raid:[a-z0-9.-]+:/, '');
+const byArm = new Map(loaded.filter(({ spec }) => spec.publishable).map(({ arm }) => [arm.id, new Map(arm.texts.map((t) => [sourceOf(t.id), t.text]))]));
+const titles = new Map<string, string>();
+const GENERATED = path.resolve('data/generated/claude-abstracts.json');
+if (existsSync(GENERATED)) {
+  for (const t of (JSON.parse(readFileSync(GENERATED, 'utf8')) as { texts: { source_id: string; title: string }[] }).texts) titles.set(t.source_id, t.title);
+}
+const complete = [...(byArm.get('raid-claude')?.keys() ?? [])].filter((id) => [...byArm.values()].every((m) => m.has(id))).sort();
+const documents = seededShuffle(complete, SEED).slice(0, DOCUMENTS).map((id) => ({
+  source_id: id,
+  title: titles.get(id) ?? '',
+  texts: Object.fromEntries([...byArm].map(([arm, m]) => [arm, m.get(id) ?? ''])),
+}));
+
 if (!existsSync(DATA)) mkdirSync(DATA, { recursive: true });
 writeFileSync(path.join(DATA, 'evidence.json'), JSON.stringify({
   generated_at: new Date().toISOString(),
@@ -62,6 +80,7 @@ writeFileSync(path.join(DATA, 'evidence.json'), JSON.stringify({
   note: 'Sentences are quoted only from RAID (MIT) and from the Claude arm generated for this repository. Hacker News and Stack Exchange texts are linked, not quoted; HC3 is referenced by id.',
   arms,
   markers,
+  documents,
 }, null, 1) + '\n');
 
 // a readable summary of the cells worth looking at

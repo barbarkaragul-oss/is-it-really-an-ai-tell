@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is it really an AI tell?</title>
+<meta name="description" content="The word delve, the em dash, no contractions: each so-called AI tell counted in the same documents written by a person and by five language models, with the sentences that were counted. Not a detector.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔤</text></svg>">
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Is it really an AI tell?</h1>
+    <p class="lede">People judge writing by the word <em>delve</em>, the em dash, missing contractions. This page counts each of those in the same documents written by a person and by five language models, and shows the sentences it counted.</p>
+    <nav class="links">
+      <a class="star" href="https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell" rel="noopener"><span aria-hidden="true">★</span> Star on GitHub</a>
+      <a href="#method">How it is counted</a>
+      <a href="https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell/tree/main/data">The data</a>
+      <button id="theme" type="button">Theme</button>
+    </nav>
+    <p class="notice"><b>This is not a detector.</b> Nothing here can tell you who wrote a text, and a text full of these markers proves nothing. The table is mostly evidence of how little they prove.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="table-section">
+    <div class="section-head">
+      <h2>The markers</h2>
+      <p class="muted">Every column below except the last three is the <b>same 1,499 academic abstracts</b>: written by a person, and continued by each model from the same prompt (<a href="https://github.com/liamdugan/raid">RAID</a>). A difference between those columns is about the writer, not the subject. Tinted cells are well above <span class="swatch up"></span> or below <span class="swatch down"></span> the person. Click a row to see what was counted.</p>
+    </div>
+    <div class="table-scroll"><table id="markers"></table></div>
+    <p class="muted foot">* Claude was generated for this project (45 abstracts, reached through Claude Code) and the same system wrote this page; <a href="https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell#a-claude-arm-generated-here">the caveats</a> matter. The verdict compares GPT-4 with the person; the placebo check (the person's abstracts split at random) ties on every row.</p>
+  </section>
+
+  <section id="doc-section" class="panel">
+    <div class="section-head">
+      <h2>One paper, six writers</h2>
+      <p class="muted">The same prompt, the title of a real paper, answered six ways. Counted markers are highlighted. Documents are drawn at random from the ones every writer covered, not chosen.</p>
+    </div>
+    <div class="doc-bar">
+      <button id="doc-prev" type="button" aria-label="Previous document">←</button>
+      <b id="doc-title"></b>
+      <button id="doc-next" type="button" aria-label="Next document">→</button>
+    </div>
+    <div id="doc-tabs" class="tabs" role="tablist"></div>
+    <div id="doc-text" class="prose"></div>
+    <div id="doc-found" class="found"></div>
+  </section>
+
+  <section id="check-section" class="panel">
+    <div class="section-head">
+      <h2>Check a text</h2>
+      <p class="muted">Paste anything. The markers in it are highlighted and each one is shown next to how often people use it. There is no score, because the table above does not support one. Nothing leaves your browser.</p>
+    </div>
+    <textarea id="input" rows="8" spellcheck="false" placeholder="Paste a paragraph…"></textarea>
+    <div id="input-text" class="prose"></div>
+    <div id="input-found" class="found"></div>
+  </section>
+
+  <section id="method" class="how">
+    <h2>How it is counted</h2>
+    <ul>
+      <li><b>Two measures.</b> A word or phrase is counted per thousand words, which does not care how long a text is. A property of the whole text, such as <i>no contractions anywhere</i>, is the share of texts that have it, with each arm matched to the person's abstracts by length.</li>
+      <li><b>Patterns, shown.</b> Every marker is a regular expression. For every cell the page can show what it matched: the forms, the word in front, and five sentences picked by a seeded shuffle. Sentences are quoted from RAID (MIT) and the Claude arm only; Hacker News and Stack Exchange are linked.</li>
+      <li><b>A placebo.</b> The person's abstracts are split at random and everything runs on both halves. Every row should tie, and does.</li>
+      <li><b>Remembered, not written.</b> Asked for the abstract of a real paper, a model can reproduce the published one. Machine texts that share more than half their five-word sequences with the human document are dropped: none of RAID's, five of Claude's fifty.</li>
+      <li><b>Context arms.</b> Hacker News comments and Stack Exchange answers from before ChatGPT existed, and GPT-3.5 answering questions (HC3). They are a different genre, so they are not tinted; they are there to show how much of a marker is about the kind of document.</li>
+    </ul>
+    <p class="muted" id="generated"></p>
+  </section>
+</main>
+<footer class="wrap muted foot">MIT. Code, data and method: <a href="https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell">github.com/barbarkaragul-oss/is-it-really-an-ai-tell</a>. Made by <a href="https://barbaros.dev">Barbaros Karagülmez</a>.</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

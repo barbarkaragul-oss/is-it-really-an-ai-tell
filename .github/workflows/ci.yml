@@ -16,3 +16,5 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      # the site must still build from the committed data
+      - run: npm run build
