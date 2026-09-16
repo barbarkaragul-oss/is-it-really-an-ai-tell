@@ -6,6 +6,8 @@ Almost none of it is measured. This counts each marker in one document written f
 
 **[Open the page →](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)** Every number below, with the sentences behind it, one paper written six ways, and a box to paste your own text into. Nothing you paste leaves the browser.
 
+[![The page: the table, a row opened to the sentences it counted, one paper written six ways, and a pasted text set against how often people use each marker](docs/demo.gif)](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)
+
 > This is not a detector. It cannot tell you who wrote anything, and a text full of markers proves nothing. If software has accused you of something, the useful number points the other way: published audits find AI detectors calling **17–19% of genuine human writing** machine-written ([untell](https://github.com/ssamba1/untell), [2026 detector benchmark](https://github.com/mattc95/2026-AI-DETECTOR-BENCHMARK)).
 
 ## The findings
