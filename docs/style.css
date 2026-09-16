@@ -66,7 +66,8 @@ tbody tr.row { cursor: pointer; }
 tbody tr.row:hover td { background-image: linear-gradient(var(--code-bg), var(--code-bg)); }
 tbody tr.row:hover td:first-child { background: var(--code-bg); }
 tbody tr.row.open td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
-td .belief { display: block; color: var(--muted); font-size: 11px; line-height: 1.2; }
+td .belief, td .flag { display: block; color: var(--muted); font-size: 11px; line-height: 1.2; }
+td .flag { margin-top: 2px; }
 /* the marker column wraps on a phone so the numbers get the width */
 tbody tr.row td:first-child { white-space: normal; min-width: 150px; max-width: 230px; }
 td.num.dim { color: var(--muted); }
