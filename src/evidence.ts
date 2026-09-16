@@ -6,7 +6,7 @@
  * marker this collects the forms that matched, the word in front of each match, and a handful of
  * the sentences themselves, picked by a seeded shuffle rather than by anyone looking for good ones.
  */
-import type { Marker } from './markers.js';
+import { readable, type Marker } from './markers.js';
 import { seededShuffle, type Text } from './measure.js';
 
 export interface Hit { id: string; form: string; before: string; sentence: string }
@@ -31,10 +31,12 @@ export function hits(texts: Text[], m: Marker): Hit[] {
   if (!m.pattern) return [];
   const out: Hit[] = [];
   for (const t of texts) {
-    for (const x of t.text.matchAll(m.pattern)) {
+    // the text the marker counted on, so every hit here is one the rate counted
+    const text = readable(t.text);
+    for (const x of text.matchAll(m.pattern)) {
       const start = x.index, end = start + x[0].length;
-      const before = (t.text.slice(Math.max(0, start - 40), start).toLowerCase().match(/([a-z][a-z'-]*)[^a-z]*$/)?.[1]) ?? '';
-      out.push({ id: t.id, form: x[0].toLowerCase(), before, sentence: sentenceAround(t.text, start, end) });
+      const before = (text.slice(Math.max(0, start - 40), start).toLowerCase().match(/([a-z][a-z'-]*)[^a-z]*$/)?.[1]) ?? '';
+      out.push({ id: t.id, form: x[0].toLowerCase(), before, sentence: sentenceAround(text, start, end) });
     }
   }
   return out;

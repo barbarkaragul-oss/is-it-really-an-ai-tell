@@ -15,7 +15,7 @@ import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { MARKERS, words } from '../src/markers.js';
 import { hits, top, forms, examples, linkFor } from '../src/evidence.js';
-import { seededShuffle } from '../src/measure.js';
+import { seededShuffle, sourceId } from '../src/measure.js';
 import { loadArms } from './arms.js';
 
 const SEED = 20260916;
@@ -58,8 +58,7 @@ for (const m of MARKERS.filter((x) => x.pattern)) {
 
 // A few whole documents as every quotable writer wrote them, for the page to open with. Drawn by the
 // same seeded shuffle from the documents the Claude arm covers, so each one has every writer.
-const sourceOf = (id: string): string => id.replace(/^raid:[a-z0-9.-]+:/, '');
-const byArm = new Map(loaded.filter(({ spec }) => spec.publishable).map(({ arm }) => [arm.id, new Map(arm.texts.map((t) => [sourceOf(t.id), t.text]))]));
+const byArm = new Map(loaded.filter(({ spec }) => spec.publishable).map(({ arm }) => [arm.id, new Map(arm.texts.map((t) => [sourceId(t.id), t.text]))]));
 const titles = new Map<string, string>();
 const GENERATED = path.resolve('data/generated/claude-abstracts.json');
 if (existsSync(GENERATED)) {

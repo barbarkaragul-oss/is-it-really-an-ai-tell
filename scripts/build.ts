@@ -46,7 +46,7 @@ const page = {
   reference: report.reference,
   machine: report.machine,
   arms: report.arms.map((a) => ({
-    id: a.id, label: a.label, kind: a.kind, n: a.n, matched: a.matchedWithReference, medianWords: a.medianWords,
+    id: a.id, label: a.label, kind: a.kind, n: a.n, matched: a.matchedWithReference, pairing: a.pairing, medianWords: a.medianWords,
     publishable: publishable.get(a.id) ?? false,
     we: r2(evidence.arms[a.id]?.we_per1000 ?? 0),
   })),

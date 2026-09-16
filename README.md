@@ -104,7 +104,7 @@ before this one.
 
 ## Shares, for the markers you cannot count
 
-Some markers are properties of a whole text — “every sentence the same length”, “no contractions anywhere” — and a rate per thousand words means nothing for them. Those are reported as the share of texts that carry it, with each arm length-matched against the human reference (the n of each pairing is in [`data/markers.json`](data/markers.json)).
+Some markers are properties of a whole text — “every sentence the same length”, “no contractions anywhere” — and a rate per thousand words means nothing for them. Those are reported as the share of texts that carry it, with each arm paired against the human reference (the kind and n of each pairing are in [`data/markers.json`](data/markers.json)).
 
 | marker | casual writing | careful writing | human (RAID) | GPT-3.5 | GPT-4 | verdict |
 |---|---|---|---|---|---|---|
@@ -132,10 +132,12 @@ RAID's adversarial rows — homoglyphs, inserted whitespace, deliberate misspell
 
 ## How the counting is done
 
-1. **Two measures, each for the kind of marker it suits.** A word or phrase becomes occurrences per thousand words, which does not care how long the text is. A property of the whole text cannot be counted that way, so it is a share — and for a share, length has to be controlled.
-2. **Length is controlled pairwise.** Matching eight arms at once cuts every arm down to the smallest one in every bin; the first attempt at this collapsed a 1,499-text arm to 123. Each arm is matched against the human reference on its own instead, and every pairing publishes its n.
-3. **A placebo arm.** The reference corpus is split at random and the whole pipeline runs on both halves. Every number there should be a tie; all 25 are. An earlier version split by position, which meant splitting by date, and the placebo disagreed until the split was randomised.
-4. **Intervals, and a correction.** Wilson intervals for shares, count-based intervals for rates, Benjamini–Hochberg across the catalogue.
+1. **Two measures, each for the kind of marker it suits, and each decides its own verdict.** A word or phrase becomes occurrences per thousand words over every text in the arm. That rate still depends on length: a phrase used once in a text has half the rate in a text twice as long, and GPT-4 wrote its abstracts nearly 40% shorter than the people did (a median of 109 words against 175). So the table shows the whole-arm rates, but the verdict compares GPT-4 with the person only between texts within a tenth of each other in length. A property of the whole text cannot be counted that way, so it is a share, and for a share length is controlled by the pairing.
+2. **Length is controlled pairwise, and the pairs are not the file's order.** Matching eight arms at once cuts every arm down to the smallest one in every bin; the first attempt at this collapsed a 1,499-text arm to 123. Each arm is matched against the human reference on its own instead. A RAID model's text is paired with the human text for the same document, and the pair is kept only when both fall in the same length bin. Casual writing, careful writing and HC3 share no documents with the reference, so each of their bins is filled from a seeded shuffle. The corpora are stored grouped by topic, and an earlier version that took the first texts of every bin was comparing one topic with another. Every pairing publishes its kind and its n.
+3. **A text a marker cannot judge is left out, not counted as a no.** “Every sentence the same length” says nothing about a text with fewer than five sentences, so such a text is dropped from that marker's shares on both sides of a pairing.
+4. **The writer's own words.** Block quotes, quoted lines and code are removed from the casual and careful writing before anything is counted, and a span in double quotes does not count towards the three belief markers (contractions, first person, personal detail). RAID's human abstracts come wrapped at 79 columns and the models' texts do not, so those line breaks are joined before counting; left in, they hid a phrase from its pattern on the human side only.
+5. **A placebo arm.** The reference corpus is split at random and the same tests run on both halves. Every number there should be a tie; all 25 are. An earlier version split by position, which meant splitting by date, and the placebo disagreed until the split was randomised.
+6. **Intervals, and a correction.** Wilson intervals for shares. Exact Poisson intervals for rates, and an exact test between them, both widened when writers repeat a word within one text, because those occurrences are not independent. Benjamini–Hochberg across the catalogue, and a word's verdict needs its rate test to survive it.
 
 ## Run it
 
@@ -158,7 +160,7 @@ npm test
 - **Five writers, and one of them is this repository's own.** Four come from a published benchmark; the Claude arm was generated here, is a tenth of the size, and carries the caveats in its own section. No Gemini at all.
 - **One genre for the matched set, one source for each comparison.** The matched documents are academic abstracts; casual and careful writing are there to show how much of a marker is really about the kind of text, but they are not matched by document and each comes from a single site. Essays, email and social posts are not in yet.
 - **Markers are regexes.** “Delve” catches the word and not the idea, and irony is invisible to all of it.
-- **Presence and rate disagree sometimes**, and when they do the rate is the one that survived length.
+- **Presence and rate disagree sometimes.** For a word, the verdict follows the rate compared at equal lengths; a whole-arm rate can still lean on GPT-4's shorter texts, and a word that only the short texts use has little to be compared with.
 - **English only.**
 - **This cannot tell you who wrote a text**, and no number of markers will make it able to.
 

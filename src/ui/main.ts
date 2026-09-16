@@ -2,9 +2,9 @@
  * The page. Everything it counts in a pasted text is counted by src/markers.ts, the same code that
  * produced the table, and nothing typed here leaves the browser.
  */
-import { MARKERS, byId, type Marker } from '../markers.js';
+import { MARKERS, byId, readable, type Marker } from '../markers.js';
 
-interface ArmInfo { id: string; label: string; kind: string; n: number; matched: number; medianWords: number; publishable: boolean; we: number }
+interface ArmInfo { id: string; label: string; kind: string; n: number; matched: number; pairing?: string; medianWords: number; publishable: boolean; we: number }
 interface RateCell { v: number; lo: number; hi: number; occ: number; words: number }
 interface ShareCell { v: number; lo: number; hi: number; k: number; n: number; ref: number; rlo: number; rhi: number }
 interface Row {
@@ -32,12 +32,30 @@ const LONG: Record<string, string> = {
   'careful-human': 'Careful writing: edited question-and-answer posts from the same period (source: Stack Exchange)',
   'hc3-gpt35': 'GPT-3.5 answering questions: a different task, kept for contrast (source: HC3)',
 };
-const VERDICT: Record<string, [cls: string, text: string, why: string]> = {
-  'machine marker': ['machine', 'GPT-4 marker', 'GPT-4 uses it clearly more than the person writing the same abstract, and careful human writing does not account for it.'],
-  'register marker': ['register', 'careful writing', 'The person and GPT-4 both use it far more than casual writers do. It marks how formally something is written, not who wrote it.'],
-  'points the other way': ['other', 'more human', 'The person uses it more than GPT-4 does on the same documents.'],
-  'no signal': ['none', 'no signal', 'No difference between the person and GPT-4 that the data can support.'],
-  'not recorded': ['none', 'not recorded', ''],
+// A word is decided on its rates over every abstract, a property of the whole text on its shares,
+// so each verdict is explained in the terms of the test that produced it.
+const VERDICT: Record<string, [cls: string, text: string, byRate: string, byShare: string]> = {
+  'machine marker': ['machine', 'GPT-4 marker',
+    `GPT-4 uses it more often than the person who wrote the same abstracts, comparing texts of the same length, by more than testing ${MARKERS.length} markers at once would produce by chance.`,
+    'More of GPT-4’s texts have it than the person’s on the same documents, and the two 95% intervals do not overlap.'],
+  'register marker': ['register', 'careful writing',
+    'The person and GPT-4 cannot be told apart on it, and both use it more than casual writers do. It marks how formally something is written, not who wrote it.',
+    'The person and GPT-4 cannot be told apart on it, and more of both their texts have it than casual writing does. It marks how formally something is written, not who wrote it.'],
+  'points the other way': ['other', 'more human',
+    `The person uses it more often than GPT-4 does on the same documents, comparing texts of the same length, by more than testing ${MARKERS.length} markers at once would produce by chance.`,
+    'More of the person’s texts have it than GPT-4’s on the same documents, and the two 95% intervals do not overlap.'],
+  'no signal': ['none', 'no signal', 'No difference between the person and GPT-4 that the data can support.', 'No difference between the person and GPT-4 that the data can support.'],
+  'not recorded': ['none', 'not recorded', '', ''],
+};
+const verdictOf = (row: Row): [cls: string, text: string, why: string] => {
+  const [cls, text, byRate, byShare] = VERDICT[row.verdict] ?? ['none', row.verdict, '', ''];
+  return [cls, text, row.countable ? byRate : byShare];
+};
+// how an arm's shares were paired with the person's, for the tooltip
+const PAIRED: Record<string, string> = {
+  document: 'each paired with the person’s text for the same document, both in the same length band',
+  length: 'length-matched with the person',
+  self: 'the person’s own abstracts',
 };
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -75,9 +93,13 @@ function rateCellHtml(row: Row, arm: string, tinted: boolean): string {
   return `<td class="num${c && c.occ === 0 ? ' dim' : ''}" title="${esc(title)}" style="${style}">${fmtRate(c)}</td>`;
 }
 
-function shareCellHtml(row: Row, arm: string, tinted: boolean): string {
+function shareCellHtml(row: Row, arm: string, tinted: boolean, pairing: string | undefined): string {
   const c = row.share[arm];
-  const title = c ? `${c.k} of ${c.n} texts, length-matched with the person · 95% interval ${c.lo.toFixed(1)}–${c.hi.toFixed(1)}%` : '';
+  // a marker that cannot judge a short text counts only the texts it can; data measured before the
+  // pairing kind was published counted every text
+  const judged = pairing && byId.get(row.marker)?.eligible ? ' long enough to judge' : '';
+  const how = PAIRED[pairing ?? 'length'] ?? PAIRED.length;
+  const title = c ? `${c.k} of ${c.n} texts${judged}, ${how} · 95% interval ${c.lo.toFixed(1)}–${c.hi.toFixed(1)}%` : '';
   const style = tinted && c && arm !== PERSON ? tint(c.v, c.lo, c.hi, c.ref, c.rlo, c.rhi, 1) : '';
   return `<td class="num" title="${esc(title)}" style="${style}">${fmtShare(c)}</td>`;
 }
@@ -90,15 +112,20 @@ function renderTable(page: Page): void {
   const cols = writers.length + context.length + 2;
   const table = $('markers');
   const tip = (a: string): string => esc(LONG[a] ?? page.arms.find((x) => x.id === a)?.label ?? '');
+  const pairing = new Map(page.arms.map((a) => [a.id, a.pairing]));
   const head = `<thead><tr><th>Marker</th>${writers.map((a) => `<th title="${tip(a)}">${short(a)}</th>`).join('')}${context.map((a, i) => `<th class="ctx${i === 0 ? ' sep' : ''}" title="${tip(a)}">${short(a)}</th>`).join('')}<th>Verdict</th></tr></thead>`;
   const line = (row: Row): string => {
-    const [cls, text, why] = VERDICT[row.verdict] ?? ['none', row.verdict, ''];
-    const cell = row.countable ? rateCellHtml : shareCellHtml;
+    const [cls, text, why] = verdictOf(row);
+    const cell = (r: Row, a: string, tinted: boolean): string => (r.countable ? rateCellHtml(r, a, tinted) : shareCellHtml(r, a, tinted, pairing.get(a)));
+    // the placebo is the person's abstracts split in two; a difference there came from the method
+    const placebo = row.placeboTie === false
+      ? '<span class="flag" title="The person’s abstracts, split at random in two, differ on this row by the same test, so the method can produce a difference here from nothing">placebo disagrees</span>'
+      : '';
     return `<tr class="row" data-marker="${row.marker}" tabindex="0" aria-expanded="false">`
       + `<td>${esc(row.label)}${row.belief ? '<span class="belief" title="People are documented to judge by this one">people judge by it</span>' : ''}</td>`
       + writers.map((a) => cell(row, a, true)).join('')
       + context.map((a, i) => cell(row, a, false).replace('<td class="num', `<td class="ctx num${i === 0 ? ' sep' : ''}`)).join('')
-      + `<td><span class="pill ${cls}" title="${esc(why)}">${text}</span></td></tr>`;
+      + `<td><span class="pill ${cls}" title="${esc(why)}">${text}</span>${placebo}</td></tr>`;
   };
   const counted = page.rows.filter((r) => r.countable);
   const whole = page.rows.filter((r) => !r.countable);
@@ -137,7 +164,7 @@ function renderTable(page: Page): void {
 
 function renderDetail(box: HTMLElement, page: Page, row: Row, order: string[]): void {
   const m = byId.get(row.marker);
-  const [, , why] = VERDICT[row.verdict] ?? ['', '', ''];
+  const [, , why] = verdictOf(row);
   const intro = `<p class="muted">${esc(why)}${m ? ` Claimed by: ${esc(m.source)}.` : ''}${m?.pattern ? ` Pattern: <code>${esc(m.pattern.source)}</code>` : ''}</p>`;
   const cells = page.evidence[row.marker] ?? {};
   const arms = order.filter((a) => cells[a]);
@@ -184,9 +211,11 @@ function markSentence(s: string, m: Marker | undefined): string {
   return html + esc(s.slice(pos));
 }
 
-interface Found { counts: Map<string, number>; whole: string[]; html: string; words: number }
+interface Found { counts: Map<string, number>; whole: string[]; unjudged: string[]; html: string; words: number }
 
-function analyse(text: string): Found {
+function analyse(pasted: string): Found {
+  // shown and counted as the measurement reads it, so the highlights and the counts agree with the table
+  const text = readable(pasted);
   const spans: { s: number; e: number; m: Marker }[] = [];
   const counts = new Map<string, number>();
   for (const m of MARKERS) {
@@ -204,9 +233,12 @@ function analyse(text: string): Found {
     pos = sp.e;
   }
   html += esc(text.slice(pos));
-  const whole = MARKERS.filter((m) => !m.count && m.test(text)).map((m) => m.id);
+  // a marker's own test decides what it reads: the bulleted-list one needs the "**"
+  const whole = MARKERS.filter((m) => !m.count && m.test(pasted)).map((m) => m.id);
+  // false and "cannot say" are different answers; the table leaves the second kind out, and so does this
+  const unjudged = MARKERS.filter((m) => !m.count && m.eligible && !m.eligible(pasted)).map((m) => m.id);
   const words = (text.toLowerCase().match(/[a-z']+/g) ?? []).length;
-  return { counts, whole, html, words };
+  return { counts, whole, unjudged, html, words };
 }
 
 function foundTable(page: Page, f: Found, writer: string | null): string {
@@ -216,7 +248,11 @@ function foundTable(page: Page, f: Found, writer: string | null): string {
   const cols = [...ctx, ...extra];
   const counted = [...f.counts.entries()].filter(([id]) => rows.has(id));
   const whole = f.whole.filter((id) => rows.has(id));
-  if (!counted.length && !whole.length) return '<p class="muted">None of the markers in the table occur in this text.</p>';
+  const unjudged = f.unjudged.filter((id) => rows.has(id));
+  const notJudged = unjudged.length
+    ? `<p class="muted">Too short to judge, so left out here just as the table leaves such texts out: ${unjudged.map((id) => esc(rows.get(id)!.label)).join(', ')}.</p>`
+    : '';
+  if (!counted.length && !whole.length) return '<p class="muted">None of the markers in the table occur in this text.</p>' + notJudged;
   let out = '';
   if (counted.length) {
     out += `<table><thead><tr><th>In this text</th><th>times</th>${cols.map((a) => `<th>${short(a)}</th>`).join('')}</tr></thead><tbody>`
@@ -234,7 +270,7 @@ function foundTable(page: Page, f: Found, writer: string | null): string {
       }).join('')
       + '</tbody></table><p class="muted">The columns are the share of texts in each corpus that have the same property. On a short text most of these hold by default.</p>';
   }
-  return out;
+  return out + notJudged;
 }
 
 // ---- one paper, six writers
@@ -290,6 +326,8 @@ async function main(): Promise<void> {
   renderTable(page);
   setupDocuments(page);
   setupInput(page);
+  const off = page.rows.filter((r) => r.placeboTie === false).length;
+  if (off) $('placebo-note').textContent = `the placebo check (the person’s abstracts split at random) disagrees on ${off} row${off === 1 ? '' : 's'}, marked in the table`;
   const date = page.generated_at.slice(0, 10);
   const counts = page.arms.map((a) => `${short(a.id)} ${a.n.toLocaleString('en')}`).join(' · ');
   $('generated').textContent = `Measured ${date}. Texts per arm: ${counts}.`;

@@ -21,7 +21,7 @@
 import { writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { parquetMetadataAsync, parquetReadObjects } from 'hyparquet';
-import { toText, type Fetched } from './fetch.js';
+import { sourceText, proseLength, type Fetched } from './fetch.js';
 import { rangeBuffer, type AsyncBuffer } from './range-buffer.js';
 
 const SHARD = (i: number): string => `https://huggingface.co/api/datasets/liamdugan/raid/parquet/raid/train/${i}.parquet`;
@@ -49,6 +49,16 @@ function groupsThatMayHold(md: Meta, model: string): number[] {
   });
   return out;
 }
+
+/**
+ * A generation as the markers read it. It is plain text, not HTML, so it is not given to toText:
+ * the abstracts are full of TeX, and a tag stripper reads "$p<0.05$ ... $n>2$" as one tag and
+ * deletes everything between. Its paragraph breaks, headings and list items are kept, as the Claude
+ * arm (written straight from data/generated) keeps its own, because the markers for headings and
+ * bullets look at the start of a line. The human abstracts are also wrapped at 79 columns, and
+ * those line breaks are not the writer's: they are joined, as the models' texts have none.
+ */
+export const generationText = (r: Pick<RaidRow, 'generation'>): string => sourceText(String(r.generation ?? ''));
 
 async function readGroup(file: AsyncBuffer, md: Meta, group: number): Promise<RaidRow[]> {
   let start = 0;
@@ -79,8 +89,8 @@ async function collect(model: string, want: number, only: Set<string> | null): P
         if (r.model !== model || r.attack !== 'none') continue;
         const id = String(r.source_id);
         if (found.has(id) || (only && !only.has(id))) continue;
-        const text = toText(String(r.generation ?? ''));
-        if (text.length < 400) continue;
+        const text = generationText(r);
+        if (proseLength(text) < 400) continue;
         found.set(id, { id: `raid:${model}:${id}`, text });
         if (model === ANCHOR) prompts.set(id, { source_id: id, domain: String(r.domain ?? ''), title: String(r.title ?? ''), prompt: String(r.prompt ?? '') });
         if (found.size >= want) break;
