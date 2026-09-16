@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-16T15:16:04.300Z",
+ "generated_at": "2026-09-16T15:33:02.226Z",
  "seed": 20260916,
  "per_cell": 5,
  "note": "Sentences are quoted only from RAID (MIT) and from the Claude arm generated for this repository. Hacker News and Stack Exchange texts are linked, not quoted; HC3 is referenced by id.",
@@ -7,16 +7,16 @@
   "casual-human": {
    "label": "casual human (Hacker News, before ChatGPT)",
    "publishable": false,
-   "texts": 1200,
-   "words": 114743,
-   "we_per1000": 3.6516388799316735
+   "texts": 4000,
+   "words": 555609,
+   "we_per1000": 3.349477780237541
   },
   "careful-human": {
    "label": "careful human (Stack Exchange answers, same period)",
    "publishable": false,
-   "texts": 1200,
-   "words": 210900,
-   "we_per1000": 2.114746325272641
+   "texts": 4002,
+   "words": 961839,
+   "we_per1000": 1.9712238742658594
   },
   "raid-human": {
    "label": "human (RAID: the documents every model continued)",
@@ -63,18 +63,22 @@
   "hc3-gpt35": {
    "label": "GPT-3.5 answering questions (HC3, a different genre)",
    "publishable": false,
-   "texts": 1200,
-   "words": 219866,
-   "we_per1000": 1.4326908207726525
+   "texts": 4000,
+   "words": 740914,
+   "we_per1000": 1.6749582272706414
   }
  },
  "markers": {
   "delve": {
    "label": "“delve”",
    "arms": {
-    "careful-human": {
-     "occurrences": 1,
+    "casual-human": {
+     "occurrences": 2,
      "forms": [
+      [
+       "delve",
+       1
+      ],
       [
        "delving",
        1
@@ -82,13 +86,75 @@
      ],
      "before": [
       [
+       "for",
+       1
+      ],
+      [
+       "to",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33787402",
+       "link": "https://news.ycombinator.com/item?id=33787402"
+      },
+      {
+       "id": "33787027",
+       "link": "https://news.ycombinator.com/item?id=33787027"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 6,
+     "forms": [
+      [
+       "delve",
+       4
+      ],
+      [
+       "delving",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       3
+      ],
+      [
+       "from",
+       1
+      ],
+      [
+       "they",
+       1
+      ],
+      [
        "without",
        1
       ]
      ],
      "examples": [
       {
-       "id": "191000"
+       "id": "english:594642",
+       "link": "https://english.stackexchange.com/a/594642"
+      },
+      {
+       "id": "writing:63028",
+       "link": "https://writing.stackexchange.com/a/63028"
+      },
+      {
+       "id": "writing:63057",
+       "link": "https://writing.stackexchange.com/a/63057"
+      },
+      {
+       "id": "writing:62032",
+       "link": "https://writing.stackexchange.com/a/62032"
+      },
+      {
+       "id": "writing:61767",
+       "link": "https://writing.stackexchange.com/a/61767"
       }
      ]
     },
@@ -295,15 +361,80 @@
   "moreover": {
    "label": "“moreover”",
    "arms": {
-    "careful-human": {
-     "occurrences": 17,
+    "casual-human": {
+     "occurrences": 5,
      "forms": [
       [
        "moreover",
-       17
+       5
       ]
      ],
      "before": [
+      [
+       "abuse",
+       1
+      ],
+      [
+       "april",
+       1
+      ],
+      [
+       "chapter",
+       1
+      ],
+      [
+       "met",
+       1
+      ],
+      [
+       "overshooting",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33782928",
+       "link": "https://news.ycombinator.com/item?id=33782928"
+      },
+      {
+       "id": "33788377",
+       "link": "https://news.ycombinator.com/item?id=33788377"
+      },
+      {
+       "id": "33781433",
+       "link": "https://news.ycombinator.com/item?id=33781433"
+      },
+      {
+       "id": "33783388",
+       "link": "https://news.ycombinator.com/item?id=33783388"
+      },
+      {
+       "id": "33788224",
+       "link": "https://news.ycombinator.com/item?id=33788224"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 38,
+     "forms": [
+      [
+       "moreover",
+       38
+      ]
+     ],
+     "before": [
+      [
+       "and",
+       3
+      ],
+      [
+       "on",
+       2
+      ],
+      [
+       "benefit",
+       1
+      ],
       [
        "boot",
        1
@@ -313,45 +444,38 @@
        1
       ],
       [
+       "cream",
+       1
+      ],
+      [
        "credible",
        1
       ],
       [
-       "evidence",
-       1
-      ],
-      [
-       "go",
-       1
-      ],
-      [
-       "have",
-       1
-      ],
-      [
-       "industry",
-       1
-      ],
-      [
-       "it",
+       "day",
        1
       ]
      ],
      "examples": [
       {
-       "id": "598617"
+       "id": "academia:190995",
+       "link": "https://academia.stackexchange.com/a/190995"
       },
       {
-       "id": "190772"
+       "id": "english:595837",
+       "link": "https://english.stackexchange.com/a/595837"
       },
       {
-       "id": "190727"
+       "id": "english:597462",
+       "link": "https://english.stackexchange.com/a/597462"
       },
       {
-       "id": "191023"
+       "id": "academia:190727",
+       "link": "https://academia.stackexchange.com/a/190727"
       },
       {
-       "id": "598450"
+       "id": "english:598815",
+       "link": "https://english.stackexchange.com/a/598815"
       }
      ]
     },
@@ -536,14 +660,26 @@
    "label": "“furthermore”",
    "arms": {
     "casual-human": {
-     "occurrences": 2,
+     "occurrences": 11,
      "forms": [
       [
        "furthermore",
-       2
+       11
       ]
      ],
      "before": [
+      [
+       "abuse",
+       1
+      ],
+      [
+       "and",
+       1
+      ],
+      [
+       "change",
+       1
+      ],
       [
        "contracts",
        1
@@ -551,12 +687,36 @@
       [
        "failure",
        1
+      ],
+      [
+       "games",
+       1
+      ],
+      [
+       "otherwise",
+       1
+      ],
+      [
+       "path",
+       1
       ]
      ],
      "examples": [
       {
-       "id": "33795009",
-       "link": "https://news.ycombinator.com/item?id=33795009"
+       "id": "33790319",
+       "link": "https://news.ycombinator.com/item?id=33790319"
+      },
+      {
+       "id": "33791817",
+       "link": "https://news.ycombinator.com/item?id=33791817"
+      },
+      {
+       "id": "33780558",
+       "link": "https://news.ycombinator.com/item?id=33780558"
+      },
+      {
+       "id": "33785909",
+       "link": "https://news.ycombinator.com/item?id=33785909"
       },
       {
        "id": "33793456",
@@ -565,58 +725,67 @@
      ]
     },
     "careful-human": {
-     "occurrences": 8,
+     "occurrences": 29,
      "forms": [
       [
        "furthermore",
-       8
+       29
       ]
      ],
      "before": [
+      [
+       "test",
+       2
+      ],
+      [
+       "and",
+       1
+      ],
+      [
+       "applicants",
+       1
+      ],
       [
        "below",
        1
       ],
       [
-       "it",
+       "blood",
        1
       ],
       [
-       "not",
+       "choice",
        1
       ],
       [
-       "p",
+       "conversation",
        1
       ],
       [
-       "poetry",
-       1
-      ],
-      [
-       "test",
-       1
-      ],
-      [
-       "them",
+       "differ",
        1
       ]
      ],
      "examples": [
       {
-       "id": "598940"
+       "id": "writing:61303",
+       "link": "https://writing.stackexchange.com/a/61303"
       },
       {
-       "id": "597964"
+       "id": "writing:62481",
+       "link": "https://writing.stackexchange.com/a/62481"
       },
       {
-       "id": "190756"
+       "id": "academia:190785",
+       "link": "https://academia.stackexchange.com/a/190785"
       },
       {
-       "id": "190306"
+       "id": "academia:188518",
+       "link": "https://academia.stackexchange.com/a/188518"
       },
       {
-       "id": "190785"
+       "id": "english:596964",
+       "link": "https://english.stackexchange.com/a/596964"
       }
      ]
     },
@@ -982,7 +1151,7 @@
      ],
      "examples": [
       {
-       "id": "300-316"
+       "id": "hc3:300:315"
       }
      ]
     }
@@ -992,11 +1161,11 @@
    "label": "“crucial”",
    "arms": {
     "casual-human": {
-     "occurrences": 5,
+     "occurrences": 15,
      "forms": [
       [
        "crucial",
-       4
+       14
       ],
       [
        "crucially",
@@ -1006,10 +1175,22 @@
      "before": [
       [
        "a",
-       1
+       4
       ],
       [
        "absolutely",
+       1
+      ],
+      [
+       "are",
+       1
+      ],
+      [
+       "is",
+       1
+      ],
+      [
+       "it's",
        1
       ],
       [
@@ -1017,43 +1198,43 @@
        1
       ],
       [
-       "so",
+       "of",
        1
       ],
       [
-       "some",
+       "so",
        1
       ]
      ],
      "examples": [
       {
-       "id": "33793260",
-       "link": "https://news.ycombinator.com/item?id=33793260"
+       "id": "33780444",
+       "link": "https://news.ycombinator.com/item?id=33780444"
       },
       {
-       "id": "33794678",
-       "link": "https://news.ycombinator.com/item?id=33794678"
+       "id": "33793260",
+       "link": "https://news.ycombinator.com/item?id=33793260"
       },
       {
        "id": "33792828",
        "link": "https://news.ycombinator.com/item?id=33792828"
       },
       {
-       "id": "33793401",
-       "link": "https://news.ycombinator.com/item?id=33793401"
+       "id": "33789876",
+       "link": "https://news.ycombinator.com/item?id=33789876"
       },
       {
-       "id": "33794622",
-       "link": "https://news.ycombinator.com/item?id=33794622"
+       "id": "33787372",
+       "link": "https://news.ycombinator.com/item?id=33787372"
       }
      ]
     },
     "careful-human": {
-     "occurrences": 2,
+     "occurrences": 29,
      "forms": [
       [
        "crucial",
-       1
+       28
       ],
       [
        "crucially",
@@ -1062,20 +1243,58 @@
      ],
      "before": [
       [
-       "and",
-       1
+       "are",
+       4
       ],
       [
-       "particularly",
+       "a",
+       3
+      ],
+      [
+       "be",
+       2
+      ],
+      [
+       "is",
+       2
+      ],
+      [
+       "it's",
+       2
+      ],
+      [
+       "nothing",
+       2
+      ],
+      [
+       "the",
+       2
+      ],
+      [
+       "absolutely",
        1
       ]
      ],
      "examples": [
       {
-       "id": "598606"
+       "id": "writing:61204",
+       "link": "https://writing.stackexchange.com/a/61204"
       },
       {
-       "id": "190659"
+       "id": "writing:61854",
+       "link": "https://writing.stackexchange.com/a/61854"
+      },
+      {
+       "id": "academia:188476",
+       "link": "https://academia.stackexchange.com/a/188476"
+      },
+      {
+       "id": "writing:62222",
+       "link": "https://writing.stackexchange.com/a/62222"
+      },
+      {
+       "id": "academia:189989",
+       "link": "https://academia.stackexchange.com/a/189989"
       }
      ]
     },
@@ -1386,25 +1605,34 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 2,
+     "occurrences": 6,
      "forms": [
       [
        "crucial",
-       2
+       6
       ]
      ],
      "before": [
       [
        "a",
-       2
+       6
       ]
      ],
      "examples": [
       {
-       "id": "500-540"
+       "id": "hc3:500:539"
       },
       {
-       "id": "700-724"
+       "id": "hc3:1600:1612"
+      },
+      {
+       "id": "hc3:1300:1380"
+      },
+      {
+       "id": "hc3:2500:2539"
+      },
+      {
+       "id": "hc3:3200:3246"
       }
      ]
     }
@@ -1414,16 +1642,24 @@
    "label": "“realm”",
    "arms": {
     "casual-human": {
-     "occurrences": 1,
+     "occurrences": 6,
      "forms": [
       [
        "realm",
-       1
+       6
       ]
      ],
      "before": [
       [
        "the",
+       3
+      ],
+      [
+       "touch",
+       2
+      ],
+      [
+       "auditory",
        1
       ]
      ],
@@ -1431,22 +1667,50 @@
       {
        "id": "33794963",
        "link": "https://news.ycombinator.com/item?id=33794963"
+      },
+      {
+       "id": "33788086",
+       "link": "https://news.ycombinator.com/item?id=33788086"
+      },
+      {
+       "id": "33789786",
+       "link": "https://news.ycombinator.com/item?id=33789786"
+      },
+      {
+       "id": "33784971",
+       "link": "https://news.ycombinator.com/item?id=33784971"
+      },
+      {
+       "id": "33780705",
+       "link": "https://news.ycombinator.com/item?id=33780705"
       }
      ]
     },
     "careful-human": {
-     "occurrences": 10,
+     "occurrences": 23,
      "forms": [
       [
        "realm",
-       6
+       17
       ],
       [
        "realms",
-       4
+       6
       ]
      ],
      "before": [
+      [
+       "the",
+       5
+      ],
+      [
+       "another",
+       2
+      ],
+      [
+       "his",
+       2
+      ],
       [
        "magical",
        2
@@ -1456,38 +1720,38 @@
        2
       ],
       [
-       "the",
-       2
-      ],
-      [
        "alternative",
        1
       ],
       [
-       "spirit",
+       "beautiful",
        1
       ],
       [
-       "universes",
-       1
-      ],
-      [
-       "worlds",
+       "divine",
        1
       ]
      ],
      "examples": [
       {
-       "id": "598777"
+       "id": "english:598767",
+       "link": "https://english.stackexchange.com/a/598767"
       },
       {
-       "id": "598631"
+       "id": "writing:63035",
+       "link": "https://writing.stackexchange.com/a/63035"
       },
       {
-       "id": "598767"
+       "id": "english:598777",
+       "link": "https://english.stackexchange.com/a/598777"
       },
       {
-       "id": "190925"
+       "id": "writing:63207",
+       "link": "https://writing.stackexchange.com/a/63207"
+      },
+      {
+       "id": "english:597100",
+       "link": "https://english.stackexchange.com/a/597100"
       }
      ]
     },
@@ -1635,6 +1899,26 @@
        "sentence": "Overall, this paper provides a comprehensive overview of the generalized U(N) gauge transformations in the realm of the extended covariant Hamiltonian formalism of field theory, and their applications to the study of physical systems."
       }
      ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "realm",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "another",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "hc3:2300:2290"
+      }
+     ]
     }
    }
   },
@@ -1642,43 +1926,88 @@
    "label": "“showcase”",
    "arms": {
     "casual-human": {
-     "occurrences": 1,
+     "occurrences": 4,
      "forms": [
       [
        "showcase",
-       1
+       2
+      ],
+      [
+       "showcases",
+       2
       ]
      ],
      "before": [
       [
+       "interesting",
+       1
+      ],
+      [
+       "retrofuturism",
+       1
+      ],
+      [
        "to",
+       1
+      ],
+      [
+       "which",
        1
       ]
      ],
      "examples": [
       {
+       "id": "33784053",
+       "link": "https://news.ycombinator.com/item?id=33784053"
+      },
+      {
+       "id": "33785665",
+       "link": "https://news.ycombinator.com/item?id=33785665"
+      },
+      {
        "id": "33794337",
        "link": "https://news.ycombinator.com/item?id=33794337"
+      },
+      {
+       "id": "33781386",
+       "link": "https://news.ycombinator.com/item?id=33781386"
       }
      ]
     },
     "careful-human": {
-     "occurrences": 1,
+     "occurrences": 3,
      "forms": [
       [
        "showcase",
-       1
+       3
       ]
      ],
      "before": [
       [
+       "helps",
+       1
+      ],
+      [
        "to",
+       1
+      ],
+      [
+       "will",
        1
       ]
      ],
      "examples": [
       {
-       "id": "190640"
+       "id": "writing:61721",
+       "link": "https://writing.stackexchange.com/a/61721"
+      },
+      {
+       "id": "academia:190640",
+       "link": "https://academia.stackexchange.com/a/190640"
+      },
+      {
+       "id": "academia:189769",
+       "link": "https://academia.stackexchange.com/a/189769"
       }
      ]
     },
@@ -1802,22 +2131,39 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 1,
+     "occurrences": 5,
      "forms": [
       [
        "showcase",
+       4
+      ],
+      [
+       "showcasing",
        1
       ]
      ],
      "before": [
       [
        "to",
+       4
+      ],
+      [
+       "of",
        1
       ]
      ],
      "examples": [
       {
-       "id": "1100-1134"
+       "id": "hc3:3600:3647"
+      },
+      {
+       "id": "hc3:1100:1130"
+      },
+      {
+       "id": "hc3:2200:2275"
+      },
+      {
+       "id": "hc3:1600:1660"
       }
      ]
     }
@@ -1826,6 +2172,35 @@
   "underscore": {
    "label": "“underscores”",
    "arms": {
+    "casual-human": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "underscore",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "an",
+       1
+      ],
+      [
+       "leading",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33791759",
+       "link": "https://news.ycombinator.com/item?id=33791759"
+      },
+      {
+       "id": "33782735",
+       "link": "https://news.ycombinator.com/item?id=33782735"
+      }
+     ]
+    },
     "raid-gpt4": {
      "occurrences": 5,
      "forms": [
@@ -1947,43 +2322,144 @@
    "label": "“leverage” as a verb",
    "arms": {
     "casual-human": {
-     "occurrences": 1,
+     "occurrences": 20,
      "forms": [
       [
+       "leverage",
+       13
+      ],
+      [
        "leveraged",
+       3
+      ],
+      [
+       "leveraging",
+       3
+      ],
+      [
+       "leverages",
        1
       ]
      ],
      "before": [
       [
-       "be",
+       "being",
+       2
+      ],
+      [
+       "and",
+       1
+      ],
+      [
+       "are",
+       1
+      ],
+      [
+       "bank",
+       1
+      ],
+      [
+       "begun",
+       1
+      ],
+      [
+       "by",
+       1
+      ],
+      [
+       "can",
+       1
+      ],
+      [
+       "enormous",
        1
       ]
      ],
      "examples": [
       {
-       "id": "33793275",
-       "link": "https://news.ycombinator.com/item?id=33793275"
+       "id": "33780802",
+       "link": "https://news.ycombinator.com/item?id=33780802"
+      },
+      {
+       "id": "33787531",
+       "link": "https://news.ycombinator.com/item?id=33787531"
+      },
+      {
+       "id": "33790518",
+       "link": "https://news.ycombinator.com/item?id=33790518"
+      },
+      {
+       "id": "33790060",
+       "link": "https://news.ycombinator.com/item?id=33790060"
+      },
+      {
+       "id": "33790328",
+       "link": "https://news.ycombinator.com/item?id=33790328"
       }
      ]
     },
     "careful-human": {
-     "occurrences": 1,
+     "occurrences": 7,
      "forms": [
       [
+       "leverage",
+       4
+      ],
+      [
        "leveraging",
+       2
+      ],
+      [
+       "leverages",
        1
       ]
      ],
      "before": [
       [
+       "to",
+       2
+      ],
+      [
+       "as",
+       1
+      ],
+      [
+       "but",
+       1
+      ],
+      [
        "by",
+       1
+      ],
+      [
+       "creatively",
+       1
+      ],
+      [
+       "out",
        1
       ]
      ],
      "examples": [
       {
-       "id": "190075"
+       "id": "academia:190075",
+       "link": "https://academia.stackexchange.com/a/190075"
+      },
+      {
+       "id": "academia:188558",
+       "link": "https://academia.stackexchange.com/a/188558"
+      },
+      {
+       "id": "writing:62764",
+       "link": "https://writing.stackexchange.com/a/62764"
+      },
+      {
+       "id": "writing:62369",
+       "link": "https://writing.stackexchange.com/a/62369"
+      },
+      {
+       "id": "academia:189132",
+       "link": "https://academia.stackexchange.com/a/189132"
       }
      ]
     },
@@ -2394,22 +2870,36 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 1,
+     "occurrences": 3,
      "forms": [
       [
        "leverage",
+       2
+      ],
+      [
+       "leveraging",
        1
       ]
      ],
      "before": [
       [
        "and",
+       2
+      ],
+      [
+       "by",
        1
       ]
      ],
      "examples": [
       {
-       "id": "400-481"
+       "id": "hc3:3900:3873"
+      },
+      {
+       "id": "hc3:400:480"
+      },
+      {
+       "id": "hc3:3700:3759"
       }
      ]
     }
@@ -2419,35 +2909,59 @@
    "label": "“it is important to note” / “worth noting”",
    "arms": {
     "casual-human": {
-     "occurrences": 1,
+     "occurrences": 3,
      "forms": [
       [
        "it's worth noting",
-       1
+       3
       ]
      ],
      "before": [
       [
-       "and",
+       "also",
+       1
+      ],
+      [
+       "bread",
+       1
+      ],
+      [
+       "time",
        1
       ]
      ],
      "examples": [
       {
-       "id": "33794523",
-       "link": "https://news.ycombinator.com/item?id=33794523"
+       "id": "33783600",
+       "link": "https://news.ycombinator.com/item?id=33783600"
+      },
+      {
+       "id": "33790283",
+       "link": "https://news.ycombinator.com/item?id=33790283"
+      },
+      {
+       "id": "33788967",
+       "link": "https://news.ycombinator.com/item?id=33788967"
       }
      ]
     },
     "careful-human": {
-     "occurrences": 2,
+     "occurrences": 11,
      "forms": [
       [
-       "it is worth noting",
-       1
+       "it's worth noting",
+       4
       ],
       [
-       "it's worth noting",
+       "it is worth noting",
+       3
+      ],
+      [
+       "it's important to note",
+       3
+      ],
+      [
+       "it is important to note",
        1
       ]
      ],
@@ -2457,16 +2971,54 @@
        1
       ],
       [
+       "case",
+       1
+      ],
+      [
        "chosen",
+       1
+      ],
+      [
+       "end",
+       1
+      ],
+      [
+       "equipment",
+       1
+      ],
+      [
+       "head",
+       1
+      ],
+      [
+       "here",
+       1
+      ],
+      [
+       "instead",
        1
       ]
      ],
      "examples": [
       {
-       "id": "191040"
+       "id": "academia:189193",
+       "link": "https://academia.stackexchange.com/a/189193"
       },
       {
-       "id": "190364"
+       "id": "academia:190364",
+       "link": "https://academia.stackexchange.com/a/190364"
+      },
+      {
+       "id": "writing:62728",
+       "link": "https://writing.stackexchange.com/a/62728"
+      },
+      {
+       "id": "writing:63625",
+       "link": "https://writing.stackexchange.com/a/63625"
+      },
+      {
+       "id": "english:594607",
+       "link": "https://english.stackexchange.com/a/594607"
       }
      ]
     },
@@ -2513,70 +3065,74 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 127,
+     "occurrences": 372,
      "forms": [
       [
        "it's important to note",
-       88
+       250
       ],
       [
        "it is important to note",
-       33
+       99
       ],
       [
        "it's worth noting",
-       6
+       18
+      ],
+      [
+       "it is worth noting",
+       5
       ]
      ],
      "before": [
       [
        "however",
-       33
+       88
       ],
       [
        "finally",
+       13
+      ],
+      [
+       "but",
+       5
+      ],
+      [
+       "community",
        4
       ],
       [
+       "them",
+       4
+      ],
+      [
+       "economy",
+       3
+      ],
+      [
        "industry",
-       2
+       3
       ],
       [
-       "not",
-       2
-      ],
-      [
-       "practices",
-       2
-      ],
-      [
-       "additionally",
-       1
-      ],
-      [
-       "administration",
-       1
-      ],
-      [
-       "all",
-       1
+       "it",
+       3
       ]
      ],
      "examples": [
       {
-       "id": "500-559"
+       "id": "hc3:2800:2877"
       },
       {
-       "id": "0-76"
+       "id": "hc3:600:619"
       },
       {
-       "id": "0-80"
+       "id": "hc3:2200:2206"
       },
       {
-       "id": "600-622"
+       "id": "hc3:2900:2963"
       },
       {
-       "id": "100-144"
+       "id": "hc3:3800:3824"
       }
      ]
     }
@@ -2586,14 +3142,18 @@
    "label": "“in today’s …”",
    "arms": {
     "casual-human": {
-     "occurrences": 1,
+     "occurrences": 2,
      "forms": [
       [
        "in today's",
-       1
+       2
       ]
      ],
      "before": [
+      [
+       "aircraft",
+       1
+      ],
       [
        "speaking",
        1
@@ -2603,6 +3163,51 @@
       {
        "id": "33795052",
        "link": "https://news.ycombinator.com/item?id=33795052"
+      },
+      {
+       "id": "33779408",
+       "link": "https://news.ycombinator.com/item?id=33779408"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "in today's",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "languages",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "writing:63574",
+       "link": "https://writing.stackexchange.com/a/63574"
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "in today's",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "important",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "hc3:2100:2098"
       }
      ]
     }
@@ -2611,46 +3216,107 @@
   "not_only_but_also": {
    "label": "“not only … but also”",
    "arms": {
-    "careful-human": {
-     "occurrences": 6,
+    "casual-human": {
+     "occurrences": 5,
      "forms": [],
      "before": [
       [
-       "would",
-       2
-      ],
-      [
-       "express",
+       "easier",
        1
       ],
       [
-       "had",
+       "registered",
        1
       ],
       [
-       "is",
+       "requires",
        1
       ],
       [
-       "that",
+       "things",
        1
       ]
      ],
      "examples": [
       {
-       "id": "598560"
+       "id": "33785856",
+       "link": "https://news.ycombinator.com/item?id=33785856"
       },
       {
-       "id": "597656"
+       "id": "33790538",
+       "link": "https://news.ycombinator.com/item?id=33790538"
       },
       {
-       "id": "598076"
+       "id": "33783368",
+       "link": "https://news.ycombinator.com/item?id=33783368"
       },
       {
-       "id": "191015"
+       "id": "33786033",
+       "link": "https://news.ycombinator.com/item?id=33786033"
       },
       {
-       "id": "190367"
+       "id": "33788224",
+       "link": "https://news.ycombinator.com/item?id=33788224"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 29,
+     "forms": [],
+     "before": [
+      [
+       "is",
+       4
+      ],
+      [
+       "that",
+       2
+      ],
+      [
+       "would",
+       2
+      ],
+      [
+       "about",
+       1
+      ],
+      [
+       "assembly",
+       1
+      ],
+      [
+       "bit",
+       1
+      ],
+      [
+       "changing",
+       1
+      ],
+      [
+       "compatible",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "writing:61419",
+       "link": "https://writing.stackexchange.com/a/61419"
+      },
+      {
+       "id": "writing:63218",
+       "link": "https://writing.stackexchange.com/a/63218"
+      },
+      {
+       "id": "english:594038",
+       "link": "https://english.stackexchange.com/a/594038"
+      },
+      {
+       "id": "academia:189734",
+       "link": "https://academia.stackexchange.com/a/189734"
+      },
+      {
+       "id": "english:597656",
+       "link": "https://english.stackexchange.com/a/597656"
       }
      ]
     },
@@ -2988,7 +3654,7 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 4,
+     "occurrences": 5,
      "forms": [],
      "before": [
       [
@@ -3004,22 +3670,29 @@
        1
       ],
       [
+       "must",
+       1
+      ],
+      [
        "protect",
        1
       ]
      ],
      "examples": [
       {
-       "id": "800-826"
+       "id": "hc3:1100:1158"
       },
       {
-       "id": "600-695"
+       "id": "hc3:200:233"
       },
       {
-       "id": "200-234"
+       "id": "hc3:3000:3056"
       },
       {
-       "id": "1100-1162"
+       "id": "hc3:800:824"
+      },
+      {
+       "id": "hc3:600:693"
       }
      ]
     }
@@ -3029,42 +3702,137 @@
    "label": "“it’s not X, it’s Y”",
    "arms": {
     "casual-human": {
-     "occurrences": 5,
+     "occurrences": 12,
      "forms": [],
      "before": [
       [
-       "again",
+       "discomfort",
        1
       ],
       [
-       "right",
+       "food",
        1
       ],
       [
-       "science",
+       "if",
+       1
+      ],
+      [
+       "london",
+       1
+      ],
+      [
+       "missing",
+       1
+      ],
+      [
+       "point",
+       1
+      ],
+      [
+       "publicity",
+       1
+      ],
+      [
+       "rephrase",
        1
       ]
      ],
      "examples": [
       {
-       "id": "33794180",
-       "link": "https://news.ycombinator.com/item?id=33794180"
+       "id": "33783515",
+       "link": "https://news.ycombinator.com/item?id=33783515"
+      },
+      {
+       "id": "33794607",
+       "link": "https://news.ycombinator.com/item?id=33794607"
       },
       {
        "id": "33794667",
        "link": "https://news.ycombinator.com/item?id=33794667"
       },
       {
-       "id": "33794109",
-       "link": "https://news.ycombinator.com/item?id=33794109"
+       "id": "33786572",
+       "link": "https://news.ycombinator.com/item?id=33786572"
       },
       {
-       "id": "33794583",
-       "link": "https://news.ycombinator.com/item?id=33794583"
+       "id": "33785851",
+       "link": "https://news.ycombinator.com/item?id=33785851"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 13,
+     "forms": [],
+     "before": [
+      [
+       "case",
+       1
+      ],
+      [
+       "classic",
+       1
+      ],
+      [
+       "constructions",
+       1
+      ],
+      [
+       "deal",
+       1
+      ],
+      [
+       "group",
+       1
+      ],
+      [
+       "it",
+       1
+      ],
+      [
+       "obviously",
+       1
+      ],
+      [
+       "personality",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "english:594088",
+       "link": "https://english.stackexchange.com/a/594088"
       },
       {
-       "id": "33794607",
-       "link": "https://news.ycombinator.com/item?id=33794607"
+       "id": "academia:189587",
+       "link": "https://academia.stackexchange.com/a/189587"
+      },
+      {
+       "id": "english:595825",
+       "link": "https://english.stackexchange.com/a/595825"
+      },
+      {
+       "id": "writing:62269",
+       "link": "https://writing.stackexchange.com/a/62269"
+      },
+      {
+       "id": "writing:62395",
+       "link": "https://writing.stackexchange.com/a/62395"
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 1,
+     "forms": [],
+     "before": [
+      [
+       "shot",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "hc3:3100:3129"
       }
      ]
     }
@@ -3074,23 +3842,96 @@
    "label": "“dive into” / “let’s explore”",
    "arms": {
     "casual-human": {
-     "occurrences": 1,
+     "occurrences": 4,
      "forms": [
       [
+       "let us explore",
+       2
+      ],
+      [
        "dive into",
+       1
+      ],
+      [
+       "let's take a look",
        1
       ]
      ],
      "before": [
       [
-       "to",
+       "before",
+       2
+      ],
+      [
+       "i",
+       1
+      ],
+      [
+       "paragraph",
        1
       ]
      ],
      "examples": [
       {
-       "id": "33793913",
-       "link": "https://news.ycombinator.com/item?id=33793913"
+       "id": "33786619",
+       "link": "https://news.ycombinator.com/item?id=33786619"
+      },
+      {
+       "id": "33788348",
+       "link": "https://news.ycombinator.com/item?id=33788348"
+      },
+      {
+       "id": "33792314",
+       "link": "https://news.ycombinator.com/item?id=33792314"
+      },
+      {
+       "id": "33785964",
+       "link": "https://news.ycombinator.com/item?id=33785964"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 5,
+     "forms": [
+      [
+       "dive into",
+       5
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       2
+      ],
+      [
+       "deep-",
+       1
+      ],
+      [
+       "not",
+       1
+      ],
+      [
+       "you",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "writing:62716",
+       "link": "https://writing.stackexchange.com/a/62716"
+      },
+      {
+       "id": "writing:63415",
+       "link": "https://writing.stackexchange.com/a/63415"
+      },
+      {
+       "id": "writing:61793",
+       "link": "https://writing.stackexchange.com/a/61793"
+      },
+      {
+       "id": "writing:62857",
+       "link": "https://writing.stackexchange.com/a/62857"
       }
      ]
     },
@@ -3110,7 +3951,7 @@
      ],
      "examples": [
       {
-       "id": "600-656"
+       "id": "hc3:600:654"
       }
      ]
     }
@@ -3119,25 +3960,66 @@
   "in_conclusion": {
    "label": "“in conclusion” / “in summary”",
    "arms": {
-    "careful-human": {
-     "occurrences": 4,
+    "casual-human": {
+     "occurrences": 3,
      "forms": [
       [
-       "to sum up",
-       2
-      ],
+       "in summary",
+       3
+      ]
+     ],
+     "before": [
       [
-       "in conclusion",
+       "abstraction",
        1
       ],
       [
+       "studied",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33783306",
+       "link": "https://news.ycombinator.com/item?id=33783306"
+      },
+      {
+       "id": "33791402",
+       "link": "https://news.ycombinator.com/item?id=33791402"
+      },
+      {
+       "id": "33791163",
+       "link": "https://news.ycombinator.com/item?id=33791163"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 14,
+     "forms": [
+      [
+       "in conclusion",
+       8
+      ],
+      [
        "in summary",
+       5
+      ],
+      [
+       "to sum up",
        1
       ]
      ],
      "before": [
       [
+       "buddha",
+       1
+      ],
+      [
        "conclusion",
+       1
+      ],
+      [
+       "difference",
        1
       ],
       [
@@ -3145,26 +4027,42 @@
        1
       ],
       [
-       "hemigod",
+       "inferred",
        1
       ],
       [
-       "tried",
+       "meaning",
+       1
+      ],
+      [
+       "on",
+       1
+      ],
+      [
+       "philosophy",
        1
       ]
      ],
      "examples": [
       {
-       "id": "598196"
+       "id": "english:598767",
+       "link": "https://english.stackexchange.com/a/598767"
       },
       {
-       "id": "598713"
+       "id": "english:595897",
+       "link": "https://english.stackexchange.com/a/595897"
       },
       {
-       "id": "598767"
+       "id": "english:595492",
+       "link": "https://english.stackexchange.com/a/595492"
       },
       {
-       "id": "190315"
+       "id": "academia:188860",
+       "link": "https://academia.stackexchange.com/a/188860"
+      },
+      {
+       "id": "english:593954",
+       "link": "https://english.stackexchange.com/a/593954"
       }
      ]
     },
@@ -3357,21 +4255,29 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 34,
+     "occurrences": 98,
      "forms": [
       [
        "in summary",
-       31
+       88
       ],
       [
        "to sum up",
-       3
+       8
+      ],
+      [
+       "in conclusion",
+       2
       ]
      ],
      "before": [
       [
        "so",
-       7
+       30
+      ],
+      [
+       "control",
+       2
       ],
       [
        "alphabet",
@@ -3382,41 +4288,37 @@
        1
       ],
       [
+       "assassination",
+       1
+      ],
+      [
+       "atmosphere",
+       1
+      ],
+      [
        "behaviors",
        1
       ],
       [
        "bubble",
        1
-      ],
-      [
-       "careers",
-       1
-      ],
-      [
-       "control",
-       1
-      ],
-      [
-       "costly",
-       1
       ]
      ],
      "examples": [
       {
-       "id": "100-136"
+       "id": "hc3:0:48"
       },
       {
-       "id": "500-572"
+       "id": "hc3:300:336"
       },
       {
-       "id": "200-219"
+       "id": "hc3:300:315"
       },
       {
-       "id": "300-327"
+       "id": "hc3:2700:2696"
       },
       {
-       "id": "0-48"
+       "id": "hc3:2100:2102"
       }
      ]
     }
@@ -3426,81 +4328,101 @@
    "label": "an em dash",
    "arms": {
     "casual-human": {
-     "occurrences": 49,
+     "occurrences": 148,
      "forms": [
       [
        "—",
-       49
+       148
       ]
      ],
      "before": [
       [
-       "trains",
+       "poem",
+       3
+      ],
+      [
+       "apps",
        2
       ],
       [
-       "adapter",
-       1
+       "demand",
+       2
       ],
       [
-       "and",
-       1
+       "emacs",
+       2
       ],
       [
-       "calls",
-       1
+       "it",
+       2
       ],
       [
-       "checklist",
-       1
+       "likelihood",
+       2
       ],
       [
-       "code",
-       1
+       "point",
+       2
       ],
       [
-       "companies",
-       1
-      ],
-      [
-       "company",
-       1
+       "s",
+       2
       ]
      ],
      "examples": [
-      {
-       "id": "33794834",
-       "link": "https://news.ycombinator.com/item?id=33794834"
-      },
-      {
-       "id": "33792671",
-       "link": "https://news.ycombinator.com/item?id=33792671"
-      },
       {
        "id": "33793227",
        "link": "https://news.ycombinator.com/item?id=33793227"
       },
       {
-       "id": "33794742",
-       "link": "https://news.ycombinator.com/item?id=33794742"
+       "id": "33786171",
+       "link": "https://news.ycombinator.com/item?id=33786171"
       },
       {
-       "id": "33793893",
-       "link": "https://news.ycombinator.com/item?id=33793893"
+       "id": "33795043",
+       "link": "https://news.ycombinator.com/item?id=33795043"
+      },
+      {
+       "id": "33794625",
+       "link": "https://news.ycombinator.com/item?id=33794625"
+      },
+      {
+       "id": "33792580",
+       "link": "https://news.ycombinator.com/item?id=33792580"
       }
      ]
     },
     "careful-human": {
-     "occurrences": 133,
+     "occurrences": 463,
      "forms": [
       [
        "—",
-       133
+       463
       ]
      ],
      "before": [
       [
        "of",
+       7
+      ],
+      [
+       "nothing",
+       6
+      ],
+      [
+       "and",
+       4
+      ],
+      [
+       "sa",
+       4
+      ],
+      [
+       "story",
+       4
+      ],
+      [
+       "you",
        4
       ],
       [
@@ -3508,45 +4430,30 @@
        3
       ],
       [
-       "am",
-       2
-      ],
-      [
-       "ambition",
-       2
-      ],
-      [
-       "as",
-       2
-      ],
-      [
-       "before",
-       2
-      ],
-      [
-       "cyclops",
-       2
-      ],
-      [
-       "every",
-       2
+       "from",
+       3
       ]
      ],
      "examples": [
       {
-       "id": "190527"
+       "id": "academia:188859",
+       "link": "https://academia.stackexchange.com/a/188859"
       },
       {
-       "id": "598053"
+       "id": "writing:62841",
+       "link": "https://writing.stackexchange.com/a/62841"
       },
       {
-       "id": "599074"
+       "id": "academia:188772",
+       "link": "https://academia.stackexchange.com/a/188772"
       },
       {
-       "id": "597929"
+       "id": "english:597943",
+       "link": "https://english.stackexchange.com/a/597943"
       },
       {
-       "id": "597943"
+       "id": "english:599074",
+       "link": "https://english.stackexchange.com/a/599074"
       }
      ]
     },
@@ -3598,6 +4505,38 @@
        "sentence": "Learning from scribbles — sparse, quickly drawn strokes marking a few pixels of each class — is an attractive alternative, yet scribbles carry no information about object extent or shape, so models trained on them tend to leak across bound…"
       }
      ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 7,
+     "forms": [
+      [
+       "—",
+       7
+      ]
+     ],
+     "before": [
+      [
+       "feedback",
+       7
+      ]
+     ],
+     "examples": [
+      {
+       "id": "hc3:2300:2353"
+      },
+      {
+       "id": "hc3:3600:3650"
+      },
+      {
+       "id": "hc3:3700:3771"
+      },
+      {
+       "id": "hc3:4000:3973"
+      },
+      {
+       "id": "hc3:3200:3190"
+      }
+     ]
     }
    }
   },
@@ -3605,117 +4544,122 @@
    "label": "a three-item list in one sentence",
    "arms": {
     "casual-human": {
-     "occurrences": 73,
+     "occurrences": 357,
      "forms": [],
      "before": [
-      [
-       "like",
-       4
-      ],
-      [
-       "more",
-       3
-      ],
-      [
-       "of",
-       3
-      ],
-      [
-       "on",
-       3
-      ],
       [
        "the",
-       3
+       22
       ],
-      [
-       "his",
-       2
-      ],
-      [
-       "in",
-       2
-      ],
-      [
-       "my",
-       2
-      ]
-     ],
-     "examples": [
-      {
-       "id": "33794834",
-       "link": "https://news.ycombinator.com/item?id=33794834"
-      },
-      {
-       "id": "33792674",
-       "link": "https://news.ycombinator.com/item?id=33792674"
-      },
-      {
-       "id": "33794074",
-       "link": "https://news.ycombinator.com/item?id=33794074"
-      },
-      {
-       "id": "33793842",
-       "link": "https://news.ycombinator.com/item?id=33793842"
-      },
-      {
-       "id": "33793686",
-       "link": "https://news.ycombinator.com/item?id=33793686"
-      }
-     ]
-    },
-    "careful-human": {
-     "occurrences": 149,
-     "forms": [],
-     "before": [
       [
        "of",
-       8
+       17
+      ],
+      [
+       "for",
+       10
+      ],
+      [
+       "to",
+       7
+      ],
+      [
+       "a",
+       6
       ],
       [
        "in",
        6
       ],
       [
-       "to",
-       5
+       "like",
+       6
       ],
       [
-       "a",
-       4
-      ],
-      [
-       "from",
-       4
-      ],
-      [
-       "the",
-       4
-      ],
-      [
-       "and",
-       3
-      ],
-      [
-       "are",
-       3
+       "with",
+       6
       ]
      ],
      "examples": [
       {
-       "id": "598969"
+       "id": "33784486",
+       "link": "https://news.ycombinator.com/item?id=33784486"
       },
       {
-       "id": "598422"
+       "id": "33794712",
+       "link": "https://news.ycombinator.com/item?id=33794712"
       },
       {
-       "id": "597613"
+       "id": "33784327",
+       "link": "https://news.ycombinator.com/item?id=33784327"
       },
       {
-       "id": "599041"
+       "id": "33794684",
+       "link": "https://news.ycombinator.com/item?id=33794684"
       },
       {
-       "id": "190968"
+       "id": "33794345",
+       "link": "https://news.ycombinator.com/item?id=33794345"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 706,
+     "forms": [],
+     "before": [
+      [
+       "the",
+       41
+      ],
+      [
+       "of",
+       34
+      ],
+      [
+       "in",
+       23
+      ],
+      [
+       "a",
+       18
+      ],
+      [
+       "and",
+       16
+      ],
+      [
+       "for",
+       12
+      ],
+      [
+       "to",
+       11
+      ],
+      [
+       "as",
+       10
+      ]
+     ],
+     "examples": [
+      {
+       "id": "writing:63582",
+       "link": "https://writing.stackexchange.com/a/63582"
+      },
+      {
+       "id": "english:598770",
+       "link": "https://english.stackexchange.com/a/598770"
+      },
+      {
+       "id": "english:598240",
+       "link": "https://english.stackexchange.com/a/598240"
+      },
+      {
+       "id": "english:598444",
+       "link": "https://english.stackexchange.com/a/598444"
+      },
+      {
+       "id": "english:595951",
+       "link": "https://english.stackexchange.com/a/595951"
       }
      ]
     },
@@ -4278,57 +5222,57 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 372,
+     "occurrences": 1327,
      "forms": [],
      "before": [
       [
        "as",
-       34
+       123
       ],
       [
        "of",
-       31
-      ],
-      [
-       "including",
-       21
+       119
       ],
       [
        "like",
-       21
+       89
       ],
       [
        "the",
-       20
+       79
+      ],
+      [
+       "including",
+       65
       ],
       [
        "to",
-       12
+       44
       ],
       [
        "in",
-       11
+       38
       ],
       [
        "for",
-       10
+       26
       ]
      ],
      "examples": [
       {
-       "id": "800-874"
+       "id": "hc3:3700:3699"
       },
       {
-       "id": "200-212"
+       "id": "hc3:0:11"
       },
       {
-       "id": "600-673"
+       "id": "hc3:800:895"
       },
       {
-       "id": "800-898"
+       "id": "hc3:2800:2854"
       },
       {
-       "id": "1000-1097"
+       "id": "hc3:1600:1600"
       }
      ]
     }
