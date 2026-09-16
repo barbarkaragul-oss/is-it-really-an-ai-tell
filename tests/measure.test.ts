@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { wilson, twoProportionP, benjaminiHochberg, lengthMatch, seededShuffle, measure, type Arm } from '../src/measure.js';
+import { wilson, twoProportionP, benjaminiHochberg, pairMatch, seededShuffle, measure, rate, share, type Arm, type Text } from '../src/measure.js';
 import { MARKERS, sentenceLengthCv, byId } from '../src/markers.js';
 
 const texts = (n: number, body: (i: number) => string, tag = 't') =>
@@ -36,15 +36,15 @@ test('benjamini-hochberg: monotone, never below the raw p, nulls preserved', () 
   for (let i = 1; i < got.length; i++) assert.ok(got[i]! >= got[i - 1]!, 'q must not decrease as p increases');
 });
 
-test('length match: every arm contributes the same count in every bin', () => {
-  const arms: Arm[] = [
-    { id: 'a', label: 'a', kind: 'human', texts: [...texts(10, () => filler(100), 'a'), ...texts(2, () => filler(150), 'a2')] },
-    { id: 'b', label: 'b', kind: 'human', texts: [...texts(3, () => filler(100), 'b'), ...texts(9, () => filler(150), 'b2')] },
-  ];
-  const { arms: matched, perBin } = lengthMatch(arms);
-  assert.deepEqual(perBin.map((b) => b.take), [3, 2, 0, 0]);
-  assert.equal(matched[0]!.texts.length, 5);
-  assert.equal(matched[1]!.texts.length, 5);
+test('pair match: two arms, the same count in every length bin', () => {
+  const a: Text[] = [...texts(10, () => filler(100), 'a'), ...texts(2, () => filler(150), 'a2')];
+  const b: Text[] = [...texts(3, () => filler(100), 'b'), ...texts(9, () => filler(150), 'b2')];
+  const [ma, mb] = pairMatch(a, b);
+  assert.equal(ma.length, 5, 'three in the first bin and two in the second');
+  assert.equal(mb.length, 5);
+  const inBin = (ts: Text[], lo: number, hi: number) => ts.filter((t) => { const n = t.text.split(/\s+/).length; return n >= lo && n <= hi; }).length;
+  assert.equal(inBin(ma, 80, 129), inBin(mb, 80, 129));
+  assert.equal(inBin(ma, 130, 219), inBin(mb, 130, 219));
 });
 
 test('seeded shuffle: reproducible, a permutation, and not the identity', () => {
@@ -64,7 +64,7 @@ test('the placebo agrees when both halves come from one corpus', () => {
     { id: 'careful', label: 'careful', kind: 'human', texts: texts(400, (i) => filler(120, i), 'c') },
     { id: 'machine', label: 'machine', kind: 'machine', texts: texts(400, (i) => filler(120, i), 'm') },
   ];
-  const r = measure(arms, { casual: 'casual', careful: 'careful', machine: 'machine' });
+  const r = measure(arms, { reference: 'careful', casual: 'casual', machine: 'machine' });
   const disagreements = r.rows.filter((x) => !x.placebo.tie);
   assert.equal(disagreements.length, 0, `placebo must tie everywhere, disagreed on: ${disagreements.map((d) => d.marker).join(', ')}`);
 });
@@ -76,7 +76,7 @@ test('a marker only the machine arm carries is called a machine marker; one both
     { id: 'careful', label: 'careful', kind: 'human', texts: texts(300, plain, 'f') },
     { id: 'machine', label: 'machine', kind: 'machine', texts: texts(300, (i) => 'It is important to note that. ' + plain(i), 'm') },
   ];
-  const r = measure(arms, { casual: 'casual', careful: 'careful', machine: 'machine' });
+  const r = measure(arms, { reference: 'careful', casual: 'casual', machine: 'machine' });
   const row = r.rows.find((x) => x.marker === 'important_to_note')!;
   assert.equal(row.verdict, 'machine marker');
   assert.ok(row.q !== null && row.q < 0.01, `q should be tiny, got ${row.q}`);
@@ -91,7 +91,7 @@ test('a marker both the careful and the machine arm carry is a register marker, 
     { id: 'careful', label: 'careful', kind: 'human', texts: texts(300, formal, 'f') },
     { id: 'machine', label: 'machine', kind: 'machine', texts: texts(300, formal, 'm') },
   ];
-  const r = measure(arms, { casual: 'casual', careful: 'careful', machine: 'machine' });
+  const r = measure(arms, { reference: 'careful', casual: 'casual', machine: 'machine' });
   assert.equal(r.rows.find((x) => x.marker === 'moreover')!.verdict, 'register marker');
 });
 
@@ -101,7 +101,7 @@ test('a marker the humans carry and the machine does not points the other way', 
     { id: 'careful', label: 'careful', kind: 'human', texts: texts(300, (i) => 'A dash — here. ' + filler(120, i), 'f') },
     { id: 'machine', label: 'machine', kind: 'machine', texts: texts(300, (i) => filler(120, i), 'm') },
   ];
-  const r = measure(arms, { casual: 'casual', careful: 'careful', machine: 'machine' });
+  const r = measure(arms, { reference: 'careful', casual: 'casual', machine: 'machine' });
   assert.equal(r.rows.find((x) => x.marker === 'em_dash')!.verdict, 'points the other way');
 });
 
@@ -128,4 +128,24 @@ test('every marker has a unique id, a label, and a source', () => {
     assert.ok(m.label.length > 0 && m.source.length > 0, `${m.id} needs a label and a source`);
     assert.doesNotThrow(() => m.test('a short text — with an em dash, "quotes" and 1234.'), `${m.id} threw`);
   }
+});
+
+test('a rate per thousand words does not care how long the text is', () => {
+  const short = texts(50, () => 'We delve into it. ' + filler(40), 's');
+  const long = texts(50, () => 'We delve into it. ' + filler(400), 'l');
+  const m = MARKERS.find((x) => x.id === 'delve')!;
+  // presence is identical, but the rate falls with length, which is the point of having both
+  assert.equal(share(short, m).pct, 100);
+  assert.equal(share(long, m).pct, 100);
+  assert.ok(rate(short, m).per1000 > rate(long, m).per1000 * 5, 'the rate must fall as the text grows');
+  assert.equal(rate(short, m).occurrences, 50);
+});
+
+test('countable markers count every occurrence, not just the first', () => {
+  const m = MARKERS.find((x) => x.id === 'em_dash')!;
+  assert.equal(m.count!('a — b — c —'), 3);
+  assert.equal(m.count!('none here'), 0);
+  const words = MARKERS.find((x) => x.id === 'delve')!;
+  assert.equal(words.count!('delve, delving, delved'), 3);
+  assert.equal(MARKERS.find((x) => x.id === 'uniform_sentences')!.count, undefined, 'a whole-text property cannot be counted');
 });

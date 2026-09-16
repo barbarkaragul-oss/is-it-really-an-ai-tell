@@ -22,6 +22,12 @@ export interface Marker {
   /** true when this is something people believe distinguishes, rather than something measured */
   belief?: boolean;
   test: (text: string) => boolean;
+  /**
+   * How many times the marker occurs, for the markers where that means something. A word can be
+   * counted and turned into a rate per thousand words, which does not care how long the text is;
+   * "every sentence the same length" cannot, and those markers leave this undefined.
+   */
+  count?: (text: string) => number;
 }
 
 export const words = (t: string): string[] => t.toLowerCase().match(/[a-z']+/g) ?? [];
@@ -38,32 +44,37 @@ export function sentenceLengthCv(t: string): number | null {
 }
 
 const has = (re: RegExp) => (t: string): boolean => re.test(t);
+/** a word or phrase: it can be tested for and it can be counted */
+const counts = (re: RegExp): Pick<Marker, 'test' | 'count'> => {
+  const global = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
+  return { test: (t) => re.test(t), count: (t) => (t.match(global) ?? []).length };
+};
 
 export const MARKERS: Marker[] = [
   // ---- single words said to be the giveaways
-  { id: 'delve', label: '“delve”', family: 'word', source: 'Kobak et al. 2025; the most-cited single tell', test: has(/\bdelv(e|es|ing|ed)\b/i) },
-  { id: 'tapestry', label: '“tapestry”', family: 'word', source: 'widely repeated word lists', test: has(/\btapestr(y|ies)\b/i) },
-  { id: 'moreover', label: '“moreover”', family: 'word', source: 'widely repeated word lists', test: has(/\bmoreover\b/i) },
-  { id: 'furthermore', label: '“furthermore”', family: 'word', source: 'widely repeated word lists', test: has(/\bfurthermore\b/i) },
-  { id: 'crucial', label: '“crucial”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', test: has(/\bcrucial(ly)?\b/i) },
-  { id: 'realm', label: '“realm”', family: 'word', source: 'widely repeated word lists', test: has(/\brealms?\b/i) },
-  { id: 'showcase', label: '“showcase”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', test: has(/\bshowcas(e|es|ing|ed)\b/i) },
-  { id: 'underscore', label: '“underscores”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', test: has(/\bunderscor(e|es|ing|ed)\b/i) },
-  { id: 'leverage', label: '“leverage” as a verb', family: 'word', source: 'widely repeated word lists', test: has(/\bleverag(e|es|ing|ed)\b/i) },
+  { id: 'delve', label: '“delve”', family: 'word', source: 'Kobak et al. 2025; the most-cited single tell', ...counts(/\bdelv(e|es|ing|ed)\b/i) },
+  { id: 'tapestry', label: '“tapestry”', family: 'word', source: 'widely repeated word lists', ...counts(/\btapestr(y|ies)\b/i) },
+  { id: 'moreover', label: '“moreover”', family: 'word', source: 'widely repeated word lists', ...counts(/\bmoreover\b/i) },
+  { id: 'furthermore', label: '“furthermore”', family: 'word', source: 'widely repeated word lists', ...counts(/\bfurthermore\b/i) },
+  { id: 'crucial', label: '“crucial”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', ...counts(/\bcrucial(ly)?\b/i) },
+  { id: 'realm', label: '“realm”', family: 'word', source: 'widely repeated word lists', ...counts(/\brealms?\b/i) },
+  { id: 'showcase', label: '“showcase”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', ...counts(/\bshowcas(e|es|ing|ed)\b/i) },
+  { id: 'underscore', label: '“underscores”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', ...counts(/\bunderscor(e|es|ing|ed)\b/i) },
+  { id: 'leverage', label: '“leverage” as a verb', family: 'word', source: 'widely repeated word lists', ...counts(/\bleverag(e|es|ing|ed)\b/i) },
 
   // ---- phrases
-  { id: 'important_to_note', label: '“it is important to note”', family: 'phrase', source: 'hedging formula', test: has(/\bit('s| is) (important|worth) (to )?not(e|ing)\b/i) },
-  { id: 'in_todays', label: '“in today’s …”', family: 'phrase', source: 'opener cliche', test: has(/\bin today's\b/i) },
-  { id: 'not_only_but_also', label: '“not only … but also”', family: 'phrase', source: 'balanced construction', test: has(/\bnot only\b[^.!?]{0,80}\bbut also\b/i) },
-  { id: 'not_x_its_y', label: '“it’s not X, it’s Y”', family: 'phrase', source: 'the antithesis formula', test: has(/\bit('s| is) not (just |only |merely )?[^.!?,;]{2,40}[,—-] it('s| is)\b/i) },
-  { id: 'dive_into', label: '“dive into” / “let’s explore”', family: 'phrase', source: 'assistant register', test: has(/\b(dive into|let('s| us) (explore|take a look|dive))\b/i) },
-  { id: 'in_conclusion', label: '“in conclusion” / “in summary”', family: 'phrase', source: 'essay scaffolding', test: has(/\b(in conclusion|in summary|to sum up)\b/i) },
+  { id: 'important_to_note', label: '“it is important to note”', family: 'phrase', source: 'hedging formula', ...counts(/\bit('s| is) (important|worth) (to )?not(e|ing)\b/i) },
+  { id: 'in_todays', label: '“in today’s …”', family: 'phrase', source: 'opener cliche', ...counts(/\bin today's\b/i) },
+  { id: 'not_only_but_also', label: '“not only … but also”', family: 'phrase', source: 'balanced construction', ...counts(/\bnot only\b[^.!?]{0,80}\bbut also\b/i) },
+  { id: 'not_x_its_y', label: '“it’s not X, it’s Y”', family: 'phrase', source: 'the antithesis formula', ...counts(/\bit('s| is) not (just |only |merely )?[^.!?,;]{2,40}[,—-] it('s| is)\b/i) },
+  { id: 'dive_into', label: '“dive into” / “let’s explore”', family: 'phrase', source: 'assistant register', ...counts(/\b(dive into|let('s| us) (explore|take a look|dive))\b/i) },
+  { id: 'in_conclusion', label: '“in conclusion” / “in summary”', family: 'phrase', source: 'essay scaffolding', ...counts(/\b(in conclusion|in summary|to sum up)\b/i) },
 
   // ---- shape of the prose
   { id: 'uniform_sentences', label: 'every sentence the same length', family: 'shape', source: 'low variation in sentence length', test: (t) => { const cv = sentenceLengthCv(t); return cv !== null && cv < 0.40; } },
-  { id: 'em_dash', label: 'an em dash', family: 'shape', source: 'the most-claimed punctuation tell', test: has(/—/) },
+  { id: 'em_dash', label: 'an em dash', family: 'shape', source: 'the most-claimed punctuation tell', ...counts(/—/) },
   { id: 'em_dash_heavy', label: 'two or more em dashes', family: 'shape', source: 'the same claim, stronger form', test: (t) => (t.match(/—/g) ?? []).length >= 2 },
-  { id: 'rule_of_three', label: 'a three-item list in one sentence', family: 'shape', source: 'the tricolon habit', test: has(/\b\w+, \w+,? and \w+\b/) },
+  { id: 'rule_of_three', label: 'a three-item list in one sentence', family: 'shape', source: 'the tricolon habit', ...counts(/\b\w+, \w+,? and \w+\b/) },
   { id: 'bulleted_bold', label: 'a bulleted list with bold lead-ins', family: 'shape', source: 'answer formatting', test: has(/^\s*[-*•]\s+\*\*/m) },
 
   // ---- surface habits, including the ones people actually judge by

@@ -1,11 +1,12 @@
 /**
- * Reads the corpora in out/, writes data/markers.json and prints the table.
+ * Reads the corpora in out/, writes data/markers.json, prints the table.
  *
- *   npx tsx collector/fetch.ts      # once, to build out/
- *   npx tsx scripts/measure-all.ts  # as often as you like
+ *   npx tsx collector/fetch.ts       # Hacker News, Stack Exchange, HC3
+ *   npx tsx collector/fetch-raid.ts  # one document, several writers
+ *   npx tsx scripts/measure-all.ts
  *
- * data/markers.json is what the repository publishes: the rates, the intervals, the placebo column
- * and the ids that were sampled. The corpus text stays in out/, which is not committed.
+ * data/markers.json is what the repository publishes: the shares, the rates, the intervals, the
+ * placebo column and the size of every pairing. The corpus text stays in out/, uncommitted.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
@@ -17,7 +18,7 @@ const DATA = path.resolve('data');
 
 function arm(id: string, label: string, kind: 'human' | 'machine', file: string): Arm | null {
   const f = path.join(OUT, `${file}.json`);
-  if (!existsSync(f)) { console.error(`missing ${f} -- run: npx tsx collector/fetch.ts`); return null; }
+  if (!existsSync(f)) return null;
   const rows = JSON.parse(readFileSync(f, 'utf8')) as { id: string; text: string }[];
   const texts: Text[] = rows.map((r) => ({ id: r.id, text: r.text, source: file }));
   return { id, label, kind, texts };
@@ -26,49 +27,59 @@ function arm(id: string, label: string, kind: 'human' | 'machine', file: string)
 const arms = [
   arm('casual-human', 'casual human (Hacker News, before ChatGPT)', 'human', 'casual-human'),
   arm('careful-human', 'careful human (Stack Exchange answers, same period)', 'human', 'careful-human'),
-  arm('raid-human', 'careful human (RAID: the documents GPT-4 was asked to continue)', 'human', 'raid-human'),
-  arm('machine-2023', 'machine (HC3, GPT-3.5, early 2023)', 'machine', 'machine-2023'),
-  arm('machine-2024', 'machine (RAID, GPT-4, same prompts as raid-human)', 'machine', 'machine-2024'),
+  arm('raid-human', 'human (RAID: the documents every model continued)', 'human', 'raid-human'),
+  arm('raid-chatgpt', 'GPT-3.5 (same documents)', 'machine', 'raid-chatgpt'),
+  arm('raid-gpt4', 'GPT-4 (same documents)', 'machine', 'raid-gpt4'),
+  arm('raid-llama-chat', 'Llama chat (same documents)', 'machine', 'raid-llama-chat'),
+  arm('raid-mistral-chat', 'Mistral chat (same documents)', 'machine', 'raid-mistral-chat'),
+  arm('hc3-gpt35', 'GPT-3.5 answering questions (HC3, a different genre)', 'machine', 'machine-2023'),
 ].filter((a): a is Arm => a !== null && a.texts.length > 0);
 
-if (arms.length < 3) { console.error('need at least the three base arms'); process.exit(1); }
+if (arms.length < 3) { console.error('need at least three arms; run the collectors first'); process.exit(1); }
 
-// The verdict is decided against the best-matched human arm available. RAID's human rows answer the
-// same prompt as its machine rows, so genre and topic are held constant there and only the writer
-// differs; the Stack Exchange arm stays in the table as an independent reading of careful writing.
 const has = (id: string): boolean => arms.some((a) => a.id === id);
-const report = measure(arms, {
-  casual: 'casual-human',
-  careful: has('raid-human') ? 'raid-human' : 'careful-human',
-  machine: has('machine-2024') ? 'machine-2024' : 'machine-2023',
-});
-console.log(`verdicts decided against: ${has('raid-human') ? 'raid-human' : 'careful-human'} (human) and ${has('machine-2024') ? 'machine-2024' : 'machine-2023'} (machine)`);
+// The reference is the human side of the matched set: the same documents every model was asked to
+// continue, so a difference is about the writer rather than about the subject.
+const reference = has('raid-human') ? 'raid-human' : 'careful-human';
+const machine = has('raid-gpt4') ? 'raid-gpt4' : 'hc3-gpt35';
+const report = measure(arms, { reference, casual: 'casual-human', machine });
 
 if (!existsSync(DATA)) mkdirSync(DATA, { recursive: true });
 writeFileSync(path.join(DATA, 'markers.json'), JSON.stringify(report, null, 1) + '\n');
 
 const pad = (s: string, n: number): string => (s.length > n ? s.slice(0, n - 1) + '…' : s.padEnd(n));
-const fmt = (c: { pct: number; lo: number; hi: number } | undefined): string =>
-  c ? `${c.pct.toFixed(1)}% (${c.lo.toFixed(1)}-${c.hi.toFixed(1)})` : '-';
-
-console.log('\narms, after the length match:');
-for (const a of report.arms) console.log(`  ${pad(a.label, 52)} ${String(a.n).padStart(5)} texts, median ${a.medianWords} words`);
-console.log('\nlength bins (each arm contributes the same number):');
-for (const b of report.bins) console.log(`  ${pad(b.bin + ' words', 14)} had ${b.had.join(' / ')} -> took ${b.take} from each`);
+console.log(`\nreference: ${reference}   verdicts decided against: ${machine}`);
+console.log('\narms:');
+for (const a of report.arms) {
+  console.log(`  ${pad(a.label, 52)} ${String(a.n).padStart(5)} texts, ${String(a.matchedWithReference).padStart(4)} after matching with the reference, median ${a.medianWords} words`);
+}
 
 const cols = report.arms.map((a) => a.id);
-console.log('\n' + pad('marker', 30) + cols.map((c) => pad(c, 20)).join('') + pad('placebo', 16) + 'verdict');
-console.log('-'.repeat(30 + 20 * cols.length + 16 + 22));
+const head = (c: string): string => c.replace('raid-', '').replace('casual-human', 'casual').replace('careful-human', 'careful');
+console.log('\nshare of texts carrying the marker (each arm length-matched with the reference):');
+console.log(pad('marker', 30) + cols.map((c) => pad(head(c), 14)).join('') + pad('placebo', 13) + 'verdict');
+console.log('-'.repeat(30 + 14 * cols.length + 13 + 20));
 for (const r of report.rows) {
   const placebo = `${r.placebo.a.pct.toFixed(1)}/${r.placebo.b.pct.toFixed(1)}${r.placebo.tie ? '' : ' !'}`;
   console.log(
     pad((r.belief ? '* ' : '') + r.label, 30) +
-    cols.map((c) => pad(fmt(r.cells[c]), 20)).join('') +
-    pad(placebo, 16) +
-    r.verdict + (r.q !== null && r.q < 0.05 ? '' : r.verdict === 'machine marker' ? ' (q>=.05)' : ''),
+    cols.map((c) => pad(r.share[c] ? `${r.share[c]!.arm.pct.toFixed(1)}%` : '-', 14)).join('') +
+    pad(placebo, 13) + r.verdict,
   );
 }
+
+console.log('\noccurrences per thousand words (whole arm, length cannot flatter it):');
+const countable = report.rows.filter((r) => r.countable && cols.some((c) => (r.rate[c]?.occurrences ?? 0) > 0));
+console.log(pad('marker', 30) + cols.map((c) => pad(head(c), 14)).join(''));
+console.log('-'.repeat(30 + 14 * cols.length));
+for (const r of countable) {
+  console.log(pad(r.label, 30) + cols.map((c) => {
+    const x = r.rate[c];
+    return pad(x && x.occurrences ? `${x.per1000.toFixed(2)} (${x.occurrences})` : '.', 14);
+  }).join(''));
+}
+
 console.log(`\n* = a marker people are documented to judge by, rather than one anybody measured.`);
-console.log(`${MARKERS.length} markers, ${report.rows.filter((r) => r.verdict === 'machine marker').length} of them separate the machine arm from careful human writing.`);
+console.log(`${MARKERS.length} markers; ${report.rows.filter((r) => r.verdict === 'machine marker').length} separate ${machine} from ${reference}, ${report.rows.filter((r) => r.verdict === 'register marker').length} mark register, ${report.rows.filter((r) => r.verdict === 'points the other way').length} point the other way.`);
 console.log(`placebo disagreements (should be none): ${report.rows.filter((r) => !r.placebo.tie).length}`);
-console.log(`\nwrote data/markers.json`);
+console.log('wrote data/markers.json');

@@ -1,37 +1,60 @@
 /**
- * Turning a set of corpora into the published table.
+ * Turning the corpora into the published table.
  *
- * Three things here are deliberate and are the reason the numbers can be argued with:
+ * Four choices here are deliberate, and they are why the numbers can be argued with rather than
+ * merely quoted.
  *
- *  1. LENGTH IS HELD CONSTANT. A marker that is merely "present somewhere" is easier to hit in a
- *     longer text, and the arms differ in length by a factor of two. Texts are binned by word
- *     count and every arm contributes the same number of texts to every bin.
- *  2. A PLACEBO ARM. One human corpus is split at random into two halves and the whole pipeline is
- *     run on the pair. Every number in that column should be a tie. Where it is not, the method is
- *     manufacturing signal and the reader can see it.
- *  3. INTERVALS, NOT POINTS. Wilson intervals at 95%, and Benjamini-Hochberg over the whole
- *     catalogue, because testing two dozen markers at once produces a "finding" by luck otherwise.
+ *  1. TWO MEASURES, EACH FOR THE KIND OF MARKER IT SUITS.
+ *     A word or phrase is counted as occurrences per thousand words, which does not care how long
+ *     the text is. A property of the whole text -- "every sentence the same length", "no
+ *     contractions anywhere" -- cannot be counted that way, so it is reported as the share of texts
+ *     that have it, and for that share length has to be controlled.
+ *  2. LENGTH IS CONTROLLED PAIRWISE, NOT ACROSS EVERYTHING AT ONCE.
+ *     Matching eight arms together means every arm is cut down to the smallest one in every length
+ *     bin, and the sample collapses. Each arm is instead matched against the reference human arm on
+ *     its own, so each comparison keeps as much data as that pair allows. The n of every pairing is
+ *     published next to its numbers.
+ *  3. A PLACEBO ARM.
+ *     One human corpus is split at random and the whole pipeline runs on both halves. Every number
+ *     there should be a tie; where it is not, the method is manufacturing signal and you can see it.
+ *  4. INTERVALS, AND A CORRECTION.
+ *     Wilson intervals at 95% for shares, a count-based interval for rates, and Benjamini-Hochberg
+ *     across the catalogue, because two dozen markers produce a finding by luck otherwise.
  */
 import { MARKERS, words, type Marker } from './markers.js';
 
 export interface Text { id: string; text: string; source: string }
 export interface Arm { id: string; label: string; kind: 'human' | 'machine'; texts: Text[] }
 
-export interface Cell { n: number; k: number; pct: number; lo: number; hi: number }
+/** share of texts carrying the marker, on a length-matched pairing */
+export interface Share { n: number; k: number; pct: number; lo: number; hi: number }
+/** occurrences per thousand words, on the whole arm */
+export interface Rate { texts: number; words: number; occurrences: number; per1000: number; lo: number; hi: number }
+
 export interface Row {
   marker: string;
   label: string;
   family: string;
   belief: boolean;
-  cells: Record<string, Cell>;
-  placebo: { a: Cell; b: Cell; tie: boolean };
-  /** two-sided p for the machine arm against the careful-human arm, before correction */
+  countable: boolean;
+  /** per arm: the share in that arm's own pairing with the reference, and the reference's share in it */
+  share: Record<string, { arm: Share; reference: Share }>;
+  rate: Record<string, Rate>;
+  placebo: { a: Share; b: Share; tie: boolean };
   p: number | null;
   q: number | null;
   verdict: 'machine marker' | 'register marker' | 'no signal' | 'points the other way' | 'not recorded';
 }
 
-/** Wilson score interval, the one that behaves when k is 0 or n is small. */
+export interface Report {
+  generated_at: string;
+  reference: string;
+  machine: string;
+  arms: { id: string; label: string; kind: string; n: number; matchedWithReference: number; medianWords: number }[];
+  rows: Row[];
+}
+
+/** Wilson score interval: behaves when k is 0 and when n is small. */
 export function wilson(k: number, n: number): [number, number] {
   if (n === 0) return [0, 0];
   const p = k / n, z = 1.96, d = 1 + (z * z) / n;
@@ -40,36 +63,51 @@ export function wilson(k: number, n: number): [number, number] {
   return [(100 * (centre - spread)) / d, (100 * (centre + spread)) / d];
 }
 
-export function cell(texts: Text[], m: Marker): Cell {
+export function share(texts: Text[], m: Marker): Share {
   const k = texts.filter((t) => m.test(t.text)).length;
   const [lo, hi] = wilson(k, texts.length);
   return { n: texts.length, k, pct: texts.length ? (100 * k) / texts.length : 0, lo, hi };
 }
 
-/** Two-proportion z test. Enough for a table that also prints intervals; no library needed. */
+/**
+ * Occurrences per thousand words. The interval treats the occurrence count as Poisson, which is the
+ * usual approximation for rare words and is honest about a rate resting on three occurrences.
+ */
+export function rate(texts: Text[], m: Marker): Rate {
+  let occurrences = 0, total = 0;
+  for (const t of texts) {
+    total += words(t.text).length;
+    occurrences += m.count ? m.count(t.text) : m.test(t.text) ? 1 : 0;
+  }
+  const per1000 = total ? (1000 * occurrences) / total : 0;
+  // Garwood-style bounds via the normal approximation on sqrt(k), floored at zero
+  const se = Math.sqrt(occurrences);
+  const lo = total ? Math.max(0, (1000 * (occurrences - 1.96 * se)) / total) : 0;
+  const hi = total ? (1000 * (occurrences + 1.96 * se)) / total : 0;
+  return { texts: texts.length, words: total, occurrences, per1000, lo, hi };
+}
+
 export function twoProportionP(k1: number, n1: number, k2: number, n2: number): number | null {
   if (!n1 || !n2) return null;
   const p1 = k1 / n1, p2 = k2 / n2, p = (k1 + k2) / (n1 + n2);
   const se = Math.sqrt(p * (1 - p) * (1 / n1 + 1 / n2));
   if (se === 0) return 1;
   const z = Math.abs(p1 - p2) / se;
-  // two-sided normal tail, Abramowitz & Stegun 26.2.17
   const t = 1 / (1 + 0.2316419 * z);
   const d = 0.3989423 * Math.exp((-z * z) / 2);
   const tail = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
   return Math.min(1, 2 * tail);
 }
 
-/** Benjamini-Hochberg: with two dozen markers, some p below .05 are luck. */
 export function benjaminiHochberg(ps: (number | null)[]): (number | null)[] {
   const idx = ps.map((p, i) => ({ p, i })).filter((x): x is { p: number; i: number } => x.p !== null);
   idx.sort((a, b) => a.p - b.p);
   const m = idx.length;
   const q: (number | null)[] = ps.map(() => null);
   let prev = 1;
-  for (let rank = m; rank >= 1; rank--) {
-    const { p, i } = idx[rank - 1]!;
-    prev = Math.min(prev, (p * m) / rank);
+  for (let r = m; r >= 1; r--) {
+    const { p, i } = idx[r - 1]!;
+    prev = Math.min(prev, (p * m) / r);
     q[i] = prev;
   }
   return q;
@@ -78,76 +116,82 @@ export function benjaminiHochberg(ps: (number | null)[]): (number | null)[] {
 const BINS: [number, number][] = [[80, 129], [130, 219], [220, 399], [400, 800]];
 const binOf = (t: string): number => { const n = words(t).length; return BINS.findIndex(([lo, hi]) => n >= lo && n <= hi); };
 
-/** Every arm contributes the same number of texts in every length bin. */
-export function lengthMatch(arms: Arm[]): { arms: Arm[]; perBin: { bin: string; take: number; had: number[] }[] } {
-  const byBin = arms.map((a) => BINS.map((_, i) => a.texts.filter((t) => binOf(t.text) === i)));
-  const out: Arm[] = arms.map((a) => ({ ...a, texts: [] }));
-  const perBin = BINS.map(([lo, hi], i) => {
-    const had = byBin.map((b) => b[i]!.length);
-    const take = Math.min(...had);
-    byBin.forEach((b, ai) => out[ai]!.texts.push(...b[i]!.slice(0, take)));
-    return { bin: `${lo}-${hi}`, take, had };
+/** Two arms, cut to the same number of texts in every length bin. */
+export function pairMatch(a: Text[], b: Text[]): [Text[], Text[]] {
+  const outA: Text[] = [], outB: Text[] = [];
+  BINS.forEach((_, i) => {
+    const ba = a.filter((t) => binOf(t.text) === i), bb = b.filter((t) => binOf(t.text) === i);
+    const take = Math.min(ba.length, bb.length);
+    outA.push(...ba.slice(0, take));
+    outB.push(...bb.slice(0, take));
   });
-  return { arms: out, perBin };
+  return [outA, outB];
 }
 
 /** Deterministic shuffle, so the placebo split is random but the run reproduces. */
 export function seededShuffle<T>(items: T[], seed: number): T[] {
-  const a = [...items];
+  const out = [...items];
   let s = seed >>> 0;
-  for (let i = a.length - 1; i > 0; i--) {
+  for (let i = out.length - 1; i > 0; i--) {
     s = (s * 1664525 + 1013904223) >>> 0;
     const j = s % (i + 1);
-    [a[i], a[j]] = [a[j]!, a[i]!];
+    [out[i], out[j]] = [out[j]!, out[i]!];
   }
-  return a;
+  return out;
 }
 
-export interface Report {
-  generated_at: string;
-  arms: { id: string; label: string; kind: string; n: number; medianWords: number }[];
-  bins: { bin: string; take: number; had: number[] }[];
-  rows: Row[];
-}
+export function measure(arms: Arm[], opts: { reference: string; casual: string; machine: string; seed?: number }): Report {
+  const find = (id: string): Arm | undefined => arms.find((a) => a.id === id);
+  const reference = find(opts.reference);
+  if (!reference) throw new Error(`reference arm ${opts.reference} is not among the arms`);
 
-export function measure(arms: Arm[], opts: { casual: string; careful: string; machine: string; seed?: number }): Report {
-  const { arms: matched, perBin } = lengthMatch(arms);
-  const find = (id: string): Arm => matched.find((a) => a.id === id) ?? { id, label: id, kind: 'human', texts: [] };
-  const careful = find(opts.careful), machine = find(opts.machine), casual = find(opts.casual);
+  // one length-matched pairing per arm, computed once and reused for every marker
+  const pairings = new Map<string, [Text[], Text[]]>();
+  for (const a of arms) pairings.set(a.id, a.id === reference.id ? [reference.texts, reference.texts] : pairMatch(reference.texts, a.texts));
 
-  // the placebo: the casual human arm split at random, both halves through the same pipeline
-  const shuffled = seededShuffle(casual.texts, opts.seed ?? 20260916);
+  const shuffled = seededShuffle(reference.texts, opts.seed ?? 20260916);
   const half = Math.floor(shuffled.length / 2);
-  const placeboA = shuffled.slice(0, half), placeboB = shuffled.slice(half);
+  const [pa, pb] = pairMatch(shuffled.slice(0, half), shuffled.slice(half));
 
   const rows: Row[] = MARKERS.map((m) => {
-    const cells: Record<string, Cell> = {};
-    for (const a of matched) cells[a.id] = cell(a.texts, m);
-    const cMachine = cells[machine.id]!, cCareful = cells[careful.id]!, cCasual = cells[casual.id]!;
-    const a = cell(placeboA, m), b = cell(placeboB, m);
+    const sh: Row['share'] = {};
+    for (const a of arms) {
+      const [ref, arm] = pairings.get(a.id)!;
+      sh[a.id] = { arm: share(arm, m), reference: share(ref, m) };
+    }
+    const rt: Row['rate'] = {};
+    for (const a of arms) rt[a.id] = rate(a.texts, m);
+
+    const machine = sh[opts.machine];
+    const casual = sh[opts.casual];
+    const a = share(pa, m), b = share(pb, m);
     const tie = a.lo <= b.hi && b.lo <= a.hi;
-    const p = twoProportionP(cMachine.k, cMachine.n, cCareful.k, cCareful.n);
+    const p = machine ? twoProportionP(machine.arm.k, machine.arm.n, machine.reference.k, machine.reference.n) : null;
 
     let verdict: Row['verdict'] = 'no signal';
-    if (cMachine.n === 0 || cCareful.n === 0) verdict = 'not recorded';
-    else if (cMachine.lo > cCareful.hi && cMachine.lo > cCasual.hi) verdict = 'machine marker';
-    else if (cMachine.hi < cCareful.lo) verdict = 'points the other way';
-    else if (cCareful.lo > cCasual.hi && cMachine.lo > cCasual.hi) verdict = 'register marker';
+    if (!machine || machine.arm.n === 0) verdict = 'not recorded';
+    else if (machine.arm.lo > machine.reference.hi) verdict = 'machine marker';
+    else if (machine.arm.hi < machine.reference.lo) verdict = 'points the other way';
+    else if (casual && machine.reference.lo > casual.arm.hi && machine.arm.lo > casual.arm.hi) verdict = 'register marker';
 
-    return { marker: m.id, label: m.label, family: m.family, belief: m.belief === true, cells, placebo: { a, b, tie }, p, q: null, verdict };
+    return {
+      marker: m.id, label: m.label, family: m.family, belief: m.belief === true, countable: m.count !== undefined,
+      share: sh, rate: rt, placebo: { a, b, tie }, p, q: null, verdict,
+    };
   });
 
   const qs = benjaminiHochberg(rows.map((r) => r.p));
   rows.forEach((r, i) => { r.q = qs[i]!; });
 
-  const median = (a: Arm): number => {
-    const l = a.texts.map((t) => words(t.text).length).sort((x, y) => x - y);
+  const median = (texts: Text[]): number => {
+    const l = texts.map((t) => words(t.text).length).sort((x, y) => x - y);
     return l.length ? l[Math.floor(l.length / 2)]! : 0;
   };
   return {
     generated_at: new Date().toISOString(),
-    arms: matched.map((a) => ({ id: a.id, label: a.label, kind: a.kind, n: a.texts.length, medianWords: median(a) })),
-    bins: perBin,
+    reference: reference.id,
+    machine: opts.machine,
+    arms: arms.map((a) => ({ id: a.id, label: a.label, kind: a.kind, n: a.texts.length, matchedWithReference: pairings.get(a.id)![1].length, medianWords: median(a.texts) })),
     rows,
   };
 }

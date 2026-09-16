@@ -1,21 +1,22 @@
 /**
- * The 2024 arm, and the only pair in this project where human and machine answer the same prompt.
+ * The matched arms: one document, several writers.
  *
- *   npx tsx collector/fetch-raid.ts [--want 4000]
+ *   npx tsx collector/fetch-raid.ts [--want 2500] [--models gpt4,chatgpt,llama-chat]
  *
- * RAID (Dugan et al., ACL 2024, MIT) holds human documents and machine continuations of the same
- * documents, keyed by `source_id`, across news, abstracts, books and poetry. Taking both sides of
- * that key gives a comparison with the genre, the topic and the prompt held constant -- which is
- * what the Hacker News and Stack Exchange arms cannot offer, and what makes a marker's verdict
- * about the writer rather than about the subject.
+ * RAID (Dugan et al., ACL 2024, MIT) holds a human document and each model's continuation of that
+ * same document, keyed by `source_id`, across news, abstracts, books and poetry. Taking every
+ * writer for the same set of keys gives a comparison with genre, topic and prompt held constant,
+ * so a difference is about the writer and not about the subject. It also settles the generation
+ * question properly: RAID's `chatgpt` rows are GPT-3.5 answering the same prompts as its `gpt4`
+ * rows, which is the comparison the 2023-vintage corpora cannot make.
  *
- * Only `attack: none` rows are used. RAID's other rows are adversarially perturbed on purpose
- * (homoglyphs, inserted whitespace, misspellings); measuring style markers on those would measure
+ * Only `attack: none` rows are used. The rest are adversarially perturbed on purpose -- homoglyphs,
+ * inserted whitespace, deliberate misspellings -- and measuring style markers there would measure
  * the attack.
  *
- * The published parquet is 2.3 GB over ten shards, so nothing is downloaded whole: each shard's
- * row-group statistics say which groups can contain the rows wanted, and only those groups are
- * fetched, over HTTP range requests.
+ * The published parquet is 2.3 GB over ten shards and none of it is downloaded whole: each shard's
+ * row-group statistics say which groups can hold the wanted rows, and only those are fetched over
+ * HTTP range requests, paced by collector/range-buffer.ts so the host is not hammered.
  */
 import { writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
@@ -27,25 +28,25 @@ const SHARD = (i: number): string => `https://huggingface.co/api/datasets/liamdu
 const SHARDS = 10;
 const OUT = path.resolve('out');
 const COLUMNS = ['source_id', 'model', 'attack', 'domain', 'generation'];
+/** the writer whose rows decide which documents the whole comparison uses */
+const ANCHOR = 'gpt4';
 
 export interface RaidRow { source_id: string; model: string; attack: string; domain: string; generation: string }
-
-/** A row group can only hold the model we want if its recorded min..max range covers it. */
 type Meta = Awaited<ReturnType<typeof parquetMetadataAsync>>;
 
+/** A row group can only hold a model if its recorded min..max range covers the name. */
 function groupsThatMayHold(md: Meta, model: string): number[] {
   const col = md.schema.slice(1).findIndex((s) => s.name === 'model');
   const out: number[] = [];
   md.row_groups.forEach((rg, i) => {
     const st = rg.columns[col]?.meta_data?.statistics;
-    if (!st) { out.push(i); return; }                       // no statistics: cannot rule it out
+    if (!st) { out.push(i); return; }                    // no statistics: cannot rule it out
     const min = String(st.min_value ?? ''), max = String(st.max_value ?? '');
     if (min <= model && model <= max) out.push(i);
   });
   return out;
 }
 
-/** Rows of one group, as objects, pulling only the columns we read. */
 async function readGroup(file: AsyncBuffer, md: Meta, group: number): Promise<RaidRow[]> {
   let start = 0;
   for (let i = 0; i < group; i++) start += Number(md.row_groups[i]!.num_rows);
@@ -53,66 +54,65 @@ async function readGroup(file: AsyncBuffer, md: Meta, group: number): Promise<Ra
   return (await parquetReadObjects({ file: file as never, metadata: md, columns: COLUMNS, rowStart: start, rowEnd: start + rows })) as unknown as RaidRow[];
 }
 
-export async function fetchRaid(want: number): Promise<{ machine: Fetched[]; human: Fetched[] }> {
-  const machine: Fetched[] = [];
-  const wantedSources = new Set<string>();
-  const humanBySource = new Map<string, Fetched>();
-
-  for (let shard = 0; shard < SHARDS && machine.length < want; shard++) {
+/**
+ * Walk the shards for one writer. `only` restricts to a set of documents, which is how every arm
+ * after the first is kept to the same documents as the first.
+ */
+async function collect(model: string, want: number, only: Set<string> | null): Promise<Map<string, Fetched>> {
+  const found = new Map<string, Fetched>();
+  for (let shard = 0; shard < SHARDS && found.size < want; shard++) {
     const file = await rangeBuffer(SHARD(shard));
     const md = await parquetMetadataAsync(file as never);
-    const groups = groupsThatMayHold(md, 'gpt4');
+    const groups = groupsThatMayHold(md, model);
     if (!groups.length) continue;
-    console.error(`  shard ${shard}: ${groups.length} of ${md.row_groups.length} row groups may hold gpt4`);
     for (const g of groups) {
-      if (machine.length >= want) break;
+      if (found.size >= want) break;
       let rows: RaidRow[];
-      try { rows = await readGroup(file, md, g); } catch (e) { console.error(`    group ${g}: ${(e as Error).message}`); continue; }
+      try { rows = await readGroup(file, md, g); } catch (e) { console.error(`    ${model} shard ${shard} group ${g}: ${(e as Error).message}`); continue; }
       for (const r of rows) {
-        if (r.model !== 'gpt4' || r.attack !== 'none') continue;
-        const text = toText(String(r.generation ?? ''));
-        if (text.length < 400) continue;
-        machine.push({ id: `raid:gpt4:${r.source_id}`, text });
-        wantedSources.add(String(r.source_id));
-        if (machine.length >= want) break;
-      }
-    }
-  }
-
-  // the human side of the same source_ids: same prompt, same genre, different writer
-  for (let shard = 0; shard < SHARDS && humanBySource.size < wantedSources.size; shard++) {
-    const file = await rangeBuffer(SHARD(shard));
-    const md = await parquetMetadataAsync(file as never);
-    const groups = groupsThatMayHold(md, 'human');
-    if (!groups.length) continue;
-    console.error(`  shard ${shard}: ${groups.length} row groups may hold the human side`);
-    for (const g of groups) {
-      if (humanBySource.size >= wantedSources.size) break;
-      let rows: RaidRow[];
-      try { rows = await readGroup(file, md, g); } catch (e) { console.error(`    group ${g}: ${(e as Error).message}`); continue; }
-      for (const r of rows) {
-        if (r.model !== 'human') continue;
+        if (r.model !== model || r.attack !== 'none') continue;
         const id = String(r.source_id);
-        if (!wantedSources.has(id) || humanBySource.has(id)) continue;
+        if (found.has(id) || (only && !only.has(id))) continue;
         const text = toText(String(r.generation ?? ''));
         if (text.length < 400) continue;
-        humanBySource.set(id, { id: `raid:human:${id}`, text });
+        found.set(id, { id: `raid:${model}:${id}`, text });
+        if (found.size >= want) break;
       }
     }
+    console.error(`  ${model}: ${found.size} after shard ${shard}`);
+  }
+  return found;
+}
+
+export async function fetchRaid(models: string[], want: number): Promise<Record<string, Fetched[]>> {
+  // the anchor writer decides the documents; every other writer is held to the same ones
+  const anchor = await collect(ANCHOR, want, null);
+  const keys = new Set(anchor.keys());
+  const byModel: Record<string, Map<string, Fetched>> = { [ANCHOR]: anchor };
+  for (const m of [...models, 'human']) {
+    if (m === ANCHOR || byModel[m]) continue;
+    byModel[m] = await collect(m, keys.size, keys);
   }
 
-  // keep only the pairs where both sides survived, so the arms really are matched
-  const paired = machine.filter((m) => humanBySource.has(m.id.replace('raid:gpt4:', '')));
-  const human = paired.map((m) => humanBySource.get(m.id.replace('raid:gpt4:', ''))!);
-  return { machine: paired, human };
+  // keep only the documents every writer produced, so the arms are matched rather than merely similar
+  const common = [...keys].filter((k) => Object.values(byModel).every((m) => m.has(k)));
+  console.error(`  ${common.length} documents have every writer (from ${keys.size} anchored on ${ANCHOR})`);
+  const out: Record<string, Fetched[]> = {};
+  for (const [model, map] of Object.entries(byModel)) out[model] = common.map((k) => map.get(k)!);
+  return out;
 }
 
 if (process.argv[1] && process.argv[1].endsWith('fetch-raid.ts')) {
-  const want = Number(process.argv.includes('--want') ? process.argv[process.argv.indexOf('--want') + 1] : 4000);
-  console.error(`RAID: looking for ${want} unattacked gpt4 texts and their human counterparts`);
-  const { machine, human } = await fetchRaid(want);
+  const argv = process.argv;
+  const arg = (name: string, dflt: string): string => (argv.includes(name) ? (argv[argv.indexOf(name) + 1] ?? dflt) : dflt);
+  const want = Number(arg('--want', '2500'));
+  const models = arg('--models', 'gpt4,chatgpt,llama-chat,mistral-chat').split(',').map((s) => s.trim()).filter(Boolean);
+  console.error(`RAID: ${want} documents, written by: human, ${models.join(', ')}`);
+  const arms = await fetchRaid(models, want);
   if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
-  writeFileSync(path.join(OUT, 'machine-2024.json'), JSON.stringify(machine));
-  writeFileSync(path.join(OUT, 'raid-human.json'), JSON.stringify(human));
-  console.error(`  wrote ${machine.length} machine and ${human.length} human texts, paired by source`);
+  for (const [model, rows] of Object.entries(arms)) {
+    const file = model === 'human' ? 'raid-human' : `raid-${model}`;
+    writeFileSync(path.join(OUT, `${file}.json`), JSON.stringify(rows));
+    console.error(`  wrote ${file}: ${rows.length} texts`);
+  }
 }
