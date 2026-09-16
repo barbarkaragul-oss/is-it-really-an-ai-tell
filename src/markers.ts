@@ -28,6 +28,10 @@ export interface Marker {
    * "every sentence the same length" cannot, and those markers leave this undefined.
    */
   count?: (text: string) => number;
+  /** the expression behind test and count, for the markers that are one; used to show what matched */
+  pattern?: RegExp;
+  /** the match carries the writer's own words ("not only X but also"), so it is text, not a form */
+  openEnded?: boolean;
 }
 
 export const words = (t: string): string[] => t.toLowerCase().match(/[a-z']+/g) ?? [];
@@ -45,9 +49,9 @@ export function sentenceLengthCv(t: string): number | null {
 
 const has = (re: RegExp) => (t: string): boolean => re.test(t);
 /** a word or phrase: it can be tested for and it can be counted */
-const counts = (re: RegExp): Pick<Marker, 'test' | 'count'> => {
+const counts = (re: RegExp): Pick<Marker, 'test' | 'count' | 'pattern'> => {
   const global = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
-  return { test: (t) => re.test(t), count: (t) => (t.match(global) ?? []).length };
+  return { test: (t) => re.test(t), count: (t) => (t.match(global) ?? []).length, pattern: global };
 };
 
 export const MARKERS: Marker[] = [
@@ -60,13 +64,16 @@ export const MARKERS: Marker[] = [
   { id: 'realm', label: '“realm”', family: 'word', source: 'widely repeated word lists', ...counts(/\brealms?\b/i) },
   { id: 'showcase', label: '“showcase”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', ...counts(/\bshowcas(e|es|ing|ed)\b/i) },
   { id: 'underscore', label: '“underscores”', family: 'word', source: 'Kobak et al. 2025 excess vocabulary', ...counts(/\bunderscor(e|es|ing|ed)\b/i) },
-  { id: 'leverage', label: '“leverage” as a verb', family: 'word', source: 'widely repeated word lists', ...counts(/\bleverag(e|es|ing|ed)\b/i) },
+  // The bare noun ("as much leverage", "100x leverage") and the financial adjective ("leveraged
+  // trades") are excluded; "the potential of leveraging data" is still the verb. In the matched RAID
+  // arms every use is the verb, which data/evidence.json shows.
+  { id: 'leverage', label: '“leverage” as a verb', family: 'word', source: 'widely repeated word lists', ...counts(/\b(?:(?<!\b(?:much|real|no|of|the|a|some|any|more|less|enough|financial|political|operating|\d+x)\s)leverage|leverag(?:es|ing|ed))\b(?!\s+(?:trades?|buyouts?|loans?|positions?|etfs?|ratios?)\b)/i) },
 
   // ---- phrases
-  { id: 'important_to_note', label: '“it is important to note”', family: 'phrase', source: 'hedging formula', ...counts(/\bit('s| is) (important|worth) (to )?not(e|ing)\b/i) },
+  { id: 'important_to_note', label: '“it is important to note” / “worth noting”', family: 'phrase', source: 'hedging formula', ...counts(/\bit('s| is) (important|worth) (to )?not(e|ing)\b/i) },
   { id: 'in_todays', label: '“in today’s …”', family: 'phrase', source: 'opener cliche', ...counts(/\bin today's\b/i) },
-  { id: 'not_only_but_also', label: '“not only … but also”', family: 'phrase', source: 'balanced construction', ...counts(/\bnot only\b[^.!?]{0,80}\bbut also\b/i) },
-  { id: 'not_x_its_y', label: '“it’s not X, it’s Y”', family: 'phrase', source: 'the antithesis formula', ...counts(/\bit('s| is) not (just |only |merely )?[^.!?,;]{2,40}[,—-] it('s| is)\b/i) },
+  { id: 'not_only_but_also', openEnded: true, label: '“not only … but also”', family: 'phrase', source: 'balanced construction', ...counts(/\bnot only\b[^.!?]{0,80}\bbut also\b/i) },
+  { id: 'not_x_its_y', openEnded: true, label: '“it’s not X, it’s Y”', family: 'phrase', source: 'the antithesis formula', ...counts(/\bit('s| is) not (just |only |merely )?[^.!?,;]{2,40}[,—-] it('s| is)\b/i) },
   { id: 'dive_into', label: '“dive into” / “let’s explore”', family: 'phrase', source: 'assistant register', ...counts(/\b(dive into|let('s| us) (explore|take a look|dive))\b/i) },
   { id: 'in_conclusion', label: '“in conclusion” / “in summary”', family: 'phrase', source: 'essay scaffolding', ...counts(/\b(in conclusion|in summary|to sum up)\b/i) },
 
@@ -74,7 +81,7 @@ export const MARKERS: Marker[] = [
   { id: 'uniform_sentences', label: 'every sentence the same length', family: 'shape', source: 'low variation in sentence length', test: (t) => { const cv = sentenceLengthCv(t); return cv !== null && cv < 0.40; } },
   { id: 'em_dash', label: 'an em dash', family: 'shape', source: 'the most-claimed punctuation tell', ...counts(/—/) },
   { id: 'em_dash_heavy', label: 'two or more em dashes', family: 'shape', source: 'the same claim, stronger form', test: (t) => (t.match(/—/g) ?? []).length >= 2 },
-  { id: 'rule_of_three', label: 'a three-item list in one sentence', family: 'shape', source: 'the tricolon habit', ...counts(/\b\w+, \w+,? and \w+\b/) },
+  { id: 'rule_of_three', openEnded: true, label: 'a three-item list in one sentence', family: 'shape', source: 'the tricolon habit', ...counts(/\b\w+, \w+,? and \w+\b/) },
   { id: 'bulleted_bold', label: 'a bulleted list with bold lead-ins', family: 'shape', source: 'answer formatting', test: has(/^\s*[-*•]\s+\*\*/m) },
 
   // ---- surface habits, including the ones people actually judge by

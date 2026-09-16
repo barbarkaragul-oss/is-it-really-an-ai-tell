@@ -29,6 +29,18 @@ Occurrences per thousand words, on the full arms. RAID gives the same 1499 docum
 
 **The em dash appears in none of the five machine arms** — and in human writing at 0.43 (Hacker News) and 0.63 (Stack Exchange) per thousand. Academic prose has none of it by either writer. Judging by em dashes is judging what kind of document you are reading.
 
+### What the patterns actually caught
+
+A rate says a pattern fired. [`data/evidence.json`](data/evidence.json) says what it fired on: for every countable marker and every arm, the forms that matched, the word in front of each match, and five sentences picked by a seeded shuffle rather than by anyone looking for good ones. Sentences are quoted only from RAID (MIT) and the Claude arm; Hacker News and Stack Exchange texts are linked, not quoted.
+
+Reading them turned up two things the rates hid.
+
+**The models make the paper the subject.** When the people who wrote these abstracts used “leverage”, 22% of the time it was “leverage**s**”. For all four RAID models it is 83–86%, and the word in front is usually *method*, *approach* or *that*: “the proposed method leverages”. “Delve” has the same shape: 178 of GPT-4's 207 are “delves”, after *it*, *study* or *paper*. The humans write “we”, 14.41 times per thousand words, against **1.77** for GPT-4 on the same documents. Llama and Mistral write “we” about as often as people do (15.32 and 11.80) and still write “leverages”, so the two habits are related but not the same.
+
+**GPT-4's lists of three are mostly one list.** “accuracy, robustness, and computational [efficiency]” appears 31 times in its 1,499 abstracts, with “accuracy, robustness, and efficiency” and “accuracy, efficiency, and robustness” close behind. The rule-of-three count there is measuring a template more than a rhythm.
+
+Looking also fixed two labels. “Leverage” as a verb was counting the noun as well (“100x leverage” on Hacker News); that only ever touched the two non-RAID human arms, which dropped from 4 matches to 1 and from 3 to 1, while every RAID match is the verb. The hedging phrase has always counted “worth noting” too, and its label now says so.
+
 ### A correction worth stating plainly
 
 An earlier version of this README, built when the only machine arm was HC3, reported “it is important to note” as the hedging formula that defined GPT-3.5. With RAID's GPT-3.5 arm answering the same documents, that phrase runs at **0.00 per thousand** — while HC3, which is GPT-3.5 *answering questions*, runs at **0.58**. So it is a habit of the assistant-answering-a-question task, not of the model. Matching the documents is what made the difference visible, and the earlier claim was wrong.
@@ -128,7 +140,9 @@ git clone https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell && cd is-
 npm install
 npx tsx collector/fetch.ts --want 4000        # Hacker News, Stack Exchange, HC3
 npx tsx collector/fetch-raid.ts --want 1500   # one document, five writers
+npx tsx scripts/contamination.ts               # drops machine texts that reproduce the human document
 npx tsx scripts/measure-all.ts                # prints both tables, writes data/markers.json
+npx tsx scripts/evidence.ts                   # what each pattern matched, writes data/evidence.json
 npm test
 ```
 

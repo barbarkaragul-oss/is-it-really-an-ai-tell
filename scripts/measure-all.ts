@@ -8,34 +8,15 @@
  * data/markers.json is what the repository publishes: the shares, the rates, the intervals, the
  * placebo column and the size of every pairing. The corpus text stays in out/, uncommitted.
  */
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
-import { measure, type Arm, type Text } from '../src/measure.js';
+import { measure } from '../src/measure.js';
 import { MARKERS } from '../src/markers.js';
+import { loadArms } from './arms.js';
 
-const OUT = path.resolve('out');
 const DATA = path.resolve('data');
 
-function arm(id: string, label: string, kind: 'human' | 'machine', file: string): Arm | null {
-  const f = path.join(OUT, `${file}.json`);
-  if (!existsSync(f)) return null;
-  const rows = JSON.parse(readFileSync(f, 'utf8')) as { id: string; text: string }[];
-  const texts: Text[] = rows.map((r) => ({ id: r.id, text: r.text, source: file }));
-  return { id, label, kind, texts };
-}
-
-const arms = [
-  arm('casual-human', 'casual human (Hacker News, before ChatGPT)', 'human', 'casual-human'),
-  arm('careful-human', 'careful human (Stack Exchange answers, same period)', 'human', 'careful-human'),
-  arm('raid-human', 'human (RAID: the documents every model continued)', 'human', 'raid-human'),
-  arm('raid-chatgpt', 'GPT-3.5 (same documents)', 'machine', 'raid-chatgpt'),
-  arm('raid-gpt4', 'GPT-4 (same documents)', 'machine', 'raid-gpt4'),
-  arm('raid-llama-chat', 'Llama chat (same documents)', 'machine', 'raid-llama-chat'),
-  arm('raid-mistral-chat', 'Mistral chat (same documents)', 'machine', 'raid-mistral-chat'),
-  // generated for this project rather than taken from a published corpus; see the README
-  arm('raid-claude', 'Claude Opus 5 via Claude Code (same documents, generated here)', 'machine', 'raid-claude-clean'),
-  arm('hc3-gpt35', 'GPT-3.5 answering questions (HC3, a different genre)', 'machine', 'machine-2023'),
-].filter((a): a is Arm => a !== null && a.texts.length > 0);
+const arms = loadArms().map((x) => x.arm);
 
 if (arms.length < 3) { console.error('need at least three arms; run the collectors first'); process.exit(1); }
 

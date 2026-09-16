@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-16T15:03:24.546Z",
+ "generated_at": "2026-09-16T15:11:44.065Z",
  "reference": "raid-human",
  "machine": "raid-gpt4",
  "arms": [
@@ -2063,10 +2063,10 @@
     "casual-human": {
      "arm": {
       "n": 406,
-      "k": 3,
-      "pct": 0.7389162561576355,
-      "lo": 0.2516054546636447,
-      "hi": 2.1497125179384535
+      "k": 0,
+      "pct": 0,
+      "lo": 8.592316290569134e-17,
+      "hi": 0.9373377421911293
      },
      "reference": {
       "n": 406,
@@ -2079,10 +2079,10 @@
     "careful-human": {
      "arm": {
       "n": 718,
-      "k": 1,
-      "pct": 0.1392757660167131,
-      "lo": 0.024589192196949078,
-      "hi": 0.7846742251511228
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.5321943207484855
      },
      "reference": {
       "n": 718,
@@ -2209,18 +2209,18 @@
     "casual-human": {
      "texts": 1200,
      "words": 114743,
-     "occurrences": 4,
-     "per1000": 0.034860514366889486,
-     "lo": 0.0006972102873377903,
-     "hi": 0.06902381844644118
+     "occurrences": 1,
+     "per1000": 0.008715128591722372,
+     "lo": 0,
+     "hi": 0.025796780631498217
     },
     "careful-human": {
      "texts": 1200,
      "words": 210900,
-     "occurrences": 3,
-     "per1000": 0.01422475106685633,
+     "occurrences": 1,
+     "per1000": 0.00474158368895211,
      "lo": 0,
-     "hi": 0.03032157222776197
+     "hi": 0.014035087719298246
     },
     "raid-human": {
      "texts": 1499,
@@ -2302,7 +2302,7 @@
   },
   {
    "marker": "important_to_note",
-   "label": "“it is important to note”",
+   "label": "“it is important to note” / “worth noting”",
    "family": "phrase",
    "belief": false,
    "countable": true,

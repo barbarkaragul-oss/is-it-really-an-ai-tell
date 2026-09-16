@@ -47,54 +47,84 @@ function load(name: string): Row[] | null {
   return existsSync(f) ? (JSON.parse(readFileSync(f, 'utf8')) as Row[]) : null;
 }
 
-export interface ArmReport { arm: string; compared: number; mean: number; remembered: number; worst: { id: string; containment: number }[] }
+export interface ArmReport {
+  arm: string;
+  compared: number;
+  /** texts whose human document is not in the corpus: they cannot be checked, so they are dropped */
+  unchecked: number;
+  mean: number;
+  remembered: string[];
+  worst: { id: string; containment: number }[];
+}
 
 export function checkArm(rows: Row[], human: Map<string, string>, name: string): { report: ArmReport; clean: Row[] } {
-  let compared = 0, sum = 0;
+  let sum = 0, unchecked = 0;
   const scored: { row: Row; c: number }[] = [];
   for (const r of rows) {
     const h = human.get(sourceOf(r.id));
-    if (!h) { scored.push({ row: r, c: 0 }); continue; }
+    if (!h) { unchecked++; continue; }
     const c = containment(r.text, h);
-    compared++; sum += c;
+    sum += c;
     scored.push({ row: r, c });
   }
-  const remembered = scored.filter((s) => s.c > THRESHOLD);
   return {
     report: {
       arm: name,
-      compared,
-      mean: compared ? sum / compared : 0,
-      remembered: remembered.length,
+      compared: scored.length,
+      unchecked,
+      mean: scored.length ? sum / scored.length : 0,
+      remembered: scored.filter((s) => s.c > THRESHOLD).map((s) => sourceOf(s.row.id)),
       worst: [...scored].sort((a, b) => b.c - a.c).slice(0, 3).map((s) => ({ id: sourceOf(s.row.id), containment: s.c })),
     },
     clean: scored.filter((s) => s.c <= THRESHOLD).map((s) => s.row),
   };
 }
 
+/**
+ * The Claude arm lives in the repository, not in out/, because nobody can re-download it. It is
+ * written out fresh from data/generated on every run so the weekly job measures it like the rest.
+ */
+const GENERATED = path.resolve('data/generated/claude-abstracts.json');
+interface Generated { texts: { source_id: string; text: string; remembered_from_the_paper: boolean }[] }
+
 if (process.argv[1] && process.argv[1].endsWith('contamination.ts')) {
   const humanRows = load('raid-human');
   if (!humanRows) { console.error('out/raid-human.json is missing; run the RAID collector first'); process.exit(1); }
   const human = new Map(humanRows.map((r) => [sourceOf(r.id), r.text]));
 
+  let generated: Generated | null = null;
+  if (existsSync(GENERATED)) {
+    generated = JSON.parse(readFileSync(GENERATED, 'utf8')) as Generated;
+    writeFileSync(path.join(OUT, 'raid-claude.json'), JSON.stringify(generated.texts.map((t) => ({ id: t.source_id, text: t.text }))));
+  }
+
   const arms = ['raid-gpt4', 'raid-chatgpt', 'raid-llama-chat', 'raid-mistral-chat', 'raid-claude'];
   console.log(`five-gram containment against the human document, threshold ${THRESHOLD}\n`);
-  console.log('arm'.padEnd(20) + 'compared'.padEnd(10) + 'mean'.padEnd(9) + 'remembered');
-  console.log('-'.repeat(52));
+  console.log('arm'.padEnd(20) + 'compared'.padEnd(10) + 'unchecked'.padEnd(11) + 'mean'.padEnd(9) + 'remembered');
+  console.log('-'.repeat(62));
+  let failed = false;
   for (const name of arms) {
     const rows = load(name);
     if (!rows) continue;
     const { report, clean } = checkArm(rows, human, name);
     console.log(
-      name.padEnd(20) + String(report.compared).padEnd(10) +
+      name.padEnd(20) + String(report.compared).padEnd(10) + String(report.unchecked).padEnd(11) +
       `${(100 * report.mean).toFixed(1)}%`.padEnd(9) +
-      `${report.remembered} of ${rows.length}` + (report.remembered ? `  (worst ${(100 * report.worst[0]!.containment).toFixed(0)}%)` : ''),
+      `${report.remembered.length} of ${rows.length}` + (report.remembered.length ? `  (worst ${(100 * report.worst[0]!.containment).toFixed(0)}%)` : ''),
     );
-    if (clean.length !== rows.length) {
-      writeFileSync(path.join(OUT, `${name}-clean.json`), JSON.stringify(clean));
-      console.log(`    wrote ${name}-clean.json with ${clean.length} texts`);
+    // every machine arm is measured from its -clean file, so it is written even when nothing was dropped
+    writeFileSync(path.join(OUT, `${name}-clean.json`), JSON.stringify(clean));
+    if (name === 'raid-claude' && generated) {
+      // the flag in the committed file and this check must say the same thing
+      const flagged = generated.texts.filter((t) => t.remembered_from_the_paper).map((t) => t.source_id).sort();
+      const found = [...report.remembered].sort();
+      if (report.unchecked || flagged.join() !== found.join()) {
+        failed = true;
+        console.error(`    the committed remembered_from_the_paper flags (${flagged.length}) and this check (${found.length}, ${report.unchecked} unchecked) disagree`);
+      }
     }
   }
+  if (failed) process.exit(1);
   console.log('\nA text above the threshold is the published document, not a continuation of it, and any');
   console.log('marker counted there belongs to the person who wrote the paper.');
 }

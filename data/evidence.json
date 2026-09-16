@@ -1,0 +1,4338 @@
+{
+ "generated_at": "2026-09-16T15:12:51.156Z",
+ "seed": 20260916,
+ "per_cell": 5,
+ "note": "Sentences are quoted only from RAID (MIT) and from the Claude arm generated for this repository. Hacker News and Stack Exchange texts are linked, not quoted; HC3 is referenced by id.",
+ "arms": {
+  "casual-human": {
+   "label": "casual human (Hacker News, before ChatGPT)",
+   "publishable": false,
+   "texts": 1200,
+   "words": 114743,
+   "we_per1000": 3.6516388799316735
+  },
+  "careful-human": {
+   "label": "careful human (Stack Exchange answers, same period)",
+   "publishable": false,
+   "texts": 1200,
+   "words": 210900,
+   "we_per1000": 2.114746325272641
+  },
+  "raid-human": {
+   "label": "human (RAID: the documents every model continued)",
+   "publishable": true,
+   "texts": 1499,
+   "words": 269121,
+   "we_per1000": 14.409875111938495
+  },
+  "raid-chatgpt": {
+   "label": "GPT-3.5 (same documents)",
+   "publishable": true,
+   "texts": 1499,
+   "words": 181653,
+   "we_per1000": 6.528931534298911
+  },
+  "raid-gpt4": {
+   "label": "GPT-4 (same documents)",
+   "publishable": true,
+   "texts": 1499,
+   "words": 164097,
+   "we_per1000": 1.773341377356076
+  },
+  "raid-llama-chat": {
+   "label": "Llama chat (same documents)",
+   "publishable": true,
+   "texts": 1499,
+   "words": 413798,
+   "we_per1000": 15.323902000492994
+  },
+  "raid-mistral-chat": {
+   "label": "Mistral chat (same documents)",
+   "publishable": true,
+   "texts": 1499,
+   "words": 204424,
+   "we_per1000": 11.803897781082457
+  },
+  "raid-claude": {
+   "label": "Claude Opus 5 via Claude Code (same documents, generated here)",
+   "publishable": true,
+   "texts": 45,
+   "words": 11321,
+   "we_per1000": 10.511438918823426
+  },
+  "hc3-gpt35": {
+   "label": "GPT-3.5 answering questions (HC3, a different genre)",
+   "publishable": false,
+   "texts": 1200,
+   "words": 219866,
+   "we_per1000": 1.4326908207726525
+  }
+ },
+ "markers": {
+  "delve": {
+   "label": "“delve”",
+   "arms": {
+    "careful-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "delving",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "without",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "191000"
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "delves",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "then",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:8a2a6277-30ae-467f-a2d4-3855ed15cd64",
+       "sentence": "The paper then delves into the principles of quantum mechanics and how they challenge traditional notions of causality."
+      },
+      {
+       "id": "raid:chatgpt:69fa8c79-9c13-44a4-b602-bfc1ecebac86",
+       "sentence": "The paper then delves into the challenges posed by quantum physics to the arrow of time, including the time-reversal symmetry of quantum mechanics and the concept of quantum entanglement."
+      }
+     ]
+    },
+    "raid-gpt4": {
+     "occurrences": 207,
+     "forms": [
+      [
+       "delves",
+       178
+      ],
+      [
+       "delve",
+       29
+      ]
+     ],
+     "before": [
+      [
+       "it",
+       60
+      ],
+      [
+       "study",
+       46
+      ],
+      [
+       "paper",
+       37
+      ],
+      [
+       "we",
+       28
+      ],
+      [
+       "then",
+       18
+      ],
+      [
+       "also",
+       14
+      ],
+      [
+       "further",
+       4
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:c59550f6-5470-42e2-927e-205680130091",
+       "sentence": "We delve into the asymptotic behavior of toric Kähler metrics at infinity, providing a comprehensive analysis of their geometric and topological properties."
+      },
+      {
+       "id": "raid:gpt4:7ad7bedd-8785-49fc-bde7-e7d7ea4cac14",
+       "sentence": "It delves into the intricate relationship between these mathematical concepts and their implications in the broader field of mathematics."
+      },
+      {
+       "id": "raid:gpt4:acb35f18-1565-46ff-8ffc-77d0f1a35836",
+       "sentence": "The study delves into the mathematical framework of supersymmetry, highlighting its role in quantum mechanics and its implications for the spherical quantum pendulum."
+      },
+      {
+       "id": "raid:gpt4:58738ac6-e2c1-48ca-a6d9-3464bcc73d1b",
+       "sentence": "It delves into the intricacies of nominal unification, a process crucial in various fields such as computational linguistics, automated reasoning, and programming languages."
+      },
+      {
+       "id": "raid:gpt4:6c576643-7591-4049-aaa3-e33dc8eed482",
+       "sentence": "We delve into the mathematical intricacies of this concept, exploring its implications and applications in the field of differential geometry."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 27,
+     "forms": [
+      [
+       "delve",
+       23
+      ],
+      [
+       "delves",
+       4
+      ]
+     ],
+     "before": [
+      [
+       "then",
+       23
+      ],
+      [
+       "we",
+       3
+      ],
+      [
+       "also",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:1721c00e-4e0a-4e62-a8e0-038d32a890fb",
+       "sentence": "We then delve into the rich structure of the global Fukaya category II, including its ability to encapsulate a wide range of mathematical and physical phenomena, such as the geometry of singularities, the topology of algebraic varieties, a…"
+      },
+      {
+       "id": "raid:llama-chat:31e3fe17-9f9a-4d43-b64d-0ee768eaa7fe",
+       "sentence": "In this guide, we provide an overview of the STECKMAP code and its capabilities, and then delve into the details of how to use the code to fit galaxy spectra."
+      },
+      {
+       "id": "raid:llama-chat:53d947fc-cc6a-4b59-ab4e-637b4b090fee",
+       "sentence": "We then delve into the idea of observation in quantum mechanics, examining how the act of measurement affects the behavior of quantum systems and the role of the observer in the measurement process."
+      },
+      {
+       "id": "raid:llama-chat:7cf794d7-b03e-46b2-9010-e25127cfad81",
+       "sentence": "It then delves into the most commonly used password cracking tools and techniques, such as Rainbow Tables, John the Ripper, and Aircrack-ng."
+      },
+      {
+       "id": "raid:llama-chat:5bd44b68-d473-4224-82a7-b1023155c1ba",
+       "sentence": "The authors then delve into the details of deep learning techniques, including convolutional neural networks (CNNs), recurrent neural networks (RNNs), and generative adversarial networks (GANs), and their applications in medical image segm…"
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "delves",
+       1
+      ],
+      [
+       "delving",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "before",
+       1
+      ],
+      [
+       "then",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:6b2aaf2f-6ea2-4330-a43b-7fcd5ead56ee",
+       "sentence": "The paper begins by providing a brief overview of the history and significance of number theory, before delving into the details of Euclid's algorithm and its many applications."
+      },
+      {
+       "id": "raid:mistral-chat:a916140a-f8d1-4f5f-a3b4-28d95cdf9e82",
+       "sentence": "It then delves into the concept of four-dimensional understanding, which involves the idea that quantum mechanics is not just a three-dimensional theory, but rather a four-dimensional one."
+      }
+     ]
+    }
+   }
+  },
+  "tapestry": {
+   "label": "“tapestry”",
+   "arms": {
+    "raid-gpt4": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "tapestry",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "rich",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:1891e17b-f0b4-4acd-9543-8c40ff939f5c",
+       "sentence": "The paper also presents a novel proof of the theorem, contributing to the rich tapestry of mathematical thought surrounding this enduring proposition."
+      }
+     ]
+    }
+   }
+  },
+  "moreover": {
+   "label": "“moreover”",
+   "arms": {
+    "careful-human": {
+     "occurrences": 17,
+     "forms": [
+      [
+       "moreover",
+       17
+      ]
+     ],
+     "before": [
+      [
+       "boot",
+       1
+      ],
+      [
+       "concerned",
+       1
+      ],
+      [
+       "credible",
+       1
+      ],
+      [
+       "evidence",
+       1
+      ],
+      [
+       "go",
+       1
+      ],
+      [
+       "have",
+       1
+      ],
+      [
+       "industry",
+       1
+      ],
+      [
+       "it",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "598617"
+      },
+      {
+       "id": "190772"
+      },
+      {
+       "id": "190727"
+      },
+      {
+       "id": "191023"
+      },
+      {
+       "id": "598450"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 115,
+     "forms": [
+      [
+       "moreover",
+       115
+      ]
+     ],
+     "before": [
+      [
+       "methods",
+       4
+      ],
+      [
+       "performance",
+       4
+      ],
+      [
+       "data",
+       3
+      ],
+      [
+       "time",
+       3
+      ],
+      [
+       "a",
+       2
+      ],
+      [
+       "dataset",
+       2
+      ],
+      [
+       "model",
+       2
+      ],
+      [
+       "space",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:7d71528e-6dbe-40ae-9148-f429cdf718fc",
+       "sentence": "Moreover, keypoint transfer does not require the registration to an atlas or a training phase."
+      },
+      {
+       "id": "raid:human:59abcb55-9a95-4a34-9479-70cc7198c288",
+       "sentence": "Moreover, object representations are often inferred using RNNs which do not scale well to large images or iterative refinement which avoids imposing an unnatural ordering on objects in an image but requires the a priori initialisation of a…"
+      },
+      {
+       "id": "raid:human:488b03f0-72f3-48c4-9b17-348ce66aac2f",
+       "sentence": "Moreover, simple (static) image segmentation models, alone, can perform competitively against these methods, which further suggests that the way temporal dependencies are modelled should be reconsidered."
+      },
+      {
+       "id": "raid:human:ab238867-e178-4f48-9bff-e34a49003c12",
+       "sentence": "Moreover, we show that there exists only one configuration of real lines such that the associated Kummer cover of order $5^{d-1}$ is a ball-quotient."
+      },
+      {
+       "id": "raid:human:26d1f313-f244-4df4-9929-c66886bb29b3",
+       "sentence": "Moreover, we learn class-wise decision trees for each object that appears in the image."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 31,
+     "forms": [
+      [
+       "moreover",
+       31
+      ]
+     ],
+     "before": [
+      [
+       "by",
+       3
+      ],
+      [
+       "data",
+       2
+      ],
+      [
+       "models",
+       2
+      ],
+      [
+       "respectively",
+       2
+      ],
+      [
+       "annotation",
+       1
+      ],
+      [
+       "consistency",
+       1
+      ],
+      [
+       "domains",
+       1
+      ],
+      [
+       "dynamics",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:4c6c0fab-acd3-4bca-a8e3-865ef8acc3ef",
+       "sentence": "Moreover, AinnoSeg is able to process panoramic data in real-time, making it suitable for real-world applications."
+      },
+      {
+       "id": "raid:llama-chat:3220f2d4-95d7-49f9-a230-2d182c98f072",
+       "sentence": "Moreover, Vessel-CAPTCHA reduces the annotation time by 75."
+      },
+      {
+       "id": "raid:llama-chat:c8a6096b-425d-470f-829d-2af162e5b2c6",
+       "sentence": "Moreover, our approach can be easily adapted to other medical image segmentation tasks, such as 2D image segmentation and multi-modal image segmentation."
+      },
+      {
+       "id": "raid:llama-chat:a822aeaf-9d0b-4192-a30c-827190b75b55",
+       "sentence": "Moreover, our findings suggest that combining high-quality annotations with data augmentation techniques can further improve the model's performance."
+      },
+      {
+       "id": "raid:llama-chat:749be9ce-4f8b-4e69-a05a-27d3730368da",
+       "sentence": "Moreover, our comparison principle can be used to derive new results in fluid dynamics, such as the existence and uniqueness of solutions to the Navier-Stokes equations."
+      }
+     ]
+    },
+    "raid-claude": {
+     "occurrences": 4,
+     "forms": [
+      [
+       "moreover",
+       4
+      ]
+     ],
+     "before": [
+      [
+       "class",
+       1
+      ],
+      [
+       "points",
+       1
+      ],
+      [
+       "scales",
+       1
+      ],
+      [
+       "sfm",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "ce898c28-428f-446f-975e-a1265942f2da",
+       "sentence": "Moreover, given a fixed annotation time budget, InExtremIS outperforms full supervision, suggesting that annotating more scans with extreme points is preferable to fully delineating fewer of them."
+      },
+      {
+       "id": "853c0e51-7dd5-4bb5-8286-e4aa8820173b",
+       "sentence": "Moreover, to produce refined segmentation masks, we propose a novel Hierarchical Cross-Modal Aggregation Module (HCAM), where linguistic features facilitate the exchange of contextual information across the visual hierarchy."
+      },
+      {
+       "id": "1649f195-8f98-4c79-92b6-54a5ca9261fa",
+       "sentence": "Moreover, because the encoder is trained on abundant base classes, its embedding space tends to be organized around base-class semantics and transfers poorly to novel categories."
+      },
+      {
+       "id": "eff4a017-daa1-4b5d-84ac-927333aaa900",
+       "sentence": "Moreover, we introduce a spatial Gaussian mixed probability distribution to address the pixel-wise probability within the patch."
+      }
+     ]
+    }
+   }
+  },
+  "furthermore": {
+   "label": "“furthermore”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "furthermore",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "contracts",
+       1
+      ],
+      [
+       "failure",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33795009",
+       "link": "https://news.ycombinator.com/item?id=33795009"
+      },
+      {
+       "id": "33793456",
+       "link": "https://news.ycombinator.com/item?id=33793456"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 8,
+     "forms": [
+      [
+       "furthermore",
+       8
+      ]
+     ],
+     "before": [
+      [
+       "below",
+       1
+      ],
+      [
+       "it",
+       1
+      ],
+      [
+       "not",
+       1
+      ],
+      [
+       "p",
+       1
+      ],
+      [
+       "poetry",
+       1
+      ],
+      [
+       "test",
+       1
+      ],
+      [
+       "them",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "598940"
+      },
+      {
+       "id": "597964"
+      },
+      {
+       "id": "190756"
+      },
+      {
+       "id": "190306"
+      },
+      {
+       "id": "190785"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 89,
+     "forms": [
+      [
+       "furthermore",
+       89
+      ]
+     ],
+     "before": [
+      [
+       "segmentation",
+       4
+      ],
+      [
+       "approach",
+       2
+      ],
+      [
+       "problem",
+       2
+      ],
+      [
+       "properties",
+       2
+      ],
+      [
+       "respectively",
+       2
+      ],
+      [
+       "segments",
+       2
+      ],
+      [
+       "systems",
+       2
+      ],
+      [
+       "we",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:75818e26-ed96-4765-a8a6-1d6cad4115b6",
+       "sentence": "Furthermore, even in the error-free case it is inefficient: its communication complexity is Theta(1/epsilon) when forcing the attacker's information below epsilon, even if only a single key bit is generated."
+      },
+      {
+       "id": "raid:human:7ab37ff7-16ed-47e6-93a8-25a64b0b730d",
+       "sentence": "Furthermore, a new and full resolution DCNN - Atrous Convolutional Neural Network (ACNN), which incorporates cascaded atrous II-blocks, residual learning and Instance Normalization (IN) is proposed."
+      },
+      {
+       "id": "raid:human:4762b0a8-cbbc-4e95-bbbc-f6f7333946d8",
+       "sentence": "Furthermore, we design three segmentation frameworks based on the proposed registration framework: 1) atlas-based segmentation, 2) joint learning of both segmentation and registration tasks, and 3) multi-task learning with atlas-based segm…"
+      },
+      {
+       "id": "raid:human:0e094b42-a06b-4150-8a89-894638161ca9",
+       "sentence": "Furthermore, this paper bridges these divergences and shows also their links to divergences of multivariate and multiway Gaussian distributions."
+      },
+      {
+       "id": "raid:human:bb05726c-ae2c-434f-9ca7-c181e7120bc8",
+       "sentence": "Furthermore, the proposed method uses cluster centroid proximity to merge proximal clusters in order to find the final number of clusters and cluster centroids."
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 70,
+     "forms": [
+      [
+       "furthermore",
+       70
+      ]
+     ],
+     "before": [
+      [
+       "efficiency",
+       16
+      ],
+      [
+       "robustness",
+       5
+      ],
+      [
+       "accuracy",
+       4
+      ],
+      [
+       "approaches",
+       3
+      ],
+      [
+       "delineation",
+       2
+      ],
+      [
+       "methods",
+       2
+      ],
+      [
+       "performance",
+       2
+      ],
+      [
+       "quality",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:4e5cafb7-0ada-4a1b-ab91-274bd185336b",
+       "sentence": "Furthermore, we conduct ablation studies to analyze the impact of different components of our method."
+      },
+      {
+       "id": "raid:chatgpt:40ad0431-c84c-4f1c-b797-48a0c19c6ffd",
+       "sentence": "Furthermore, we show that the CCBC method is robust to noise and can handle images with complex structures."
+      },
+      {
+       "id": "raid:chatgpt:5210c72a-2228-40ca-b5db-917eddd137ae",
+       "sentence": "Furthermore, we propose a defense mechanism called Adversarial Training for NAS (AT-NAS) that can mitigate the impact of PSS attacks."
+      },
+      {
+       "id": "raid:chatgpt:a13eb006-dbc8-4c65-808d-28ec6da51f4a",
+       "sentence": "Furthermore, we conduct extensive ablation studies to analyze the impact of different components in our model and provide insights into its design choices."
+      },
+      {
+       "id": "raid:chatgpt:d8432e50-0534-48c3-8f70-2c0559065073",
+       "sentence": "Furthermore, we provide insights into the impact of different domain knowledge factors on the segmentation performance."
+      }
+     ]
+    },
+    "raid-gpt4": {
+     "occurrences": 56,
+     "forms": [
+      [
+       "furthermore",
+       56
+      ]
+     ],
+     "before": [
+      [
+       "efficiency",
+       7
+      ],
+      [
+       "methods",
+       6
+      ],
+      [
+       "accuracy",
+       3
+      ],
+      [
+       "structures",
+       2
+      ],
+      [
+       "admm",
+       1
+      ],
+      [
+       "agents",
+       1
+      ],
+      [
+       "allocations",
+       1
+      ],
+      [
+       "analysis",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:4762b0a8-cbbc-4e95-bbbc-f6f7333946d8",
+       "sentence": "Furthermore, we explore the application of NeurReg in image segmentation tasks, where it exhibits superior performance by providing more accurate and detailed segmentations."
+      },
+      {
+       "id": "raid:gpt4:d35c2f8f-2fe9-45b5-8579-62cad39ba60d",
+       "sentence": "Furthermore, it explores potential future directions, emphasizing the integration of deep learning with other emerging technologies like big data and cloud computing."
+      },
+      {
+       "id": "raid:gpt4:d05e57de-fb97-4a7a-85f1-f55362243fc8",
+       "sentence": "Furthermore, we validate our method through extensive experiments on synthetic and real-world datasets, showing significant improvements over existing PCA methods."
+      },
+      {
+       "id": "raid:gpt4:823ab1a3-8a1d-4d4b-bab4-92dcb32285a2",
+       "sentence": "Furthermore, the dual-task consistency approach is shown to be robust to the choice of auxiliary task, making it a flexible and effective tool for semi-supervised medical image segmentation."
+      },
+      {
+       "id": "raid:gpt4:1dec4557-8705-4c90-b51c-5dcffcec5417",
+       "sentence": "Furthermore, it proposes several extensions to the current understanding of tractable lineages, offering new perspectives and potential applications."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 134,
+     "forms": [
+      [
+       "furthermore",
+       134
+      ]
+     ],
+     "before": [
+      [
+       "methods",
+       5
+      ],
+      [
+       "efficiency",
+       4
+      ],
+      [
+       "segmentation",
+       4
+      ],
+      [
+       "approach",
+       3
+      ],
+      [
+       "data",
+       3
+      ],
+      [
+       "performance",
+       3
+      ],
+      [
+       "systems",
+       3
+      ],
+      [
+       "algorithms",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:fbc8a5ea-90fa-47b8-8fa7-73dd954f1524",
+       "sentence": "Furthermore, the authors perform a series of ablation studies to analyze the effectiveness of the two components of Combo Loss."
+      },
+      {
+       "id": "raid:llama-chat:04d3809c-0abe-4bee-b1d2-9787af95362f",
+       "sentence": "Furthermore, we perform a series of ablation studies to analyze the effectiveness of different components of our method."
+      },
+      {
+       "id": "raid:llama-chat:38969ad2-d0fb-4eb2-8c27-fde0c21b520c",
+       "sentence": "Furthermore, our findings provide new insights into the behavior of quantum percolation in finite systems, and highlight the potential of regular graphs as a model for studying quantum percolation in complex networks."
+      },
+      {
+       "id": "raid:llama-chat:36f82111-ad27-4407-9c52-b884f3302815",
+       "sentence": "Furthermore, we analyze the attention weights generated by our memory attention mechanism to gain insights into the decision-making process of the algorithm."
+      },
+      {
+       "id": "raid:llama-chat:11726650-9752-4abd-8a28-0fd3b976cd5b",
+       "sentence": "Furthermore, we find that the dielectric properties can be modified by introducing defects or doping the material."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 12,
+     "forms": [
+      [
+       "furthermore",
+       12
+      ]
+     ],
+     "before": [
+      [
+       "accuracy",
+       1
+      ],
+      [
+       "architectures",
+       1
+      ],
+      [
+       "detail",
+       1
+      ],
+      [
+       "images",
+       1
+      ],
+      [
+       "methods",
+       1
+      ],
+      [
+       "models",
+       1
+      ],
+      [
+       "objects",
+       1
+      ],
+      [
+       "shuffle",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:fa85c6ec-5c82-4b41-950a-2104b1e09a86",
+       "sentence": "Furthermore, we demonstrate that transfer learning and data augmentation can improve the performance of these models, particularly in cases where the amount of training data is limited."
+      },
+      {
+       "id": "raid:mistral-chat:6524540e-d24e-47e1-8956-86b603c57120",
+       "sentence": "Furthermore, we demonstrate the robustness of our method by applying it to images with varying levels of noise and complexity."
+      },
+      {
+       "id": "raid:mistral-chat:380cd71d-3300-422c-9cde-8a63e71f2797",
+       "sentence": "Furthermore, we demonstrate the effectiveness of our approach by applying it to real-world scenarios, such as medical image analysis and autonomous driving."
+      },
+      {
+       "id": "raid:mistral-chat:c7950aa3-ecab-4646-8176-8bbd17c51114",
+       "sentence": "Furthermore, we analyze the impact of different augmentation strategies and superpixel combinations on the performance of segmentation models."
+      },
+      {
+       "id": "raid:mistral-chat:a3319b8d-6a4c-42fb-a358-268bf30b5f00",
+       "sentence": "Furthermore, the paper discusses the statistical properties of inversion sequences, including their distribution and correlation with other random variables."
+      }
+     ]
+    },
+    "raid-claude": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "furthermore",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "image",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "e9899aaa-4e38-408c-bc2c-7f1fb3cf934c",
+       "sentence": "Furthermore, we propose a cross-guided module for multi-shot segmentation, in which the prediction quality of each support image is used to weight and fuse the final query predictions, so that high-quality supports dominate and low-quality…"
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "furthermore",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "problems",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "300-316"
+      }
+     ]
+    }
+   }
+  },
+  "crucial": {
+   "label": "“crucial”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 5,
+     "forms": [
+      [
+       "crucial",
+       4
+      ],
+      [
+       "crucially",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "a",
+       1
+      ],
+      [
+       "absolutely",
+       1
+      ],
+      [
+       "let's",
+       1
+      ],
+      [
+       "so",
+       1
+      ],
+      [
+       "some",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33793260",
+       "link": "https://news.ycombinator.com/item?id=33793260"
+      },
+      {
+       "id": "33794678",
+       "link": "https://news.ycombinator.com/item?id=33794678"
+      },
+      {
+       "id": "33792828",
+       "link": "https://news.ycombinator.com/item?id=33792828"
+      },
+      {
+       "id": "33793401",
+       "link": "https://news.ycombinator.com/item?id=33793401"
+      },
+      {
+       "id": "33794622",
+       "link": "https://news.ycombinator.com/item?id=33794622"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "crucial",
+       1
+      ],
+      [
+       "crucially",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "and",
+       1
+      ],
+      [
+       "particularly",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "598606"
+      },
+      {
+       "id": "190659"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 52,
+     "forms": [
+      [
+       "crucial",
+       48
+      ],
+      [
+       "crucially",
+       4
+      ]
+     ],
+     "before": [
+      [
+       "a",
+       16
+      ],
+      [
+       "is",
+       14
+      ],
+      [
+       "more",
+       4
+      ],
+      [
+       "are",
+       3
+      ],
+      [
+       "be",
+       2
+      ],
+      [
+       "of",
+       2
+      ],
+      [
+       "the",
+       2
+      ],
+      [
+       "condition",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:00e000e6-0bf4-4e8a-8484-f377088eb55a",
+       "sentence": "Considering that the annotation quality indispensably relies on great expertise, the problem is even more crucial in the medical image domain."
+      },
+      {
+       "id": "raid:human:27db1b2d-f18b-492a-afb6-0ef17287a61e",
+       "sentence": "…learning and generalizing from limited supervision, including a limited amount of annotations, sparse annotations, and inaccurate annotations, is crucial for the successful application of deep learning models in medical image segmentation."
+      },
+      {
+       "id": "raid:human:fbc8a5ea-90fa-47b8-8fa7-73dd954f1524",
+       "sentence": "Simultaneous segmentation of multiple organs from different medical imaging modalities is a crucial task as it can be utilized for computer-aided diagnosis, computer-assisted surgery, and therapy planning."
+      },
+      {
+       "id": "raid:human:b46b40a6-facc-47e1-9f7b-3a985ebe878a",
+       "sentence": "Surgical tool segmentation in endoscopic images is an important problem: it is a crucial step towards full instrument pose estimation and it is used for integration of pre- and intra-operative images into the endoscopic view."
+      },
+      {
+       "id": "raid:human:764ed713-72bd-43c1-85da-9b71c62bd873",
+       "sentence": "So we propose an image segmentation model to predict and give the output a mask that will assist the doctor in taking this crucial decision."
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 126,
+     "forms": [
+      [
+       "crucial",
+       126
+      ]
+     ],
+     "before": [
+      [
+       "a",
+       93
+      ],
+      [
+       "is",
+       27
+      ],
+      [
+       "are",
+       5
+      ],
+      [
+       "provides",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:cbccc75e-54f7-4132-8b9e-5617b55caff3",
+       "sentence": "Accurate segmentation of biomedical images is crucial for various medical applications."
+      },
+      {
+       "id": "raid:chatgpt:625ed860-7a58-4842-8055-b1da093316d0",
+       "sentence": "The segmentation of iris images is a crucial step in iris recognition systems, but it becomes challenging when dealing with post-mortem images due to the presence of various artifacts and degradation."
+      },
+      {
+       "id": "raid:chatgpt:b031c9b8-44e2-4bfc-885e-2519dfb418d1",
+       "sentence": "Medical image segmentation is a critical task in medical imaging analysis, as it plays a crucial role in diagnosis and treatment planning."
+      },
+      {
+       "id": "raid:chatgpt:14eace65-a9c8-4af7-bd8f-058a26858920",
+       "sentence": "Semantic segmentation plays a crucial role in pathology image analysis, enabling accurate identification and classification of different tissue structures."
+      },
+      {
+       "id": "raid:chatgpt:c093400c-2bd2-4e0d-a732-f99d499d58a9",
+       "sentence": "The network's ability to provide uncertainty estimates makes it suitable for applications where reliable segmentation results and uncertainty quantification are crucial, such as medical imaging and autonomous driving."
+      }
+     ]
+    },
+    "raid-gpt4": {
+     "occurrences": 120,
+     "forms": [
+      [
+       "crucial",
+       120
+      ]
+     ],
+     "before": [
+      [
+       "is",
+       56
+      ],
+      [
+       "a",
+       32
+      ],
+      [
+       "are",
+       25
+      ],
+      [
+       "provide",
+       3
+      ],
+      [
+       "not",
+       1
+      ],
+      [
+       "often",
+       1
+      ],
+      [
+       "process",
+       1
+      ],
+      [
+       "this",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:9a574030-0f87-43e1-9dec-5b367ec4bf89",
+       "sentence": "This study provides a promising tool for the automatic and accurate segmentation of IsoIntense Infant Brain MRI, which is crucial for the early diagnosis and treatment of various neurological disorders."
+      },
+      {
+       "id": "raid:gpt4:91c38d06-f963-4f7c-b22a-6942b2fe2917",
+       "sentence": "ET-Net employs an edge-attention mechanism that guides the network to pay more attention to the edge areas, which are often crucial for accurate segmentation."
+      },
+      {
+       "id": "raid:gpt4:5e23ab14-b85f-48e8-9aa3-15452e73524e",
+       "sentence": "This research contributes to the ongoing efforts to improve the accuracy of medical image analysis, which is crucial for effective diagnosis and treatment planning in healthcare."
+      },
+      {
+       "id": "raid:gpt4:6204461b-9efd-4223-b4c5-5d1010771b3c",
+       "sentence": "This paper investigates the polarization properties of a multi-moded concentrator, a device that is crucial in the field of optics and photonics."
+      },
+      {
+       "id": "raid:gpt4:a13eb006-dbc8-4c65-808d-28ec6da51f4a",
+       "sentence": "The Medical Transformer is designed to capture long-range dependencies and intricate structures in medical images, which are crucial for accurate segmentation."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 232,
+     "forms": [
+      [
+       "crucial",
+       232
+      ]
+     ],
+     "before": [
+      [
+       "a",
+       101
+      ],
+      [
+       "is",
+       91
+      ],
+      [
+       "are",
+       38
+      ],
+      [
+       "play",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:d4f93d77-d6d9-4ee1-91d8-58ce8c7fe216",
+       "sentence": "Abstract: Accurate biomedical image segmentation is crucial for diagnosis and treatment of various diseases."
+      },
+      {
+       "id": "raid:llama-chat:8ad37297-8a2e-4f98-8f76-0085b0b8405c",
+       "sentence": "Background: Skin lesion segmentation is a crucial step in diagnosing and treating skin diseases."
+      },
+      {
+       "id": "raid:llama-chat:04d3809c-0abe-4bee-b1d2-9787af95362f",
+       "sentence": "The results show that the combination of StyleGAN and CLIP is crucial for achieving good performance, and that the proposed loss function plays a key role in improving the segmentation quality."
+      },
+      {
+       "id": "raid:llama-chat:6524540e-d24e-47e1-8956-86b603c57120",
+       "sentence": "The accurate detection of cell nuclei is crucial in various biomedical applications, including cancer diagnosis, cell counting, and cell classification."
+      },
+      {
+       "id": "raid:llama-chat:22b25ac1-b5c5-4be3-920c-694652ef8c86",
+       "sentence": "Catheter segmentation is a crucial step in various medical interventions, such as angiography and tumor ablation, where the catheter must be accurately navigated to the target location within the body."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 184,
+     "forms": [
+      [
+       "crucial",
+       184
+      ]
+     ],
+     "before": [
+      [
+       "a",
+       157
+      ],
+      [
+       "is",
+       24
+      ],
+      [
+       "are",
+       3
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:e5e058ce-be2b-459d-af36-32532aaba5ff",
+       "sentence": "The development of trustworthy artificial intelligence (AI) is crucial for the future of medical imaging."
+      },
+      {
+       "id": "raid:mistral-chat:5eb88a59-eb5a-49ea-8304-f67efe338921",
+       "sentence": "Medical image segmentation is a crucial task in the field of healthcare, with applications ranging from disease diagnosis to treatment planning."
+      },
+      {
+       "id": "raid:mistral-chat:f6cb3441-e401-4b16-a8bc-9e6b55f7717d",
+       "sentence": "Segmentation of microscopy data is a crucial step in image analysis, particularly in identifying nuclei in divergent images."
+      },
+      {
+       "id": "raid:mistral-chat:0818a486-cec9-4668-bef1-e22e2f92b912",
+       "sentence": "Exact inference in graphs is a crucial problem in many areas of computer science and statistics."
+      },
+      {
+       "id": "raid:mistral-chat:7aeb5a35-e875-4b56-87d6-ff48568e1023",
+       "sentence": "Automatic image segmentation is a crucial task in computer vision that involves dividing an image into multiple regions with homogeneous properties."
+      }
+     ]
+    },
+    "raid-claude": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "crucial",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "a",
+       1
+      ],
+      [
+       "is",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "fbc8a5ea-90fa-47b8-8fa7-73dd954f1524",
+       "sentence": "Simultaneous segmentation of multiple organs from different medical imaging modalities is a crucial task as it can be exploited for computerized diagnosis, treatment planning, and quantitative follow-up."
+      },
+      {
+       "id": "d4f93d77-d6d9-4ee1-91d8-58ce8c7fe216",
+       "sentence": "Image segmentation, which is crucial for any quantitative analysis, has especially attracted attention."
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "crucial",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "a",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "500-540"
+      },
+      {
+       "id": "700-724"
+      }
+     ]
+    }
+   }
+  },
+  "realm": {
+   "label": "“realm”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "realm",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "the",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33794963",
+       "link": "https://news.ycombinator.com/item?id=33794963"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 10,
+     "forms": [
+      [
+       "realm",
+       6
+      ],
+      [
+       "realms",
+       4
+      ]
+     ],
+     "before": [
+      [
+       "magical",
+       2
+      ],
+      [
+       "or",
+       2
+      ],
+      [
+       "the",
+       2
+      ],
+      [
+       "alternative",
+       1
+      ],
+      [
+       "spirit",
+       1
+      ],
+      [
+       "universes",
+       1
+      ],
+      [
+       "worlds",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "598777"
+      },
+      {
+       "id": "598631"
+      },
+      {
+       "id": "598767"
+      },
+      {
+       "id": "190925"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 3,
+     "forms": [
+      [
+       "realm",
+       3
+      ]
+     ],
+     "before": [
+      [
+       "the",
+       2
+      ],
+      [
+       "euclidean",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:b552639f-8a65-40e9-9c1a-4b75f52579a5",
+       "sentence": "So if we want a semblance of Kepler's three laws to hold but also want to leave the Euclidean realm, we are forced out of the realm of Riemannian geometries."
+      },
+      {
+       "id": "raid:human:b6a1d3b1-13c5-488a-8a86-645fc5e37b04",
+       "sentence": "In this review article, aimed primarily at cryptographers unfamiliar with the quantum world, we survey the area of theoretical quantum cryptography, with an emphasis on the constructions and limitations beyond the realm of QKD."
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "realm",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "quantum",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:7eb86cdb-5f90-4e05-83bf-8ce49fb386a4",
+       "sentence": "In the quantum realm, the concept of entropy is extended to quantum relative entropy, which measures the distinguishability between two quantum states."
+      }
+     ]
+    },
+    "raid-gpt4": {
+     "occurrences": 10,
+     "forms": [
+      [
+       "realm",
+       8
+      ],
+      [
+       "realms",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "the",
+       7
+      ],
+      [
+       "quantum",
+       2
+      ],
+      [
+       "microscopic",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:24d1869e-7eb9-47df-95ab-559549c3b8b3",
+       "sentence": "This paper explores the concept of similar submodules and coincidence site modules within the realm of algebraic structures."
+      },
+      {
+       "id": "raid:gpt4:d97d6987-3f09-4b1e-8413-92b2841552fb",
+       "sentence": "This research opens up new avenues for further exploration in the realm of quantum information theory and its intersection with high energy physics."
+      },
+      {
+       "id": "raid:gpt4:bf97a858-426d-4cd0-866d-07d5c4568500",
+       "sentence": "This paper explores the intricate relationship between higher Auslander-Reiten sequences and $t$-structures in the realm of algebraic geometry and representation theory."
+      },
+      {
+       "id": "raid:gpt4:d2121f0a-8fca-4160-a2ca-0238c3aabd56",
+       "sentence": "The findings suggest that the Elementary Cycles Theory could provide a more comprehensive understanding of the physical world, bridging the gap between the macroscopic and microscopic realms."
+      },
+      {
+       "id": "raid:gpt4:69fa8c79-9c13-44a4-b602-bfc1ecebac86",
+       "sentence": "It delves into the fundamental principles of time asymmetry, entropy, and the arrow of time, providing a comprehensive analysis of how these concepts are interpreted and applied in both classical and quantum realms."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "realm",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "the",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:7a0944e8-f2a5-4c82-87b5-232fcad14e61",
+       "sentence": "In this paper, we explore the concept of quantitative automata under probabilistic semantics, which is a natural extension of classical automata theory to the realm of probabilistic systems."
+      },
+      {
+       "id": "raid:llama-chat:9db261b3-9b91-4307-978c-6f9e472de01e",
+       "sentence": "We then delve into the realm of augmentation strategies, discussing the importance of diversifying the training data and presenting several commonly used techniques, including random cropping, flipping, and color jittering."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "realm",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "the",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:67b06579-7108-4707-9bdd-b2acb542725c",
+       "sentence": "Overall, this paper provides a comprehensive overview of the generalized U(N) gauge transformations in the realm of the extended covariant Hamiltonian formalism of field theory, and their applications to the study of physical systems."
+      }
+     ]
+    }
+   }
+  },
+  "showcase": {
+   "label": "“showcase”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "showcase",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33794337",
+       "link": "https://news.ycombinator.com/item?id=33794337"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "showcase",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "190640"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 6,
+     "forms": [
+      [
+       "showcase",
+       6
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       2
+      ],
+      [
+       "we",
+       2
+      ],
+      [
+       "a",
+       1
+      ],
+      [
+       "characterizations",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:bb5299ed-bebd-4210-b65b-6e466c875342",
+       "sentence": "We demonstrate strong in-domain performance compared to several baselines, and are the first to showcase extreme out-of-domain generalization, such as transferring from CT to MRI in medical imaging, and photographs of real faces to paintin…"
+      },
+      {
+       "id": "raid:human:2b479aed-a3be-4e10-8bed-e4240c9015ad",
+       "sentence": "In addition, our characterizations showcase more properties which distinguish behavior of Leavitt path algebras from their $C^*$-algebra counterparts."
+      },
+      {
+       "id": "raid:human:c42a2dc8-99eb-4fe9-800a-c13c41e73116",
+       "sentence": "Alternatively, we showcase that our approach is easily mixable with light-weight classification networks: we attain 79."
+      },
+      {
+       "id": "raid:human:d9112aac-5d17-4d65-b238-3536ec13c1f2",
+       "sentence": "To showcase the power of our approach, we generated datasets for 7 image segmentation tasks which include pixel-level labels for 34 human face parts, and 32 car parts."
+      },
+      {
+       "id": "raid:human:0dc87ca0-f7ae-471e-8681-9476174755a9",
+       "sentence": "First, we propose a straightforward implementation of efficient semi-supervised learning-based registration method, which we showcase in a multi-atlas segmentation framework."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 7,
+     "forms": [
+      [
+       "showcase",
+       5
+      ],
+      [
+       "showcasing",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "that",
+       4
+      ],
+      [
+       "datasets",
+       2
+      ],
+      [
+       "images",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:f7da78e0-ee78-459a-bc61-93d7d103b66c",
+       "sentence": "Showcase of the versatility of Concept Mask by applying it to various computer vision tasks."
+      },
+      {
+       "id": "raid:llama-chat:e9917273-7203-4a57-b2e2-aaba1a1a5ebe",
+       "sentence": "We demonstrate the effectiveness of our approach using several numerical experiments that showcase its ability to accurately predict the flow behavior in a variety of scenarios, including those with complex heterogeneities and nonlinear dy…"
+      },
+      {
+       "id": "raid:llama-chat:86b83689-01d0-4d5a-abce-f9c69b370251",
+       "sentence": "We demonstrate the effectiveness of our approach through a series of simulations that showcase its ability to handle complex geometries, nonlinear waves, and large-scale simulations."
+      },
+      {
+       "id": "raid:llama-chat:efa68fa1-cb54-4eb9-8261-20a464c9b3e7",
+       "sentence": "We demonstrate the power and flexibility of GNU epsilon by implementing several case studies that showcase its ability to adapt to different programming paradigms and domains."
+      },
+      {
+       "id": "raid:llama-chat:e8f0bc05-0617-4ceb-9db0-4cb837db0d47",
+       "sentence": "* We demonstrate the effectiveness of DeepAC through extensive experiments on publicly available datasets, showcasing its superiority over state-of-the-art methods in terms of both accuracy and efficiency."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "showcase",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:de114146-9f83-4610-b593-294557a0e066",
+       "sentence": "Formal balls are large-scale events that have been held for centuries, often as a way to celebrate important milestones or to showcase wealth and status."
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "showcase",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "1100-1134"
+      }
+     ]
+    }
+   }
+  },
+  "underscore": {
+   "label": "“underscores”",
+   "arms": {
+    "raid-gpt4": {
+     "occurrences": 5,
+     "forms": [
+      [
+       "underscore",
+       3
+      ],
+      [
+       "underscores",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "findings",
+       3
+      ],
+      [
+       "also",
+       1
+      ],
+      [
+       "it",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:a1f393d7-c5e7-4039-b7ce-973e6a5112f9",
+       "sentence": "However, the paper also underscores the need for further research to optimize UIS and address its limitations."
+      },
+      {
+       "id": "raid:gpt4:d3e5887c-59e2-4cf4-ad32-d15bf49e3608",
+       "sentence": "Furthermore, it underscores the need for diversity in the machine learning community itself, in terms of gender, ethnicity, and academic backgrounds, to ensure a wide range of perspectives and to avoid unconscious biases in model developme…"
+      },
+      {
+       "id": "raid:gpt4:5c8b63d7-56d2-4c3a-882c-5123a07d3f3a",
+       "sentence": "The findings underscore the importance of interdisciplinary approaches in advancing mathematical understanding and innovation."
+      },
+      {
+       "id": "raid:gpt4:a822aeaf-9d0b-4192-a30c-827190b75b55",
+       "sentence": "The findings underscore the importance of accurate and detailed ground truth annotations in the development of robust and reliable semantic image segmentation models for traffic condition monitoring and prediction."
+      },
+      {
+       "id": "raid:gpt4:9ecd527a-eb7e-47b6-8b8a-3d7743e755a5",
+       "sentence": "Our findings underscore the need for robustness against adversarial attacks in the design of deep learning-based malware detection systems."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 4,
+     "forms": [
+      [
+       "underscores",
+       3
+      ],
+      [
+       "underscore",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "and",
+       2
+      ],
+      [
+       "also",
+       1
+      ],
+      [
+       "it",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:848059f3-ab84-461d-9820-ae4e22838591",
+       "sentence": "It demonstrates the power and flexibility of the Fukaya category, and it underscores the importance of this mathematical structure in understanding the geometry and topology of spaces."
+      },
+      {
+       "id": "raid:llama-chat:709a0d51-b682-4177-a5ab-3311039eef97",
+       "sentence": "…aper demonstrates the fantastic potential of helioseismology as a tool for exploring the interior of the Sun, and underscores the importance of continued research in this field to further our understanding of our closest star and its place…"
+      },
+      {
+       "id": "raid:llama-chat:c649a474-317d-45be-a71b-c97c07738686",
+       "sentence": "This highlights the subtlety of the relationship between commutativity and algebraic dependence, and underscores the importance of carefully considering both concepts in the study of algebras."
+      },
+      {
+       "id": "raid:llama-chat:0370b8d5-2979-4206-bd44-a34e60f2dc66",
+       "sentence": "The results also underscore the importance of educating users about cloud security and providing them with tools and resources to manage file security effectively."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "underscores",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "also",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:bf2d491f-04f3-485d-b4b2-8d8a9e5709dd",
+       "sentence": "…e study demonstrates the potential of deep learning methods for improving the accuracy and reliability of cardiac MRI analysis, but also underscores the importance of ensuring that these methods are used in a responsible and ethical manner."
+      }
+     ]
+    }
+   }
+  },
+  "leverage": {
+   "label": "“leverage” as a verb",
+   "arms": {
+    "casual-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "leveraged",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "be",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33793275",
+       "link": "https://news.ycombinator.com/item?id=33793275"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "leveraging",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "by",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "190075"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 74,
+     "forms": [
+      [
+       "leverage",
+       35
+      ],
+      [
+       "leveraging",
+       21
+      ],
+      [
+       "leverages",
+       16
+      ],
+      [
+       "leveraged",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       12
+      ],
+      [
+       "by",
+       8
+      ],
+      [
+       "we",
+       6
+      ],
+      [
+       "can",
+       5
+      ],
+      [
+       "that",
+       5
+      ],
+      [
+       "which",
+       3
+      ],
+      [
+       "and",
+       2
+      ],
+      [
+       "framework",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:72fe360b-cce6-4daf-b66a-1d778f5964f8",
+       "sentence": "We leverage models pre-trained for image classification and show that we can fine-tune them on moderate sized datasets available for semantic segmentation."
+      },
+      {
+       "id": "raid:human:b20d18df-e6fb-41f2-8c3b-5f379b62ced9",
+       "sentence": "…his work, we propose strategies for extending the contrastive learning framework for segmentation of volumetric medical images in the semi-supervised setting with limited annotations, by leveraging domain-specific and problem-specific cues."
+      },
+      {
+       "id": "raid:human:5c7c5b25-fa27-4046-8254-40010516d81c",
+       "sentence": "…in segmentation networks, and (4) a novel few-shot learning model in both supervised settings and semi-supervised settings where synergies between latent and image spaces are leveraged to learn to segment images given limited training data."
+      },
+      {
+       "id": "raid:human:e3945a96-7048-41d9-9e86-a84e87818986",
+       "sentence": "Our framework can effectively leverage the unlabeled data by encouraging consistent predictions of the same input under different perturbations."
+      },
+      {
+       "id": "raid:human:823ab1a3-8a1d-4d4b-bab4-92dcb32285a2",
+       "sentence": "Deep learning-based semi-supervised learning (SSL) algorithms have led to promising results in medical images segmentation and can alleviate doctors' expensive annotations by leveraging unlabeled data."
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 332,
+     "forms": [
+      [
+       "leverages",
+       277
+      ],
+      [
+       "leveraging",
+       40
+      ],
+      [
+       "leverage",
+       15
+      ]
+     ],
+     "before": [
+      [
+       "method",
+       144
+      ],
+      [
+       "that",
+       59
+      ],
+      [
+       "by",
+       25
+      ],
+      [
+       "approach",
+       19
+      ],
+      [
+       "algorithm",
+       6
+      ],
+      [
+       "to",
+       6
+      ],
+      [
+       "framework",
+       5
+      ],
+      [
+       "model",
+       5
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:6940b805-ba27-4fde-a9b5-3d873da59bf5",
+       "sentence": "Our method leverages the concept of alpha matting to estimate the uncertainty of each pixel in the segmentation result."
+      },
+      {
+       "id": "raid:chatgpt:93029efb-6d75-45e7-bcfa-6ccd61690b3f",
+       "sentence": "In this paper, we propose a novel method called Points2Polygons that leverages weak labels in the form of point annotations to perform context-based segmentation."
+      },
+      {
+       "id": "raid:chatgpt:b57ab525-54d9-47dc-9294-eada14ffa3c1",
+       "sentence": "The proposed method leverages the power of distributed computing to train a deep learning model on a large dataset of synthetic images."
+      },
+      {
+       "id": "raid:chatgpt:ce898c28-428f-446f-975e-a1265942f2da",
+       "sentence": "The method leverages the extreme points of objects in an image to generate geodesic paths that accurately segment the objects."
+      },
+      {
+       "id": "raid:chatgpt:df594cf4-9a0c-4488-bcb3-68f41e2d5a16",
+       "sentence": "Our method leverages both image-based features and contextual cues, such as object relationships and scene context, to enhance the accuracy of semantic segmentation."
+      }
+     ]
+    },
+    "raid-gpt4": {
+     "occurrences": 351,
+     "forms": [
+      [
+       "leverages",
+       303
+      ],
+      [
+       "leveraging",
+       38
+      ],
+      [
+       "leverage",
+       10
+      ]
+     ],
+     "before": [
+      [
+       "method",
+       141
+      ],
+      [
+       "that",
+       63
+      ],
+      [
+       "model",
+       25
+      ],
+      [
+       "by",
+       22
+      ],
+      [
+       "algorithm",
+       7
+      ],
+      [
+       "framework",
+       5
+      ],
+      [
+       "approach",
+       4
+      ],
+      [
+       "effectively",
+       4
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:73ddb2b7-88c8-4593-8f76-d8d2a9007ab0",
+       "sentence": "The algorithm leverages quantum superposition and entanglement to perform operations on ideals, resulting in exponential speedup compared to classical methods."
+      },
+      {
+       "id": "raid:gpt4:d9bc482f-77fc-4863-be66-980cff21344d",
+       "sentence": "The paper introduces a novel approach that iteratively refines densely connected representation levels, leveraging the rich contextual information in these levels to enhance segmentation performance."
+      },
+      {
+       "id": "raid:gpt4:7f6e9b63-40ad-4587-b03e-3492501ed835",
+       "sentence": "The proposed method leverages the concept of supervoxels, which are perceptually meaningful and computationally efficient volumetric units, to perform inpainting in a self-supervised manner."
+      },
+      {
+       "id": "raid:gpt4:d05e57de-fb97-4a7a-85f1-f55362243fc8",
+       "sentence": "Our method leverages known subspace information to improve the robustness of PCA against such challenges."
+      },
+      {
+       "id": "raid:gpt4:d41ebbbb-10d5-4760-8c4d-72fe5336828a",
+       "sentence": "The proposed method leverages deep learning techniques and a unique architecture that allows for real-time processing, even in complex and dynamic environments."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 619,
+     "forms": [
+      [
+       "leverages",
+       511
+      ],
+      [
+       "leveraging",
+       82
+      ],
+      [
+       "leverage",
+       24
+      ],
+      [
+       "leveraged",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "that",
+       158
+      ],
+      [
+       "approach",
+       107
+      ],
+      [
+       "method",
+       96
+      ],
+      [
+       "which",
+       69
+      ],
+      [
+       "by",
+       52
+      ],
+      [
+       "to",
+       11
+      ],
+      [
+       "we",
+       10
+      ],
+      [
+       "of",
+       5
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:db236baa-aa38-4780-9330-9a3389d49688",
+       "sentence": "…of using features learned from unsupervised segmentation for salient object detection on hyperspectral images, and provides a new perspective on how to leverage the wealth of spectral information in these images for object detection tasks."
+      },
+      {
+       "id": "raid:llama-chat:f309f60e-0c0a-41b0-b953-b19374bee708",
+       "sentence": "Overall, our work advances the state-of-the-art in visual saliency detection by introducing a novel approach that leverages mult"
+      },
+      {
+       "id": "raid:llama-chat:e5025a46-510c-4eab-9c95-3bfd0684ef89",
+       "sentence": "In contrast, our proposed method leverages the power of representation learning to learn a robust feature representation from unannotated data, which can be used for downstream tasks such as segmentation."
+      },
+      {
+       "id": "raid:llama-chat:59d71618-eb6f-4251-b6a7-34068dfd698d",
+       "sentence": "In this paper, we propose a new method that leverages semidefinite programming (SDP) relaxations to solve BQPs efficiently."
+      },
+      {
+       "id": "raid:llama-chat:93029efb-6d75-45e7-bcfa-6ccd61690b3f",
+       "sentence": "Our method leverages the power of generative models to accurately segment objects within images, even when provided with limited and noisy label information."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 150,
+     "forms": [
+      [
+       "leverages",
+       126
+      ],
+      [
+       "leveraging",
+       14
+      ],
+      [
+       "leverage",
+       9
+      ],
+      [
+       "leveraged",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "method",
+       53
+      ],
+      [
+       "that",
+       38
+      ],
+      [
+       "approach",
+       18
+      ],
+      [
+       "by",
+       11
+      ],
+      [
+       "model",
+       7
+      ],
+      [
+       "to",
+       6
+      ],
+      [
+       "architecture",
+       3
+      ],
+      [
+       "framework",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:1649f195-8f98-4c79-92b6-54a5ca9261fa",
+       "sentence": "The proposed method leverages both global and local contrastive learning to improve the performance of few-shot segmentation."
+      },
+      {
+       "id": "raid:mistral-chat:990201c6-f043-48dc-a6b7-0b088bc66581",
+       "sentence": "The proposed method leverages the advantages of both dilated convolutions and lateral inhibitions to improve the accuracy and efficiency of image segmentation."
+      },
+      {
+       "id": "raid:mistral-chat:8e16fadf-94d5-42e9-8222-a511242ed368",
+       "sentence": "MixSearch leverages a combination of transfer learning and domain adaptation techniques to search for architectures that can effectively segment images across multiple medical domains."
+      },
+      {
+       "id": "raid:mistral-chat:24f2ca6c-1cb0-4ff0-a98f-e4c86496f942",
+       "sentence": "Our method leverages the power of adversarial training to learn a mapping between scribbles and segmentation masks, while simultaneously incorporating multi-scale attention gates to capture the spatial relationships between the scribbles a…"
+      },
+      {
+       "id": "raid:mistral-chat:a54e5519-c630-4bd8-a1c2-abd8cf644263",
+       "sentence": "Our method leverages the inherent structure of the image data by modeling the segmentation task as a geodesic optimization problem."
+      }
+     ]
+    },
+    "raid-claude": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "leverage",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "additionally",
+       1
+      ],
+      [
+       "we",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "d4f93d77-d6d9-4ee1-91d8-58ce8c7fe216",
+       "sentence": "In this work, we leverage the information already learned by the model during training to further improve its prediction quality."
+      },
+      {
+       "id": "07dc10ce-198b-4398-901a-872cd727f5e9",
+       "sentence": "Because real eating occasion images with ground truth energy labels are limited, we additionally leverage a large set of synthetically generated images with exact energy annotations, and we introduce a cross-domain feature adaptation strat…"
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "leverage",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "and",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "400-481"
+      }
+     ]
+    }
+   }
+  },
+  "important_to_note": {
+   "label": "“it is important to note” / “worth noting”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "it's worth noting",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "and",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33794523",
+       "link": "https://news.ycombinator.com/item?id=33794523"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "it is worth noting",
+       1
+      ],
+      [
+       "it's worth noting",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "another",
+       1
+      ],
+      [
+       "chosen",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "191040"
+      },
+      {
+       "id": "190364"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "it is worth to note",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "methods",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:bf86b311-04cb-4e22-9749-ff8c962eafb9",
+       "sentence": "It is worth to note that without UDA, a model trained on CT for hip joint bone segmentation is non-transferable to MRI and has almost zero-DICE segmentation."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "it is important to note",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "software",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:3b0c180e-02f4-4e48-bc60-0f2749f87e91",
+       "sentence": "It is important to note that the development and use of malware, including remote adversarial patches, is illegal and unethical."
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 127,
+     "forms": [
+      [
+       "it's important to note",
+       88
+      ],
+      [
+       "it is important to note",
+       33
+      ],
+      [
+       "it's worth noting",
+       6
+      ]
+     ],
+     "before": [
+      [
+       "however",
+       33
+      ],
+      [
+       "finally",
+       4
+      ],
+      [
+       "industry",
+       2
+      ],
+      [
+       "not",
+       2
+      ],
+      [
+       "practices",
+       2
+      ],
+      [
+       "additionally",
+       1
+      ],
+      [
+       "administration",
+       1
+      ],
+      [
+       "all",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "500-559"
+      },
+      {
+       "id": "0-76"
+      },
+      {
+       "id": "0-80"
+      },
+      {
+       "id": "600-622"
+      },
+      {
+       "id": "100-144"
+      }
+     ]
+    }
+   }
+  },
+  "in_todays": {
+   "label": "“in today’s …”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "in today's",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "speaking",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33795052",
+       "link": "https://news.ycombinator.com/item?id=33795052"
+      }
+     ]
+    }
+   }
+  },
+  "not_only_but_also": {
+   "label": "“not only … but also”",
+   "arms": {
+    "careful-human": {
+     "occurrences": 6,
+     "forms": [],
+     "before": [
+      [
+       "would",
+       2
+      ],
+      [
+       "express",
+       1
+      ],
+      [
+       "had",
+       1
+      ],
+      [
+       "is",
+       1
+      ],
+      [
+       "that",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "598560"
+      },
+      {
+       "id": "597656"
+      },
+      {
+       "id": "598076"
+      },
+      {
+       "id": "191015"
+      },
+      {
+       "id": "190367"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 29,
+     "forms": [
+      [
+       "not only a feedforward process from a lower layer to an upper layer but also",
+       1
+      ],
+      [
+       "not only amusing but also",
+       1
+      ],
+      [
+       "not only because of the presence of speckle, but also",
+       1
+      ],
+      [
+       "not only between the pairs of layers within the same path, but also",
+       1
+      ],
+      [
+       "not only by their relative sizes but also",
+       1
+      ],
+      [
+       "not only caused by similar visual patterns but also",
+       1
+      ],
+      [
+       "not only combining feature maps of mirroring layers but also",
+       1
+      ],
+      [
+       "not only computationally expensive but also",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "are",
+       2
+      ],
+      [
+       "method",
+       2
+      ],
+      [
+       "analyze",
+       1
+      ],
+      [
+       "be",
+       1
+      ],
+      [
+       "crucial",
+       1
+      ],
+      [
+       "depending",
+       1
+      ],
+      [
+       "due",
+       1
+      ],
+      [
+       "encodes",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:c02ba77d-7165-4d97-bcae-d8de033a35bf",
+       "sentence": "We show that our method not only drastically improves the representation of each modality, but also improves the overall multi-modal task performance."
+      },
+      {
+       "id": "raid:human:0ddc5f35-e354-4320-9610-e6459fda4a7e",
+       "sentence": "…overing 180 publications, we give an overview of broad areas of segmentation topics including not only the classic bottom-up approaches, but also the recent development in superpixel, interactive methods, object proposals, semantic image pa…"
+      },
+      {
+       "id": "raid:human:c7950aa3-ecab-4646-8176-8bbd17c51114",
+       "sentence": "To better mimic human visual perception, we think it is desirable for the deep learning model to be able to perceive not only raw images but also SP images."
+      },
+      {
+       "id": "raid:human:a54260ec-5c39-4e80-8396-ad90821fac93",
+       "sentence": "It is not only robust to calculate the partitioning point to separate the curve logically, but also robust to calculate the clustering center of each part of the separated curve."
+      },
+      {
+       "id": "raid:human:54e0f95e-00d1-469e-ad5f-aee23ffdcc3d",
+       "sentence": "Empirical results on three different datasets show reliable improvements not only in comparison to the baseline networks, but also in comparison to several dense-pixel prediction techniques such as CRFs, while being competitive in time."
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "not only based on the input feature maps but also",
+       1
+      ],
+      [
+       "not only provides a tighter bound on the dimension of the subspace, but also",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "proof",
+       1
+      ],
+      [
+       "value",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:deb236f9-d956-4cb6-a7fd-dfc3b7d10473",
+       "sentence": "Our proof not only provides a tighter bound on the dimension of the subspace, but also offers insights into the structure of the subspace itself."
+      },
+      {
+       "id": "raid:chatgpt:5abbf9e2-88e5-4eec-a99a-908a408ea0d7",
+       "sentence": "The loss max-pooling operation selects the maximum value not only based on the input feature maps but also on the corresponding loss maps."
+      }
+     ]
+    },
+    "raid-gpt4": {
+     "occurrences": 32,
+     "forms": [
+      [
+       "not only advances the state-of-the-art in person re-id but also",
+       1
+      ],
+      [
+       "not only cells but also",
+       1
+      ],
+      [
+       "not only classifies each pixel in an image into a specific category but also",
+       1
+      ],
+      [
+       "not only contribute to the existing body of knowledge on algebraic groups but also",
+       1
+      ],
+      [
+       "not only contribute to the theoretical understanding of compact cardinals but also",
+       1
+      ],
+      [
+       "not only contributes to our understanding of permutation groups but also",
+       1
+      ],
+      [
+       "not only contributes to the advancement of automatic measurement techniques but also",
+       1
+      ],
+      [
+       "not only contributes to the field of concrete petrography but also",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "research",
+       11
+      ],
+      [
+       "approach",
+       4
+      ],
+      [
+       "work",
+       4
+      ],
+      [
+       "are",
+       2
+      ],
+      [
+       "features",
+       1
+      ],
+      [
+       "findings",
+       1
+      ],
+      [
+       "is",
+       1
+      ],
+      [
+       "method",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:7980f1b3-1665-4905-a105-2a48c4204a67",
+       "sentence": "We propose a new algorithm that not only classifies each pixel in an image into a specific category but also identifies the boundaries between different objects."
+      },
+      {
+       "id": "raid:gpt4:79ee569a-68f5-4c49-b45e-6f19413af2df",
+       "sentence": "This research not only provides a new perspective on the structural properties of SAT formulas, but also has potential implications for the design of more efficient SAT solvers."
+      },
+      {
+       "id": "raid:gpt4:dc3ec32e-2230-4be2-9c40-8268932279f5",
+       "sentence": "The entropic regularization optimal transport (EROT) model is introduced, which not only ensures volume preservation but also improves the computational efficiency."
+      },
+      {
+       "id": "raid:gpt4:8dbd232e-bb5a-4c4a-9b11-d9207d90d5cd",
+       "sentence": "This research not only contributes to the field of remote sensing but also provides a valuable tool for sustainable agricultural development."
+      },
+      {
+       "id": "raid:gpt4:b1c611c1-9013-45c5-a1e4-80e26f47cef1",
+       "sentence": "The results demonstrate that our approach not only effectively reduces the gridding artifacts but also improves the segmentation accuracy, making it a promising technique for various image segmentation applications."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 21,
+     "forms": [
+      [
+       "not only look visually appealing but also",
+       2
+      ],
+      [
+       "not only about the space x itself, but also",
+       1
+      ],
+      [
+       "not only accurate but also",
+       1
+      ],
+      [
+       "not only accurate, but also",
+       1
+      ],
+      [
+       "not only capture the aesthetic preferences of the user but also",
+       1
+      ],
+      [
+       "not only combines the features from the two branches but also",
+       1
+      ],
+      [
+       "not only computationally efficient but also",
+       1
+      ],
+      [
+       "not only converges to a stable state, but also",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "are",
+       7
+      ],
+      [
+       "is",
+       5
+      ],
+      [
+       "that",
+       4
+      ],
+      [
+       "approach",
+       1
+      ],
+      [
+       "implications",
+       1
+      ],
+      [
+       "information",
+       1
+      ],
+      [
+       "result",
+       1
+      ],
+      [
+       "system",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:3b0c180e-02f4-4e48-bc60-0f2749f87e91",
+       "sentence": "This approach not only helps to protect individuals and organizations from cyber threats but also promotes a culture of security and privacy that is essential for building trust in technology."
+      },
+      {
+       "id": "raid:llama-chat:a6ad05dc-c5cf-47e4-99aa-fd76e5e0e7c2",
+       "sentence": "Our algorithm uses a combination of optimization techniques and machine learning algorithms to create districts that are not only fair but also competitive."
+      },
+      {
+       "id": "raid:llama-chat:36f82111-ad27-4407-9c52-b884f3302815",
+       "sentence": "Our proposed method has the potential to revolutionize the field of image collage generation, enabling users to create high-quality collages that not only look visually appealing but also preserve"
+      },
+      {
+       "id": "raid:llama-chat:22391927-6f6e-4432-96f7-a86db2bc425d",
+       "sentence": "Our experiments demonstrate that CFCM is not only accurate but also efficient, requiring significantly fewer computations than other methods."
+      },
+      {
+       "id": "raid:llama-chat:59825d20-00f4-4abf-8cf6-7eec3e063729",
+       "sentence": "The resulting complex encodes information not only about the space X itself, but also about the way in which the witness structure captures the snapshot properties of X."
+      }
+     ]
+    },
+    "raid-claude": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "not only used as hard constraints on the object boundary but also",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "are",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "ce898c28-428f-446f-975e-a1265942f2da",
+       "sentence": "In contrast to existing weakly supervised methods, the extreme points are not only used as hard constraints on the object boundary but also as seeds for generating deep geodesics inside the object."
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 4,
+     "forms": [],
+     "before": [
+      [
+       "harmful",
+       1
+      ],
+      [
+       "including",
+       1
+      ],
+      [
+       "is",
+       1
+      ],
+      [
+       "protect",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "800-826"
+      },
+      {
+       "id": "600-695"
+      },
+      {
+       "id": "200-234"
+      },
+      {
+       "id": "1100-1162"
+      }
+     ]
+    }
+   }
+  },
+  "not_x_its_y": {
+   "label": "“it’s not X, it’s Y”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 5,
+     "forms": [],
+     "before": [
+      [
+       "again",
+       1
+      ],
+      [
+       "right",
+       1
+      ],
+      [
+       "science",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33794180",
+       "link": "https://news.ycombinator.com/item?id=33794180"
+      },
+      {
+       "id": "33794667",
+       "link": "https://news.ycombinator.com/item?id=33794667"
+      },
+      {
+       "id": "33794109",
+       "link": "https://news.ycombinator.com/item?id=33794109"
+      },
+      {
+       "id": "33794583",
+       "link": "https://news.ycombinator.com/item?id=33794583"
+      },
+      {
+       "id": "33794607",
+       "link": "https://news.ycombinator.com/item?id=33794607"
+      }
+     ]
+    }
+   }
+  },
+  "dive_into": {
+   "label": "“dive into” / “let’s explore”",
+   "arms": {
+    "casual-human": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "dive into",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "to",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33793913",
+       "link": "https://news.ycombinator.com/item?id=33793913"
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 1,
+     "forms": [
+      [
+       "dive into",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "you",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "600-656"
+      }
+     ]
+    }
+   }
+  },
+  "in_conclusion": {
+   "label": "“in conclusion” / “in summary”",
+   "arms": {
+    "careful-human": {
+     "occurrences": 4,
+     "forms": [
+      [
+       "to sum up",
+       2
+      ],
+      [
+       "in conclusion",
+       1
+      ],
+      [
+       "in summary",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "conclusion",
+       1
+      ],
+      [
+       "guess",
+       1
+      ],
+      [
+       "hemigod",
+       1
+      ],
+      [
+       "tried",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "598196"
+      },
+      {
+       "id": "598713"
+      },
+      {
+       "id": "598767"
+      },
+      {
+       "id": "190315"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 5,
+     "forms": [
+      [
+       "in conclusion",
+       2
+      ],
+      [
+       "to sum up",
+       2
+      ],
+      [
+       "in summary",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "approach",
+       1
+      ],
+      [
+       "energy",
+       1
+      ],
+      [
+       "frameworks",
+       1
+      ],
+      [
+       "having",
+       1
+      ],
+      [
+       "similarities",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:5d7435c7-509c-4fb2-ade3-e2f8b79e557c",
+       "sentence": "Furthermore, we show how to perform parallel inference as message passing in a suitable factor graph at a linear convergence rate, without having to sum up over all the configurations of the factor."
+      },
+      {
+       "id": "raid:human:9d1b4e7c-7d7c-40fb-b26b-ccaa1c8242a8",
+       "sentence": "To sum up, the network of regions is constructed adaptively to avoid many small regions in the image, and then, community detection algorithms are applied on the resulting adaptive similarity matrix to obtain the final segmented image."
+      },
+      {
+       "id": "raid:human:06749978-bbe4-461a-8751-e52cef66a312",
+       "sentence": "In summary, the proposed geometrization of the Maxwell tensor puts both electromagnetic and gravitational phenomena on an equal footing with both being tied to the curvature of space-time."
+      },
+      {
+       "id": "raid:human:a0103ad1-3eee-4d9a-8e03-7d2dceadf332",
+       "sentence": "In conclusion, the proposed method has a huge potential for extension to other 3D object segmentation tasks from medical images due to its inherent generalizability."
+      },
+      {
+       "id": "raid:human:2263f97d-a0a5-454e-8ef1-1150c79e0baa",
+       "sentence": "In conclusion, the novel network block could be easily embedded in traditional networks and efficiently reinforce the deep learning models for medical imaging segmentation."
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "in conclusion",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "augmentation",
+       1
+      ],
+      [
+       "events",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:97c9041b-25b0-49cf-8f47-58f1fe5ed38c",
+       "sentence": "In conclusion, the paper presents a comprehensive study of presupernova neutrinos and provides realistic emissivities based on stellar evolution models."
+      },
+      {
+       "id": "raid:chatgpt:0b792618-2e5d-42e6-8dea-4f971424dcca",
+       "sentence": "In conclusion, ObjectAug is a valuable addition to the field of semantic image segmentation, as it addresses the limitations of existing data augmentation methods by considering object-level information."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 132,
+     "forms": [
+      [
+       "in summary",
+       81
+      ],
+      [
+       "in conclusion",
+       51
+      ]
+     ],
+     "before": [
+      [
+       "applications",
+       6
+      ],
+      [
+       "segmentation",
+       6
+      ],
+      [
+       "tasks",
+       5
+      ],
+      [
+       "performance",
+       4
+      ],
+      [
+       "environments",
+       3
+      ],
+      [
+       "systems",
+       3
+      ],
+      [
+       "techniques",
+       3
+      ],
+      [
+       "analysis",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:d491aa7c-3468-4ac9-acd1-d72353da723b",
+       "sentence": "In summary, our paper presents a novel approach for efficient energy minimization in statistical enforcement, which enables the scalable enforcement of statistics in machine learning models."
+      },
+      {
+       "id": "raid:llama-chat:899f1ec9-ee52-49f0-8c9a-7763377ba859",
+       "sentence": "In summary, this paper presents a novel approach to address the inconsistent estimation problem in the max-flow problem, specifically in the context of unsupervised image segmentation."
+      },
+      {
+       "id": "raid:llama-chat:6614f2e5-0751-45d0-9633-265eff0097aa",
+       "sentence": "In summary, this paper presents a novel gradient-based algorithm for effective cloud detection and segmentation in satellite imagery, which significantly improves the performance of the PERSIANN-CCS algorithm."
+      },
+      {
+       "id": "raid:llama-chat:a13eb006-dbc8-4c65-808d-28ec6da51f4a",
+       "sentence": "In summary, the Medical Transformer represents a significant advancement in the field of medical image segmentation, offering a powerful and flexible framework for accurately and efficiently segmenting complex medical images."
+      },
+      {
+       "id": "raid:llama-chat:fbc8a5ea-90fa-47b8-8fa7-73dd954f1524",
+       "sentence": "In conclusion, Combo Loss offers a promising solution to the challenges of input and output imbalance in multi-organ segmentation tasks."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 2,
+     "forms": [
+      [
+       "in conclusion",
+       2
+      ]
+     ],
+     "before": [
+      [
+       "mm",
+       1
+      ],
+      [
+       "segmentation",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:e4df2a20-cd81-4d52-9f9d-6657b14fa2b2",
+       "sentence": "In conclusion, U-Net represents a significant advancement in the field of biomedical image segmentation and provides a powerful tool for improving patient outcomes and advancing medical research."
+      },
+      {
+       "id": "raid:mistral-chat:9c8e8c3f-8895-4a0f-a27e-8526ee78184d",
+       "sentence": "In conclusion, the proposed hierarchical random walker segmentation algorithm is a highly accurate and efficient method for segmenting large volumetric biomedical images."
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 34,
+     "forms": [
+      [
+       "in summary",
+       31
+      ],
+      [
+       "to sum up",
+       3
+      ]
+     ],
+     "before": [
+      [
+       "so",
+       7
+      ],
+      [
+       "alphabet",
+       1
+      ],
+      [
+       "ancestry",
+       1
+      ],
+      [
+       "behaviors",
+       1
+      ],
+      [
+       "bubble",
+       1
+      ],
+      [
+       "careers",
+       1
+      ],
+      [
+       "control",
+       1
+      ],
+      [
+       "costly",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "100-136"
+      },
+      {
+       "id": "500-572"
+      },
+      {
+       "id": "200-219"
+      },
+      {
+       "id": "300-327"
+      },
+      {
+       "id": "0-48"
+      }
+     ]
+    }
+   }
+  },
+  "em_dash": {
+   "label": "an em dash",
+   "arms": {
+    "casual-human": {
+     "occurrences": 49,
+     "forms": [
+      [
+       "—",
+       49
+      ]
+     ],
+     "before": [
+      [
+       "trains",
+       2
+      ],
+      [
+       "adapter",
+       1
+      ],
+      [
+       "and",
+       1
+      ],
+      [
+       "calls",
+       1
+      ],
+      [
+       "checklist",
+       1
+      ],
+      [
+       "code",
+       1
+      ],
+      [
+       "companies",
+       1
+      ],
+      [
+       "company",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33794834",
+       "link": "https://news.ycombinator.com/item?id=33794834"
+      },
+      {
+       "id": "33792671",
+       "link": "https://news.ycombinator.com/item?id=33792671"
+      },
+      {
+       "id": "33793227",
+       "link": "https://news.ycombinator.com/item?id=33793227"
+      },
+      {
+       "id": "33794742",
+       "link": "https://news.ycombinator.com/item?id=33794742"
+      },
+      {
+       "id": "33793893",
+       "link": "https://news.ycombinator.com/item?id=33793893"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 133,
+     "forms": [
+      [
+       "—",
+       133
+      ]
+     ],
+     "before": [
+      [
+       "of",
+       4
+      ],
+      [
+       "all",
+       3
+      ],
+      [
+       "am",
+       2
+      ],
+      [
+       "ambition",
+       2
+      ],
+      [
+       "as",
+       2
+      ],
+      [
+       "before",
+       2
+      ],
+      [
+       "cyclops",
+       2
+      ],
+      [
+       "every",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "190527"
+      },
+      {
+       "id": "598053"
+      },
+      {
+       "id": "599074"
+      },
+      {
+       "id": "597929"
+      },
+      {
+       "id": "597943"
+      }
+     ]
+    },
+    "raid-claude": {
+     "occurrences": 6,
+     "forms": [
+      [
+       "—",
+       6
+      ]
+     ],
+     "before": [
+      [
+       "class",
+       1
+      ],
+      [
+       "datasets",
+       1
+      ],
+      [
+       "detail",
+       1
+      ],
+      [
+       "energy",
+       1
+      ],
+      [
+       "scribbles",
+       1
+      ],
+      [
+       "vehicles",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "05f40b6d-67cf-4a6e-ad2f-cfe003b7917e",
+       "sentence": "…e and reduced inter-class variance of ground objects demand long-range contextual reasoning, while the abundance of fine structural detail—building edges, narrow roads, small vehicles—demands the preservation of precise spatial information."
+      },
+      {
+       "id": "c093400c-2bd2-4e0d-a732-f99d499d58a9",
+       "sentence": "…n requires several stochastic forward passes per image, the combination is expensive in memory, computation and energy — precisely the resources that are scarce in the robotics, medical and autonomous-driving settings where calibrated uncer…"
+      },
+      {
+       "id": "24f2ca6c-1cb0-4ff0-a98f-e4c86496f942",
+       "sentence": "Learning from scribbles — sparse, quickly drawn strokes marking a few pixels of each class — is an attractive alternative, yet scribbles carry no information about object extent or shape, so models trained on them tend to leak across bound…"
+      }
+     ]
+    }
+   }
+  },
+  "rule_of_three": {
+   "label": "a three-item list in one sentence",
+   "arms": {
+    "casual-human": {
+     "occurrences": 73,
+     "forms": [],
+     "before": [
+      [
+       "like",
+       4
+      ],
+      [
+       "more",
+       3
+      ],
+      [
+       "of",
+       3
+      ],
+      [
+       "on",
+       3
+      ],
+      [
+       "the",
+       3
+      ],
+      [
+       "his",
+       2
+      ],
+      [
+       "in",
+       2
+      ],
+      [
+       "my",
+       2
+      ]
+     ],
+     "examples": [
+      {
+       "id": "33794834",
+       "link": "https://news.ycombinator.com/item?id=33794834"
+      },
+      {
+       "id": "33792674",
+       "link": "https://news.ycombinator.com/item?id=33792674"
+      },
+      {
+       "id": "33794074",
+       "link": "https://news.ycombinator.com/item?id=33794074"
+      },
+      {
+       "id": "33793842",
+       "link": "https://news.ycombinator.com/item?id=33793842"
+      },
+      {
+       "id": "33793686",
+       "link": "https://news.ycombinator.com/item?id=33793686"
+      }
+     ]
+    },
+    "careful-human": {
+     "occurrences": 149,
+     "forms": [],
+     "before": [
+      [
+       "of",
+       8
+      ],
+      [
+       "in",
+       6
+      ],
+      [
+       "to",
+       5
+      ],
+      [
+       "a",
+       4
+      ],
+      [
+       "from",
+       4
+      ],
+      [
+       "the",
+       4
+      ],
+      [
+       "and",
+       3
+      ],
+      [
+       "are",
+       3
+      ]
+     ],
+     "examples": [
+      {
+       "id": "598969"
+      },
+      {
+       "id": "598422"
+      },
+      {
+       "id": "597613"
+      },
+      {
+       "id": "599041"
+      },
+      {
+       "id": "190968"
+      }
+     ]
+    },
+    "raid-human": {
+     "occurrences": 273,
+     "forms": [
+      [
+       "noise, outliers and other",
+       2
+      ],
+      [
+       "1, 2 and 3",
+       1
+      ],
+      [
+       "1989, godreche and luck",
+       1
+      ],
+      [
+       "4, 2, and 1",
+       1
+      ],
+      [
+       "7, 2015, and has",
+       1
+      ],
+      [
+       "98, 95, and 80",
+       1
+      ],
+      [
+       "accuracy, recall and specificity",
+       1
+      ],
+      [
+       "accuracy, robustness and performance",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "of",
+       16
+      ],
+      [
+       "the",
+       16
+      ],
+      [
+       "for",
+       9
+      ],
+      [
+       "in",
+       9
+      ],
+      [
+       "by",
+       7
+      ],
+      [
+       "to",
+       6
+      ],
+      [
+       "is",
+       5
+      ],
+      [
+       "with",
+       5
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:human:06bffeb2-bea0-4b0b-b60d-767ba9b660a7",
+       "sentence": "Extensive experiments on four challenging datasets, including Cityscapes, CamVid, ADE20K, and Pascal VOC 2012, show that DSD outperforms current state-of-the-art methods, proving its effectiveness and generality."
+      },
+      {
+       "id": "raid:human:630ef64e-3295-4eaf-b366-69b602196016",
+       "sentence": "Handling complex images in an efficient, effective, and robust way is a real challenge, especially in the presence of intensity inhomogeneity, overlap between the foreground/background intensity distributions, objects characterized by many…"
+      },
+      {
+       "id": "raid:human:e7db423f-f521-400e-8406-046b30fcaf28",
+       "sentence": "People are becoming more interested in and relying on social network for information, news and opinion of other users on diverse subject matters."
+      },
+      {
+       "id": "raid:human:9328672b-1e03-48ca-8b71-c8eca538f206",
+       "sentence": "Identification, segmentation and counting of stained colonies play a vital part in high-throughput screening and quantitative assessment of biological assays."
+      },
+      {
+       "id": "raid:human:8dd76c0f-21c1-4eb0-bd58-25658507ca95",
+       "sentence": "Within this context, the present study has sought to characterize the functional brain networks relative to the frontal, parietal, temporal, and occipital lobes."
+      }
+     ]
+    },
+    "raid-chatgpt": {
+     "occurrences": 148,
+     "forms": [
+      [
+       "energy, alignment, and orientation",
+       3
+      ],
+      [
+       "region, edge, and contour",
+       3
+      ],
+      [
+       "video, audio, and text",
+       3
+      ],
+      [
+       "chaining, interpolation, and convexity",
+       2
+      ],
+      [
+       "exponential, hyperbolic, and trigonometric",
+       2
+      ],
+      [
+       "however, accurate and robust",
+       2
+      ],
+      [
+       "users, papers, and authors",
+       2
+      ],
+      [
+       "acoustics, seismology, and optics",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "as",
+       22
+      ],
+      [
+       "including",
+       14
+      ],
+      [
+       "of",
+       13
+      ],
+      [
+       "their",
+       10
+      ],
+      [
+       "the",
+       9
+      ],
+      [
+       "computer",
+       4
+      ],
+      [
+       "image",
+       3
+      ],
+      [
+       "stark",
+       3
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:chatgpt:7a0944e8-f2a5-4c82-87b5-232fcad14e61",
+       "sentence": "The paper introduces a new class of automata called quantitative automata, which extend traditional automata models to incorporate quantitative aspects such as costs, rewards, and probabilities."
+      },
+      {
+       "id": "raid:chatgpt:af383c6d-11c9-4169-a2fa-58280f83ca96",
+       "sentence": "The applications of the inverse power flow problem in power system planning, operation, and control are also discussed, emphasizing the importance of accurate power injection estimation for reliable and efficient power system operation."
+      },
+      {
+       "id": "raid:chatgpt:e5e058ce-be2b-459d-af36-32532aaba5ff",
+       "sentence": "Artificial intelligence (AI) has the potential to revolutionize medical imaging, but its adoption and implementation must be guided by principles that prioritize patient safety, privacy, and ethical considerations."
+      },
+      {
+       "id": "raid:chatgpt:8169f839-943c-4c76-831f-1cba9e363b8d",
+       "sentence": "Infrared imaging is widely used in various fields such as medical diagnosis, surveillance, and target recognition."
+      },
+      {
+       "id": "raid:chatgpt:9aba8fb1-627f-48be-8e3a-ae915051540c",
+       "sentence": "This paper presents a comprehensive review of coherent averaging, including its theoretical foundations, practical implementation, and applications in various fields such as radar, sonar, and medical imaging."
+      }
+     ]
+    },
+    "raid-gpt4": {
+     "occurrences": 360,
+     "forms": [
+      [
+       "accuracy, robustness, and computational",
+       31
+      ],
+      [
+       "accuracy, robustness, and efficiency",
+       8
+      ],
+      [
+       "accuracy, efficiency, and robustness",
+       6
+      ],
+      [
+       "accuracy, sensitivity, and specificity",
+       5
+      ],
+      [
+       "precision, recall, and f1",
+       5
+      ],
+      [
+       "accuracy, precision, and recall",
+       3
+      ],
+      [
+       "color, texture, and spatial",
+       3
+      ],
+      [
+       "existence, uniqueness, and regularity",
+       3
+      ]
+     ],
+     "before": [
+      [
+       "of",
+       77
+      ],
+      [
+       "the",
+       28
+      ],
+      [
+       "as",
+       27
+      ],
+      [
+       "including",
+       22
+      ],
+      [
+       "their",
+       22
+      ],
+      [
+       "computer",
+       21
+      ],
+      [
+       "segmentation",
+       16
+      ],
+      [
+       "autonomous",
+       11
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:gpt4:6bdc1744-0c1f-4e11-82d5-0ecd0c7578c4",
+       "sentence": "Our model is trained and evaluated on several benchmark datasets, demonstrating superior performance in terms of precision, recall, and F-measure."
+      },
+      {
+       "id": "raid:gpt4:33a85e5f-e54c-49f3-9e57-e366ecfa9749",
+       "sentence": "The paper further explores the structural characteristics of these algebras, including their subalgebras, ideals, and homomorphisms."
+      },
+      {
+       "id": "raid:gpt4:2c143943-08cb-4e81-9a2d-61e5996cce4a",
+       "sentence": "The paper provides a detailed comparison of these methods, highlighting their advantages, limitations, and areas of application."
+      },
+      {
+       "id": "raid:gpt4:9b08cc37-a408-4bb8-9b01-480730d13cd8",
+       "sentence": "This paper explores the mathematical concepts of chaining, interpolation, and convexity, and their applications in various fields such as computer science, economics, and engineering."
+      },
+      {
+       "id": "raid:gpt4:3728d50f-31c2-42a0-ac3d-e3a4df58cdb3",
+       "sentence": "Experimental results on several benchmark datasets demonstrate that ACE-Net outperforms existing state-of-the-art models in terms of segmentation accuracy, robustness, and computational efficiency."
+      }
+     ]
+    },
+    "raid-llama-chat": {
+     "occurrences": 854,
+     "forms": [
+      [
+       "recognition, tracking, and scene",
+       23
+      ],
+      [
+       "accuracy, efficiency, and robustness",
+       14
+      ],
+      [
+       "driving, robotics, and medical",
+       8
+      ],
+      [
+       "driving, surveillance, and robotics",
+       6
+      ],
+      [
+       "physics, engineering, and finance",
+       6
+      ],
+      [
+       "exponential, hyperbolic, and trigonometric",
+       5
+      ],
+      [
+       "precision, recall, and f1",
+       5
+      ],
+      [
+       "region, edge, and contour",
+       5
+      ]
+     ],
+     "before": [
+      [
+       "including",
+       86
+      ],
+      [
+       "as",
+       75
+      ],
+      [
+       "of",
+       63
+      ],
+      [
+       "object",
+       47
+      ],
+      [
+       "computer",
+       36
+      ],
+      [
+       "their",
+       31
+      ],
+      [
+       "image",
+       28
+      ],
+      [
+       "autonomous",
+       27
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:llama-chat:6269c059-adf4-4fb3-a357-448aee3e77da",
+       "sentence": "…correcting neural circuit errors are limited, as they often rely on invasive techniques such as electrophysiology or imaging, which can be time-consuming, costly, and may not provide a comprehensive picture of the neural circuit's activity."
+      },
+      {
+       "id": "raid:llama-chat:996a50cb-2911-4900-ad48-7ec8df8c4eaa",
+       "sentence": "Our analysis shows that the learned initialization from MLIS captures important features that are useful for image segmentation, such as edges, textures, and shapes."
+      },
+      {
+       "id": "raid:llama-chat:c00e52e2-0c3c-4819-af90-b644a412be52",
+       "sentence": "We demonstrate the effectiveness of our method on a variety of objects, including cars, planes, and animals, and show that it can generate highly accurate 3D point clouds from a single 2D image."
+      },
+      {
+       "id": "raid:llama-chat:3133cb43-0f30-415d-ac1c-022aeb823fa4",
+       "sentence": "We evaluate our approach on several image filtering tasks, including denoising, deblurring, and segmentation."
+      },
+      {
+       "id": "raid:llama-chat:53e43143-0004-4631-818b-1a5f1c168709",
+       "sentence": "Additionally, the proposed method is computationally efficient and can be applied to various applications, such as image restoration, surveillance, and microscopy imaging."
+      }
+     ]
+    },
+    "raid-mistral-chat": {
+     "occurrences": 307,
+     "forms": [
+      [
+       "precision, recall, and f1",
+       4
+      ],
+      [
+       "accuracy, precision, and recall",
+       3
+      ],
+      [
+       "accuracy, speed, and robustness",
+       3
+      ],
+      [
+       "chaining, interpolation, and convexity",
+       3
+      ],
+      [
+       "color, texture, and shape",
+       3
+      ],
+      [
+       "energy, alignment, and orientation",
+       3
+      ],
+      [
+       "intensity, texture, and shape",
+       3
+      ],
+      [
+       "physics, engineering, and computer",
+       3
+      ]
+     ],
+     "before": [
+      [
+       "as",
+       52
+      ],
+      [
+       "including",
+       42
+      ],
+      [
+       "of",
+       25
+      ],
+      [
+       "the",
+       15
+      ],
+      [
+       "their",
+       10
+      ],
+      [
+       "its",
+       9
+      ],
+      [
+       "in",
+       8
+      ],
+      [
+       "object",
+       7
+      ]
+     ],
+     "examples": [
+      {
+       "id": "raid:mistral-chat:d829febf-613c-4b06-bbde-7ecc5465f7cd",
+       "sentence": "The proposed method leverages 4D longitudinal patient data, which includes spatial, temporal, and temporal-spatial information, to learn patterns in tumor growth."
+      },
+      {
+       "id": "raid:mistral-chat:7cf794d7-b03e-46b2-9010-e25127cfad81",
+       "sentence": "The survey covers various password cracking methods, including brute force, dictionary, and hybrid attacks."
+      },
+      {
+       "id": "raid:mistral-chat:7957c3a2-4071-401e-80a3-99bd9298bb14",
+       "sentence": "We discuss the various factors that influence LFE current, including the morphology, composition, and surface properties of CNWs, as well as the operating conditions such as temperature, voltage, and humidity."
+      },
+      {
+       "id": "raid:mistral-chat:23e3bd2f-a1c6-48c9-80e6-0b58b98cf118",
+       "sentence": "The security of the proposed method is analyzed using statistical measures such as entropy, correlation, and histogram."
+      },
+      {
+       "id": "raid:mistral-chat:e4193de8-8f4e-4a8a-96bb-39ff50858d23",
+       "sentence": "The ACL beam is a type of piezoelectric beam that can be used for various applications such as ultrasonic transducers, sensors, and actuators."
+      }
+     ]
+    },
+    "raid-claude": {
+     "occurrences": 38,
+     "forms": [
+      [
+       "berkeley, sbd and davis",
+       1
+      ],
+      [
+       "camvid, ade20k, and pascal",
+       1
+      ],
+      [
+       "cartoons, statues, and heavily",
+       1
+      ],
+      [
+       "deformable, occluded and visually",
+       1
+      ],
+      [
+       "dice, weighted and focal",
+       1
+      ],
+      [
+       "em, drive, and cvc",
+       1
+      ],
+      [
+       "entropy, tversky, and exponential",
+       1
+      ],
+      [
+       "expensive, laborious and time",
+       1
+      ]
+     ],
+     "before": [
+      [
+       "is",
+       5
+      ],
+      [
+       "the",
+       3
+      ],
+      [
+       "in",
+       2
+      ],
+      [
+       "on",
+       2
+      ],
+      [
+       "a",
+       1
+      ],
+      [
+       "across",
+       1
+      ],
+      [
+       "against",
+       1
+      ],
+      [
+       "an",
+       1
+      ]
+     ],
+     "examples": [
+      {
+       "id": "c404dbd3-7cec-41f5-8b70-968e9212ed7c",
+       "sentence": "…age is decomposed into overlapping tiles that are distributed across a compute cluster, local features (spectral, textural, and spatial) are extracted in parallel, and cluster assignment and centroid update steps are expressed as map and re…"
+      },
+      {
+       "id": "fbc8a5ea-90fa-47b8-8fa7-73dd954f1524",
+       "sentence": "We evaluate Combo loss against Dice, weighted and focal cross-entropy, Tversky, and exponential logarithmic losses on multi-organ and lesion segmentation tasks in CT and MRI, using several fully convolutional backbones."
+      },
+      {
+       "id": "72c41b8d-0069-4886-b734-a4000ffca286",
+       "sentence": "Training is performed directly on the survey of interest, allowing the network to adapt to its particular wavelet, resolution, and noise characteristics."
+      },
+      {
+       "id": "1e89cdc5-f7ba-4f0b-a2f3-22285fade7a5",
+       "sentence": "The detected landmarks then drive a piecewise polynomial curve fitting module that reconstructs a smooth, continuous and anatomically plausible root boundary, which is fused with the coarse probability map through a curve-guided refinement…"
+      },
+      {
+       "id": "f95b107b-d176-4af5-90f7-4d0bb20caf93",
+       "sentence": "Usually, pixel-level annotations are expensive, laborious and time-consuming for the large size of segmentation datasets."
+      }
+     ]
+    },
+    "hc3-gpt35": {
+     "occurrences": 372,
+     "forms": [],
+     "before": [
+      [
+       "as",
+       34
+      ],
+      [
+       "of",
+       31
+      ],
+      [
+       "including",
+       21
+      ],
+      [
+       "like",
+       21
+      ],
+      [
+       "the",
+       20
+      ],
+      [
+       "to",
+       12
+      ],
+      [
+       "in",
+       11
+      ],
+      [
+       "for",
+       10
+      ]
+     ],
+     "examples": [
+      {
+       "id": "800-874"
+      },
+      {
+       "id": "200-212"
+      },
+      {
+       "id": "600-673"
+      },
+      {
+       "id": "800-898"
+      },
+      {
+       "id": "1000-1097"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

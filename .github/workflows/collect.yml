@@ -1,7 +1,7 @@
 name: collect
 # Rebuilds the corpora from their public sources and re-measures every marker. The corpus text is
-# never committed: out/ stays on the runner and only data/markers.json, which is ids and numbers,
-# lands in the repository.
+# never committed: out/ stays on the runner, and what lands in the repository is data/markers.json
+# (ids and numbers) and data/evidence.json (numbers, plus sentences from the MIT-licensed RAID arms).
 on:
   workflow_dispatch:
   schedule:
@@ -26,7 +26,9 @@ jobs:
       - run: npm ci
       - run: npx tsx collector/fetch.ts --want 4000
       - run: npx tsx collector/fetch-raid.ts --want 1500 --models gpt4,chatgpt,llama-chat,mistral-chat
+      - run: npx tsx scripts/contamination.ts
       - run: npx tsx scripts/measure-all.ts
+      - run: npx tsx scripts/evidence.ts
       - run: npm test
       - name: Commit the measurement
         run: |
