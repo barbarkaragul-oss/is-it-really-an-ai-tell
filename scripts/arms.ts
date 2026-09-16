@@ -17,8 +17,8 @@ export const OUT = path.resolve('out');
 export interface ArmSpec { id: string; label: string; kind: 'human' | 'machine'; file: string; publishable: boolean }
 
 export const ARMS: ArmSpec[] = [
-  { id: 'casual-human', label: 'casual human (Hacker News, before ChatGPT)', kind: 'human', file: 'casual-human', publishable: false },
-  { id: 'careful-human', label: 'careful human (Stack Exchange answers, same period)', kind: 'human', file: 'careful-human', publishable: false },
+  { id: 'casual-human', label: 'casual writing: online comments from before ChatGPT (Hacker News)', kind: 'human', file: 'casual-human', publishable: false },
+  { id: 'careful-human', label: 'careful writing: edited Q&A answers from the same period (Stack Exchange)', kind: 'human', file: 'careful-human', publishable: false },
   { id: 'raid-human', label: 'human (RAID: the documents every model continued)', kind: 'human', file: 'raid-human', publishable: true },
   { id: 'raid-chatgpt', label: 'GPT-3.5 (same documents)', kind: 'machine', file: 'raid-chatgpt-clean', publishable: true },
   { id: 'raid-gpt4', label: 'GPT-4 (same documents)', kind: 'machine', file: 'raid-gpt4-clean', publishable: true },

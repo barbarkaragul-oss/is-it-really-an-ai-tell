@@ -24,7 +24,13 @@ const CONTEXT = ['casual-human', 'careful-human', 'hc3-gpt35'];
 const PERSON = 'raid-human';
 const SHORT: Record<string, string> = {
   'raid-human': 'Person', 'raid-chatgpt': 'GPT-3.5', 'raid-gpt4': 'GPT-4', 'raid-llama-chat': 'Llama', 'raid-mistral-chat': 'Mistral',
-  'raid-claude': 'Claude*', 'casual-human': 'HN comments', 'careful-human': 'SE answers', 'hc3-gpt35': 'GPT-3.5 answers',
+  'raid-claude': 'Claude*', 'casual-human': 'Casual writing', 'careful-human': 'Careful writing', 'hc3-gpt35': 'GPT-3.5 Q&A',
+};
+// what a column is, for its tooltip; the source is named, but it is not what the column stands for
+const LONG: Record<string, string> = {
+  'casual-human': 'Casual writing: everyday online comments posted before ChatGPT existed (source: Hacker News)',
+  'careful-human': 'Careful writing: edited question-and-answer posts from the same period (source: Stack Exchange)',
+  'hc3-gpt35': 'GPT-3.5 answering questions: a different task, kept for contrast (source: HC3)',
 };
 const VERDICT: Record<string, [cls: string, text: string, why: string]> = {
   'machine marker': ['machine', 'GPT-4 marker', 'GPT-4 uses it clearly more than the person writing the same abstract, and careful human writing does not account for it.'],
@@ -83,7 +89,8 @@ function renderTable(page: Page): void {
   const context = CONTEXT.filter((a) => present.has(a));
   const cols = writers.length + context.length + 2;
   const table = $('markers');
-  const head = `<thead><tr><th>Marker</th>${writers.map((a) => `<th title="${esc(page.arms.find((x) => x.id === a)?.label ?? '')}">${short(a)}</th>`).join('')}${context.map((a, i) => `<th class="ctx${i === 0 ? ' sep' : ''}" title="${esc(page.arms.find((x) => x.id === a)?.label ?? '')}">${short(a)}</th>`).join('')}<th>Verdict</th></tr></thead>`;
+  const tip = (a: string): string => esc(LONG[a] ?? page.arms.find((x) => x.id === a)?.label ?? '');
+  const head = `<thead><tr><th>Marker</th>${writers.map((a) => `<th title="${tip(a)}">${short(a)}</th>`).join('')}${context.map((a, i) => `<th class="ctx${i === 0 ? ' sep' : ''}" title="${tip(a)}">${short(a)}</th>`).join('')}<th>Verdict</th></tr></thead>`;
   const line = (row: Row): string => {
     const [cls, text, why] = VERDICT[row.verdict] ?? ['none', row.verdict, ''];
     const cell = row.countable ? rateCellHtml : shareCellHtml;
@@ -204,7 +211,7 @@ function analyse(text: string): Found {
 
 function foundTable(page: Page, f: Found, writer: string | null): string {
   const rows = new Map(page.rows.map((r) => [r.marker, r]));
-  const ctx = ['raid-human', 'raid-gpt4', 'casual-human'].filter((a) => page.arms.some((x) => x.id === a));
+  const ctx = ['raid-human', 'raid-gpt4', 'casual-human', 'careful-human'].filter((a) => page.arms.some((x) => x.id === a));
   const extra = writer && !ctx.includes(writer) ? [writer] : [];
   const cols = [...ctx, ...extra];
   const counted = [...f.counts.entries()].filter(([id]) => rows.has(id));

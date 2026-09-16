@@ -28,7 +28,7 @@
   <section id="table-section">
     <div class="section-head">
       <h2>The markers</h2>
-      <p class="muted">Every column below except the last three is the <b>same 1,499 academic abstracts</b>: written by a person, and continued by each model from the same prompt (<a href="https://github.com/liamdugan/raid">RAID</a>). A difference between those columns is about the writer, not the subject. Tinted cells are well above <span class="swatch up"></span> or below <span class="swatch down"></span> the person. Click a row to see what was counted.</p>
+      <p class="muted">Every column below except the last three is the <b>same 1,499 academic abstracts</b>: written by a person, and continued by each model from the same prompt (<a href="https://github.com/liamdugan/raid">RAID</a>). A difference between those columns is about the writer, not the subject. Tinted cells are well above <span class="swatch up"></span> or below <span class="swatch down"></span> the person. The last three columns are for comparison: everyday casual writing, careful edited writing, and a chatbot answering questions. Click a row to see what was counted.</p>
     </div>
     <div class="table-scroll"><table id="markers"></table></div>
     <p class="muted foot">* Claude was generated for this project (45 abstracts, reached through Claude Code) and the same system wrote this page; <a href="https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell#a-claude-arm-generated-here">the caveats</a> matter. The verdict compares GPT-4 with the person; the placebo check (the person's abstracts split at random) ties on every row.</p>
@@ -63,10 +63,10 @@
     <h2>How it is counted</h2>
     <ul>
       <li><b>Two measures.</b> A word or phrase is counted per thousand words, which does not care how long a text is. A property of the whole text, such as <i>no contractions anywhere</i>, is the share of texts that have it, with each arm matched to the person's abstracts by length.</li>
-      <li><b>Patterns, shown.</b> Every marker is a regular expression. For every cell the page can show what it matched: the forms, the word in front, and five sentences picked by a seeded shuffle. Sentences are quoted from RAID (MIT) and the Claude arm only; Hacker News and Stack Exchange are linked.</li>
+      <li><b>Patterns, shown.</b> Every marker is a regular expression. For every cell the page can show what it matched: the forms, the word in front, and five sentences picked by a seeded shuffle. Sentences are quoted from RAID (MIT) and the Claude arm only; the casual and careful writing is linked to where it was posted, not quoted.</li>
       <li><b>A placebo.</b> The person's abstracts are split at random and everything runs on both halves. Every row should tie, and does.</li>
       <li><b>Remembered, not written.</b> Asked for the abstract of a real paper, a model can reproduce the published one. Machine texts that share more than half their five-word sequences with the human document are dropped: none of RAID's, five of Claude's fifty.</li>
-      <li><b>Context arms.</b> Hacker News comments and Stack Exchange answers from before ChatGPT existed, and GPT-3.5 answering questions (HC3). They are a different genre, so they are not tinted; they are there to show how much of a marker is about the kind of document.</li>
+      <li><b>Casual and careful writing.</b> Casual writing is everyday online comments; careful writing is edited question-and-answer posts; both are from before ChatGPT existed, so a person wrote them (sources: Hacker News and Stack Exchange). The third comparison column is GPT-3.5 answering questions (HC3). These are other kinds of writing, so they are not tinted; they show how much of a marker is about the kind of text rather than the writer. Each comes from one source for now, and more kinds of writing, such as essays, email and social posts, are the next thing to add.</li>
     </ul>
     <p class="muted" id="generated"></p>
   </section>

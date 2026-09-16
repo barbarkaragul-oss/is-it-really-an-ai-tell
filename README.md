@@ -29,11 +29,11 @@ Occurrences per thousand words, on the full arms. RAID gives the same 1499 docum
 
 **“Leverage” as a verb is the marker that generalises**: every model runs 1.83–2.14 per thousand against 0.27 for the person writing the same document.
 
-**The em dash appears in none of the five machine arms** — and in human writing at 0.43 (Hacker News) and 0.63 (Stack Exchange) per thousand. Academic prose has none of it by either writer. Judging by em dashes is judging what kind of document you are reading.
+**The em dash appears in none of the five machine arms** — and in human writing at 0.27 per thousand in casual online comments and 0.48 in edited Q&A answers. Academic prose has none of it by either writer. Judging by em dashes is judging what kind of document you are reading.
 
 ### What the patterns actually caught
 
-A rate says a pattern fired. [`data/evidence.json`](data/evidence.json) says what it fired on: for every countable marker and every arm, the forms that matched, the word in front of each match, and five sentences picked by a seeded shuffle rather than by anyone looking for good ones. Sentences are quoted only from RAID (MIT) and the Claude arm; Hacker News and Stack Exchange texts are linked, not quoted.
+A rate says a pattern fired. [`data/evidence.json`](data/evidence.json) says what it fired on: for every countable marker and every arm, the forms that matched, the word in front of each match, and five sentences picked by a seeded shuffle rather than by anyone looking for good ones. Sentences are quoted only from RAID (MIT) and the Claude arm; the casual and careful writing is linked to where it was posted, not quoted.
 
 Reading them turned up two things the rates hid.
 
@@ -41,11 +41,11 @@ Reading them turned up two things the rates hid.
 
 **GPT-4's lists of three are mostly one list.** “accuracy, robustness, and computational [efficiency]” appears 31 times in its 1,499 abstracts, with “accuracy, robustness, and efficiency” and “accuracy, efficiency, and robustness” close behind. The rule-of-three count there is measuring a template more than a rhythm.
 
-Looking also fixed two labels. “Leverage” as a verb was counting the noun as well (“100x leverage” on Hacker News); that only ever touched the two non-RAID human arms, which dropped from 4 matches to 1 and from 3 to 1, while every RAID match is the verb. The hedging phrase has always counted “worth noting” too, and its label now says so.
+Looking also fixed two labels. “Leverage” as a verb was counting the noun as well (“100x leverage” in an online comment); that only ever touched the casual and careful writing arms, while every RAID match is the verb. The hedging phrase has always counted “worth noting” too, and its label now says so.
 
 ### A correction worth stating plainly
 
-An earlier version of this README, built when the only machine arm was HC3, reported “it is important to note” as the hedging formula that defined GPT-3.5. With RAID's GPT-3.5 arm answering the same documents, that phrase runs at **0.00 per thousand** — while HC3, which is GPT-3.5 *answering questions*, runs at **0.58**. So it is a habit of the assistant-answering-a-question task, not of the model. Matching the documents is what made the difference visible, and the earlier claim was wrong.
+An earlier version of this README, built when the only machine arm was HC3, reported “it is important to note” as the hedging formula that defined GPT-3.5. With RAID's GPT-3.5 arm answering the same documents, that phrase runs at **0.00 per thousand** — while HC3, which is GPT-3.5 *answering questions*, runs at **0.50**. So it is a habit of the assistant-answering-a-question task, not of the model. Matching the documents is what made the difference visible, and the earlier claim was wrong.
 
 ## A Claude arm, generated here
 
@@ -104,27 +104,27 @@ before this one.
 
 Some markers are properties of a whole text — “every sentence the same length”, “no contractions anywhere” — and a rate per thousand words means nothing for them. Those are reported as the share of texts that carry it, with each arm length-matched against the human reference (the n of each pairing is in [`data/markers.json`](data/markers.json)).
 
-| marker | casual human | careful human | human (RAID) | GPT-3.5 | GPT-4 | verdict |
+| marker | casual writing | careful writing | human (RAID) | GPT-3.5 | GPT-4 | verdict |
 |---|---|---|---|---|---|---|
-| every sentence the same length | 18.5% | 19.8% | 64.2% | 96.1% | **94.1%** | machine marker |
-| no first person\* | 20.7% | 24.7% | 89.3% | 99.7% | **100.0%** | machine marker |
-| a three-item list in one sentence | 7.9% | 9.1% | 14.9% | 7.9% | 21.3% | machine marker |
-| no contractions\* | 23.2% | 31.8% | 89.3% | 95.4% | 85.0% | register marker |
-| no informal spelling\* | 92.4% | 98.3% | 100.0% | 100.0% | 100.0% | register marker |
+| every sentence the same length | 20.4% | 19.8% | 64.2% | 96.1% | **94.1%** | machine marker |
+| no first person\* | 18.0% | 29.2% | 89.3% | 99.7% | **100.0%** | machine marker |
+| a three-item list in one sentence | 10.2% | 9.9% | 14.9% | 7.9% | 21.3% | machine marker |
+| no contractions\* | 17.8% | 31.8% | 89.3% | 95.4% | 85.0% | register marker |
+| no informal spelling\* | 92.7% | 98.6% | 100.0% | 100.0% | 100.0% | register marker |
 
 \* a marker people are documented to judge by rather than one anybody measured ([Jakesch et al., PNAS 2023](https://www.pnas.org/doi/10.1073/pnas.2208839120)).
 
-**Contractions are the belief that fails**: careful humans (31.8%) and the human academic arm (89.3%) sit beside the machines, far from casual writing (23.2%). Judging by contractions is judging how carefully somebody wrote. **First person is the belief that holds**: 100.0% of GPT-4 texts avoid “I” against 20.7% of casual human ones.
+**Contractions are the belief that fails**: careful writers (31.8%) and the human academic arm (89.3%) sit beside the machines, far from casual writing (17.8%). Judging by contractions is judging how carefully somebody wrote. **First person is the belief that holds**: 100.0% of GPT-4 texts avoid “I” against 18.0% of casual ones.
 
 ## The arms
 
 | arm | what it is | texts |
 |---|---|---|
-| casual human | Hacker News comments posted before **2022-11-30**, the day ChatGPT opened | 1200 |
-| careful human | Stack Exchange answers (english, academia, writing) from the same period | 1200 |
+| casual writing | everyday online comments posted before **2022-11-30**, the day ChatGPT opened (source: Hacker News) | 4000 |
+| careful writing | edited question-and-answer posts from the same period (source: Stack Exchange: english, academia, writing) | 4002 |
 | human (RAID) | the human documents every model was asked to continue | 1499 |
 | GPT-3.5, GPT-4, Llama chat, Mistral chat | [RAID](https://github.com/liamdugan/raid) continuations of those same documents, unattacked rows only | 1499 each |
-| HC3 | GPT-3.5 answering questions — a different task, kept as the contrast that produced the correction above | 1200 |
+| HC3 | GPT-3.5 answering questions — a different task, kept as the contrast that produced the correction above | 4000 |
 
 RAID's adversarial rows — homoglyphs, inserted whitespace, deliberate misspellings — are excluded; measuring style markers there would measure the attack.
 
@@ -154,7 +154,7 @@ npm test
 ## Limits
 
 - **Five writers, and one of them is this repository's own.** Four come from a published benchmark; the Claude arm was generated here, is a tenth of the size, and carries the caveats in its own section. No Gemini at all.
-- **One genre for the matched set.** RAID is news, abstracts, books and poetry; the Hacker News and Stack Exchange arms are there to show how much of a marker is really about genre, but they are not matched by document.
+- **One genre for the matched set, one source for each comparison.** The matched documents are academic abstracts; casual and careful writing are there to show how much of a marker is really about the kind of text, but they are not matched by document and each comes from a single site. Essays, email and social posts are not in yet.
 - **Markers are regexes.** “Delve” catches the word and not the idea, and irony is invisible to all of it.
 - **Presence and rate disagree sometimes**, and when they do the rate is the one that survived length.
 - **English only.**
