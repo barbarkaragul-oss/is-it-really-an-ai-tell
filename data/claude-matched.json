@@ -1,0 +1,870 @@
+{
+ "generated_at": "2026-09-16T18:26:55.654Z",
+ "documents": 45,
+ "note": "Rates per thousand words on the documents the generated Claude arm covers, for every RAID writer. Small counts: read the occurrences.",
+ "source_ids": [
+  "04d3809c-0abe-4bee-b1d2-9787af95362f",
+  "05f40b6d-67cf-4a6e-ad2f-cfe003b7917e",
+  "06bffeb2-bea0-4b0b-b60d-767ba9b660a7",
+  "07dc10ce-198b-4398-901a-872cd727f5e9",
+  "0818a486-cec9-4668-bef1-e22e2f92b912",
+  "162114f5-d069-46bf-a0c6-b5d9cf465c61",
+  "1649f195-8f98-4c79-92b6-54a5ca9261fa",
+  "1e89cdc5-f7ba-4f0b-a2f3-22285fade7a5",
+  "2003dcc1-7c5b-4c86-9263-cdcda09a1655",
+  "24f2ca6c-1cb0-4ff0-a98f-e4c86496f942",
+  "27891e8c-5a91-4bbc-a1a8-1de8c44fe219",
+  "27db1b2d-f18b-492a-afb6-0ef17287a61e",
+  "285debed-9666-4c9c-b086-1d1ecbbcfff6",
+  "2b623feb-b86c-48f8-84df-83ac9d36359f",
+  "380cd71d-3300-422c-9cde-8a63e71f2797",
+  "3f74bd45-21ac-4446-8591-88f32baafbaf",
+  "417afaa2-2d21-4df1-953b-768647de9980",
+  "427b7a84-0ebe-4169-b118-abdaed57d65f",
+  "53e6c118-bd9b-4e37-9670-7c4ee5621a66",
+  "59635421-a84f-4293-be66-323c49fca652",
+  "59abcb55-9a95-4a34-9479-70cc7198c288",
+  "5e23ab14-b85f-48e8-9aa3-15452e73524e",
+  "5eb88a59-eb5a-49ea-8304-f67efe338921",
+  "72c41b8d-0069-4886-b734-a4000ffca286",
+  "72fe360b-cce6-4daf-b66a-1d778f5964f8",
+  "764ed713-72bd-43c1-85da-9b71c62bd873",
+  "823ab1a3-8a1d-4d4b-bab4-92dcb32285a2",
+  "853c0e51-7dd5-4bb5-8286-e4aa8820173b",
+  "856d8972-9e3d-4544-babc-0fe16f21e04d",
+  "92bcf142-f39d-48c7-a63e-0b770803fc81",
+  "93029efb-6d75-45e7-bcfa-6ccd61690b3f",
+  "a7ce4b85-f4ec-45a2-b1f4-5219923dbbd2",
+  "b00bf7dc-4de9-4ab4-9962-a16e0b5f4628",
+  "bb5299ed-bebd-4210-b65b-6e466c875342",
+  "bc43fe33-d378-4bc3-b666-038cbacbdbc8",
+  "c093400c-2bd2-4e0d-a732-f99d499d58a9",
+  "c404dbd3-7cec-41f5-8b70-968e9212ed7c",
+  "ce898c28-428f-446f-975e-a1265942f2da",
+  "d0064195-c22e-4550-a265-6b372deea3e0",
+  "d4f93d77-d6d9-4ee1-91d8-58ce8c7fe216",
+  "e9899aaa-4e38-408c-bc2c-7f1fb3cf934c",
+  "ef61c066-14f3-413e-a266-afb9742903d9",
+  "eff4a017-daa1-4b5d-84ac-927333aaa900",
+  "f95b107b-d176-4af5-90f7-4d0bb20caf93",
+  "fbc8a5ea-90fa-47b8-8fa7-73dd954f1524"
+ ],
+ "rows": [
+  {
+   "marker": "delve",
+   "label": "“delve”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "tapestry",
+   "label": "“tapestry”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "moreover",
+   "label": "“moreover”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0.5497526113249038,
+     "occurrences": 5,
+     "words": 9095,
+     "lo": 0.1683344235810592,
+     "hi": 1.32452752881759
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0.35332567794364456,
+     "occurrences": 4,
+     "words": 11321,
+     "lo": 0.0836523685134228,
+     "hi": 0.9691150350729962
+    }
+   }
+  },
+  {
+   "marker": "furthermore",
+   "label": "“furthermore”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0.2199010445299615,
+     "occurrences": 2,
+     "words": 9095,
+     "lo": 0.02554131855444811,
+     "hi": 0.8061856837145936
+    },
+    "raid-chatgpt": {
+     "per1000": 0.8440243079000675,
+     "occurrences": 5,
+     "words": 5924,
+     "lo": 0.27405239536102227,
+     "hi": 1.9696711815191692
+    },
+    "raid-gpt4": {
+     "per1000": 1.0070493454179255,
+     "occurrences": 5,
+     "words": 4965,
+     "lo": 0.3269861812927887,
+     "hi": 2.3501172365195484
+    },
+    "raid-llama-chat": {
+     "per1000": 0.30962148773124853,
+     "occurrences": 4,
+     "words": 12919,
+     "lo": 0.08436143460223339,
+     "hi": 0.7927539806024374
+    },
+    "raid-mistral-chat": {
+     "per1000": 0.16975046681378375,
+     "occurrences": 1,
+     "words": 5891,
+     "lo": 0.0042977097240353,
+     "hi": 0.9457890665319814
+    },
+    "raid-claude": {
+     "per1000": 0.08833141948591114,
+     "occurrences": 1,
+     "words": 11321,
+     "lo": 0.001427732929023954,
+     "hi": 0.5399460258525214
+    }
+   }
+  },
+  {
+   "marker": "crucial",
+   "label": "“crucial”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0.9895547003848268,
+     "occurrences": 9,
+     "words": 9095,
+     "lo": 0.45248742137200604,
+     "hi": 1.878483062277902
+    },
+    "raid-chatgpt": {
+     "per1000": 1.350438892640108,
+     "occurrences": 8,
+     "words": 5924,
+     "lo": 0.5830236625164574,
+     "hi": 2.6609029743745376
+    },
+    "raid-gpt4": {
+     "per1000": 0.8056394763343404,
+     "occurrences": 4,
+     "words": 4965,
+     "lo": 0.2195096422207962,
+     "hi": 2.0627570343208235
+    },
+    "raid-llama-chat": {
+     "per1000": 0.6966483473953092,
+     "occurrences": 9,
+     "words": 12919,
+     "lo": 0.3185519852448638,
+     "hi": 1.3224555655559656
+    },
+    "raid-mistral-chat": {
+     "per1000": 1.188253267696486,
+     "occurrences": 7,
+     "words": 5891,
+     "lo": 0.4777394417790768,
+     "hi": 2.4482558753523938
+    },
+    "raid-claude": {
+     "per1000": 0.17666283897182228,
+     "occurrences": 2,
+     "words": 11321,
+     "lo": 0.021394689386446928,
+     "hi": 0.6381669170322126
+    }
+   }
+  },
+  {
+   "marker": "realm",
+   "label": "“realm”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "showcase",
+   "label": "“showcase”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0.10995052226498075,
+     "occurrences": 1,
+     "words": 9095,
+     "lo": 0.0027837062104774,
+     "hi": 0.6126051007080706
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0.07740537193281213,
+     "occurrences": 1,
+     "words": 12919,
+     "lo": 0.0019597343435476394,
+     "hi": 0.4312751289526977
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "underscore",
+   "label": "“underscores”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "leverage",
+   "label": "“leverage” as a verb",
+   "rate": {
+    "raid-human": {
+     "per1000": 0.5497526113249038,
+     "occurrences": 5,
+     "words": 9095,
+     "lo": 0.17850317648363892,
+     "hi": 1.2829392060824143
+    },
+    "raid-chatgpt": {
+     "per1000": 4.051316677920324,
+     "occurrences": 24,
+     "words": 5924,
+     "lo": 2.5957550396156273,
+     "hi": 6.028038081323161
+    },
+    "raid-gpt4": {
+     "per1000": 4.632426988922457,
+     "occurrences": 23,
+     "words": 4965,
+     "lo": 2.936561336765595,
+     "hi": 6.9509149838564985
+    },
+    "raid-llama-chat": {
+     "per1000": 2.631782645715613,
+     "occurrences": 34,
+     "words": 12919,
+     "lo": 1.8225859884336357,
+     "hi": 3.6776524572480227
+    },
+    "raid-mistral-chat": {
+     "per1000": 2.376506535392972,
+     "occurrences": 14,
+     "words": 5891,
+     "lo": 1.2992582373619574,
+     "hi": 3.9873741507099005
+    },
+    "raid-claude": {
+     "per1000": 0.17666283897182228,
+     "occurrences": 2,
+     "words": 11321,
+     "lo": 0.021394689386446928,
+     "hi": 0.6381669170322126
+    }
+   }
+  },
+  {
+   "marker": "important_to_note",
+   "label": "“it is (also) important to note” / “worth noting”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "in_todays",
+   "label": "“in today’s …”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "not_only_but_also",
+   "label": "“not only … but also”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0.10995052226498075,
+     "occurrences": 1,
+     "words": 9095,
+     "lo": 0.00238954654755609,
+     "hi": 0.6329483414599901
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0.08833141948591114,
+     "occurrences": 1,
+     "words": 11321,
+     "lo": 0.0018862956368222068,
+     "hi": 0.5103678731271809
+    }
+   }
+  },
+  {
+   "marker": "not_x_its_y",
+   "label": "“it’s / this isn’t X, it’s Y”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "dive_into",
+   "label": "“dive into” / “let’s explore”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "in_conclusion",
+   "label": "“in conclusion” / “in summary” / “to sum (it) up”",
+   "rate": {
+    "raid-human": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 9095,
+     "lo": 0,
+     "hi": 0.40559422255238686
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0.4644322315968728,
+     "occurrences": 6,
+     "words": 12919,
+     "lo": 0.17043844364818353,
+     "hi": 1.0108734439602303
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 11321,
+     "lo": 0,
+     "hi": 0.325843958494299
+    }
+   }
+  },
+  {
+   "marker": "em_dash",
+   "label": "a dash, however it is typed",
+   "rate": {
+    "raid-human": {
+     "per1000": 0.10995052226498075,
+     "occurrences": 1,
+     "words": 9095,
+     "lo": 0.0027837062104774,
+     "hi": 0.6126051007080706
+    },
+    "raid-chatgpt": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5924,
+     "lo": 0,
+     "hi": 0.6227007856370625
+    },
+    "raid-gpt4": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 4965,
+     "lo": 0,
+     "hi": 0.7429767279182192
+    },
+    "raid-llama-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 12919,
+     "lo": 0,
+     "hi": 0.285539086161
+    },
+    "raid-mistral-chat": {
+     "per1000": 0,
+     "occurrences": 0,
+     "words": 5891,
+     "lo": 0,
+     "hi": 0.6261890093556202
+    },
+    "raid-claude": {
+     "per1000": 0.7066513558872891,
+     "occurrences": 8,
+     "words": 11321,
+     "lo": 0.1918524070109879,
+     "hi": 1.8125804943715602
+    }
+   }
+  },
+  {
+   "marker": "rule_of_three",
+   "label": "a three-item list (“and” or “or”; a longer middle item only before a serial comma)",
+   "rate": {
+    "raid-human": {
+     "per1000": 1.759208356239692,
+     "occurrences": 16,
+     "words": 9095,
+     "lo": 0.9154975092099777,
+     "hi": 3.0576236894356854
+    },
+    "raid-chatgpt": {
+     "per1000": 1.688048615800135,
+     "occurrences": 10,
+     "words": 5924,
+     "lo": 0.6198153155713769,
+     "hi": 3.6730181274281963
+    },
+    "raid-gpt4": {
+     "per1000": 4.833836858006042,
+     "occurrences": 24,
+     "words": 4965,
+     "lo": 3.038203712490273,
+     "hi": 7.3017985079931895
+    },
+    "raid-llama-chat": {
+     "per1000": 5.573186779162474,
+     "occurrences": 72,
+     "words": 12919,
+     "lo": 4.042374067036684,
+     "hi": 7.492874261646282
+    },
+    "raid-mistral-chat": {
+     "per1000": 2.71600746902054,
+     "occurrences": 16,
+     "words": 5891,
+     "lo": 1.5084117454605557,
+     "hi": 4.505107395924721
+    },
+    "raid-claude": {
+     "per1000": 5.653210847098313,
+     "occurrences": 64,
+     "words": 11321,
+     "lo": 4.149004029060082,
+     "hi": 7.52491518343325
+    }
+   }
+  }
+ ]
+}

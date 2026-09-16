@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-16T18:22:03.375Z",
+ "generated_at": "2026-09-16T18:26:54.966Z",
  "seed": 20260916,
  "per_cell": 5,
  "note": "Sentences are quoted only from RAID (MIT) and from the Claude arm generated for this repository. Hacker News and Stack Exchange texts are linked, not quoted; HC3 is referenced by id.",
@@ -63,9 +63,9 @@
   "hc3-gpt35": {
    "label": "GPT-3.5 answering questions (HC3, a different genre)",
    "publishable": false,
-   "texts": 4000,
-   "words": 740914,
-   "we_per1000": 1.6749582272706414
+   "texts": 3967,
+   "words": 736294,
+   "we_per1000": 1.6773191143755075
   }
  },
  "markers": {
@@ -3109,15 +3109,15 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 485,
+     "occurrences": 481,
      "forms": [
       [
        "it's important to note",
-       250
+       248
       ],
       [
        "it is important to note",
-       99
+       98
       ],
       [
        "it's also important to note",
@@ -3133,7 +3133,7 @@
       ],
       [
        "it's worth noting",
-       18
+       17
       ],
       [
        "it is also worth noting",
@@ -3147,11 +3147,11 @@
      "before": [
       [
        "however",
-       92
+       91
       ],
       [
        "finally",
-       14
+       13
       ],
       [
        "it",
@@ -3180,19 +3180,19 @@
      ],
      "examples": [
       {
-       "id": "hc3:3700:3733"
+       "id": "hc3:3800:3869"
       },
       {
-       "id": "hc3:3900:3944"
+       "id": "hc3:400:440"
       },
       {
-       "id": "hc3:1000:1080"
+       "id": "hc3:3100:3127"
       },
       {
-       "id": "hc3:300:348"
+       "id": "hc3:1800:1805"
       },
       {
-       "id": "hc3:500:530"
+       "id": "hc3:800:841"
       }
      ]
     }
@@ -4841,7 +4841,7 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 85,
+     "occurrences": 83,
      "forms": [
       [
        "-",
@@ -4853,7 +4853,7 @@
       ],
       [
        "—",
-       7
+       5
       ],
       [
        "--",
@@ -4867,7 +4867,7 @@
      "before": [
       [
        "feedback",
-       7
+       5
       ],
       [
        "device",
@@ -4900,16 +4900,16 @@
      ],
      "examples": [
       {
-       "id": "hc3:2800:2804"
+       "id": "hc3:1000:1062"
       },
       {
-       "id": "hc3:1100:1130"
+       "id": "hc3:3600:3608"
       },
       {
-       "id": "hc3:800:818"
+       "id": "hc3:1000:1020"
       },
       {
-       "id": "hc3:300:319"
+       "id": "hc3:2300:2353"
       },
       {
        "id": "hc3:1400:1419"
@@ -5600,16 +5600,16 @@
      ]
     },
     "hc3-gpt35": {
-     "occurrences": 2301,
+     "occurrences": 2294,
      "forms": [],
      "before": [
       [
        "as",
-       186
+       185
       ],
       [
        "of",
-       161
+       160
       ],
       [
        "the",
@@ -5617,7 +5617,7 @@
       ],
       [
        "like",
-       126
+       124
       ],
       [
        "including",
@@ -5638,19 +5638,19 @@
      ],
      "examples": [
       {
-       "id": "hc3:3700:3703"
+       "id": "hc3:3500:3566"
       },
       {
-       "id": "hc3:3800:3819"
+       "id": "hc3:1800:1888"
       },
       {
-       "id": "hc3:2300:2295"
+       "id": "hc3:2200:2234"
       },
       {
-       "id": "hc3:3500:3537"
+       "id": "hc3:2200:2274"
       },
       {
-       "id": "hc3:2900:2957"
+       "id": "hc3:3300:3363"
       }
      ]
     }
