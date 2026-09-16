@@ -26,13 +26,23 @@ function arm(id: string, label: string, kind: 'human' | 'machine', file: string)
 const arms = [
   arm('casual-human', 'casual human (Hacker News, before ChatGPT)', 'human', 'casual-human'),
   arm('careful-human', 'careful human (Stack Exchange answers, same period)', 'human', 'careful-human'),
+  arm('raid-human', 'careful human (RAID: the documents GPT-4 was asked to continue)', 'human', 'raid-human'),
   arm('machine-2023', 'machine (HC3, GPT-3.5, early 2023)', 'machine', 'machine-2023'),
-  arm('machine-2024', 'machine (RAID, GPT-4)', 'machine', 'machine-2024'),
+  arm('machine-2024', 'machine (RAID, GPT-4, same prompts as raid-human)', 'machine', 'machine-2024'),
 ].filter((a): a is Arm => a !== null && a.texts.length > 0);
 
 if (arms.length < 3) { console.error('need at least the three base arms'); process.exit(1); }
 
-const report = measure(arms, { casual: 'casual-human', careful: 'careful-human', machine: arms.some((a) => a.id === 'machine-2024') ? 'machine-2024' : 'machine-2023' });
+// The verdict is decided against the best-matched human arm available. RAID's human rows answer the
+// same prompt as its machine rows, so genre and topic are held constant there and only the writer
+// differs; the Stack Exchange arm stays in the table as an independent reading of careful writing.
+const has = (id: string): boolean => arms.some((a) => a.id === id);
+const report = measure(arms, {
+  casual: 'casual-human',
+  careful: has('raid-human') ? 'raid-human' : 'careful-human',
+  machine: has('machine-2024') ? 'machine-2024' : 'machine-2023',
+});
+console.log(`verdicts decided against: ${has('raid-human') ? 'raid-human' : 'careful-human'} (human) and ${has('machine-2024') ? 'machine-2024' : 'machine-2023'} (machine)`);
 
 if (!existsSync(DATA)) mkdirSync(DATA, { recursive: true });
 writeFileSync(path.join(DATA, 'markers.json'), JSON.stringify(report, null, 1) + '\n');
