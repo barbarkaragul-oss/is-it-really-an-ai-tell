@@ -27,11 +27,14 @@ import { rangeBuffer, type AsyncBuffer } from './range-buffer.js';
 const SHARD = (i: number): string => `https://huggingface.co/api/datasets/liamdugan/raid/parquet/raid/train/${i}.parquet`;
 const SHARDS = 10;
 const OUT = path.resolve('out');
-const COLUMNS = ['source_id', 'model', 'attack', 'domain', 'generation'];
+const COLUMNS = ['source_id', 'model', 'attack', 'domain', 'title', 'prompt', 'generation'];
 /** the writer whose rows decide which documents the whole comparison uses */
 const ANCHOR = 'gpt4';
 
-export interface RaidRow { source_id: string; model: string; attack: string; domain: string; generation: string }
+export interface RaidRow { source_id: string; model: string; attack: string; domain: string; title: string; prompt: string; generation: string }
+
+/** The instruction RAID gave the model for one document, kept so another model can be given the same one. */
+export interface RaidPrompt { source_id: string; domain: string; title: string; prompt: string }
 type Meta = Awaited<ReturnType<typeof parquetMetadataAsync>>;
 
 /** A row group can only hold a model if its recorded min..max range covers the name. */
@@ -58,6 +61,9 @@ async function readGroup(file: AsyncBuffer, md: Meta, group: number): Promise<Ra
  * Walk the shards for one writer. `only` restricts to a set of documents, which is how every arm
  * after the first is kept to the same documents as the first.
  */
+/** The instruction RAID gave for each anchored document, so another model can be handed the same one. */
+export const prompts = new Map<string, RaidPrompt>();
+
 async function collect(model: string, want: number, only: Set<string> | null): Promise<Map<string, Fetched>> {
   const found = new Map<string, Fetched>();
   for (let shard = 0; shard < SHARDS && found.size < want; shard++) {
@@ -76,6 +82,7 @@ async function collect(model: string, want: number, only: Set<string> | null): P
         const text = toText(String(r.generation ?? ''));
         if (text.length < 400) continue;
         found.set(id, { id: `raid:${model}:${id}`, text });
+        if (model === ANCHOR) prompts.set(id, { source_id: id, domain: String(r.domain ?? ''), title: String(r.title ?? ''), prompt: String(r.prompt ?? '') });
         if (found.size >= want) break;
       }
     }
@@ -110,6 +117,9 @@ if (process.argv[1] && process.argv[1].endsWith('fetch-raid.ts')) {
   console.error(`RAID: ${want} documents, written by: human, ${models.join(', ')}`);
   const arms = await fetchRaid(models, want);
   if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
+  const kept = new Set((arms[ANCHOR] ?? []).map((r) => r.id.replace(`raid:${ANCHOR}:`, '')));
+  writeFileSync(path.join(OUT, 'raid-prompts.json'), JSON.stringify([...prompts.values()].filter((p) => kept.has(p.source_id))));
+  console.error(`  wrote raid-prompts: ${[...prompts.values()].filter((p) => kept.has(p.source_id)).length} instructions`);
   for (const [model, rows] of Object.entries(arms)) {
     const file = model === 'human' ? 'raid-human' : `raid-${model}`;
     writeFileSync(path.join(OUT, `${file}.json`), JSON.stringify(rows));

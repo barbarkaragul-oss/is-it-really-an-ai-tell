@@ -32,6 +32,8 @@ const arms = [
   arm('raid-gpt4', 'GPT-4 (same documents)', 'machine', 'raid-gpt4'),
   arm('raid-llama-chat', 'Llama chat (same documents)', 'machine', 'raid-llama-chat'),
   arm('raid-mistral-chat', 'Mistral chat (same documents)', 'machine', 'raid-mistral-chat'),
+  // generated for this project rather than taken from a published corpus; see the README
+  arm('raid-claude', 'Claude Opus 5 via Claude Code (same documents, generated here)', 'machine', 'raid-claude-clean'),
   arm('hc3-gpt35', 'GPT-3.5 answering questions (HC3, a different genre)', 'machine', 'machine-2023'),
 ].filter((a): a is Arm => a !== null && a.texts.length > 0);
 
