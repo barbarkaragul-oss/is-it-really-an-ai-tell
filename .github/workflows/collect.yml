@@ -25,6 +25,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx tsx collector/fetch.ts --want 4000
+      - run: npx tsx collector/fetch-raid.ts --want 2500
       - run: npx tsx scripts/measure-all.ts
       - run: npm test
       - name: Commit the measurement
