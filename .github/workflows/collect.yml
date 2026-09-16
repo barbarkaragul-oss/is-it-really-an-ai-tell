@@ -29,6 +29,7 @@ jobs:
       - run: npx tsx scripts/contamination.ts
       - run: npx tsx scripts/measure-all.ts
       - run: npx tsx scripts/evidence.ts
+      - run: npx tsx scripts/claude-matched.ts
       - run: npm test
       - run: npx tsx scripts/build.ts
       - name: Commit the measurement

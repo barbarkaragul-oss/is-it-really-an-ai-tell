@@ -149,6 +149,7 @@ npx tsx collector/fetch-raid.ts --want 1500   # one document, five writers
 npx tsx scripts/contamination.ts               # drops machine texts that reproduce the human document
 npx tsx scripts/measure-all.ts                # prints both tables, writes data/markers.json
 npx tsx scripts/evidence.ts                   # what each pattern matched, writes data/evidence.json
+npx tsx scripts/claude-matched.ts             # every writer on the documents Claude covered
 npm run build                                 # the site, into docs/
 npm test
 ```
