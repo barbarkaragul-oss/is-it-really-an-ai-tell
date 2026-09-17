@@ -6,7 +6,7 @@ Almost none of it is measured. This project counts each marker in two kinds of w
 
 **[Open the page →](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)** It has the grid across both kinds of writing, every number below with the sentences behind it, one document written by every writer, and a box to paste your own text into. Nothing you paste leaves the browser.
 
-[![The page: the table, a row opened to the sentences it counted, one paper written six ways, and a pasted text set against how often people use each marker](docs/demo.gif)](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)
+[![The page: the grid across both kinds of writing, "moreover" opened in research abstracts (the person's word) and in Reddit posts (GPT-4's), one Reddit post as the models wrote it, and a pasted text set against how often people use each marker](docs/demo.gif)](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)
 
 > This is not a detector. It cannot tell you who wrote anything, and a text full of markers proves nothing. There is no score, because the numbers do not support one. If software has accused you of something, the useful evidence points the other way: detector software has a documented record of calling genuine human writing machine-written, and essays by non-native English writers are the clearest case ([Liang et al., Patterns 2023](https://doi.org/10.1016/j.patter.2023.100779)).
 
