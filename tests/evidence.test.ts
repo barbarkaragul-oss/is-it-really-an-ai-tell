@@ -67,7 +67,12 @@ test('links are decided by the arm: a bare number from Stack Exchange is not a H
 test('only arms whose licence allows it are quoted', () => {
   const quoted = ARMS.filter((a) => a.publishable).map((a) => a.id);
   assert.ok(!quoted.includes('casual-human') && !quoted.includes('careful-human') && !quoted.includes('hc3-gpt35'));
-  assert.ok(quoted.every((id) => id.startsWith('raid-')), `unexpected quoted arm in ${quoted.join(', ')}`);
+  // RAID's model texts (MIT), arXiv abstracts (CC0) and the Claude arm; never a person's Reddit post
+  assert.deepEqual(quoted.sort(), [
+    'posts-chatgpt', 'posts-gpt4', 'posts-llama-chat', 'posts-mistral-chat',
+    'raid-chatgpt', 'raid-claude', 'raid-gpt4', 'raid-human', 'raid-llama-chat', 'raid-mistral-chat',
+  ]);
+  assert.ok(!quoted.includes('posts-human'));
 });
 
 test('an arm that cannot be quoted gives up its open-ended matches, not just its sentences', () => {

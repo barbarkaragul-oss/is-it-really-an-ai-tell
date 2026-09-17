@@ -1,11 +1,12 @@
 name: collect
 # Rebuilds the corpora from their public sources and re-measures every marker. The corpus text is
-# never committed: out/ stays on the runner, and what lands in the repository is data/markers.json
-# (ids and numbers) and data/evidence.json (numbers, plus sentences from the MIT-licensed RAID arms).
+# never committed: out/ and cache/ stay on the runner, and what lands in the repository is data/ (ids
+# and numbers, plus sentences from the MIT-licensed RAID model arms) and the site in docs/.
 on:
   workflow_dispatch:
   schedule:
-    - cron: '37 6 * * 1'   # Mondays, off the top of the hour
+    - cron: '37 6 * * 1'   # Mondays, off the top of the hour: the measurement
+    - cron: '37 6 * * 4'   # Thursdays: only touches the cached RAID rows, so they are not evicted
 
 permissions:
   contents: write
@@ -16,7 +17,9 @@ concurrency:
 
 jobs:
   measure:
+    if: github.event.schedule != '37 6 * * 4'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -26,12 +29,35 @@ jobs:
       - run: npm ci
       - run: npx tsx collector/fetch.ts --want 4000
       - run: npx tsx collector/fetch-raid.ts --want 1500 --models gpt4,chatgpt,llama-chat,mistral-chat
-      - run: npx tsx scripts/contamination.ts
-      - run: npx tsx scripts/measure-all.ts
-      - run: npx tsx scripts/evidence.ts
+      # Reddit posts come from RAID's 802 MB CSV of unattacked rows, as two byte windows (58 MB). The
+      # rows kept from them are cached. The key is the pinned file version and window offsets
+      # (collector/raid-windows.json) and the code that decides which rows are kept, so it needs no
+      # request to RAID's host; the collector itself sends one HEAD request and fails if the host now
+      # serves another file, and uses the cached rows if the host does not answer. The cache holds the
+      # people's Reddit posts in full: it is never printed and never reaches the repository.
+      - name: Restore the RAID rows
+        id: raid-rows
+        uses: actions/cache/restore@v6
+        with:
+          path: cache/raid
+          key: raid-rows-${{ hashFiles('collector/raid-windows.json', 'collector/raid-csv.ts', 'collector/fetch-raid.ts') }}
+      - run: npx tsx collector/fetch-raid.ts --genre posts
+      # saved straight away, so a later failing step does not cost next week the download
+      - name: Save the RAID rows
+        if: steps.raid-rows.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: cache/raid
+          key: ${{ steps.raid-rows.outputs.cache-primary-key }}
+      # both kinds of writing are named, so a posts corpus that failed to arrive fails the job instead of
+      # being skipped
+      - run: npx tsx scripts/contamination.ts --genres abstracts,posts
+      - run: npx tsx scripts/measure-all.ts --genres abstracts,posts
+      - run: npx tsx scripts/evidence.ts --genres abstracts,posts
       - run: npx tsx scripts/claude-matched.ts
       - run: npm test
-      - run: npx tsx scripts/build.ts
+      # --release refuses abstracts measured without a complete arXiv dating (data/abstracts-dates.json)
+      - run: npx tsx scripts/build.ts --release
       - name: Commit the measurement
         run: |
           git config user.name "github-actions[bot]"
@@ -41,3 +67,20 @@ jobs:
           git commit -m "data: weekly re-measurement ($(date -u +%Y-%m-%d))"
           git pull --rebase -X theirs origin main
           git push
+
+  # GitHub evicts a cache entry nobody has used for seven days, and the Monday job only uses it once a
+  # week, so a Monday that starts a little later than the one before could find it gone and read the
+  # windows again. Restoring it midweek keeps it; this contacts nobody but GitHub.
+  keep-cache:
+    if: github.event.schedule == '37 6 * * 4'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Touch the RAID rows
+        uses: actions/cache/restore@v6
+        with:
+          path: cache/raid
+          key: raid-rows-${{ hashFiles('collector/raid-windows.json', 'collector/raid-csv.ts', 'collector/fetch-raid.ts') }}

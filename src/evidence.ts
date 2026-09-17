@@ -35,7 +35,7 @@ export function hits(texts: Text[], m: Marker): Hit[] {
     const text = readable(t.text);
     for (const x of text.matchAll(m.pattern)) {
       const start = x.index, end = start + x[0].length;
-      const before = (text.slice(Math.max(0, start - 40), start).toLowerCase().match(/([a-z][a-z'-]*)[^a-z]*$/)?.[1]) ?? '';
+      const before = (text.slice(Math.max(0, start - 40), start).toLowerCase().match(/([a-z][a-z'’-]*)[^a-z]*$/)?.[1]) ?? '';
       out.push({ id: t.id, form: x[0].toLowerCase(), before, sentence: sentenceAround(text, start, end) });
     }
   }

@@ -304,6 +304,27 @@ test('the length-matched rate test: compares like with like, and still finds a r
   assert.equal(lengthMatchedRateTest([], short, m), null);
 });
 
+test('a word is tested against the person\'s texts for the documents the model still has', () => {
+  // the person writes "delve" in documents 0-49 only; the model's texts for those were dropped by the
+  // cleaning, and on the documents both still have neither uses it
+  const person = Array.from({ length: 100 }, (_, i) => ({ id: `raid:human:d${i}`, text: (i < 50 ? 'We delve and delve. ' : 'We look. ') + filler(120, i), source: 'p' }));
+  const model = Array.from({ length: 50 }, (_, i) => ({ id: `raid:gpt4:d${i + 50}`, text: 'We look. ' + filler(120, i), source: 'm' }));
+  const arms: Arm[] = [
+    { id: 'casual', label: 'casual', kind: 'human', texts: texts(100, (i) => filler(120, i), 'c') },
+    { id: 'person', label: 'person', kind: 'human', texts: person },
+    { id: 'gpt4', label: 'gpt4', kind: 'machine', texts: model },
+  ];
+  const row = measure(arms, { reference: 'person', casual: 'casual', machine: 'gpt4' }).rows.find((x) => x.marker === 'delve')!;
+  assert.equal(row.verdict, 'no signal', 'the documents the model lost are not held against it');
+  assert.ok(row.rate.person!.occurrences === 100, 'the person\'s rate shown is still the whole arm');
+  assert.deepEqual(row.lengthMatched && row.lengthMatched.observed, 0);
+  assert.equal(row.lengthMatched!.expected, 0, 'the person\'s texts in the test hold no "delve"');
+  // the same model texts with ids from no shared document are length-matched, and meet every person text
+  const loose: Arm = { ...arms[2]!, texts: model.map((t, i) => ({ ...t, id: `other${i}` })) };
+  const whole = measure([arms[0]!, arms[1]!, loose], { reference: 'person', casual: 'casual', machine: 'gpt4' }).rows.find((x) => x.marker === 'delve')!;
+  assert.equal(whole.verdict, 'points the other way');
+});
+
 test('a register verdict needs casual texts the marker can judge', () => {
   const uniform = (i: number) => Array.from({ length: 8 }, (_, s) => filler(12, i + s)).join(' ');
   const r = measure([
@@ -351,6 +372,34 @@ test('a marker the humans carry and the machine does not points the other way', 
   ];
   const r = measure(arms, { reference: 'careful', casual: 'casual', machine: 'machine' });
   assert.equal(r.rows.find((x) => x.marker === 'em_dash')!.verdict, 'points the other way');
+});
+
+test('a marker named not recorded gets no test, no verdict and no place in the correction', () => {
+  const plain = (i: number) => filler(120, i);
+  const arms: Arm[] = [
+    { id: 'casual', label: 'casual', kind: 'human', texts: texts(300, plain, 'c') },
+    { id: 'careful', label: 'careful', kind: 'human', texts: texts(300, (i) => 'Moreover it is. ' + plain(i), 'f') },
+    { id: 'machine', label: 'machine', kind: 'machine', texts: texts(300, (i) => 'We delve. It is important to note that. ' + plain(i), 'm') },
+  ];
+  const opts = { reference: 'careful', casual: 'casual', machine: 'machine' };
+  const all = measure(arms, opts);
+  const some = measure(arms, { ...opts, notRecorded: ['delve', 'bulleted_bold'] });
+  for (const id of ['delve', 'bulleted_bold']) {
+    const row = some.rows.find((x) => x.marker === id)!;
+    assert.equal(row.verdict, 'not recorded', id);
+    assert.equal(row.p, null, id);
+    assert.equal(row.q, null, id);
+    assert.equal(row.placebo.tie, true, id);
+    assert.equal(row.placebo.p, null, id);
+  }
+  // the shares and rates are still there to read
+  assert.equal(some.rows.find((x) => x.marker === 'delve')!.rate.machine!.occurrences, 300);
+  // the correction runs over the tested markers only: the same p values, without the two
+  const expected = benjaminiHochberg(all.rows.map((r) => (['delve', 'bulleted_bold'].includes(r.marker) ? null : r.p)));
+  assert.deepEqual(some.rows.map((r) => r.q), expected);
+  assert.notDeepEqual(all.rows.map((r) => r.q), expected, 'the family did change');
+  assert.equal(all.rows.find((x) => x.marker === 'delve')!.verdict, 'machine marker');
+  assert.equal(some.rows.find((x) => x.marker === 'moreover')!.verdict, all.rows.find((x) => x.marker === 'moreover')!.verdict);
 });
 
 test('sentence length variation: the same length every time scores low, varied prose does not', () => {

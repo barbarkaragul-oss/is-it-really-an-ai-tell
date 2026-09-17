@@ -103,6 +103,22 @@ mark.word { background: var(--hl-word); } mark.phrase { background: var(--hl-phr
 .found th, .found td { padding: 4px 8px; }
 .found td:first-child, .found th:first-child { position: static; background: none; }
 textarea { width: 100%; max-width: 900px; resize: vertical; border: 1px solid var(--border); border-radius: 8px; background: var(--code-bg); color: var(--fg); padding: 10px 12px; font: inherit; font-size: 14px; }
+/* the grid across kinds of writing: a glyph and a word in every cell, never colour alone */
+table.grid td.gcell { text-align: left; cursor: pointer; vertical-align: top; }
+table.grid td.gcell:hover { background: var(--code-bg); }
+table.grid td.gcell:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+table.grid th.gcol { text-align: left; white-space: normal; min-width: 170px; }
+table.grid th .sub { display: block; font-weight: 400; font-size: 11.5px; line-height: 1.3; }
+table.grid tbody td:first-child { white-space: normal; min-width: 150px; max-width: 230px; }
+td.gcell .k { display: block; margin-top: 3px; font-size: 11.5px; color: var(--muted); }
+td.gcell .flag { display: block; color: var(--muted); font-size: 11px; }
+button.glink { border: 0; background: none; padding: 0; color: var(--accent); font-weight: 600; font-size: 13px; text-align: left; }
+button.glink:hover { text-decoration: underline; }
+.legend .pill { margin: 0 2px; }
+.genre-switch { margin: 8px 0 6px; }
+.genre-switch[hidden] { display: none; }
+.genre-switch button { font-size: 14px; padding: 5px 12px; }
+
 .how { max-width: 860px; }
 .how li { margin: 6px 0; }
 footer { padding: 10px 16px 30px; }

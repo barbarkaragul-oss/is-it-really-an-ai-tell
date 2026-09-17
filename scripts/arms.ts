@@ -1,40 +1,63 @@
 /**
  * The arms, in one place, so the measurement and the evidence read the same corpora.
  *
- * Machine arms are read from the -clean files scripts/contamination.ts writes, never from the raw
- * download, so a text that reproduces the human document cannot reach the table.
+ * Which arms exist is decided by scripts/genres.ts: each kind of writing has its own person and
+ * models, and the comparison columns (casual writing, careful writing, GPT-3.5 answering questions)
+ * are shared by every kind.
  *
- * `publishable` says whether an arm's own text may be quoted in this repository. RAID is MIT and the
- * Claude arm was generated here; Hacker News content is licensed to Y Combinator and Stack Exchange
- * answers are CC BY-SA, so those arms are referenced by link only, and HC3 by id.
+ * Every arm of a kind of writing, the person's included, is read from the -clean file
+ * scripts/contamination.ts writes, never from the raw download: a machine text that stops mid-
+ * sentence, that is a refusal or a label, or that reproduces the human document cannot reach the
+ * table, and a person's abstract that may have been revised after ChatGPT is left out of every arm.
+ *
+ * `publishable` says whether an arm's own text may be quoted in this repository. RAID's machine text
+ * is MIT, arXiv abstracts are CC0 and the Claude arm was generated here; Reddit posts, Hacker News
+ * comments (licensed to Y Combinator) and Stack Exchange answers (CC BY-SA) are not quoted, and HC3
+ * is referenced by id.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import type { Arm, Text } from '../src/measure.js';
+import { GENRES, COMPARISON, type Genre } from './genres.js';
 
-export const OUT = path.resolve('out');
+/** the value after a command-line flag, if it was given */
+export function flag(name: string, argv: string[] = process.argv): string | undefined {
+  const i = argv.indexOf(name);
+  return i >= 0 ? argv[i + 1] : undefined;
+}
+
+/**
+ * Where the corpora are read from and the published numbers written to. Both can be pointed
+ * elsewhere, because a local out/ is usually older than the collector and its numbers must never
+ * replace the ones the weekly job commits: `--data <scratch dir>` keeps them apart.
+ */
+export const OUT = path.resolve(flag('--corpora') ?? 'out');
+export const DATA = path.resolve(flag('--data') ?? 'data');
 
 export interface ArmSpec { id: string; label: string; kind: 'human' | 'machine'; file: string; publishable: boolean }
 
-export const ARMS: ArmSpec[] = [
-  { id: 'casual-human', label: 'casual writing: online comments from before ChatGPT (Hacker News)', kind: 'human', file: 'casual-human', publishable: false },
-  { id: 'careful-human', label: 'careful writing: edited Q&A answers from the same period (Stack Exchange)', kind: 'human', file: 'careful-human', publishable: false },
-  { id: 'raid-human', label: 'human (RAID: the documents every model continued)', kind: 'human', file: 'raid-human', publishable: true },
-  { id: 'raid-chatgpt', label: 'GPT-3.5 (same documents)', kind: 'machine', file: 'raid-chatgpt-clean', publishable: true },
-  { id: 'raid-gpt4', label: 'GPT-4 (same documents)', kind: 'machine', file: 'raid-gpt4-clean', publishable: true },
-  { id: 'raid-llama-chat', label: 'Llama chat (same documents)', kind: 'machine', file: 'raid-llama-chat-clean', publishable: true },
-  { id: 'raid-mistral-chat', label: 'Mistral chat (same documents)', kind: 'machine', file: 'raid-mistral-chat-clean', publishable: true },
-  // generated for this project rather than taken from a published corpus; see the README
-  { id: 'raid-claude', label: 'Claude Opus 5 via Claude Code (same documents, generated here)', kind: 'machine', file: 'raid-claude-clean', publishable: true },
-  { id: 'hc3-gpt35', label: 'GPT-3.5 answering questions (HC3, a different genre)', kind: 'machine', file: 'machine-2023', publishable: false },
-];
+/** the measured file of a writer: its raw file after scripts/contamination.ts */
+export const cleanFile = (raw: string): string => `${raw}-clean`;
 
-export function loadArm(spec: ArmSpec): Arm | null {
-  const f = path.join(OUT, `${spec.file}.json`);
+export const COMPARISON_ARMS: ArmSpec[] = COMPARISON.map((c) => ({ id: c.id, label: c.label, kind: c.kind, file: c.raw, publishable: false }));
+
+/** a genre's own arms, the person first, then the shared comparison arms */
+export function armsFor(genre: Genre): ArmSpec[] {
+  return [
+    ...genre.writers.map((w): ArmSpec => ({ id: w.id, label: w.label, kind: w.writer === 'human' ? 'human' : 'machine', file: cleanFile(w.raw), publishable: w.quotable })),
+    ...COMPARISON_ARMS,
+  ];
+}
+
+/** every arm of every genre, once */
+export const ARMS: ArmSpec[] = [...new Map(GENRES.flatMap(armsFor).map((a) => [a.id, a])).values()];
+
+export function loadArm(spec: ArmSpec, dir: string = OUT): Arm | null {
+  const f = path.join(dir, `${spec.file}.json`);
   if (!existsSync(f)) {
-    // a machine arm that was fetched but never checked must not quietly drop out of the table
-    if (spec.file.endsWith('-clean') && existsSync(path.join(OUT, `${spec.file.replace(/-clean$/, '')}.json`))) {
-      throw new Error(`out/${spec.file}.json is missing; run scripts/contamination.ts first`);
+    // an arm that was fetched but never checked must not quietly drop out of the table
+    if (spec.file.endsWith('-clean') && existsSync(path.join(dir, `${spec.file.replace(/-clean$/, '')}.json`))) {
+      throw new Error(`${path.join(dir, spec.file)}.json is missing; run scripts/contamination.ts first`);
     }
     return null;
   }
@@ -43,9 +66,31 @@ export function loadArm(spec: ArmSpec): Arm | null {
   return texts.length ? { id: spec.id, label: spec.label, kind: spec.kind, texts } : null;
 }
 
-export function loadArms(): { arm: Arm; spec: ArmSpec }[] {
-  return ARMS.flatMap((spec) => {
-    const arm = loadArm(spec);
-    return arm ? [{ arm, spec }] : [];
+/** a genre's arms that are present in out/; the comparison arms are loaded once and shared */
+const cache = new Map<string, Arm | null>();
+export function loadArms(genre: Genre = GENRES[0]!, dir: string = OUT): { arm: Arm; spec: ArmSpec }[] {
+  return armsFor(genre).flatMap((spec) => {
+    const key = path.join(dir, spec.file);
+    if (!cache.has(key)) cache.set(key, loadArm(spec, dir));
+    const arm = cache.get(key);
+    return arm ? [{ arm: { ...arm, id: spec.id, label: spec.label }, spec }] : [];
   });
+}
+
+/** whether a genre's person was collected at all; a genre that was not is skipped, not failed */
+export const collected = (genre: Genre, dir: string = OUT): boolean =>
+  existsSync(path.join(dir, `${genre.writers[0]!.raw}.json`));
+
+/**
+ * The genres a script works on: those named with `--genres a,b` (each one then required), or every
+ * genre whose person was collected. Abstracts are always required, as they have always been.
+ */
+export function genresToRun(argv: string[] = process.argv, dir: string = OUT): { genres: Genre[]; missing: string[] } {
+  const named = flag('--genres', argv)?.split(',').map((s) => s.trim()).filter(Boolean);
+  const wanted = named ? GENRES.filter((g) => named.includes(g.id)) : GENRES;
+  const unknown = named?.filter((n) => !GENRES.some((g) => g.id === n)) ?? [];
+  const required = new Set(named ?? ['abstracts']);
+  const genres = wanted.filter((g) => collected(g, dir));
+  const missing = [...unknown, ...wanted.filter((g) => required.has(g.id) && !collected(g, dir)).map((g) => g.id)];
+  return { genres, missing };
 }

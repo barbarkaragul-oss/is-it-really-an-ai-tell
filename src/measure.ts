@@ -456,7 +456,12 @@ export function seededShuffle<T>(items: T[], seed: number): T[] {
 
 interface Matched { pairing: Pairing; ref: Text[]; arm: Text[] }
 
-export function measure(arms: Arm[], opts: { reference: string; casual: string; machine: string; seed?: number }): Report {
+/**
+ * `notRecorded` names markers the kind of writing cannot show on either side (scripts/genres.ts). Their
+ * shares and rates are still published, but they get no test: a marker no text can carry would add a
+ * certain "no difference" to the correction and read as a measured "no signal".
+ */
+export function measure(arms: Arm[], opts: { reference: string; casual: string; machine: string; seed?: number; notRecorded?: string[] }): Report {
   const find = (id: string): Arm | undefined => arms.find((a) => a.id === id);
   const reference = find(opts.reference);
   if (!reference) throw new Error(`reference arm ${opts.reference} is not among the arms`);
@@ -490,8 +495,20 @@ export function measure(arms: Arm[], opts: { reference: string; casual: string; 
   const judged = (texts: Text[], m: Marker): Text[] => (m.eligible ? texts.filter((t) => m.eligible!(t.text)) : texts);
 
   const machineArm = find(opts.machine);
+  /**
+   * The person's texts a word's rate test compares the machine arm with. A machine arm written from
+   * the reference's documents is compared with the person's texts for the documents it still has:
+   * the cleaning drops some of a model's texts (refusals cluster on some subjects, cut-off texts on
+   * long ones), and the person's texts for those documents would otherwise stand on one side only.
+   * Any other arm is compared with every reference text.
+   */
+  const testedReference = machineArm && matched.get(machineArm.id)?.pairing === 'document'
+    ? ((ids) => reference.texts.filter((t) => ids.has(sourceId(t.id))))(new Set(machineArm.texts.map((t) => sourceId(t.id))))
+    : reference.texts;
+  const unrecorded = new Set(opts.notRecorded ?? []);
   const rows: Row[] = MARKERS.map((m) => {
     const countable = m.count !== undefined;
+    const tested = !unrecorded.has(m.id);
     const sh: Row['share'] = {};
     const rt: Row['rate'] = {};
     for (const a of arms) {
@@ -503,13 +520,13 @@ export function measure(arms: Arm[], opts: { reference: string; casual: string; 
     const [pa, pb] = m.eligible ? pairMatch(judged(halfA, m), judged(halfB, m), seed) : pairMatch(halfA, halfB, seed);
     const a = share(pa, m), b = share(pb, m);
     const ra = rate(judged(halfA, m), m), rb = rate(judged(halfB, m), m);
-    const placeboP = countable
+    const placeboP = !tested ? null : countable
       ? (lengthMatchedRateTest(judged(halfA, m), judged(halfB, m), m)?.p ?? null)
       : twoProportionP(a.k, a.n, b.k, b.n);
 
     const machine = sh[opts.machine];
-    const test = countable && machineArm ? lengthMatchedRateTest(judged(machineArm.texts, m), judged(reference.texts, m), m) : null;
-    const p = countable
+    const test = tested && countable && machineArm ? lengthMatchedRateTest(judged(machineArm.texts, m), judged(testedReference, m), m) : null;
+    const p = !tested ? null : countable
       ? (test?.p ?? null)
       : (machine ? twoProportionP(machine.arm.k, machine.arm.n, machine.reference.k, machine.reference.n) : null);
 
@@ -517,7 +534,7 @@ export function measure(arms: Arm[], opts: { reference: string; casual: string; 
       marker: m.id, label: m.label, family: m.family, belief: m.belief === true, countable,
       share: sh, rate: rt,
       // a whole-text tie is settled here; a countable one waits for the correction below
-      placebo: { a, b, tie: countable || (a.lo <= b.hi && b.lo <= a.hi), rate: { a: ra, b: rb }, p: placeboP, q: null },
+      placebo: { a, b, tie: countable || !tested || (a.lo <= b.hi && b.lo <= a.hi), rate: { a: ra, b: rb }, p: placeboP, q: null },
       p, q: null, lengthMatched: test && { observed: test.observed, expected: test.expected }, verdict: 'no signal',
     };
   });
@@ -528,7 +545,7 @@ export function measure(arms: Arm[], opts: { reference: string; casual: string; 
     r.q = qs[i]!;
     r.placebo.q = placeboQs[i]!;
     if (r.countable) r.placebo.tie = !(r.placebo.q !== null && r.placebo.q < SIGNIFICANCE);
-    r.verdict = r.countable ? rateVerdict(r, reference.id, opts) : shareVerdict(r, opts);
+    r.verdict = unrecorded.has(r.marker) ? 'not recorded' : r.countable ? rateVerdict(r, reference.id, opts) : shareVerdict(r, opts);
   });
 
   const median = (texts: Text[]): number => {
@@ -565,10 +582,12 @@ function shareVerdict(r: Row, opts: { casual: string; machine: string }): Row['v
 /**
  * A word or phrase, decided on the length-matched rate test: which way the machine arm leans at the
  * same lengths when the test survives the correction, and a register marker when neither side is
- * told apart but both whole-arm rate intervals sit above casual writing's. Every text of both arms
- * goes into the test, so a machine arm written from the reference's documents covers the same
- * subjects without any pairing. Casual writing is the shortest arm, and a phrase used once per text
- * has its highest rate in short texts, so the register comparison errs toward no signal.
+ * told apart but both whole-arm rate intervals sit above casual writing's. Every text of the machine
+ * arm goes into the test, against the person's texts for the same documents (testedReference in
+ * measure), so the two sides cover the same subjects without any pairing. The rates shown are whole
+ * arms, the person's included, which for a model with texts dropped covers a few more documents than
+ * its test did. Casual writing is the shortest arm, and a phrase used once per text has its highest
+ * rate in short texts, so the register comparison errs toward no signal.
  */
 function rateVerdict(r: Row, reference: string, opts: { casual: string; machine: string }): Row['verdict'] {
   const machine = r.rate[opts.machine], ref = r.rate[reference]!, casual = r.rate[opts.casual];

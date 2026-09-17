@@ -43,7 +43,12 @@ export interface Marker {
   openEnded?: boolean;
 }
 
-export const words = (t: string): string[] => t.toLowerCase().match(/[a-z']+/g) ?? [];
+/**
+ * A curly apostrophe is part of a word as a straight one is: 40% of the people's Reddit posts type
+ * "don’t" and almost none of the models' posts do, and splitting it in two would lengthen the
+ * people's posts only.
+ */
+export const words = (t: string): string[] => t.toLowerCase().match(/[a-z'’]+/g) ?? [];
 
 /**
  * The text as a reader sees it. The HTML arms keep bold as "**" so the bulleted-list marker can see
@@ -154,6 +159,20 @@ const RULE_OF_THREE = new RegExp(String.raw`${LIST_FIRST}, \w+,? ${LIST_AND} \w+
  * "van't Hoff" is not a contraction, and one RAID document carries it into every writer's version.
  */
 const CONTRACTION = /\b(?!van['’]t\b)\w+['’](?:t|re|ve|ll|m)\b|\b(?:i|you|he|she|we|they|it|that)['’]d\b|\b(?:it|that|there|here|what|who|where|how|he|she|let)['’]s\b/i;
+/**
+ * The same contractions typed without the apostrophe, which people do in a post ("dont", "thats",
+ * "im not") and the models never do; counting only the apostrophe form undercounted the person
+ * alone. Only the forms that can be nothing else count: "wont", "ill", "were", "well", "id", "hes",
+ * "its" and "lets" are words of their own, and "cant" is one only in texts nobody here writes. "im"
+ * and "ive" count before a lower-case word. Capitalised, "Im" is also the imaginary part ("the Im
+ * part") and "Ive" a name, so "Im" and "Ive" count only before a word that follows "I'm" or "I've" in
+ * a sentence ("Im not", "Ive been"); "IVE" is an acronym. A letter of any alphabet bounds a word
+ * ("iletişim" holds no "im"), and a TeX accent in front of one ("na\"ive") is not a word boundary.
+ */
+const BARE_CONTRACTION = /(?<![\p{L}\p{N}_\\"'’])(?:(?:do|does|did|is|are|was|were|has|have|had|could|would|should|must|need)nt|cant|youre|theyre|thats|whats|theres|(?:you|they|we)ve|(?:would|could|should|must)ve)(?![\p{L}\p{N}_'’])/iu;
+const AFTER_I = 'not|so|a|an|the|no|just|going|gonna|trying|still|also|really|very|sure|glad|sorry|here|in|at|on|pretty|kind|looking|getting|thinking|feeling|now|always|never|currently|about|afraid|happy|tired|done|from|with|using|working|having|doing|starting|planning|curious|wondering|asking|only|actually|literally|honestly|probably|definitely|finally|okay|ok|fine|good|been|had|got|gotten|seen|tried|heard|noticed|found|read|made|started|lost|gone|spent|known|played|used|ever|already|recently|come|bought|watched|learned|decided|thought|felt|wanted|asked|looked|lived';
+const BARE_I = new RegExp(String.raw`(?<![\p{L}\p{N}_\\"'’])(?:(?:im|ive)(?= [a-z])|(?:Im|Ive)(?= (?:${AFTER_I})(?![\p{L}\p{N}_])))`, 'u');
+const hasContraction = (t: string): boolean => CONTRACTION.test(t) || BARE_CONTRACTION.test(t) || BARE_I.test(t);
 
 /**
  * The pronoun "I". It is a capital letter: a case-insensitive match also takes the "(i)" of an
@@ -206,16 +225,20 @@ export const MARKERS: Marker[] = [
   // The formula keeps its meaning with an adverb or a modal in it ("it's also important to note",
   // "it may be worth noting"), which is how GPT-3.5 answering questions mostly writes it; the list of
   // adverbs is closed, so "it is hardly worth noting" stays out.
-  { id: 'important_to_note', label: '“it is (also) important to note” / “worth noting”', family: 'phrase', source: 'hedging formula', ...counts(/\bit(?:['’]s| is|(?: may| might| would| could) be)(?: (?:also|still|always|very|especially|particularly|equally|generally|however|therefore|thus|perhaps|probably|definitely|certainly),?)* (?:important|worth) (?:to )?not(?:e|ing)\b/i) },
-  { id: 'in_todays', label: '“in today’s …”', family: 'phrase', source: 'opener cliche', ...counts(/\bin today's\b/i) },
+  { id: 'important_to_note', label: '“it is (also) important to note” / “worth noting”', family: 'phrase', source: 'hedging formula', ...counts(/\bit(?:['’]?s| is|(?: may| might| would| could) be)(?: (?:also|still|always|very|especially|particularly|equally|generally|however|therefore|thus|perhaps|probably|definitely|certainly),?)* (?:important|worth) (?:to )?not(?:e|ing)\b/i) },
+  // the apostrophe either way, or none: people type all three, and the models almost only the straight
+  // one. "it's important" and "let's explore" below take the same three.
+  { id: 'in_todays', label: '“in today’s …”', family: 'phrase', source: 'opener cliche', ...counts(/\bin today['’]?s\b/i) },
   // The words in between may hold an "e.g.", an "et al." or a decimal, which the human abstracts are
   // full of, and "but" may take its own subject ("but it also", "but one also"). "etc." and "no." are
   // not among the abbreviations: they often end a sentence, and the gap must not run on into the next.
   { id: 'not_only_but_also', openEnded: true, label: '“not only … but also”', family: 'phrase', source: 'balanced construction', ...counts(/\bnot only\b(?:[^.!?]|\b(?:e\.g|i\.e|et al|vs|cf)\.|\.(?=\d)){0,160}?\bbut(?: \w+){0,3}? also\b/i) },
   // "this" and "that" say it as well as "it", and edited writing separates the halves with a
   // semicolon, a colon or a dash typed any way. "that is," after a comma is "i.e.", not the second half.
-  { id: 'not_x_its_y', openEnded: true, label: '“it’s / this isn’t X, it’s Y”', family: 'phrase', source: 'the antithesis formula', ...counts(/\b(?:it|this|that)(?:['’]s not| is not| isn['’]t) (?:just |only |merely |simply )?[^.!?,;:]{2,40}?(?:[,;:]|\s?[—–]|\s-{1,3}|-{1,3}\s|---)\s*(?:it|this|that)(?:['’]s| is)\b(?!(?<=\bthat is),)/i) },
-  { id: 'dive_into', label: '“dive into” / “let’s explore”', family: 'phrase', source: 'assistant register', ...counts(/\b(dive into|let('s| us) (explore|take a look|dive))\b/i) },
+  // The apostrophe may be left out ("its not X, its Y"), as people do in a post. After a negated first
+  // half and a clause break, "its" is the contraction; no abstract has the possessive in that place.
+  { id: 'not_x_its_y', openEnded: true, label: '“it’s / this isn’t X, it’s Y”', family: 'phrase', source: 'the antithesis formula', ...counts(/\b(?:it|this|that)(?:['’]?s not| is not| isn['’]?t) (?:just |only |merely |simply )?[^.!?,;:]{2,40}?(?:[,;:]|\s?[—–]|\s-{1,3}|-{1,3}\s|---)\s*(?:it|this|that)(?:['’]?s| is)\b(?!(?<=\bthat is),)/i) },
+  { id: 'dive_into', label: '“dive into” / “let’s explore”', family: 'phrase', source: 'assistant register', ...counts(/\b(dive into|let(['’]?s| us) (explore|take a look|dive))\b/i) },
   // "to sum up" is also arithmetic ("without having to sum up over all the configurations"), and "to
   // summarize" an ordinary verb, so those count only as a wrap-up, followed by a comma or a colon.
   // A "Conclusion:" heading is the format of a structured abstract, not the phrase.
@@ -230,7 +253,7 @@ export const MARKERS: Marker[] = [
   { id: 'bulleted_bold', label: 'a bulleted list with bold lead-ins', family: 'shape', source: 'answer formatting', test: has(/^\s*[-*•]\s+\*\*/m) },
 
   // ---- surface habits, including the ones people actually judge by
-  { id: 'no_contraction', label: 'no contractions at all', family: 'surface', source: 'Jakesch et al. 2023: readers treat contractions as human', belief: true, test: reads((t) => !CONTRACTION.test(ownWords(t))) },
+  { id: 'no_contraction', label: 'no contractions at all', family: 'surface', source: 'Jakesch et al. 2023: readers treat contractions as human', belief: true, test: reads((t) => !hasContraction(ownWords(t))) },
   { id: 'no_first_person', label: 'no first person', family: 'surface', source: 'Jakesch et al. 2023: readers treat “I” as human', belief: true, test: reads((t) => !FIRST_PERSON.test(ownWords(t))) },
   // A year is not personal detail: "in 1997" in an abstract is a citation or a date in history, it was
   // the only clause that ever fired in RAID and HC3, and it missed the same date typed "in the 1970s".

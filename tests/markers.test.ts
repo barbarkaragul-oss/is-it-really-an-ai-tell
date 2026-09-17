@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { byId, sentences, sentenceLengthCv, readable } from '../src/markers.js';
+import { byId, sentences, sentenceLengthCv, readable, words } from '../src/markers.js';
 
 // Sentences marked RAID are quoted from the RAID arms (MIT). Hacker News, Stack Exchange and HC3
 // cannot be quoted, so the cases the audit found there are written here in other words.
@@ -73,6 +73,51 @@ test('contractions: a possessive is not a contraction, a curly apostrophe still 
   for (const t of ["The model's accuracy", "the network’s output", "Kendall's tau and Pearson's r", "the authors' method", 'No apostrophes here.']) {
     assert.equal(is('no_contraction', t), true, `should not find a contraction in: ${t}`);
   }
+});
+
+test('a curly apostrophe is typed by people as often as a straight one, and counts the same', () => {
+  // the people's Reddit posts use "’" in 40% of posts, the models almost never
+  for (const [id, straight, curly] of [
+    ['in_todays', "In today's world it is hard.", 'In today’s world it is hard.'],
+    ['dive_into', "Let's explore the options.", 'Let’s explore the options.'],
+    ['dive_into', "let's dive in, then", 'let’s dive in, then'],
+  ] as const) {
+    const m = byId.get(id)!;
+    assert.equal(m.count!(straight), 1, `${id}: ${straight}`);
+    assert.equal(m.count!(curly), 1, `${id}: ${curly}`);
+  }
+  assert.deepEqual(words('I don’t know, it’s fine'), words("I don't know, it's fine").map((w) => w.replace("'", '’')));
+  assert.equal(words('don’t').length, 1, 'one word, not "don" and "t"');
+});
+
+test('contractions typed without the apostrophe count where the word can be nothing else', () => {
+  // how people type in a post; the models always type the apostrophe
+  for (const t of ['i dont know why', 'It doesnt matter', 'that isnt true', 'thats the point', 'Whats going on', 'theres a catch',
+    'youre right', 'theyre late', 'we couldnt go', 'you shouldve asked', 'i cant sleep', 'Im not sure', 'im trying', 'ive been there', 'Ive had enough']) {
+    assert.equal(is('no_contraction', t), false, `should find a contraction in: ${t}`);
+  }
+  for (const t of [
+    // words of their own
+    'as was his wont', 'I feel ill today', 'we were there', 'the well is dry', 'its engine', 'the machine lets users choose', 'hes',
+    // "Im" and "IVE" are not the writer; an accent written in TeX is part of the word before it
+    'the Im part of z', 'designed by Jony Ive for Apple', 'Imitating Visual Effects (IVE) leverages imitation', 'however the na\\"ive application of the method',
+    // a word of another alphabet that ends in the same letters
+    'iletişim kurmak için', 'Durchcant', 'dontology',
+  ]) {
+    assert.equal(is('no_contraction', t), true, `should not find a contraction in: ${t}`);
+  }
+});
+
+test('phrases: the apostrophe may be left out, as people do in a post', () => {
+  counts('not_x_its_y', ['its not a bug, its a feature', 'thats not luck; thats practice', "it isnt the money - its the principle"], [
+    'the charity said its not-for-profit arm, its board and its staff agreed',
+    'it is not symmetric. its eigenvalues are real',
+  ]);
+  assert.equal(count('in_todays', 'in todays world'), 1);
+  assert.equal(count('dive_into', 'lets explore the options'), 1);
+  assert.equal(count('dive_into', 'lets go'), 0);
+  assert.equal(count('important_to_note', 'its important to note that'), 1);
+  assert.equal(count('important_to_note', 'its importance to notes'), 0);
 });
 
 test('contractions: the name particle in "van\'t Hoff" is not one', () => {

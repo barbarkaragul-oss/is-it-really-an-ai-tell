@@ -1,0 +1,62 @@
+{
+  "about": "Where each genre's rows sit in RAID's train_none.csv, as byte windows [start, end): start is the first byte of a row, end is one past the last row's line break. They were measured once with a full streaming pass over the file and hold every document of the domain. Window A is the first pass (the human text and the open models), window B the block of API models; rows of other models and settings inside them are read and dropped. rows, rowsByModel, firstId and lastId count every row in the window before any filter, and each read must find exactly these. They are only right for the file with this ETag and size.",
+  "file": {
+    "url": "https://dataset.raid-bench.xyz/train_none.csv",
+    "etag": "\"a3b0661bddab1f7e63499e8f309c5eb4-8\"",
+    "size": 801662741,
+    "lastModified": "Tue, 04 Jun 2024 20:20:08 GMT",
+    "columns": [
+      "id",
+      "adv_source_id",
+      "source_id",
+      "model",
+      "decoding",
+      "repetition_penalty",
+      "attack",
+      "domain",
+      "title",
+      "prompt",
+      "generation"
+    ]
+  },
+  "domains": {
+    "reddit": {
+      "windows": [
+        {
+          "name": "A",
+          "holds": "human, llama-chat, mistral-chat",
+          "start": 521746395,
+          "end": 559332596,
+          "rows": 23126,
+          "rowsByModel": {
+            "gpt2": 3558,
+            "human": 1779,
+            "llama-chat": 3558,
+            "mistral": 3558,
+            "mistral-chat": 3557,
+            "mpt": 3558,
+            "mpt-chat": 3558
+          },
+          "firstId": "3cabbb8e-2a0c-410f-8fb8-15305ff49230",
+          "lastId": "a74cbd86-7237-4ada-891a-8a050c6861b0"
+        },
+        {
+          "name": "B",
+          "holds": "chatgpt, gpt4",
+          "start": 586318999,
+          "end": 606496680,
+          "rows": 15231,
+          "rowsByModel": {
+            "chatgpt": 3558,
+            "cohere": 2574,
+            "cohere-chat": 2968,
+            "gpt3": 2574,
+            "gpt4": 3557
+          },
+          "firstId": "502f0062-85a8-458a-bfa5-a428e82d0155",
+          "lastId": "367dc4e8-81bf-410b-99ac-51f7ca4471a9"
+        }
+      ]
+    }
+  }
+}

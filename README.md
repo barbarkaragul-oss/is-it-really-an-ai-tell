@@ -190,26 +190,30 @@ RAID's adversarial rows — homoglyphs, inserted whitespace, deliberate misspell
 git clone https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell && cd is-it-really-an-ai-tell
 npm install
 npx tsx collector/fetch.ts --want 4000        # Hacker News, Stack Exchange, HC3
-npx tsx collector/fetch-raid.ts --want 1500   # one document, five writers
-npx tsx scripts/contamination.ts               # drops machine texts that reproduce the human document
-npx tsx scripts/measure-all.ts                # prints both tables, writes data/markers.json
-npx tsx scripts/evidence.ts                   # what each pattern matched, writes data/evidence.json
-npx tsx scripts/claude-matched.ts             # every writer on the documents Claude covered
-npm run build                                 # the site, into docs/
+npx tsx collector/fetch-raid.ts --want 1500   # research abstracts: one document, five writers
+npx tsx collector/fetch-raid.ts --genre posts # Reddit posts: two byte windows of RAID's CSV
+G="--genres abstracts,posts --data /tmp/aitell-data"   # a local run writes to scratch; only the weekly job writes data/
+npx tsx scripts/contamination.ts $G           # drops cut-off, not-an-answer and remembered model texts, and revised abstracts
+npx tsx scripts/measure-all.ts $G             # per kind of writing: genres/<kind>/markers.json, and summary.json
+npx tsx scripts/evidence.ts $G                # what each pattern matched: genres/<kind>/evidence.json
+npx tsx scripts/claude-matched.ts --data /tmp/aitell-data   # every writer on the documents Claude covered
+npx tsx scripts/build.ts --data /tmp/aitell-data --docs /tmp/aitell-docs   # the site
 npm test
 ```
 
-**The corpus text is not committed, deliberately.** Hacker News licenses its content to Y Combinator and Stack Exchange answers are CC BY-SA. What ships is ids and counts; the fetch scripts rebuild the exact corpus. RAID is 2.3 GB across ten parquet shards and none of it is downloaded whole: row-group statistics say which groups can hold the wanted rows, and only those are fetched over HTTP range requests, paced so the host does not have to refuse.
+The abstracts are dated once, by hand, with `npx tsx scripts/arxiv-dates.ts` (about two hours at arXiv's pace of one request every three seconds, cached and resumable), which writes `data/abstracts-dates.json`. Run it after `fetch-raid.ts --want 1500`, so it dates the same documents the weekly job measures. A document it fails on every time can be recorded as not dated with `--skip <source_id>`. The weekly job builds with `--release`, which refuses to publish abstracts measured without a complete dating.
+
+**The corpus text is not committed, deliberately.** Hacker News licenses its content to Y Combinator, Stack Exchange answers are CC BY-SA, and the Reddit posts are their authors' under Reddit's and Pushshift's terms. What ships is ids and counts; the fetch scripts rebuild the exact corpus. The Reddit posts and their titles stay in `out/` and `cache/`, which are never committed, and a model's sentence that repeats a post's title or runs of its words is not quoted either. RAID is 2.3 GB across ten parquet shards and none of it is downloaded whole: row-group statistics say which groups can hold the wanted rows, and only those are fetched over HTTP range requests, paced so the host does not have to refuse.
 
 ## Limits
 
 - **Five models, and one of them is this repository's own.** Four come from a published benchmark; the Claude arm was generated here, is 45 texts against 1,500, and carries the caveats in its own section. No Gemini at all.
-- **One genre for the matched set, one source for each comparison.** The matched documents are academic abstracts; casual and careful writing are there to show how much of a marker is really about the kind of text, but they are not matched by document and each comes from a single site. Essays, email and social posts are not in yet.
+- **Two kinds of writing for the matched set, one source for each comparison.** The matched documents are research abstracts and Reddit posts, each measured on its own; casual and careful writing are there to show how much of a marker is really about the kind of text, but they are not matched by document and each comes from a single site. Email, chat, product reviews, student essays and social platforms other than Reddit are not in yet. The Reddit file RAID used is not filtered for bots or spam, and the people's posts are counted, never quoted.
 - **Markers are regexes.** “Delve” catches the word and not the idea, and irony is invisible to all of it.
 - **Presence and rate disagree sometimes.** For a word, the verdict follows the rate compared at equal lengths; a whole-arm rate can still lean on GPT-4's shorter texts, and a word that only the short texts use has little to be compared with.
-- **English only.**
+- **English only.** A document is left out of every column when any of its writers, the person included, wrote it in another language: a few dozen Reddit posts are in Turkish, Russian, Spanish and others, and the models answered some English titles in other languages too.
 - **This cannot tell you who wrote a text**, and no number of markers will make it able to.
 
 ## License
 
-MIT. The corpora keep their own licences: HC3 is CC BY-SA 4.0, RAID is MIT, Hacker News and Stack Exchange content stays with its owners and is referenced by id only.
+MIT. The corpora keep their own licences. RAID's model generations are MIT; the human texts inside RAID keep their sources' terms: the arXiv abstracts are CC0 and are quoted, the Reddit posts are counted and referenced by RAID id only. HC3 is CC BY-SA 4.0 and referenced by id; Hacker News and Stack Exchange content stays with its owners and is linked, not quoted.
