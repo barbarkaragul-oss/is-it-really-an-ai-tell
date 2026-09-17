@@ -15,7 +15,8 @@
  * Each kind of writing also gets a few whole documents as every quotable writer wrote them, for the
  * page to open with: for abstracts the person and every model, for Reddit posts the models only,
  * with the person's post named as not reproduced. None is about suicide, self-harm, sexual violence,
- * psychosis, overdoses or eating disorders (SENSITIVE).
+ * psychosis, overdoses, addiction, eating disorders or accusations and attacks (SENSITIVE), and where
+ * the person may not be quoted, no evidence sentence comes from such a document either.
  *
  * The arm summary also carries "we" per thousand words. It is not a marker anybody claims, but it is
  * the other half of the most visible pattern here: the models write "the proposed method leverages",
@@ -100,12 +101,25 @@ export function makeGuard(person: Arm | undefined, titles?: Map<string, string>)
 }
 
 /**
- * Subjects the documents panel does not open with: suicide and self-harm, sexual violence, psychosis,
- * overdoses and eating disorders. The panel is the first thing a visitor reads, and a model's post
- * about someone's crisis, drawn at random, is not a fair thing to put there. Such a document is still
- * measured and can still supply a sentence to the evidence; it is only never one of the six documents.
+ * Subjects a model's text is not shown on, where the person's text may not be quoted: suicide and
+ * self-harm, sexual violence and abuse, psychosis, overdoses, addiction and drugs, eating disorders,
+ * and accusations, attacks and killings. The Reddit titles the models wrote from are real people's
+ * questions, and a model's invented post about someone's crisis, or about a named person accused of
+ * a crime, is not a fair thing to publish as an example. Such a document is still measured; it only
+ * supplies no sentence to the evidence and is never one of the documents the page opens with.
  */
-export const SENSITIVE = /\b(?:suicid\w*|self[- ]?harm\w*|kill(?:ing)? myself|end(?:ing)? my (?:own )?life|sexual(?:ly)? (?:assault|abus)\w*|rap(?:e|ed|es|ing|ist)\b|molest\w*|psychos[ie]s|psychotic|overdos\w*|eating disorders?|anorexi\w*|bulimi\w*)/i;
+export const SENSITIVE = /\b(?:suicid\w*|self[- ]?harm\w*|kill(?:ing)? myself|end(?:ing)? my (?:own )?life|sexual(?:ly)? (?:assault|abus)\w*|rap(?:e|ed|es|ing|ist)\b|molest\w*|abus(?:e|ed|er|ers|ive)\b|psychos[ie]s|psychotic|overdos\w*|addict\w*|alcoholi\w*|rehab\b|drugs?\b|heroin|cocaine|opioid\w*|fentanyl|meth\b|eating disorders?|anorexi\w*|bulimi\w*|accus(?:e|ed|es|ing|ation|ations)\b|convict\w*|arrest\w*|bomb\w*|terror\w*|shoot(?:ing|er|ers)\b|murder\w*|lawsuits?\b)/i;
+
+/**
+ * The documents whose text, from any writer the genre measures, touches a SENSITIVE subject. Used only
+ * where the person may not be quoted: there the models' texts are invented posts about real people's
+ * questions, and none of those documents gives the evidence a sentence.
+ */
+export function sensitiveDocuments(arms: Arm[]): Set<string> {
+  const out = new Set<string>();
+  for (const arm of arms) for (const t of arm.texts) if (SENSITIVE.test(t.text)) out.add(sourceId(t.id));
+  return out;
+}
 
 export interface Cell { occurrences: number; forms: [string, number][]; before: [string, number][]; examples: Example[] }
 
@@ -191,7 +205,10 @@ export function evidenceFor(genre: Genre, loaded: { arm: Arm; spec: ArmSpec }[],
     arms[arm.id] = { label: arm.label, publishable: spec.publishable, texts: arm.texts.length, words: w, we_per1000: w ? (1000 * we) / w : 0 };
   }
   const own = new Set(genre.writers.filter((w) => w.writer !== 'human').map((w) => w.id));
-  const guard = genre.humanQuotable ? null : makeGuard(loaded.find(({ spec }) => spec.id === genre.reference)?.arm, titles);
+  const writers = new Set(genre.writers.map((w) => w.id));
+  const textGuard = genre.humanQuotable ? null : makeGuard(loaded.find(({ spec }) => spec.id === genre.reference)?.arm, titles);
+  const sensitive = genre.humanQuotable ? new Set<string>() : sensitiveDocuments(loaded.filter(({ spec }) => writers.has(spec.id)).map(({ arm }) => arm));
+  const guard = textGuard ? (h: Hit): boolean => sensitive.has(sourceId(h.id)) || textGuard(h) : null;
 
   const markers: Record<string, { label: string; arms: Record<string, Cell> }> = {};
   for (const m of MARKERS.filter((x) => x.pattern)) {

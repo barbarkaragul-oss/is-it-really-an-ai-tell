@@ -252,6 +252,29 @@ test('documents: none opens with a sensitive subject, in any writer\'s text', ()
   assert.ok(!documentsFor(abstracts, loaded(abstracts, abs), new Map()).some((d) => d.source_id === first));
 });
 
+test('evidence: no sentence comes from a Reddit document on a sensitive subject, in any writer\'s text, but every use is counted', () => {
+  for (const t of ['he was wrongly accused after the bombing', 'my dad is an alcoholic', 'I got addicted to painkillers', 'the lawsuit against the church', 'he was arrested last night', 'a school shooting']) {
+    assert.ok(SENSITIVE.test(t), t);
+  }
+  const arms = corpus(posts);
+  const before = evidenceFor(posts, loaded(posts, arms), undefined, new Map()).markers.delve!.arms['posts-gpt4']!;
+  const shown = before.examples.map((x) => x.id.replace(/^raid:gpt4:/, ''));
+  assert.ok(shown.length >= 2);
+  // one shown document turns sensitive in the person's text, another in a different model's
+  arms.find((a) => a.id === 'posts-human')!.texts.find((t) => t.id === `raid:human:${shown[0]}`)!.text += ' He was accused of the bombing.';
+  arms.find((a) => a.id === 'posts-mistral-chat')!.texts.find((t) => t.id === `raid:mistral-chat:${shown[1]}`)!.text += ' My brother is an addict.';
+  const after = evidenceFor(posts, loaded(posts, arms), undefined, new Map()).markers.delve!.arms['posts-gpt4']!;
+  assert.equal(after.occurrences, before.occurrences, 'still counted');
+  const now = after.examples.map((x) => x.id.replace(/^raid:gpt4:/, ''));
+  assert.ok(!now.includes(shown[0]!) && !now.includes(shown[1]!), `${shown} -> ${now}`);
+  // the abstracts quote the person, and an academic subject is not hidden from their evidence
+  const abs = corpus(abstracts);
+  const absBefore = evidenceFor(abstracts, loaded(abstracts, abs)).markers.delve!.arms['raid-gpt4']!.examples.map((x) => x.id);
+  const target = absBefore[0]!.replace(/^raid:gpt4:/, '');
+  abs.find((a) => a.id === 'raid-human')!.texts.find((t) => t.id === `raid:human:${target}`)!.text += ' We model drug addiction.';
+  assert.deepEqual(evidenceFor(abstracts, loaded(abstracts, abs)).markers.delve!.arms['raid-gpt4']!.examples.map((x) => x.id), absBefore);
+});
+
 test('titlesFor: hidden titles come from out/ and must be there', () => {
   const dir = mkdtempSync(path.join(tmpdir(), 'titles-'));
   assert.throws(() => titlesFor(posts, dir), /posts-titles\.json is missing/);
