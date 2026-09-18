@@ -1,0 +1,5849 @@
+{
+ "generated_at": "2026-09-18T07:59:24.696Z",
+ "reference": "essays-human",
+ "machine": "essays-claude-student",
+ "arms": [
+  {
+   "id": "essays-human",
+   "label": "school students (PERSUADE 2.0: the assignments every writer answered)",
+   "kind": "human",
+   "n": 5867,
+   "matchedWithReference": 5867,
+   "pairing": "self",
+   "medianWords": 406
+  },
+  {
+   "id": "essays-claude-student",
+   "label": "Claude Opus 5 via Claude Code, told it is a student in that grade (written here)",
+   "kind": "machine",
+   "n": 200,
+   "matchedWithReference": 196,
+   "pairing": "prompt",
+   "medianWords": 570
+  },
+  {
+   "id": "essays-llama3-student",
+   "label": "Llama 3 8B via Ollama, told it is a student in that grade (written here)",
+   "kind": "machine",
+   "n": 200,
+   "matchedWithReference": 200,
+   "pairing": "prompt",
+   "medianWords": 371
+  },
+  {
+   "id": "essays-claude-plain",
+   "label": "Claude Opus 5 via Claude Code, given the assignment alone (written here)",
+   "kind": "machine",
+   "n": 200,
+   "matchedWithReference": 200,
+   "pairing": "prompt",
+   "medianWords": 566
+  },
+  {
+   "id": "casual-human",
+   "label": "casual writing: online comments from before ChatGPT (Hacker News)",
+   "kind": "human",
+   "n": 4000,
+   "matchedWithReference": 1074,
+   "pairing": "length",
+   "medianWords": 108
+  },
+  {
+   "id": "careful-human",
+   "label": "careful writing: edited Q&A answers from the same period (Stack Exchange)",
+   "kind": "human",
+   "n": 3863,
+   "matchedWithReference": 1925,
+   "pairing": "length",
+   "medianWords": 170
+  },
+  {
+   "id": "hc3-gpt35",
+   "label": "GPT-3.5 answering questions (HC3, a different genre)",
+   "kind": "machine",
+   "n": 4000,
+   "matchedWithReference": 1562,
+   "pairing": "length",
+   "medianWords": 183
+  }
+ ],
+ "rows": [
+  {
+   "marker": "delve",
+   "label": "“delve”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 2,
+      "pct": 0.03408897221748764,
+      "lo": 0.009348727863737364,
+      "hi": 0.12421985623841249
+     },
+     "reference": {
+      "n": 5867,
+      "k": 2,
+      "pct": 0.03408897221748764,
+      "lo": 0.009348727863737364,
+      "hi": 0.12421985623841249
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 1,
+      "pct": 0.5,
+      "lo": 0.08831459893662051,
+      "hi": 2.7774399869771482
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 1,
+      "pct": 0.0931098696461825,
+      "lo": 0.01643764670758529,
+      "hi": 0.5255343833198323
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 4,
+      "pct": 0.2077922077922078,
+      "lo": 0.08083377778706899,
+      "hi": 0.5330891073269808
+     },
+     "reference": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 2,
+     "per1000": 0.0008079371748052871,
+     "lo": 0.000043169281980007364,
+     "hi": 0.0037579847763142484,
+     "dispersion": 1.5239799977270234
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 1,
+     "per1000": 0.01326488651889583,
+     "lo": 0.0003358378498188276,
+     "hi": 0.07390721730457377,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 2,
+     "per1000": 0.0037116080541894775,
+     "lo": 0.0003765360069607813,
+     "hi": 0.014252016356167367,
+     "dispersion": 1.1129920398340243
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 6,
+     "per1000": 0.006794986206178001,
+     "lo": 0.0022085921870216812,
+     "hi": 0.01584819787860118,
+     "dispersion": 1.1982779815390812
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004978822716420473,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "tapestry",
+   "label": "“tapestry”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     },
+     "reference": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     },
+     "reference": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.0014901914221770508,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.006845837346411726,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004177647501159631,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004978822716420473,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "moreover",
+   "label": "“moreover”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 58,
+      "pct": 0.9885801943071416,
+      "lo": 0.7655489328279261,
+      "hi": 1.275752947979078
+     },
+     "reference": {
+      "n": 5867,
+      "k": 58,
+      "pct": 0.9885801943071416,
+      "lo": 0.7655489328279261,
+      "hi": 1.275752947979078
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 2,
+      "pct": 1.0204081632653061,
+      "lo": 0.2802743465822266,
+      "hi": 3.6436333883438348
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 30,
+      "pct": 15,
+      "lo": 10.7135265876273,
+      "hi": 20.605693826655163
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 2,
+      "pct": 1,
+      "lo": 0.27466006037749346,
+      "hi": 3.572248519617954
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 4,
+      "pct": 0.37243947858473,
+      "lo": 0.14492452518618903,
+      "hi": 0.9537155718373437
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 27,
+      "pct": 1.4025974025974026,
+      "lo": 0.9657204026642177,
+      "hi": 2.033053576495087
+     },
+     "reference": {
+      "n": 1925,
+      "k": 10,
+      "pct": 0.5194805194805194,
+      "lo": 0.2824142039342948,
+      "hi": 0.9536437491915605
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 3,
+      "pct": 0.19206145966709348,
+      "lo": 0.06533806997447428,
+      "hi": 0.563180165841971
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 68,
+     "per1000": 0.027469863943379764,
+     "lo": 0.020998499388346185,
+     "hi": 0.035306315061158125,
+     "dispersion": 1.1198665438052031
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 32,
+     "per1000": 0.4244763686046666,
+     "lo": 0.29034152189753537,
+     "hi": 0.5992339803866066,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 6,
+     "per1000": 0.011134824162568432,
+     "lo": 0.004086284222865144,
+     "hi": 0.024235824482735854,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 40,
+     "per1000": 0.04529990804118668,
+     "lo": 0.030173388141037833,
+     "hi": 0.06534506637212463,
+     "dispersion": 1.4134819760421746
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004978822716420473,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 3,
+     "pct": 1.530612244897959,
+     "lo": 0.521878527445876,
+     "hi": 4.4028218352413715
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 3,
+      "per1000": 0.028695502458248045,
+      "lo": 0.005917702474466364,
+      "hi": 0.08386043530829826,
+      "dispersion": 1
+     }
+    },
+    "p": 0.11300907361280615,
+    "q": 1
+   },
+   "p": 0.028157762972214173,
+   "q": 0.0639949158459413,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 4.303930962148042
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "furthermore",
+   "label": "“furthermore”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 199,
+      "pct": 3.3918527356400205,
+      "lo": 2.9582940336420536,
+      "hi": 3.8864077549396723
+     },
+     "reference": {
+      "n": 5867,
+      "k": 199,
+      "pct": 3.3918527356400205,
+      "lo": 2.9582940336420536,
+      "hi": 3.8864077549396723
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 5,
+      "pct": 2.5510204081632653,
+      "lo": 1.094440195466063,
+      "hi": 5.831845422743559
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 60,
+      "pct": 30,
+      "lo": 24.074644243406386,
+      "hi": 36.67919599332645
+     },
+     "reference": {
+      "n": 200,
+      "k": 5,
+      "pct": 2.5,
+      "lo": 1.0724561470787712,
+      "hi": 5.717914415161714
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 5,
+      "pct": 2.5,
+      "lo": 1.0724561470787712,
+      "hi": 5.717914415161714
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 6,
+      "pct": 0.5586592178770949,
+      "lo": 0.25627906649293675,
+      "hi": 1.213473075194673
+     },
+     "reference": {
+      "n": 1074,
+      "k": 10,
+      "pct": 0.931098696461825,
+      "lo": 0.5065259740221458,
+      "hi": 1.7054502569936172
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 18,
+      "pct": 0.935064935064935,
+      "lo": 0.5922845557021746,
+      "hi": 1.4732868214394212
+     },
+     "reference": {
+      "n": 1925,
+      "k": 36,
+      "pct": 1.87012987012987,
+      "lo": 1.353869154391434,
+      "hi": 2.578107426785579
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 24,
+      "pct": 1.5364916773367479,
+      "lo": 1.0346619803502575,
+      "hi": 2.2761199020572604
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 218,
+     "per1000": 0.0880651520537763,
+     "lo": 0.07676209264299493,
+     "hi": 0.10056396045450182,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 60,
+     "per1000": 0.7958931911337499,
+     "lo": 0.6073503515195314,
+     "hi": 1.0244723016788133,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 13,
+     "per1000": 0.024125452352231604,
+     "lo": 0.012845787308162906,
+     "hi": 0.0412552582688372,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 27,
+     "per1000": 0.030577437927801005,
+     "lo": 0.01898741132902602,
+     "hi": 0.04662714481957426,
+     "dispersion": 1.2707396698332256
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 1,
+     "per1000": 0.0013496843088401623,
+     "lo": 0.000008164739874645168,
+     "hi": 0.009814867283828459,
+     "dispersion": 1.4472094586146547
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 6,
+     "pct": 3.061224489795918,
+     "lo": 1.410366650255322,
+     "hi": 6.516711595715486
+    },
+    "b": {
+     "n": 196,
+     "k": 10,
+     "pct": 5.1020408163265305,
+     "lo": 2.7945905632825707,
+     "hi": 9.135658193732985
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 8,
+      "per1000": 0.07661367554108409,
+      "lo": 0.026822673290685325,
+      "hi": 0.17137352688058824,
+      "dispersion": 1.4345006500750304
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 12,
+      "per1000": 0.11478200983299218,
+      "lo": 0.05297528796867448,
+      "hi": 0.2165603594605152,
+      "dispersion": 1.3069622658886288
+     }
+    },
+    "p": 0.4445050934278674,
+    "q": 1
+   },
+   "p": 0.000009282873712444648,
+   "q": 0.000029008980351389526,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 11.610111778685674
+   },
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "crucial",
+   "label": "“crucial”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 109,
+      "pct": 1.8578489858530765,
+      "lo": 1.542504237461585,
+      "hi": 2.23619760998734
+     },
+     "reference": {
+      "n": 5867,
+      "k": 109,
+      "pct": 1.8578489858530765,
+      "lo": 1.542504237461585,
+      "hi": 2.23619760998734
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 3,
+      "pct": 1.530612244897959,
+      "lo": 0.521878527445876,
+      "hi": 4.4028218352413715
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 13,
+      "pct": 6.5,
+      "lo": 3.8375987649759757,
+      "hi": 10.802003749917944
+     },
+     "reference": {
+      "n": 200,
+      "k": 3,
+      "pct": 1.5,
+      "lo": 0.5114145184492387,
+      "hi": 4.316648055627889
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 3,
+      "pct": 1.5,
+      "lo": 0.5114145184492387,
+      "hi": 4.316648055627889
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 7,
+      "pct": 0.6517690875232774,
+      "lo": 0.3160659647629325,
+      "hi": 1.3392421992567154
+     },
+     "reference": {
+      "n": 1074,
+      "k": 6,
+      "pct": 0.5586592178770949,
+      "lo": 0.25627906649293675,
+      "hi": 1.213473075194673
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 15,
+      "pct": 0.7792207792207793,
+      "lo": 0.4727828642858775,
+      "hi": 1.2817209788498158
+     },
+     "reference": {
+      "n": 1925,
+      "k": 17,
+      "pct": 0.8831168831168831,
+      "lo": 0.552101619741036,
+      "hi": 1.4097805793985927
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 2,
+      "pct": 0.12804097311139565,
+      "lo": 0.035119743390091065,
+      "hi": 0.4656716521124935
+     },
+     "reference": {
+      "n": 1562,
+      "k": 4,
+      "pct": 0.2560819462227913,
+      "lo": 0.09962733507610536,
+      "hi": 0.6566177410542005
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 127,
+     "per1000": 0.05130401060013574,
+     "lo": 0.042769842068862564,
+     "hi": 0.06104203901167679,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 13,
+     "per1000": 0.1724435247456458,
+     "lo": 0.0915143391005507,
+     "hi": 0.29558401474161,
+     "dispersion": 1.009113651650002
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 15,
+     "per1000": 0.02783706040642108,
+     "lo": 0.015580191394239174,
+     "hi": 0.045912997812915995,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 25,
+     "per1000": 0.028312442525741673,
+     "lo": 0.01807950448672815,
+     "hi": 0.04223849843774657,
+     "dispersion": 1.0558297901235314
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 6,
+     "per1000": 0.008098105853040974,
+     "lo": 0.0029718621236619674,
+     "hi": 0.01762616716990395,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 4,
+     "pct": 2.0408163265306123,
+     "lo": 0.7964134352931327,
+     "hi": 5.129079555155302
+    },
+    "b": {
+     "n": 196,
+     "k": 2,
+     "pct": 1.0204081632653061,
+     "lo": 0.2802743465822266,
+     "hi": 3.6436333883438348
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 5,
+      "per1000": 0.04788354721317755,
+      "lo": 0.011717594506203678,
+      "hi": 0.12928030806640564,
+      "dispersion": 1.4083278115583224
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 2,
+      "per1000": 0.01913033497216536,
+      "lo": 0.002316772315956284,
+      "hi": 0.06910534757639392,
+      "dispersion": 1
+     }
+    },
+    "p": 0.4958025976592481,
+    "q": 1
+   },
+   "p": 0.00034429535850749723,
+   "q": 0.0008607383962687431,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 8.102229166134634
+   },
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "realm",
+   "label": "“realm”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 6,
+      "pct": 0.10226691665246293,
+      "lo": 0.04687736848160357,
+      "hi": 0.222957879670893
+     },
+     "reference": {
+      "n": 5867,
+      "k": 6,
+      "pct": 0.10226691665246293,
+      "lo": 0.04687736848160357,
+      "hi": 0.222957879670893
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 4,
+      "pct": 0.37243947858473,
+      "lo": 0.14492452518618903,
+      "hi": 0.9537155718373437
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 6,
+      "pct": 0.3116883116883117,
+      "lo": 0.14292348769767915,
+      "hi": 0.6783777534203057
+     },
+     "reference": {
+      "n": 1925,
+      "k": 1,
+      "pct": 0.05194805194805195,
+      "lo": 0.009170459494355661,
+      "hi": 0.29368489161379124
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 1,
+      "pct": 0.06402048655569782,
+      "lo": 0.011301791225743794,
+      "hi": 0.36176276396298024
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 6,
+     "per1000": 0.0024238115244158615,
+     "lo": 0.0008894961111927103,
+     "hi": 0.005275617273099819,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 6,
+     "per1000": 0.011134824162568432,
+     "lo": 0.004086284222865144,
+     "hi": 0.024235824482735854,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 21,
+     "per1000": 0.023782451721623004,
+     "lo": 0.013994074975268844,
+     "hi": 0.037791219835980765,
+     "dispersion": 1.195104017937649
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 1,
+     "per1000": 0.0013496843088401623,
+     "lo": 0.00003417104817062703,
+     "hi": 0.0075199596592045795,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0.21389168719203988
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "showcase",
+   "label": "“showcase”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 12,
+      "pct": 0.20453383330492586,
+      "lo": 0.1170424290383204,
+      "hi": 0.3571928151896962
+     },
+     "reference": {
+      "n": 5867,
+      "k": 12,
+      "pct": 0.20453383330492586,
+      "lo": 0.1170424290383204,
+      "hi": 0.3571928151896962
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 5,
+      "pct": 2.5,
+      "lo": 1.0724561470787712,
+      "hi": 5.717914415161714
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 1,
+      "pct": 0.0931098696461825,
+      "lo": 0.01643764670758529,
+      "hi": 0.5255343833198323
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 3,
+      "pct": 0.15584415584415584,
+      "lo": 0.05301395811785613,
+      "hi": 0.45721974899422596
+     },
+     "reference": {
+      "n": 1925,
+      "k": 1,
+      "pct": 0.05194805194805195,
+      "lo": 0.009170459494355661,
+      "hi": 0.29368489161379124
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 1,
+      "pct": 0.06402048655569782,
+      "lo": 0.011301791225743794,
+      "hi": 0.36176276396298024
+     },
+     "reference": {
+      "n": 1562,
+      "k": 1,
+      "pct": 0.06402048655569782,
+      "lo": 0.011301791225743794,
+      "hi": 0.36176276396298024
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 16,
+     "per1000": 0.006463497398442297,
+     "lo": 0.0034290915756589073,
+     "hi": 0.011081406511413334,
+     "dispersion": 1.2430041101201184
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 8,
+     "per1000": 0.10611909215116665,
+     "lo": 0.03248467315560702,
+     "hi": 0.2557124593558112,
+     "dispersion": 1.732287477560887
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 4,
+     "per1000": 0.007423216108378955,
+     "lo": 0.00190975703753644,
+     "hi": 0.019559274973831663,
+     "dispersion": 1.0673254051341106
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 3,
+     "per1000": 0.0033974931030890006,
+     "lo": 0.0007006447568703658,
+     "hi": 0.009928916595781389,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 5,
+     "per1000": 0.006748421544200811,
+     "lo": 0.0015555208337351282,
+     "hi": 0.018744798651923106,
+     "dispersion": 1.4978621507748597
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 0.6536258752134677,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0.9414289106325568
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "underscore",
+   "label": "“underscores”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     },
+     "reference": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     },
+     "reference": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.0014901914221770508,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 2,
+     "per1000": 0.0037116080541894775,
+     "lo": 0.00020958156281368137,
+     "hi": 0.017007319524404874,
+     "dispersion": 1.4885794085795534
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004177647501159631,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004978822716420473,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "leverage",
+   "label": "“leverage” as a verb",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     },
+     "reference": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 11,
+      "pct": 1.0242085661080074,
+      "lo": 0.5728461199230114,
+      "hi": 1.82468613342479
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 4,
+      "pct": 0.2077922077922078,
+      "lo": 0.08083377778706899,
+      "hi": 0.5330891073269808
+     },
+     "reference": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 2,
+      "pct": 0.12804097311139565,
+      "lo": 0.035119743390091065,
+      "hi": 0.4656716521124935
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.0014901914221770508,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 22,
+     "per1000": 0.04082768859608425,
+     "lo": 0.025586495076984014,
+     "hi": 0.06181361118515259,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 7,
+     "per1000": 0.00792748390720767,
+     "lo": 0.0023834042966829894,
+     "hi": 0.019287144865730625,
+     "dispersion": 1.5515270449064482
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 3,
+     "per1000": 0.004049052926520487,
+     "lo": 0.0008350120565889705,
+     "hi": 0.011833050893546821,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "important_to_note",
+   "label": "“it is (also) important to note” / “worth noting”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 2,
+      "pct": 0.03408897221748764,
+      "lo": 0.009348727863737364,
+      "hi": 0.12421985623841249
+     },
+     "reference": {
+      "n": 5867,
+      "k": 2,
+      "pct": 0.03408897221748764,
+      "lo": 0.009348727863737364,
+      "hi": 0.12421985623841249
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 1,
+      "pct": 0.5,
+      "lo": 0.08831459893662051,
+      "hi": 2.7774399869771482
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 1,
+      "pct": 0.0931098696461825,
+      "lo": 0.01643764670758529,
+      "hi": 0.5255343833198323
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 8,
+      "pct": 0.4155844155844156,
+      "lo": 0.21072984711960094,
+      "hi": 0.8179497500023192
+     },
+     "reference": {
+      "n": 1925,
+      "k": 1,
+      "pct": 0.05194805194805195,
+      "lo": 0.009170459494355661,
+      "hi": 0.29368489161379124
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 183,
+      "pct": 11.715749039692701,
+      "lo": 10.213933666796802,
+      "hi": 13.405415825514554
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 2,
+     "per1000": 0.0008079371748052871,
+     "lo": 0.00009784494010921924,
+     "hi": 0.0029185468715548263,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 1,
+     "per1000": 0.01326488651889583,
+     "lo": 0.0003358378498188276,
+     "hi": 0.07390721730457377,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 7,
+     "per1000": 0.012990628189663171,
+     "lo": 0.005222906284718458,
+     "hi": 0.026765659017724697,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 14,
+     "per1000": 0.01585496781441534,
+     "lo": 0.008668058441750311,
+     "hi": 0.026601941918532674,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 485,
+     "per1000": 0.6545968897874788,
+     "lo": 0.5966702815948964,
+     "hi": 0.7166283296055644,
+     "dispersion": 1.0347239300514006
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0.155298229691458
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "in_todays",
+   "label": "“in today’s …”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 59,
+      "pct": 1.0056246804158855,
+      "lo": 0.7804501627428384,
+      "hi": 1.2949183840767524
+     },
+     "reference": {
+      "n": 5867,
+      "k": 59,
+      "pct": 1.0056246804158855,
+      "lo": 0.7804501627428384,
+      "hi": 1.2949183840767524
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 3,
+      "pct": 1.530612244897959,
+      "lo": 0.521878527445876,
+      "hi": 4.4028218352413715
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 12,
+      "pct": 6,
+      "lo": 3.4651849901271503,
+      "hi": 10.193263530685089
+     },
+     "reference": {
+      "n": 200,
+      "k": 2,
+      "pct": 1,
+      "lo": 0.27466006037749346,
+      "hi": 3.572248519617954
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 4,
+      "pct": 2,
+      "lo": 0.7804300176394187,
+      "hi": 5.028786550519387
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 1,
+      "pct": 0.0931098696461825,
+      "lo": 0.01643764670758529,
+      "hi": 0.5255343833198323
+     },
+     "reference": {
+      "n": 1074,
+      "k": 8,
+      "pct": 0.74487895716946,
+      "lo": 0.37791192534495316,
+      "hi": 1.4629522610067331
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 1,
+      "pct": 0.05194805194805195,
+      "lo": 0.009170459494355661,
+      "hi": 0.29368489161379124
+     },
+     "reference": {
+      "n": 1925,
+      "k": 12,
+      "pct": 0.6233766233766234,
+      "lo": 0.35695434516602853,
+      "hi": 1.086481963963762
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 1,
+      "pct": 0.06402048655569782,
+      "lo": 0.011301791225743794,
+      "hi": 0.36176276396298024
+     },
+     "reference": {
+      "n": 1562,
+      "k": 10,
+      "pct": 0.6402048655569782,
+      "lo": 0.34811348448040663,
+      "hi": 1.1744926335330632
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 63,
+     "per1000": 0.025450021006366546,
+     "lo": 0.019544500348934863,
+     "hi": 0.03257905620576207,
+     "dispersion": 1.004371232940313
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 13,
+     "per1000": 0.1724435247456458,
+     "lo": 0.09044561084319432,
+     "hi": 0.298063213429518,
+     "dispersion": 1.0415594386495561
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 3,
+     "per1000": 0.005567412081284216,
+     "lo": 0.0007488124856794171,
+     "hi": 0.019357915126779,
+     "dispersion": 1.400093512207678
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 1,
+     "per1000": 0.001132497701029667,
+     "lo": 0.000028672359337321183,
+     "hi": 0.006309873331196577,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 1,
+     "per1000": 0.0013496843088401623,
+     "lo": 0.00003417104817062703,
+     "hi": 0.0075199596592045795,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 4,
+     "pct": 2.0408163265306123,
+     "lo": 0.7964134352931327,
+     "hi": 5.129079555155302
+    },
+    "b": {
+     "n": 196,
+     "k": 2,
+     "pct": 1.0204081632653061,
+     "lo": 0.2802743465822266,
+     "hi": 3.6436333883438348
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 4,
+      "per1000": 0.03830683777054204,
+      "lo": 0.00984854324866846,
+      "hi": 0.10096712763241777,
+      "dispersion": 1.068114261475546
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 2,
+      "per1000": 0.01913033497216536,
+      "lo": 0.002316772315956284,
+      "hi": 0.06910534757639392,
+      "dispersion": 1
+     }
+    },
+    "p": 0.23628462573339892,
+    "q": 1
+   },
+   "p": 0.07174488163192057,
+   "q": 0.1494685033998345,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 2.963364012581887
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "not_only_but_also",
+   "label": "“not only … but also”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 237,
+      "pct": 4.039543207772286,
+      "lo": 3.5650827836759778,
+      "hi": 4.574152313384042
+     },
+     "reference": {
+      "n": 5867,
+      "k": 237,
+      "pct": 4.039543207772286,
+      "lo": 3.5650827836759778,
+      "hi": 4.574152313384042
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 4,
+      "pct": 2.0408163265306123,
+      "lo": 0.7964134352931327,
+      "hi": 5.129079555155302
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 55,
+      "pct": 27.5,
+      "lo": 21.779604313809777,
+      "hi": 34.06846595251468
+     },
+     "reference": {
+      "n": 200,
+      "k": 6,
+      "pct": 3,
+      "lo": 1.3820125830748324,
+      "hi": 6.389511973247332
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 4,
+      "pct": 2,
+      "lo": 0.7804300176394187,
+      "hi": 5.028786550519387
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 4,
+      "pct": 0.37243947858473,
+      "lo": 0.14492452518618903,
+      "hi": 0.9537155718373437
+     },
+     "reference": {
+      "n": 1074,
+      "k": 16,
+      "pct": 1.48975791433892,
+      "lo": 0.9190452905453493,
+      "hi": 2.406267074462644
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 17,
+      "pct": 0.8831168831168831,
+      "lo": 0.552101619741036,
+      "hi": 1.4097805793985927
+     },
+     "reference": {
+      "n": 1925,
+      "k": 47,
+      "pct": 2.4415584415584415,
+      "lo": 1.8410269571818947,
+      "hi": 3.231530582016762
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 4,
+      "pct": 0.2560819462227913,
+      "lo": 0.09962733507610536,
+      "hi": 0.6566177410542005
+     },
+     "reference": {
+      "n": 1562,
+      "k": 26,
+      "pct": 1.6645326504481435,
+      "lo": 1.1384181815244487,
+      "hi": 2.42781738151079
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 283,
+     "per1000": 0.11432311023494814,
+     "lo": 0.10049507353553847,
+     "hi": 0.12952228707935884,
+     "dispersion": 1.1481806392663343
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 85,
+     "per1000": 1.1275153541061456,
+     "lo": 0.8483204273345433,
+     "hi": 1.4692253438781933,
+     "dispersion": 1.5584143433490232
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 8,
+     "per1000": 0.01484643221675791,
+     "lo": 0.0062851078826760805,
+     "hi": 0.02962043129596284,
+     "dispersion": 1.0388101223243715
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 25,
+     "per1000": 0.028312442525741673,
+     "lo": 0.01832231999835441,
+     "hi": 0.04179475030412482,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 13,
+     "per1000": 0.01754589601492211,
+     "lo": 0.009342450663644608,
+     "hi": 0.030004016550048893,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 15,
+     "pct": 7.653061224489796,
+     "lo": 4.6923968553332,
+     "hi": 12.24181504048829
+    },
+    "b": {
+     "n": 196,
+     "k": 7,
+     "pct": 3.5714285714285716,
+     "lo": 1.7405530293636675,
+     "hi": 7.187317844368328
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 18,
+      "per1000": 0.1723807699674392,
+      "lo": 0.09561623627896242,
+      "hi": 0.2861950509976591,
+      "dispersion": 1.2326050939544568
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 10,
+      "per1000": 0.09565167486082682,
+      "lo": 0.038486626111969374,
+      "hi": 0.19698540167837172,
+      "dispersion": 1.4266006232712387
+     }
+    },
+    "p": 0.187409367667421,
+    "q": 1
+   },
+   "p": 0.0000020409505461884517,
+   "q": 0.000007289109093530185,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 14.684388874095648
+   },
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "not_x_its_y",
+   "label": "“it’s / this isn’t X, it’s Y”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 12,
+      "pct": 0.20453383330492586,
+      "lo": 0.1170424290383204,
+      "hi": 0.3571928151896962
+     },
+     "reference": {
+      "n": 5867,
+      "k": 12,
+      "pct": 0.20453383330492586,
+      "lo": 0.1170424290383204,
+      "hi": 0.3571928151896962
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 29,
+      "pct": 14.795918367346939,
+      "lo": 10.503533186445976,
+      "hi": 20.44177549803213
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 2,
+      "pct": 1,
+      "lo": 0.27466006037749346,
+      "hi": 3.572248519617954
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 26,
+      "pct": 13,
+      "lo": 9.028141365225629,
+      "hi": 18.36646307273012
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 11,
+      "pct": 1.0242085661080074,
+      "lo": 0.5728461199230114,
+      "hi": 1.82468613342479
+     },
+     "reference": {
+      "n": 1074,
+      "k": 1,
+      "pct": 0.0931098696461825,
+      "lo": 0.01643764670758529,
+      "hi": 0.5255343833198323
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 21,
+      "pct": 1.0909090909090908,
+      "lo": 0.7146204731734281,
+      "hi": 1.6620184379740708
+     },
+     "reference": {
+      "n": 1925,
+      "k": 2,
+      "pct": 0.1038961038961039,
+      "lo": 0.028496087898319658,
+      "hi": 0.37804844121179493
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 2,
+      "pct": 0.12804097311139565,
+      "lo": 0.035119743390091065,
+      "hi": 0.4656716521124935
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 12,
+     "per1000": 0.004847623048831723,
+     "lo": 0.002504006610653786,
+     "hi": 0.008469797338893748,
+     "dispersion": 1.0008619458712442
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 29,
+     "per1000": 0.2467770071905714,
+     "lo": 0.16527043473212888,
+     "hi": 0.354412946760804,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 2,
+     "per1000": 0.02652977303779166,
+     "lo": 0.0025835653464784574,
+     "hi": 0.10325878821660546,
+     "dispersion": 1.1391489419172962
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 27,
+     "per1000": 0.23687327279905251,
+     "lo": 0.15610097935491485,
+     "hi": 0.34463817559467097,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 23,
+     "per1000": 0.04268349262317899,
+     "lo": 0.027038489308700932,
+     "hi": 0.06408188589121029,
+     "dispersion": 1.0027919547281126
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 32,
+     "per1000": 0.03623992643294934,
+     "lo": 0.02475958163593436,
+     "hi": 0.051208166103873486,
+     "dispersion": 1.005533596774001
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 2,
+     "per1000": 0.0026993686176803246,
+     "lo": 0.00014876542665404828,
+     "hi": 0.012451155750130786,
+     "dispersion": 1.504148741020254
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 1,
+     "pct": 0.5102040816326531,
+     "lo": 0.09011807600492991,
+     "hi": 2.832997031159944
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 1,
+      "per1000": 0.00956516748608268,
+      "lo": 0.0002106784394688675,
+      "hi": 0.05490879242071182,
+      "dispersion": 1.0440564002207835
+     }
+    },
+    "p": 0.49582787443386317,
+    "q": 1
+   },
+   "p": 1.2244041897455556e-27,
+   "q": 1.5305052371819444e-26,
+   "lengthMatched": {
+    "observed": 29,
+    "expected": 2.772053229692449
+   },
+   "verdict": "machine marker"
+  },
+  {
+   "marker": "dive_into",
+   "label": "“dive into” / “let’s explore”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 3,
+      "pct": 0.051133458326231465,
+      "lo": 0.017391164968370607,
+      "hi": 0.15024408514636592
+     },
+     "reference": {
+      "n": 5867,
+      "k": 3,
+      "pct": 0.051133458326231465,
+      "lo": 0.017391164968370607,
+      "hi": 0.15024408514636592
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 2,
+      "pct": 0.1038961038961039,
+      "lo": 0.028496087898319658,
+      "hi": 0.37804844121179493
+     },
+     "reference": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 3,
+     "per1000": 0.0012119057622079308,
+     "lo": 0.00024992410355151426,
+     "hi": 0.003541702917356652,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 1,
+     "per1000": 0.0018558040270947387,
+     "lo": 0.000002133791424509797,
+     "hi": 0.017019562855822894,
+     "dispersion": 1.9525932207689614
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 5,
+     "per1000": 0.005662488505148335,
+     "lo": 0.001838594604462376,
+     "hi": 0.013214359254680112,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 1,
+     "per1000": 0.0013496843088401623,
+     "lo": 0.00003417104817062703,
+     "hi": 0.0075199596592045795,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0.15035315520198364
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "in_conclusion",
+   "label": "“in conclusion” / “in summary” / “to sum (it) up”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 1296,
+      "pct": 22.089653996931993,
+      "lo": 21.046558418095294,
+      "hi": 23.16927598629402
+     },
+     "reference": {
+      "n": 5867,
+      "k": 1296,
+      "pct": 22.089653996931993,
+      "lo": 21.046558418095294,
+      "hi": 23.16927598629402
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 1,
+      "pct": 0.5102040816326531,
+      "lo": 0.09011807600492991,
+      "hi": 2.832997031159944
+     },
+     "reference": {
+      "n": 196,
+      "k": 59,
+      "pct": 30.102040816326532,
+      "lo": 24.113253265212084,
+      "hi": 36.85583425210162
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 189,
+      "pct": 94.5,
+      "lo": 90.42120755340645,
+      "hi": 96.90149791986299
+     },
+     "reference": {
+      "n": 200,
+      "k": 52,
+      "pct": 26,
+      "lo": 20.413736892786314,
+      "hi": 32.4908713912931
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 1,
+      "pct": 0.5,
+      "lo": 0.08831459893662051,
+      "hi": 2.7774399869771482
+     },
+     "reference": {
+      "n": 200,
+      "k": 61,
+      "pct": 30.5,
+      "lo": 24.536314352669052,
+      "hi": 37.19867987814547
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 3,
+      "pct": 0.27932960893854747,
+      "lo": 0.0950400385511283,
+      "hi": 0.8180440361403661
+     },
+     "reference": {
+      "n": 1074,
+      "k": 125,
+      "pct": 11.638733705772811,
+      "lo": 9.856052366799108,
+      "hi": 13.694866432401067
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 19,
+      "pct": 0.987012987012987,
+      "lo": 0.6327802264825639,
+      "hi": 1.536480328661
+     },
+     "reference": {
+      "n": 1925,
+      "k": 311,
+      "pct": 16.155844155844157,
+      "lo": 14.579353973774497,
+      "hi": 17.867146557943606
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 88,
+      "pct": 5.633802816901408,
+      "lo": 4.5954085997958325,
+      "hi": 6.889891062698767
+     },
+     "reference": {
+      "n": 1562,
+      "k": 201,
+      "pct": 12.868117797695263,
+      "lo": 11.298167658042095,
+      "hi": 14.620264959918755
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 1368,
+     "per1000": 0.5526290275668164,
+     "lo": 0.5237289432153012,
+     "hi": 0.5827089825134508,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 1,
+     "per1000": 0.008509551972088669,
+     "lo": 0.00009269590315629917,
+     "hi": 0.05601065278884373,
+     "dispersion": 1.2649267844599343
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 189,
+     "per1000": 2.507063552071312,
+     "lo": 2.1623653558968403,
+     "hi": 2.891089587291435,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 1,
+     "per1000": 0.008773084177742686,
+     "lo": 0.00017253395163005787,
+     "hi": 0.05156139653296606,
+     "dispersion": 1.0798024211968935
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 6,
+     "per1000": 0.011134824162568432,
+     "lo": 0.004086284222865144,
+     "hi": 0.024235824482735854,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 22,
+     "per1000": 0.024914949422652672,
+     "lo": 0.01561406615624939,
+     "hi": 0.03772153284370113,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 185,
+     "per1000": 0.24969159713543002,
+     "lo": 0.21500608836511187,
+     "hi": 0.2883796713283166,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 52,
+     "pct": 26.53061224489796,
+     "lo": 20.843918234872298,
+     "hi": 33.119620888113104
+    },
+    "b": {
+     "n": 196,
+     "k": 54,
+     "pct": 27.551020408163264,
+     "lo": 21.77316466153907,
+     "hi": 34.19195971696869
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 54,
+      "per1000": 0.5171423099023176,
+      "lo": 0.3884932194268771,
+      "hi": 0.6747585366187888,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 57,
+      "per1000": 0.5452145467067129,
+      "lo": 0.4129401733489294,
+      "hi": 0.7063886844351946,
+      "dispersion": 1
+     }
+    },
+    "p": 0.8487090143471571,
+    "q": 1
+   },
+   "p": 1.644320173521717e-25,
+   "q": 1.3702668112680974e-24,
+   "lengthMatched": {
+    "observed": 1,
+    "expected": 59.57556448454747
+   },
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "uniform_sentences",
+   "label": "every sentence the same length",
+   "family": "shape",
+   "belief": false,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5810,
+      "k": 1958,
+      "pct": 33.70051635111876,
+      "lo": 32.49617851431104,
+      "hi": 34.92639453962286
+     },
+     "reference": {
+      "n": 5810,
+      "k": 1958,
+      "pct": 33.70051635111876,
+      "lo": 32.49617851431104,
+      "hi": 34.92639453962286
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 4,
+      "pct": 2.0408163265306123,
+      "lo": 0.7964134352931327,
+      "hi": 5.129079555155302
+     },
+     "reference": {
+      "n": 196,
+      "k": 65,
+      "pct": 33.16326530612245,
+      "lo": 26.951365081811225,
+      "hi": 40.0224782020696
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 138,
+      "pct": 69,
+      "lo": 62.2826945087378,
+      "hi": 75.001157266366
+     },
+     "reference": {
+      "n": 200,
+      "k": 69,
+      "pct": 34.5,
+      "lo": 28.259686901390296,
+      "hi": 41.32453928207765
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 7,
+      "pct": 3.5,
+      "lo": 1.7055324637357108,
+      "hi": 7.047146086668134
+     },
+     "reference": {
+      "n": 200,
+      "k": 65,
+      "pct": 32.5,
+      "lo": 26.39146705018622,
+      "hi": 39.26814315695502
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1042,
+      "k": 183,
+      "pct": 17.562380038387715,
+      "lo": 15.372357562741163,
+      "hi": 19.990703153145446
+     },
+     "reference": {
+      "n": 1042,
+      "k": 205,
+      "pct": 19.67370441458733,
+      "lo": 17.373202429864172,
+      "hi": 22.196996345935148
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1894,
+      "k": 280,
+      "pct": 14.78352692713833,
+      "lo": 13.256324661696265,
+      "hi": 16.453299155170225
+     },
+     "reference": {
+      "n": 1894,
+      "k": 494,
+      "pct": 26.08236536430834,
+      "lo": 24.154701725971883,
+      "hi": 28.106856878286756
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1531,
+      "k": 1121,
+      "pct": 73.22011757021555,
+      "lo": 70.94587946822558,
+      "hi": 75.37811904732155
+     },
+     "reference": {
+      "n": 1531,
+      "k": 324,
+      "pct": 21.16263879817113,
+      "lo": 19.190039572933987,
+      "hi": 23.279593775549664
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5810,
+     "words": 2462165,
+     "occurrences": 1958,
+     "per1000": 0.7952350878190536,
+     "lo": 0.7603974476983902,
+     "hi": 0.8312572063676719,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 4,
+     "per1000": 0.034038207888354675,
+     "lo": 0.009104013337891563,
+     "hi": 0.08796935316049127,
+     "dispersion": 1.0216436888469413
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 138,
+     "per1000": 1.8305543396076247,
+     "lo": 1.5378899767612726,
+     "hi": 2.162703540447861,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 7,
+     "per1000": 0.061411589244198796,
+     "lo": 0.024690643957718483,
+     "hi": 0.12653134501645788,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 2983,
+     "words": 448355,
+     "occurrences": 700,
+     "per1000": 1.561262838598878,
+     "lo": 1.442173461149629,
+     "hi": 1.687563642669424,
+     "dispersion": 1.1023902891991557
+    },
+    "careful-human": {
+     "texts": 3507,
+     "words": 850399,
+     "occurrences": 694,
+     "per1000": 0.8160875071584045,
+     "lo": 0.7416791178660189,
+     "hi": 0.8959390684095702,
+     "dispersion": 1.5740960118740435
+    },
+    "hc3-gpt35": {
+     "texts": 3823,
+     "words": 722070,
+     "occurrences": 2865,
+     "per1000": 3.9677593585109476,
+     "lo": 3.8237870395607088,
+     "hi": 4.115765311228777,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 64,
+     "pct": 32.6530612244898,
+     "lo": 26.476173655146727,
+     "hi": 39.4968770009729
+    },
+    "b": {
+     "n": 196,
+     "k": 67,
+     "pct": 34.183673469387756,
+     "lo": 27.904273359588167,
+     "hi": 41.07115517981504
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 64,
+      "per1000": 0.6129094043286727,
+      "lo": 0.4720149257445486,
+      "hi": 0.7826716262102748,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 67,
+      "per1000": 0.6408662215675397,
+      "lo": 0.49666251913230186,
+      "hi": 0.8138774475140347,
+      "dispersion": 1
+     }
+    },
+    "p": 0.7480403527983068,
+    "q": 1
+   },
+   "p": 6.031198908334277e-16,
+   "q": 3.7694993177089234e-15,
+   "lengthMatched": null,
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "em_dash",
+   "label": "a dash, however it is typed",
+   "family": "shape",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 13,
+      "pct": 0.22157831941366968,
+      "lo": 0.12954002835848316,
+      "hi": 0.37876188188212023
+     },
+     "reference": {
+      "n": 5867,
+      "k": 13,
+      "pct": 0.22157831941366968,
+      "lo": 0.12954002835848316,
+      "hi": 0.37876188188212023
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 1,
+      "pct": 0.5102040816326531,
+      "lo": 0.09011807600492991,
+      "hi": 2.832997031159944
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 2,
+      "pct": 1,
+      "lo": 0.27466006037749346,
+      "hi": 3.572248519617954
+     },
+     "reference": {
+      "n": 200,
+      "k": 1,
+      "pct": 0.5,
+      "lo": 0.08831459893662051,
+      "hi": 2.7774399869771482
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 4,
+      "pct": 2,
+      "lo": 0.7804300176394187,
+      "hi": 5.028786550519387
+     },
+     "reference": {
+      "n": 200,
+      "k": 1,
+      "pct": 0.5,
+      "lo": 0.08831459893662051,
+      "hi": 2.7774399869771482
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 286,
+      "pct": 26.629422718808193,
+      "lo": 24.072520017874602,
+      "hi": 29.352918376783755
+     },
+     "reference": {
+      "n": 1074,
+      "k": 2,
+      "pct": 0.186219739292365,
+      "lo": 0.051081962991438634,
+      "hi": 0.6764460893680174
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 509,
+      "pct": 26.441558441558442,
+      "lo": 24.519727187281028,
+      "hi": 28.45723058882666
+     },
+     "reference": {
+      "n": 1925,
+      "k": 3,
+      "pct": 0.15584415584415584,
+      "lo": 0.05301395811785613,
+      "hi": 0.45721974899422596
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 29,
+      "pct": 1.8565941101152368,
+      "lo": 1.295747947907964,
+      "hi": 2.653668136068857
+     },
+     "reference": {
+      "n": 1562,
+      "k": 2,
+      "pct": 0.12804097311139565,
+      "lo": 0.035119743390091065,
+      "hi": 0.4656716521124935
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 25,
+     "per1000": 0.01009921468506609,
+     "lo": 0.0050148277696257845,
+     "hi": 0.01813644563052943,
+     "dispersion": 2.30232392415135
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 2,
+     "per1000": 0.02652977303779166,
+     "lo": 0.0032128785937093353,
+     "hi": 0.09583466204679426,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 6,
+     "per1000": 0.052638505066456114,
+     "lo": 0.014507579740660071,
+     "hi": 0.13399310126168346,
+     "dispersion": 1.479980134368295
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 1144,
+     "per1000": 2.123039806996381,
+     "lo": 1.9564768105991157,
+     "hi": 2.2999928619311456,
+     "dispersion": 1.9081490317244427
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 1716,
+     "per1000": 1.9433660549669085,
+     "lo": 1.8105628770457174,
+     "hi": 2.083333756160642,
+     "dispersion": 2.1599618352153676
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 85,
+     "per1000": 0.1147231662514138,
+     "lo": 0.08915155638734595,
+     "hi": 0.14534660231981017,
+     "dispersion": 1.2432811091238654
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 2,
+     "pct": 1.0204081632653061,
+     "lo": 0.2802743465822266,
+     "hi": 3.6436333883438348
+    },
+    "b": {
+     "n": 196,
+     "k": 2,
+     "pct": 1.0204081632653061,
+     "lo": 0.2802743465822266,
+     "hi": 3.6436333883438348
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 2,
+      "per1000": 0.01915341888527102,
+      "lo": 0.0014940538690982827,
+      "hi": 0.07996247832731546,
+      "dispersion": 1.2813415548664537
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 6,
+      "per1000": 0.05739100491649609,
+      "lo": 0.008569429881766977,
+      "hi": 0.19178904102065192,
+      "dispersion": 2.6021325227218317
+     }
+    },
+    "p": 0.6104927793634805,
+    "q": 1
+   },
+   "p": 0.99999970019902,
+   "q": 1,
+   "lengthMatched": {
+    "observed": 0,
+    "expected": 0.8447848375321023
+   },
+   "verdict": "no signal"
+  },
+  {
+   "marker": "em_dash_heavy",
+   "label": "two or more dashes",
+   "family": "shape",
+   "belief": false,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 6,
+      "pct": 0.10226691665246293,
+      "lo": 0.04687736848160357,
+      "hi": 0.222957879670893
+     },
+     "reference": {
+      "n": 5867,
+      "k": 6,
+      "pct": 0.10226691665246293,
+      "lo": 0.04687736848160357,
+      "hi": 0.222957879670893
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 1,
+      "pct": 0.5102040816326531,
+      "lo": 0.09011807600492991,
+      "hi": 2.832997031159944
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 1,
+      "pct": 0.5,
+      "lo": 0.08831459893662051,
+      "hi": 2.7774399869771482
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 2,
+      "pct": 1,
+      "lo": 0.27466006037749346,
+      "hi": 3.572248519617954
+     },
+     "reference": {
+      "n": 200,
+      "k": 1,
+      "pct": 0.5,
+      "lo": 0.08831459893662051,
+      "hi": 2.7774399869771482
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 132,
+      "pct": 12.29050279329609,
+      "lo": 10.460164624741912,
+      "hi": 14.389646330782531
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 268,
+      "pct": 13.922077922077921,
+      "lo": 12.447343860789285,
+      "hi": 15.54052201684421
+     },
+     "reference": {
+      "n": 1925,
+      "k": 1,
+      "pct": 0.05194805194805195,
+      "lo": 0.009170459494355661,
+      "hi": 0.29368489161379124
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 6,
+      "pct": 0.38412291933418696,
+      "lo": 0.1761598679751194,
+      "hi": 0.8355388887829078
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 6,
+     "per1000": 0.0024238115244158615,
+     "lo": 0.0008894961111927103,
+     "hi": 0.005275617273099819,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 2,
+     "per1000": 0.01754616835548537,
+     "lo": 0.002124922389296536,
+     "hi": 0.06338279306682176,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 262,
+     "per1000": 0.48622065509882156,
+     "lo": 0.42912261255992107,
+     "hi": 0.5488012852146809,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 410,
+     "per1000": 0.4643240574221634,
+     "lo": 0.420461548532774,
+     "hi": 0.5115187737655295,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 10,
+     "per1000": 0.013496843088401623,
+     "lo": 0.006472260877960991,
+     "hi": 0.024821174983891487,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 2,
+     "pct": 1.0204081632653061,
+     "lo": 0.2802743465822266,
+     "hi": 3.6436333883438348
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 2,
+      "per1000": 0.01913033497216536,
+      "lo": 0.002316772315956284,
+      "hi": 0.06910534757639392,
+      "dispersion": 1
+     }
+    },
+    "p": 0.1562389799198642,
+    "q": 1
+   },
+   "p": 0.3166923961780961,
+   "q": 0.5655221360323145,
+   "lengthMatched": null,
+   "verdict": "no signal"
+  },
+  {
+   "marker": "rule_of_three",
+   "label": "a three-item list (“and” or “or”; a longer middle item only before a serial comma)",
+   "family": "shape",
+   "belief": false,
+   "countable": true,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 2196,
+      "pct": 37.42969149480143,
+      "lo": 36.199953669457656,
+      "hi": 38.675880146259665
+     },
+     "reference": {
+      "n": 5867,
+      "k": 2196,
+      "pct": 37.42969149480143,
+      "lo": 36.199953669457656,
+      "hi": 38.675880146259665
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 69,
+      "pct": 35.204081632653065,
+      "lo": 28.860488587544015,
+      "hi": 42.11652520738156
+     },
+     "reference": {
+      "n": 196,
+      "k": 81,
+      "pct": 41.326530612244895,
+      "lo": 34.66393500934312,
+      "hi": 48.3225903187167
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 161,
+      "pct": 80.5,
+      "lo": 74.45583520348819,
+      "hi": 85.39455843549425
+     },
+     "reference": {
+      "n": 200,
+      "k": 71,
+      "pct": 35.5,
+      "lo": 29.198518653239287,
+      "hi": 42.348015518392025
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 81,
+      "pct": 40.5,
+      "lo": 33.93765611244294,
+      "hi": 47.42041800000517
+     },
+     "reference": {
+      "n": 200,
+      "k": 84,
+      "pct": 42,
+      "lo": 35.373482350171756,
+      "hi": 48.92805374452139
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 243,
+      "pct": 22.625698324022345,
+      "lo": 20.22344322087463,
+      "hi": 25.223086213506075
+     },
+     "reference": {
+      "n": 1074,
+      "k": 218,
+      "pct": 20.297951582867785,
+      "lo": 18.00022056914431,
+      "hi": 22.80740830693544
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 604,
+      "pct": 31.376623376623378,
+      "lo": 29.34254083936228,
+      "hi": 33.48488884693232
+     },
+     "reference": {
+      "n": 1925,
+      "k": 517,
+      "pct": 26.857142857142858,
+      "lo": 24.924710618184893,
+      "hi": 28.881760581938533
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 640,
+      "pct": 40.973111395646605,
+      "lo": 38.559273236488565,
+      "hi": 43.431242279257084
+     },
+     "reference": {
+      "n": 1562,
+      "k": 340,
+      "pct": 21.76696542893726,
+      "lo": 19.791080528262,
+      "hi": 23.88138289332547
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 3683,
+     "per1000": 1.4878163074039363,
+     "lo": 1.432347418823185,
+     "hi": 1.544883022412325,
+     "dispersion": 1.357784876743114
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 95,
+     "per1000": 0.8084074373484236,
+     "lo": 0.6454936384487259,
+     "hi": 0.9999302509647278,
+     "dispersion": 1.1210538836463677
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 352,
+     "per1000": 4.669240054651333,
+     "lo": 4.151416311981713,
+     "hi": 5.233797472420039,
+     "dispersion": 1.193916473458528
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 112,
+     "per1000": 0.9825854279071807,
+     "lo": 0.7968232302369076,
+     "hi": 1.198653826391516,
+     "dispersion": 1.15447318821095
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 658,
+     "per1000": 1.2211190498283382,
+     "lo": 1.1255681798187858,
+     "hi": 1.322613758590698,
+     "dispersion": 1.0916339361818224
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 1369,
+     "per1000": 1.550389352709614,
+     "lo": 1.4631708266681644,
+     "hi": 1.6414488368478275,
+     "dispersion": 1.1604203280776137
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 2301,
+     "per1000": 3.1056235946412136,
+     "lo": 2.956719074518367,
+     "hi": 3.2600849933822658,
+     "dispersion": 1.410721383302909
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 92,
+     "pct": 46.93877551020408,
+     "lo": 40.07798468147511,
+     "hi": 53.917259551957756
+    },
+    "b": {
+     "n": 196,
+     "k": 90,
+     "pct": 45.91836734693877,
+     "lo": 39.087128724671864,
+     "hi": 52.906530253238635
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 154,
+      "per1000": 1.4748132541658685,
+      "lo": 1.2253360782077787,
+      "hi": 1.7601545734401187,
+      "dispersion": 1.2560224605586556
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 136,
+      "per1000": 1.3008627781072446,
+      "lo": 1.065533128446794,
+      "hi": 1.5726988605129035,
+      "dispersion": 1.2773703891357826
+     }
+    },
+    "p": 0.34066086821640873,
+    "q": 1
+   },
+   "p": 1.1331793906775887e-10,
+   "q": 4.721580794489953e-10,
+   "lengthMatched": {
+    "observed": 95,
+    "expected": 184.94437144144644
+   },
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "bulleted_bold",
+   "label": "a bulleted list with bold lead-ins",
+   "family": "shape",
+   "belief": false,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     },
+     "reference": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 35,
+      "pct": 1.8181818181818181,
+      "lo": 1.3102024858365529,
+      "hi": 2.5180849173384927
+     },
+     "reference": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.0014901914221770508,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.006845837346411726,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 43,
+     "per1000": 0.048697401144275676,
+     "lo": 0.0352425506701741,
+     "hi": 0.06559507976223576,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004978822716420473,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": null,
+   "verdict": "no signal"
+  },
+  {
+   "marker": "no_contraction",
+   "label": "no contractions at all",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 1028,
+      "pct": 17.521731719788647,
+      "lo": 16.570308721003926,
+      "hi": 18.51565919201216
+     },
+     "reference": {
+      "n": 5867,
+      "k": 1028,
+      "pct": 17.521731719788647,
+      "lo": 16.570308721003926,
+      "hi": 18.51565919201216
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 69,
+      "pct": 35.204081632653065,
+      "lo": 28.860488587544015,
+      "hi": 42.11652520738156
+     },
+     "reference": {
+      "n": 196,
+      "k": 33,
+      "pct": 16.836734693877553,
+      "lo": 12.247124693140226,
+      "hi": 22.701354502382625
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 88,
+      "pct": 44,
+      "lo": 37.297700420582366,
+      "hi": 50.9284516504375
+     },
+     "reference": {
+      "n": 200,
+      "k": 30,
+      "pct": 15,
+      "lo": 10.7135265876273,
+      "hi": 20.605693826655163
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 92,
+      "pct": 46,
+      "lo": 39.232931140961256,
+      "hi": 52.917836906385325
+     },
+     "reference": {
+      "n": 200,
+      "k": 33,
+      "pct": 16.5,
+      "lo": 11.996784122663977,
+      "hi": 22.265898273863527
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 86,
+      "pct": 8.007448789571695,
+      "lo": 6.529894708149411,
+      "hi": 9.78433922010127
+     },
+     "reference": {
+      "n": 1074,
+      "k": 208,
+      "pct": 19.366852886405958,
+      "lo": 17.11430833329113,
+      "hi": 21.837760319468227
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 417,
+      "pct": 21.662337662337663,
+      "lo": 19.87948626565894,
+      "hi": 23.55806713426773
+     },
+     "reference": {
+      "n": 1925,
+      "k": 336,
+      "pct": 17.454545454545453,
+      "lo": 15.824143876576288,
+      "hi": 19.21458610519101
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 782,
+      "pct": 50.0640204865557,
+      "lo": 47.58728658083331,
+      "hi": 52.54044025948055
+     },
+     "reference": {
+      "n": 1562,
+      "k": 277,
+      "pct": 17.733674775928296,
+      "lo": 15.919305191468455,
+      "hi": 19.706367290345796
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 1028,
+     "per1000": 0.4152797078499176,
+     "lo": 0.3901883840277973,
+     "hi": 0.44156125313798955,
+     "dispersion": 1.0073431094229075
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 71,
+     "per1000": 0.6041781900182955,
+     "lo": 0.47186817899426886,
+     "hi": 0.7620885768379806,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 88,
+     "per1000": 1.1673100136628332,
+     "lo": 0.9362167651065415,
+     "hi": 1.4381585849348864,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 92,
+     "per1000": 0.807123744352327,
+     "lo": 0.6506556543955908,
+     "hi": 0.989865622684658,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 616,
+     "per1000": 1.143175280690359,
+     "lo": 1.0443628450755706,
+     "hi": 1.248817200527757,
+     "dispersion": 1.252489000118394
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 1192,
+     "per1000": 1.3499372596273629,
+     "lo": 1.2557961117502028,
+     "hi": 1.449266374857787,
+     "dispersion": 1.563686012746607
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 2109,
+     "per1000": 2.8464842073439023,
+     "lo": 2.726283715428604,
+     "hi": 2.9706198104140147,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 30,
+     "pct": 15.306122448979592,
+     "lo": 10.936729611474798,
+     "hi": 21.009371700764497
+    },
+    "b": {
+     "n": 196,
+     "k": 38,
+     "pct": 19.387755102040817,
+     "lo": 14.463500695818794,
+     "hi": 25.488941638509992
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 30,
+      "per1000": 0.2873012832790653,
+      "lo": 0.19384096936817594,
+      "hi": 0.41014044622496354,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 38,
+      "per1000": 0.3634763644711419,
+      "lo": 0.25721750851483566,
+      "hi": 0.4988997084467367,
+      "dispersion": 1
+     }
+    },
+    "p": 0.28592564456528946,
+    "q": 1
+   },
+   "p": 0.00003411176687203968,
+   "q": 0.00009475490797788799,
+   "lengthMatched": null,
+   "verdict": "machine marker"
+  },
+  {
+   "marker": "no_first_person",
+   "label": "no first person",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 1463,
+      "pct": 24.93608317709221,
+      "lo": 23.845647748079067,
+      "hi": 26.05931988041222
+     },
+     "reference": {
+      "n": 5867,
+      "k": 1463,
+      "pct": 24.93608317709221,
+      "lo": 23.845647748079067,
+      "hi": 26.05931988041222
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 43,
+      "pct": 21.93877551020408,
+      "lo": 16.71521260793221,
+      "hi": 28.241192865202514
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 46,
+      "pct": 23,
+      "lo": 17.70925624139232,
+      "hi": 29.308428078197014
+     },
+     "reference": {
+      "n": 200,
+      "k": 42,
+      "pct": 21,
+      "lo": 15.928329527863418,
+      "hi": 27.164738815399197
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 3,
+      "pct": 1.5,
+      "lo": 0.5114145184492387,
+      "hi": 4.316648055627889
+     },
+     "reference": {
+      "n": 200,
+      "k": 44,
+      "pct": 22,
+      "lo": 16.816453539463406,
+      "hi": 28.23892279196257
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 177,
+      "pct": 16.480446927374302,
+      "lo": 14.381780774899777,
+      "hi": 18.818051185566393
+     },
+     "reference": {
+      "n": 1074,
+      "k": 140,
+      "pct": 13.035381750465548,
+      "lo": 11.152743821304965,
+      "hi": 15.181515312875788
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 475,
+      "pct": 24.675324675324674,
+      "lo": 22.80108947770368,
+      "hi": 26.650436246337108
+     },
+     "reference": {
+      "n": 1925,
+      "k": 345,
+      "pct": 17.92207792207792,
+      "lo": 16.273123653803847,
+      "hi": 19.698808929981155
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 1310,
+      "pct": 83.86683738796415,
+      "lo": 81.95990319168949,
+      "hi": 85.60759533434276
+     },
+     "reference": {
+      "n": 1562,
+      "k": 233,
+      "pct": 14.916773367477592,
+      "lo": 13.236166868536865,
+      "hi": 16.769524639467523
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 1463,
+     "per1000": 0.5910060433700676,
+     "lo": 0.5611061389014814,
+     "hi": 0.622085467820291,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 46,
+     "per1000": 0.6101847798692083,
+     "lo": 0.4467319485981139,
+     "hi": 0.8139009870477013,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 3,
+     "per1000": 0.026319252533228057,
+     "lo": 0.00542766261258552,
+     "hi": 0.07691602465009738,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 1035,
+     "per1000": 1.9207571680430546,
+     "lo": 1.7994288017066709,
+     "hi": 2.048113986936932,
+     "dispersion": 1.1101010448850273
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 1290,
+     "per1000": 1.4609220343282703,
+     "lo": 1.3660814287846654,
+     "hi": 1.5606115801164016,
+     "dispersion": 1.4627338054330181
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 3480,
+     "per1000": 4.696901394763764,
+     "lo": 4.54213145412056,
+     "hi": 4.855600102067857,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 43,
+     "pct": 21.93877551020408,
+     "lo": 16.71521260793221,
+     "hi": 28.241192865202514
+    },
+    "b": {
+     "n": 196,
+     "k": 52,
+     "pct": 26.53061224489796,
+     "lo": 20.843918234872298,
+     "hi": 33.119620888113104
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 43,
+      "per1000": 0.41179850603332696,
+      "lo": 0.2980206206853708,
+      "hi": 0.554689885178828,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 52,
+      "per1000": 0.4973887092762994,
+      "lo": 0.3714736785766018,
+      "hi": 0.6522591179083728,
+      "dispersion": 1
+     }
+    },
+    "p": 0.28876747344831416,
+    "q": 1
+   },
+   "p": 3.6844359473132104e-12,
+   "q": 1.8422179736566053e-11,
+   "lengthMatched": null,
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "no_personal_detail",
+   "label": "no personal detail",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 5297,
+      "pct": 90.28464291801602,
+      "lo": 89.50022017798631,
+      "hi": 91.01634494276232
+     },
+     "reference": {
+      "n": 5867,
+      "k": 5297,
+      "pct": 90.28464291801602,
+      "lo": 89.50022017798631,
+      "hi": 91.01634494276232
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 28,
+      "pct": 14.285714285714286,
+      "lo": 10.072259567592683,
+      "hi": 19.872256489124236
+     },
+     "reference": {
+      "n": 196,
+      "k": 170,
+      "pct": 86.73469387755102,
+      "lo": 81.2728876402985,
+      "hi": 90.78418155850694
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 176,
+      "pct": 88,
+      "lo": 82.76563857409516,
+      "hi": 91.80206497611248
+     },
+     "reference": {
+      "n": 200,
+      "k": 177,
+      "pct": 88.5,
+      "lo": 83.33517476611361,
+      "hi": 92.21368277817568
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 34,
+      "pct": 17,
+      "lo": 12.427835351105657,
+      "hi": 22.816001039503526
+     },
+     "reference": {
+      "n": 200,
+      "k": 174,
+      "pct": 87,
+      "lo": 81.63353692726987,
+      "hi": 90.97185863477438
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 1024,
+      "pct": 95.34450651769087,
+      "lo": 93.91475753905534,
+      "hi": 96.45102533664735
+     },
+     "reference": {
+      "n": 1074,
+      "k": 1022,
+      "pct": 95.1582867783985,
+      "lo": 93.70581780769345,
+      "hi": 96.28885302334517
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 1886,
+      "pct": 97.97402597402598,
+      "lo": 97.24250624223728,
+      "hi": 98.51444964257979
+     },
+     "reference": {
+      "n": 1925,
+      "k": 1803,
+      "pct": 93.66233766233766,
+      "lo": 92.48459151811079,
+      "hi": 94.66616259254297
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 1562,
+      "pct": 100,
+      "lo": 99.75466228512512,
+      "hi": 99.99999999999997
+     },
+     "reference": {
+      "n": 1562,
+      "k": 1480,
+      "pct": 94.75032010243278,
+      "lo": 93.53040221824817,
+      "hi": 95.75065916114039
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 5297,
+     "per1000": 2.139821607471803,
+     "lo": 2.082580211944256,
+     "hi": 2.1982376404996304,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 29,
+     "per1000": 0.2467770071905714,
+     "lo": 0.16527043473212888,
+     "hi": 0.354412946760804,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 176,
+     "per1000": 2.3346200273256663,
+     "lo": 2.0024387757988587,
+     "hi": 2.706162620661719,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 34,
+     "per1000": 0.29828486204325133,
+     "lo": 0.20657093814602043,
+     "hi": 0.4168231968696513,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 3885,
+     "per1000": 7.20979864526306,
+     "lo": 6.984848832503992,
+     "hi": 7.440148834196416,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 3809,
+     "per1000": 4.313683743222001,
+     "lo": 4.177768883087708,
+     "hi": 4.452894339347018,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 3998,
+     "per1000": 5.396037866742969,
+     "lo": 5.230056177328736,
+     "hi": 5.565946826981278,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 172,
+     "pct": 87.75510204081633,
+     "lo": 82.42681607376916,
+     "hi": 91.63183838055866
+    },
+    "b": {
+     "n": 196,
+     "k": 162,
+     "pct": 82.65306122448979,
+     "lo": 76.73803653436143,
+     "hi": 87.31269164235454
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 172,
+      "per1000": 1.6471940241333078,
+      "lo": 1.410219940359606,
+      "hi": 1.9125933820213914,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 162,
+      "per1000": 1.5495571327453943,
+      "lo": 1.3201266108239353,
+      "hi": 1.807399869687464,
+      "dispersion": 1
+     }
+    },
+    "p": 0.15487786734958087,
+    "q": 1
+   },
+   "p": 1.1983680160150822e-46,
+   "q": 2.995920040037705e-45,
+   "lengthMatched": null,
+   "verdict": "points the other way"
+  },
+  {
+   "marker": "no_typo_markers",
+   "label": "no informal spelling at all",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 5609,
+      "pct": 95.6025225839441,
+      "lo": 95.04733806353264,
+      "hi": 96.09802685314301
+     },
+     "reference": {
+      "n": 5867,
+      "k": 5609,
+      "pct": 95.6025225839441,
+      "lo": 95.04733806353264,
+      "hi": 96.09802685314301
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 192,
+      "pct": 97.95918367346938,
+      "lo": 94.8709204448447,
+      "hi": 99.20358656470687
+     },
+     "reference": {
+      "n": 196,
+      "k": 186,
+      "pct": 94.89795918367346,
+      "lo": 90.86434180626702,
+      "hi": 97.20540943671743
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 200,
+      "pct": 100,
+      "lo": 98.11539940816792,
+      "hi": 100
+     },
+     "reference": {
+      "n": 200,
+      "k": 193,
+      "pct": 96.5,
+      "lo": 92.95285391333186,
+      "hi": 98.29446753626429
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 200,
+      "pct": 100,
+      "lo": 98.11539940816792,
+      "hi": 100
+     },
+     "reference": {
+      "n": 200,
+      "k": 189,
+      "pct": 94.5,
+      "lo": 90.42120755340645,
+      "hi": 96.90149791986299
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 986,
+      "pct": 91.80633147113593,
+      "lo": 90.01316376862317,
+      "hi": 93.30149025846205
+     },
+     "reference": {
+      "n": 1074,
+      "k": 1041,
+      "pct": 96.92737430167598,
+      "lo": 95.71634636823823,
+      "hi": 97.8038888871091
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 1872,
+      "pct": 97.24675324675324,
+      "lo": 96.41637194555837,
+      "hi": 97.88893544723118
+     },
+     "reference": {
+      "n": 1925,
+      "k": 1856,
+      "pct": 96.41558441558442,
+      "lo": 95.48836406608694,
+      "hi": 97.15791647867113
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 1562,
+      "pct": 100,
+      "lo": 99.75466228512512,
+      "hi": 99.99999999999997
+     },
+     "reference": {
+      "n": 1562,
+      "k": 1515,
+      "pct": 96.99103713188221,
+      "lo": 96.02176527900252,
+      "hi": 97.72973551137117
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 5609,
+     "per1000": 2.2658598067414277,
+     "lo": 2.2069455731798007,
+     "hi": 2.325948524947982,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 196,
+     "per1000": 1.6678721865293793,
+     "lo": 1.4425356719146467,
+     "hi": 1.918427203140062,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 200,
+     "per1000": 2.652977303779166,
+     "lo": 2.298020649202259,
+     "hi": 3.047236017687006,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 200,
+     "per1000": 1.754616835548537,
+     "lo": 1.5198568467904607,
+     "hi": 2.0153702826281554,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 3752,
+     "per1000": 6.96297670965946,
+     "lo": 6.7419414462199265,
+     "hi": 7.1894128595467315,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 3784,
+     "per1000": 4.2853713006962595,
+     "lo": 4.149906753292986,
+     "hi": 4.424131643122113,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 4000,
+     "per1000": 5.398737235360649,
+     "lo": 5.232713713430862,
+     "hi": 5.568688022908811,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 187,
+     "pct": 95.40816326530613,
+     "lo": 91.50482489962327,
+     "hi": 97.56571897112235
+    },
+    "b": {
+     "n": 196,
+     "k": 184,
+     "pct": 93.87755102040816,
+     "lo": 89.60476980848387,
+     "hi": 96.4633961789782
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 187,
+      "per1000": 1.7908446657728405,
+      "lo": 1.5433561126699777,
+      "hi": 2.0667298794961515,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 184,
+      "per1000": 1.7599908174392134,
+      "lo": 1.5148661879086356,
+      "hi": 2.0334833210996637,
+      "dispersion": 1
+     }
+    },
+    "p": 0.5009937405424579,
+    "q": 1
+   },
+   "p": 0.10247039460734798,
+   "q": 0.1970584511679769,
+   "lengthMatched": null,
+   "verdict": "no signal"
+  },
+  {
+   "marker": "title_case_headings",
+   "label": "Title Case headings",
+   "family": "surface",
+   "belief": false,
+   "countable": false,
+   "share": {
+    "essays-human": {
+     "arm": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     },
+     "reference": {
+      "n": 5867,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.0654352520769765
+     }
+    },
+    "essays-claude-student": {
+     "arm": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     },
+     "reference": {
+      "n": 196,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.9223224794036875
+     }
+    },
+    "essays-llama3-student": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "essays-claude-plain": {
+     "arm": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     },
+     "reference": {
+      "n": 200,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 1.8846005918320892
+     }
+    },
+    "casual-human": {
+     "arm": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     },
+     "reference": {
+      "n": 1074,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.3564160076953793
+     }
+    },
+    "careful-human": {
+     "arm": {
+      "n": 1925,
+      "k": 46,
+      "pct": 2.3896103896103895,
+      "lo": 1.7962857622167268,
+      "hi": 3.1725825989799623
+     },
+     "reference": {
+      "n": 1925,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.19916617310617937
+     }
+    },
+    "hc3-gpt35": {
+     "arm": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     },
+     "reference": {
+      "n": 1562,
+      "k": 0,
+      "pct": 0,
+      "lo": 0,
+      "hi": 0.24533771487486342
+     }
+    }
+   },
+   "rate": {
+    "essays-human": {
+     "texts": 5867,
+     "words": 2475440,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.0014901914221770508,
+     "dispersion": 1
+    },
+    "essays-claude-student": {
+     "texts": 200,
+     "words": 117515,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03139071143355281,
+     "dispersion": 1
+    },
+    "essays-llama3-student": {
+     "texts": 200,
+     "words": 75387,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.04893256734070806,
+     "dispersion": 1
+    },
+    "essays-claude-plain": {
+     "texts": 200,
+     "words": 113985,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.03236284997248724,
+     "dispersion": 1
+    },
+    "casual-human": {
+     "texts": 4000,
+     "words": 538850,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.006845837346411726,
+     "dispersion": 1
+    },
+    "careful-human": {
+     "texts": 3863,
+     "words": 883004,
+     "occurrences": 68,
+     "per1000": 0.07700984367001736,
+     "lo": 0.059801156905990534,
+     "hi": 0.09762832688869091,
+     "dispersion": 1
+    },
+    "hc3-gpt35": {
+     "texts": 4000,
+     "words": 740914,
+     "occurrences": 0,
+     "per1000": 0,
+     "lo": 0,
+     "hi": 0.004978822716420473,
+     "dispersion": 1
+    }
+   },
+   "placebo": {
+    "a": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "b": {
+     "n": 196,
+     "k": 0,
+     "pct": 0,
+     "lo": 0,
+     "hi": 1.9223224794036875
+    },
+    "tie": true,
+    "rate": {
+     "a": {
+      "texts": 196,
+      "words": 104420,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03532732670095728,
+      "dispersion": 1
+     },
+     "b": {
+      "texts": 196,
+      "words": 104546,
+      "occurrences": 0,
+      "per1000": 0,
+      "lo": 0,
+      "hi": 0.03528474981456927,
+      "dispersion": 1
+     }
+    },
+    "p": 1,
+    "q": 1
+   },
+   "p": 1,
+   "q": 1,
+   "lengthMatched": null,
+   "verdict": "no signal"
+  }
+ ],
+ "genre": "essays"
+}

@@ -95,6 +95,10 @@ ul.examples li { margin: 4px 0; max-width: 900px; }
 .doc-bar b { flex: 1; min-width: 0; }
 .prose { margin: 12px 0 0; padding: 12px 14px; background: var(--code-bg); border-radius: 8px; max-width: 900px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .prose:empty { display: none; }
+/* the assignment every writer answered: the teacher's words, marked off from the writers' own */
+.assignment { margin: 0 0 4px; padding: 10px 14px; border-left: 3px solid var(--accent); max-width: 900px; }
+.assignment .assignment-text { margin: 0 0 6px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; }
+.assignment p.muted { margin: 0; }
 mark { color: inherit; border-radius: 3px; padding: 0 1px; }
 mark.word { background: var(--hl-word); } mark.phrase { background: var(--hl-phrase); } mark.shape { background: var(--hl-shape); }
 .found { margin-top: 10px; font-size: 13.5px; overflow-x: auto; }

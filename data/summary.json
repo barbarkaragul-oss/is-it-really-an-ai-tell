@@ -1,32 +1,8 @@
 {
- "generated_at": "2026-09-17T13:51:33.028Z",
- "decider": "gpt4",
- "models": [
-  {
-   "id": "chatgpt",
-   "short": "GPT-3.5",
-   "snapshot": "gpt-3.5-turbo-0613"
-  },
-  {
-   "id": "gpt4",
-   "short": "GPT-4",
-   "snapshot": "gpt-4-0613"
-  },
-  {
-   "id": "llama-chat",
-   "short": "Llama",
-   "snapshot": "Llama-2-70b-chat-hf"
-  },
-  {
-   "id": "mistral-chat",
-   "short": "Mistral",
-   "snapshot": "Mistral-7B-Instruct-v0.1"
-  }
- ],
- "decoding": "greedy decoding, no repetition penalty",
+ "generated_at": "2026-09-18T07:59:29.353Z",
  "rules": {
-  "verdict": "GPT-4 against the person in each kind of writing, decided as the page has always decided it: a word or phrase by the length-matched rate test after Benjamini-Hochberg over that kind's markers, a property of the whole text by non-overlapping 95% intervals on document pairs.",
-  "k": "A model separates a marker from the person in a kind of writing when its own comparison with the person, decided by the same rules as the GPT-4 verdict, says \"machine marker\" (counted under ai) or \"points the other way\" (counted under person): for a word or phrase, the length-matched rate test survives Benjamini-Hochberg at 0.05 over that model's markers in that kind of writing, and the direction is read at the same lengths; for a property of the whole text, the 95% intervals of the shares on document pairs do not overlap. \"of\" counts the models that could be compared there: a model that does not separate the marker is left out of \"of\" and counted under tooFew when the comparison rests on too little, that is, a word used fewer than 5 times by the person and the model together, or a property of the whole text on fewer than 30 document pairs or with fewer than 5 texts on its rarer side (with it, or without it) across both. The count describes; it is not a further test, and it is not corrected across the four models (each model's q and evidence are published next to it).",
+  "verdict": "Each kind of writing's own decider against the person, decided as the page has always decided it: a word or phrase by the length-matched rate test after Benjamini-Hochberg over that kind's markers, a property of the whole text by non-overlapping 95% intervals on that kind's pairs: document pairs, or assignment pairs where the writers answered one assignment rather than rewrote one document.",
+  "k": "The count runs over the writers a kind of writing has, never over a fixed number: the writers it measures against the person, which the genre publishes beside its numbers. A writer separates a marker from the person in a kind of writing when its own comparison with the person, decided by the same rules as that kind's own verdict, says \"machine marker\" (counted under ai) or \"points the other way\" (counted under person): for a word or phrase, the length-matched rate test survives Benjamini-Hochberg at 0.05 over that writer's markers in that kind of writing, and the direction is read at the same lengths; for a property of the whole text, the 95% intervals of the shares on the kind's pairs do not overlap (document pairs, or, where the writers answered one assignment, assignment pairs). \"of\" counts the writers that could be compared there: a writer that does not separate the marker is left out of \"of\" and counted under tooFew when the comparison rests on too little, that is, a word used fewer than 5 times by the person and that writer together, or a property of the whole text on fewer than 30 pairs or with fewer than 5 texts on its rarer side (with it, or without it) across both. The count describes; it is not a further test, and it is not corrected across the writers (each writer's q and evidence are published next to it).",
   "placebo": "Each kind of writing splits its own person's texts at random and runs the same tests on both halves; placebo_disagreements counts the rows where the halves differ.",
   "correction": "Benjamini-Hochberg runs within one kind of writing and one model, never across kinds, so adding a kind of writing leaves the others' numbers alone.",
   "not_recorded": "A marker that a kind of writing cannot show in anyone's text (scripts/genres.ts, notRecorded) is \"not recorded\" there: it gets no test, stays out of the correction, and is not counted in \"of\"."
@@ -38,6 +14,31 @@
    "label": "Research abstracts",
    "reference": "raid-human",
    "decider": "raid-gpt4",
+   "decider_short": "GPT-4",
+   "writers": [
+    {
+     "id": "raid-chatgpt",
+     "short": "GPT-3.5",
+     "snapshot": "gpt-3.5-turbo-0613"
+    },
+    {
+     "id": "raid-gpt4",
+     "short": "GPT-4",
+     "snapshot": "gpt-4-0613"
+    },
+    {
+     "id": "raid-llama-chat",
+     "short": "Llama",
+     "snapshot": "Llama-2-70b-chat-hf"
+    },
+    {
+     "id": "raid-mistral-chat",
+     "short": "Mistral",
+     "snapshot": "Mistral-7B-Instruct-v0.1"
+    }
+   ],
+   "count_over": 4,
+   "decoding": "greedy decoding, no repetition penalty",
    "texts": {
     "raid-human": 1324,
     "raid-chatgpt": 1297,
@@ -64,6 +65,31 @@
    "label": "Reddit posts",
    "reference": "posts-human",
    "decider": "posts-gpt4",
+   "decider_short": "GPT-4",
+   "writers": [
+    {
+     "id": "posts-chatgpt",
+     "short": "GPT-3.5",
+     "snapshot": "gpt-3.5-turbo-0613"
+    },
+    {
+     "id": "posts-gpt4",
+     "short": "GPT-4",
+     "snapshot": "gpt-4-0613"
+    },
+    {
+     "id": "posts-llama-chat",
+     "short": "Llama",
+     "snapshot": "Llama-2-70b-chat-hf"
+    },
+    {
+     "id": "posts-mistral-chat",
+     "short": "Mistral",
+     "snapshot": "Mistral-7B-Instruct-v0.1"
+    }
+   ],
+   "count_over": 4,
+   "decoding": "greedy decoding, no repetition penalty",
    "texts": {
     "posts-human": 1338,
     "posts-chatgpt": 1297,
@@ -85,6 +111,43 @@
     "bulleted_bold": "Not recorded for Reddit posts: the people’s posts come without line breaks, so every post is compared as flat text, and a list or a heading cannot be seen in anyone’s.",
     "title_case_headings": "Not recorded for Reddit posts: the people’s posts come without line breaks, so every post is compared as flat text, and a list or a heading cannot be seen in anyone’s."
    }
+  },
+  {
+   "id": "essays",
+   "label": "School essays",
+   "reference": "essays-human",
+   "decider": "essays-claude-student",
+   "decider_short": "Claude*",
+   "writers": [
+    {
+     "id": "essays-claude-student",
+     "short": "Claude*",
+     "snapshot": null
+    },
+    {
+     "id": "essays-llama3-student",
+     "short": "Llama 3*",
+     "snapshot": null
+    }
+   ],
+   "count_over": 2,
+   "decoding": null,
+   "texts": {
+    "essays-human": 5867,
+    "essays-claude-student": 200,
+    "essays-llama3-student": 200,
+    "essays-claude-plain": 200,
+    "casual-human": 4000,
+    "careful-human": 3863,
+    "hc3-gpt35": 4000
+   },
+   "pairs": {
+    "essays-claude-student": 196,
+    "essays-llama3-student": 200,
+    "essays-claude-plain": 200
+   },
+   "placebo_disagreements": 0,
+   "not_recorded": {}
   }
  ],
  "rows": [
@@ -103,8 +166,8 @@
      "person": 0,
      "decider": 0.9691,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 0.947,
        "evidence": {
@@ -112,7 +175,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "machine marker",
        "q": 0.0000385,
        "evidence": {
@@ -120,7 +183,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "machine marker",
        "q": 0.027,
        "evidence": {
@@ -128,7 +191,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -152,8 +215,8 @@
      "person": 0,
      "decider": 0.04078,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 0.000112,
        "evidence": {
@@ -161,7 +224,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": 0.0379,
        "evidence": {
@@ -169,7 +232,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -177,7 +240,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -190,6 +253,39 @@
       "ai": 2,
       "person": 0,
       "of": 2,
+      "tooFew": 2
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.0008079,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 2
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 0.304,
+       "evidence": {
+        "occurrences": 3
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
       "tooFew": 2
      }
     }
@@ -210,8 +306,8 @@
      "person": 0,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -219,7 +315,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -227,7 +323,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -235,7 +331,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -259,8 +355,8 @@
      "person": 0,
      "decider": 0,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 0.321,
        "evidence": {
@@ -268,7 +364,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -276,7 +372,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -284,7 +380,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -298,6 +394,39 @@
       "person": 0,
       "of": 0,
       "tooFew": 4
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 0
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 0
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
+      "tooFew": 2
      }
     }
    }
@@ -317,8 +446,8 @@
      "person": 0.4381,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "points the other way",
        "q": 2.05e-14,
        "evidence": {
@@ -326,7 +455,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "points the other way",
        "q": 3.38e-9,
        "evidence": {
@@ -334,7 +463,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "points the other way",
        "q": 2.25e-7,
        "evidence": {
@@ -342,7 +471,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "points the other way",
        "q": 2.73e-12,
        "evidence": {
@@ -366,8 +495,8 @@
      "person": 0.004183,
      "decider": 0.1359,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 0.0156,
        "evidence": {
@@ -375,7 +504,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": 0.000102,
        "evidence": {
@@ -383,7 +512,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -391,7 +520,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 0.628,
        "evidence": {
@@ -405,6 +534,39 @@
       "person": 0,
       "of": 2,
       "tooFew": 2
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 0.064,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.02747,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 0.064,
+       "evidence": {
+        "occurrences": 68
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 1.28e-21,
+       "evidence": {
+        "occurrences": 100
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 0,
+      "of": 2,
+      "tooFew": 0
      }
     }
    }
@@ -424,8 +586,8 @@
      "person": 0.3338,
      "decider": 0.3574,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "machine marker",
        "q": 0.000115,
        "evidence": {
@@ -433,7 +595,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "register marker",
        "q": 0.496,
        "evidence": {
@@ -441,7 +603,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "register marker",
        "q": 0.959,
        "evidence": {
@@ -449,7 +611,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "points the other way",
        "q": 0.00000168,
        "evidence": {
@@ -473,8 +635,8 @@
      "person": 0.0251,
      "decider": 0.04757,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 9.25e-7,
        "evidence": {
@@ -482,7 +644,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -490,7 +652,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -498,7 +660,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": 0.00281,
        "evidence": {
@@ -511,6 +673,39 @@
       "ai": 2,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": 0.000029,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.08807,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": 0.000029,
+       "evidence": {
+        "occurrences": 218
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 6.16e-32,
+       "evidence": {
+        "occurrences": 278
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -531,8 +726,8 @@
      "person": 0.1919,
      "decider": 0.7904,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "machine marker",
        "q": 6.16e-14,
        "evidence": {
@@ -540,7 +735,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "machine marker",
        "q": 0.00042,
        "evidence": {
@@ -548,7 +743,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "machine marker",
        "q": 0.000132,
        "evidence": {
@@ -556,7 +751,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "machine marker",
        "q": 2.14e-14,
        "evidence": {
@@ -580,8 +775,8 @@
      "person": 0.008366,
      "decider": 0.1801,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 1.4e-19,
        "evidence": {
@@ -589,7 +784,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": 2.12e-7,
        "evidence": {
@@ -597,7 +792,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.491,
        "evidence": {
@@ -605,7 +800,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": 0.00448,
        "evidence": {
@@ -618,6 +813,39 @@
       "ai": 3,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": 0.000861,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.0513,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": 0.000861,
+       "evidence": {
+        "occurrences": 127
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 0.0000118,
+       "evidence": {
+        "occurrences": 140
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -638,8 +866,8 @@
      "person": 0.01252,
      "decider": 0.06873,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 0.585,
        "evidence": {
@@ -647,7 +875,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -655,7 +883,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -663,7 +891,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 0.606,
        "evidence": {
@@ -687,8 +915,8 @@
      "person": 0.02092,
      "decider": 0.02379,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 0.356,
        "evidence": {
@@ -696,7 +924,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -704,7 +932,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -712,7 +940,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -725,6 +953,39 @@
       "ai": 0,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.002424,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 6
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 6
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -745,8 +1006,8 @@
      "person": 0.02086,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -754,7 +1015,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -762,7 +1023,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 0.417,
        "evidence": {
@@ -770,7 +1031,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -794,8 +1055,8 @@
      "person": 0,
      "decider": 0.01019,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 0.00000683,
        "evidence": {
@@ -803,7 +1064,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 0.847,
        "evidence": {
@@ -811,7 +1072,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.232,
        "evidence": {
@@ -819,7 +1080,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 0.111,
        "evidence": {
@@ -833,6 +1094,39 @@
       "person": 0,
       "of": 3,
       "tooFew": 1
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.006463,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 16
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 0.00000674,
+       "evidence": {
+        "occurrences": 24
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 0,
+      "of": 2,
+      "tooFew": 0
      }
     }
    }
@@ -852,8 +1146,8 @@
      "person": 0,
      "decider": 0.03436,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -861,7 +1155,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -869,7 +1163,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -877,7 +1171,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 0.317,
        "evidence": {
@@ -901,8 +1195,8 @@
      "person": 0,
      "decider": 0,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -910,7 +1204,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -918,7 +1212,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -926,7 +1220,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -940,6 +1234,39 @@
       "person": 0,
       "of": 0,
       "tooFew": 4
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 0
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 0
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
+      "tooFew": 2
      }
     }
    }
@@ -959,8 +1286,8 @@
      "person": 0.2963,
      "decider": 2.337,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "machine marker",
        "q": 4.93e-44,
        "evidence": {
@@ -968,7 +1295,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "machine marker",
        "q": 3.38e-28,
        "evidence": {
@@ -976,7 +1303,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "machine marker",
        "q": 3.08e-11,
        "evidence": {
@@ -984,7 +1311,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "machine marker",
        "q": 0.00000935,
        "evidence": {
@@ -1008,8 +1335,8 @@
      "person": 0.004183,
      "decider": 0,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 0.639,
        "evidence": {
@@ -1017,7 +1344,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1025,7 +1352,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1033,7 +1360,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1047,6 +1374,39 @@
       "person": 0,
       "of": 0,
       "tooFew": 4
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 0
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 0
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
+      "tooFew": 2
      }
     }
    }
@@ -1066,8 +1426,8 @@
      "person": 0.004173,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1075,7 +1435,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1083,7 +1443,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 0.388,
        "evidence": {
@@ -1091,7 +1451,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1115,8 +1475,8 @@
      "person": 0,
      "decider": 0.05437,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 0.0295,
        "evidence": {
@@ -1124,7 +1484,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": 0.0164,
        "evidence": {
@@ -1132,7 +1492,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.327,
        "evidence": {
@@ -1140,7 +1500,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": 7.91e-13,
        "evidence": {
@@ -1154,6 +1514,39 @@
       "person": 0,
       "of": 4,
       "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.0008079,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 2
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 0.167,
+       "evidence": {
+        "occurrences": 3
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
+      "tooFew": 2
      }
     }
    }
@@ -1173,8 +1566,8 @@
      "person": 0,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1182,7 +1575,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1190,7 +1583,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1198,7 +1591,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1222,8 +1615,8 @@
      "person": 0.004183,
      "decider": 0.01019,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 0.525,
        "evidence": {
@@ -1231,7 +1624,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1239,7 +1632,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.29,
        "evidence": {
@@ -1247,7 +1640,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 0.618,
        "evidence": {
@@ -1261,6 +1654,39 @@
       "person": 0,
       "of": 1,
       "tooFew": 3
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 0.149,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.02545,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 0.149,
+       "evidence": {
+        "occurrences": 63
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 8.53e-7,
+       "evidence": {
+        "occurrences": 76
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 0,
+      "of": 2,
+      "tooFew": 0
      }
     }
    }
@@ -1280,8 +1706,8 @@
      "person": 0.1419,
      "decider": 0.2062,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "points the other way",
        "q": 0.0085,
        "evidence": {
@@ -1289,7 +1715,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "register marker",
        "q": 0.71,
        "evidence": {
@@ -1297,7 +1723,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 0.178,
        "evidence": {
@@ -1305,7 +1731,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "points the other way",
        "q": 0.0000723,
        "evidence": {
@@ -1329,8 +1755,8 @@
      "person": 0.008366,
      "decider": 0.1563,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 4.17e-13,
        "evidence": {
@@ -1338,7 +1764,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": 0.0000135,
        "evidence": {
@@ -1346,7 +1772,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.327,
        "evidence": {
@@ -1354,7 +1780,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": 0.00167,
        "evidence": {
@@ -1367,6 +1793,39 @@
       "ai": 3,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": 0.00000729,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.1143,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": 0.00000729,
+       "evidence": {
+        "occurrences": 283
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 3.46e-43,
+       "evidence": {
+        "occurrences": 368
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -1387,8 +1846,8 @@
      "person": 0,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1396,7 +1855,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1404,7 +1863,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1412,7 +1871,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1436,8 +1895,8 @@
      "person": 0.04602,
      "decider": 0.1019,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 0.299,
        "evidence": {
@@ -1445,7 +1904,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 0.128,
        "evidence": {
@@ -1453,7 +1912,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.327,
        "evidence": {
@@ -1461,7 +1920,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 0.676,
        "evidence": {
@@ -1474,6 +1933,39 @@
       "ai": 0,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "machine marker",
+     "q": 1.53e-26,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.004848,
+     "decider": 0.2468,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "machine marker",
+       "q": 1.53e-26,
+       "evidence": {
+        "occurrences": 41
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 0.269,
+       "evidence": {
+        "occurrences": 14
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 0,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -1494,8 +1986,8 @@
      "person": 0,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1503,7 +1995,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1511,7 +2003,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1519,7 +2011,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1543,8 +2035,8 @@
      "person": 0.01255,
      "decider": 0.01359,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 0.492,
        "evidence": {
@@ -1552,7 +2044,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1560,7 +2052,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.293,
        "evidence": {
@@ -1568,7 +2060,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 0.676,
        "evidence": {
@@ -1581,6 +2073,39 @@
       "ai": 0,
       "person": 0,
       "of": 2,
+      "tooFew": 2
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.001212,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 3
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 3
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
       "tooFew": 2
      }
     }
@@ -1601,8 +2126,8 @@
      "person": 0.01252,
      "decider": 0,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": 0.515,
        "evidence": {
@@ -1610,7 +2135,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1618,7 +2143,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": 0.298,
        "evidence": {
@@ -1626,7 +2151,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": 1,
        "evidence": {
@@ -1650,8 +2175,8 @@
      "person": 0.004183,
      "decider": 0.2549,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 0.000701,
        "evidence": {
@@ -1659,7 +2184,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": 2.64e-7,
        "evidence": {
@@ -1667,7 +2192,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": 0.491,
        "evidence": {
@@ -1675,7 +2200,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": 0.0000255,
        "evidence": {
@@ -1688,6 +2213,39 @@
       "ai": 3,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": 1.37e-24,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.5526,
+     "decider": 0.00851,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": 1.37e-24,
+       "evidence": {
+        "occurrences": 1369
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 2.64e-49,
+       "evidence": {
+        "occurrences": 1557
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -1708,8 +2266,8 @@
      "person": 71.52,
      "decider": 99.37,
      "n": 158,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -1718,7 +2276,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -1727,7 +2285,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -1736,7 +2294,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -1761,8 +2319,8 @@
      "person": 23.9,
      "decider": 36.1,
      "n": 590,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -1771,7 +2329,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -1780,7 +2338,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -1789,7 +2347,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -1803,6 +2361,41 @@
       "ai": 3,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 33.16,
+     "decider": 2.041,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 69
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 193
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -1823,8 +2416,8 @@
      "person": 0.313,
      "decider": 0.03436,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "points the other way",
        "q": 1.62e-7,
        "evidence": {
@@ -1832,7 +2425,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "points the other way",
        "q": 0.04,
        "evidence": {
@@ -1840,7 +2433,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "points the other way",
        "q": 0.000989,
        "evidence": {
@@ -1848,7 +2441,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "points the other way",
        "q": 1.55e-8,
        "evidence": {
@@ -1872,8 +2465,8 @@
      "person": 0.2845,
      "decider": 0.4418,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": 0.299,
        "evidence": {
@@ -1881,7 +2474,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": 0.122,
        "evidence": {
@@ -1889,7 +2482,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "machine marker",
        "q": 0.0000616,
        "evidence": {
@@ -1897,7 +2490,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": 0.353,
        "evidence": {
@@ -1910,6 +2503,39 @@
       "ai": 1,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": 1,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 0.0101,
+     "decider": 0,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": 1,
+       "evidence": {
+        "occurrences": 25
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": 0.773,
+       "evidence": {
+        "occurrences": 27
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -1930,8 +2556,8 @@
      "person": 0.9009,
      "decider": 0,
      "n": 222,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -1940,7 +2566,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -1949,7 +2575,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -1958,7 +2584,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -1983,8 +2609,8 @@
      "person": 1.24,
      "decider": 0.4651,
      "n": 645,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -1993,7 +2619,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2002,7 +2628,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2011,7 +2637,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2025,6 +2651,41 @@
       "ai": 0,
       "person": 0,
       "of": 2,
+      "tooFew": 2
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 0.5102,
+     "decider": 0,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 1
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 1
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
       "tooFew": 2
      }
     }
@@ -2045,8 +2706,8 @@
      "person": 1.623,
      "decider": 5.285,
      "n": 1324,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "register marker",
        "q": 0.131,
        "evidence": {
@@ -2054,7 +2715,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "machine marker",
        "q": 6.45e-17,
        "evidence": {
@@ -2062,7 +2723,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "machine marker",
        "q": 4.43e-36,
        "evidence": {
@@ -2070,7 +2731,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "machine marker",
        "q": 1.2e-8,
        "evidence": {
@@ -2094,8 +2755,8 @@
      "person": 0.9956,
      "decider": 3.772,
      "n": 1330,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": 8.97e-26,
        "evidence": {
@@ -2103,7 +2764,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": 4.34e-59,
        "evidence": {
@@ -2111,7 +2772,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "machine marker",
        "q": 1.94e-8,
        "evidence": {
@@ -2119,7 +2780,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": 3.59e-37,
        "evidence": {
@@ -2132,6 +2793,39 @@
       "ai": 4,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": 4.72e-10,
+     "placeboTie": true,
+     "unit": "per 1000 words",
+     "person": 1.488,
+     "decider": 0.8084,
+     "n": 200,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": 4.72e-10,
+       "evidence": {
+        "occurrences": 3778
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": 4.62e-51,
+       "evidence": {
+        "occurrences": 4035
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 1,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -2152,8 +2846,8 @@
      "person": 0,
      "decider": 0,
      "n": 222,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2162,7 +2856,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2171,7 +2865,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2180,7 +2874,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2205,8 +2899,8 @@
      "person": 0,
      "decider": 0,
      "n": 645,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2215,7 +2909,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2224,7 +2918,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2233,7 +2927,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2248,6 +2942,41 @@
       "person": 0,
       "of": 0,
       "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 0,
+     "decider": 0,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 0
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 0
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
+      "tooFew": 2
      }
     }
    }
@@ -2267,8 +2996,8 @@
      "person": 100,
      "decider": 100,
      "n": 222,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2277,7 +3006,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2286,7 +3015,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2295,7 +3024,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2320,8 +3049,8 @@
      "person": 5.581,
      "decider": 1.24,
      "n": 645,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2330,7 +3059,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "points the other way",
        "q": null,
        "evidence": {
@@ -2339,7 +3068,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "points the other way",
        "q": null,
        "evidence": {
@@ -2348,7 +3077,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2362,6 +3091,41 @@
       "ai": 1,
       "person": 2,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "machine marker",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 16.84,
+     "decider": 35.2,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "machine marker",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 102
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "machine marker",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 118
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 2,
+      "person": 0,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -2382,8 +3146,8 @@
      "person": 98.65,
      "decider": 100,
      "n": 222,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2392,7 +3156,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2401,7 +3165,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2410,7 +3174,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2435,8 +3199,8 @@
      "person": 2.326,
      "decider": 2.636,
      "n": 645,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "points the other way",
        "q": null,
        "evidence": {
@@ -2445,7 +3209,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2454,7 +3218,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2463,7 +3227,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2477,6 +3241,41 @@
       "ai": 1,
       "person": 1,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 21.94,
+     "decider": 0,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 43
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 88
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -2497,8 +3296,8 @@
      "person": 100,
      "decider": 100,
      "n": 222,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2507,7 +3306,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2516,7 +3315,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2525,7 +3324,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2550,8 +3349,8 @@
      "person": 79.38,
      "decider": 91.63,
      "n": 645,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2560,7 +3359,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2569,7 +3368,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2578,7 +3377,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2592,6 +3391,41 @@
       "ai": 4,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "points the other way",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 86.73,
+     "decider": 14.29,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "points the other way",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 194
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 47
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 1,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -2612,8 +3446,8 @@
      "person": 100,
      "decider": 100,
      "n": 222,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2622,7 +3456,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2631,7 +3465,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2640,7 +3474,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "register marker",
        "q": null,
        "evidence": {
@@ -2665,8 +3499,8 @@
      "person": 83.57,
      "decider": 99.69,
      "n": 645,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2675,7 +3509,7 @@
        },
        "tooFew": false
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2684,7 +3518,7 @@
        },
        "tooFew": false
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2693,7 +3527,7 @@
        },
        "tooFew": false
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "machine marker",
        "q": null,
        "evidence": {
@@ -2707,6 +3541,41 @@
       "ai": 4,
       "person": 0,
       "of": 4,
+      "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 94.9,
+     "decider": 97.96,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 14
+       },
+       "tooFew": false
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 7
+       },
+       "tooFew": false
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 2,
       "tooFew": 0
      }
     }
@@ -2727,8 +3596,8 @@
      "person": 0,
      "decider": 0,
      "n": 222,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "raid-chatgpt": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2737,7 +3606,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "raid-gpt4": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2746,7 +3615,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "raid-llama-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2755,7 +3624,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "raid-mistral-chat": {
        "verdict": "no signal",
        "q": null,
        "evidence": {
@@ -2780,8 +3649,8 @@
      "person": 0,
      "decider": 0,
      "n": 645,
-     "models": {
-      "chatgpt": {
+     "writers": {
+      "posts-chatgpt": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2790,7 +3659,7 @@
        },
        "tooFew": true
       },
-      "gpt4": {
+      "posts-gpt4": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2799,7 +3668,7 @@
        },
        "tooFew": true
       },
-      "llama-chat": {
+      "posts-llama-chat": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2808,7 +3677,7 @@
        },
        "tooFew": true
       },
-      "mistral-chat": {
+      "posts-mistral-chat": {
        "verdict": "not recorded",
        "q": null,
        "evidence": {
@@ -2823,6 +3692,41 @@
       "person": 0,
       "of": 0,
       "tooFew": 0
+     }
+    },
+    "essays": {
+     "verdict": "no signal",
+     "q": null,
+     "placeboTie": true,
+     "unit": "% of texts",
+     "person": 0,
+     "decider": 0,
+     "n": 196,
+     "writers": {
+      "essays-claude-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 196,
+        "minority": 0
+       },
+       "tooFew": true
+      },
+      "essays-llama3-student": {
+       "verdict": "no signal",
+       "q": null,
+       "evidence": {
+        "pairs": 200,
+        "minority": 0
+       },
+       "tooFew": true
+      }
+     },
+     "k": {
+      "ai": 0,
+      "person": 0,
+      "of": 0,
+      "tooFew": 2
      }
     }
    }
