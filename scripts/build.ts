@@ -23,10 +23,10 @@ import { mkdirSync, copyFileSync, writeFileSync, readFileSync, existsSync } from
 import path from 'node:path';
 import type { Report } from '../src/measure.js';
 import { flag } from './arms.js';
-import { GENRES, COMPARISON, MODELS, MODEL_INFO, NOT_COVERED, DECODING, genreById, type Genre } from './genres.js';
+import { GENRES, COMPARISON, MODELS, NOT_COVERED, decodingOf, genreById, modelArm, snapshotOf, testedWriters, type Genre, type Model } from './genres.js';
 import type { Cell, Document } from './evidence.js';
 import type { Cleaning } from './contamination.js';
-import type { summarize, SummaryCell } from './measure-all.js';
+import type { summarize, SummaryCell, WriterCell } from './measure-all.js';
 
 export const BUDGET = { summary: 100 * 1024, genre: 250 * 1024 };
 
@@ -70,6 +70,13 @@ export function genreInfo(g: Genre) {
   return {
     id: g.id, label: g.label, inText: g.inText, noun: g.noun, prompt: g.prompt, reference: g.reference, decider: g.decider, deciderShort: decider.short,
     titles: g.titles, humanQuotable: g.humanQuotable, documents: g.documents, source: g.source, notRecorded: g.notRecorded ?? {},
+    // the footnote the columns written here carry, where this kind has any; the page fills in which
+    // columns they are and how much each wrote, and names no writer of its own (scripts/genres.ts)
+    writtenHere: g.writtenHere ?? null,
+    // where the columns are not one set of documents written again, and a kind's line after "Not
+    // covered": both only where the registry has them, so the RAID kinds' pages carry nothing new
+    ...(g.pairs ? { pairs: g.pairs } : {}),
+    ...(g.covered ? { covered: g.covered } : {}),
   };
 }
 
@@ -106,18 +113,35 @@ export function pageFor(g: Genre, report: Report, evidence: Evidence, cleaning: 
   };
 }
 
-type PageCell = Omit<SummaryCell, 'k' | 'models'> & { k: SummaryCell['k'] | null; models: SummaryCell['models'] | null };
+type PageCell = Omit<SummaryCell, 'k' | 'writers'> & { k: SummaryCell['k'] | null; writers: SummaryCell['writers'] | null };
+
+/**
+ * One grid cell as data/summary.json has it. A summary written before the count ran over each kind's
+ * own writers keyed its cells by RAID's model names ("gpt4") rather than by arm id, and carried no
+ * `writers` at all. The registry says which arm of this kind each of those models wrote, so the
+ * committed data still names its writers on the page until the next weekly measurement rewrites it.
+ */
+export function pageCell(g: Genre, s: SummaryCell): PageCell {
+  if (s.writers) return s;
+  const named = (s as { models?: Record<string, WriterCell> }).models ?? {};
+  const writers: SummaryCell['writers'] = {};
+  for (const [name, own] of Object.entries(named)) {
+    const arm = MODELS.includes(name as Model) ? modelArm(g, name as Model) : undefined;
+    if (arm) writers[arm.id] = own;
+  }
+  return { ...s, writers };
+}
 
 /**
  * The grid's data. From data/summary.json when the measurement wrote one; otherwise from the
- * genre reports alone, with GPT-4's verdict and no count across models.
+ * genre reports alone, with each kind's decider's verdict and no count across writers.
  */
 export function summaryFor(found: { genre: Genre; report: Report; cleaning?: CleaningFile | null }[], summary: Summary | null) {
   const measured = summary !== null;
   const byGenre = new Map(summary?.genres.map((g) => [g.id, g]) ?? []);
   const cell = (g: Genre, report: Report, marker: string): PageCell | null => {
     const s = summary?.rows.find((r) => r.marker === marker)?.genres[g.id];
-    if (s) return s as PageCell;
+    if (s) return pageCell(g, s as SummaryCell);
     const row = report.rows.find((r) => r.marker === marker);
     if (!row) return null;
     const d = g.decider;
@@ -127,19 +151,24 @@ export function summaryFor(found: { genre: Genre; report: Report; cleaning?: Cle
       person: row.countable ? (row.rate[g.reference]?.per1000 ?? null) : (row.share[d]?.reference.pct ?? null),
       decider: row.countable ? (row.rate[d]?.per1000 ?? null) : (row.share[d]?.arm.pct ?? null),
       n: row.countable ? (row.rate[d]?.texts ?? 0) : (row.share[d]?.arm.n ?? 0),
-      k: null, models: null,
+      k: null, writers: null,
     };
   };
   const first = found[0]?.report;
   return {
     generated_at: summary?.generated_at ?? first?.generated_at ?? '',
     measured,
-    models: MODELS.map((m) => ({ id: m, short: MODEL_INFO[m].short, snapshot: MODEL_INFO[m].snapshot })),
-    decoding: DECODING,
     k_rule: summary?.rules.k ?? null,
     not_covered: NOT_COVERED,
     genres: found.map(({ genre, report, cleaning }) => ({
       ...genreInfo(genre),
+      // The writers this kind's count runs over, in the registry's order, and how many that is. The
+      // page reads the count out of these: "k of 4" where RAID's four models wrote the same documents,
+      // "k of 2" where two models answered one assignment, with nothing about four written into it.
+      writers: testedWriters(genre).map((w) => ({ id: w.id, short: w.short, snapshot: snapshotOf(w) })),
+      countOver: testedWriters(genre).length,
+      // one decoding setting for every writer of this kind, where the corpus fixes one; otherwise null
+      decoding: decodingOf(genre),
       dating: datingOf(genre, cleaning ?? null),
       file: `data/genres/${genre.id}.json`,
       texts: report.arms.find((a) => a.id === genre.reference)?.n ?? 0,

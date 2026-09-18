@@ -39,7 +39,7 @@
  * Every check runs on every arm, not only the ones suspected of it, because the point is to publish
  * the number rather than to defend a particular arm.
  */
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { isTruncated, isMetaText, isEnglish, ENGLISH_FROM } from '../src/clean.js';
 import { GENRES, type Genre, type Writer } from './genres.js';
@@ -49,7 +49,30 @@ const THRESHOLD = 0.5;
 /** ChatGPT's release, and the Last-Modified date of RAID's train_none.csv */
 export const DATE_WINDOW: [string, string] = ['2022-11-30', '2024-06-04'];
 
-export interface Row { id: string; text: string }
+export interface Row { id: string; text: string; group?: string }
+
+/**
+ * The arms written for this repository, read back out of their committed records.
+ *
+ * An arm nobody can re-download is only as good as the record that holds it, so the record is the
+ * source and the measured file in out/ is written from it on every run: a reader who changes an essay
+ * in data/generated sees the numbers move, and the weekly job measures these arms exactly as it
+ * measures a downloaded one. One file per assignment, every essay carrying the slot it was asked for
+ * and the assignment it answers -- the assignment travels as `group`, since these arms are paired
+ * inside one assignment rather than document by document (src/measure.ts, pairByPrompt).
+ */
+export function generatedArm(dir: string, armId: string): Row[] {
+  const files = readdirSync(dir).filter((f) => f.endsWith('.json') && f !== 'manifest.json').sort();
+  const rows: Row[] = [];
+  for (const f of files) {
+    const file = JSON.parse(readFileSync(path.join(dir, f), 'utf8')) as { prompt_slug?: string; essays?: { slot: string; arm: string; text: string }[] };
+    for (const e of file.essays ?? []) {
+      if (e.arm !== armId || !e.text) continue;
+      rows.push({ id: e.slot, text: e.text, ...(file.prompt_slug ? { group: file.prompt_slug } : {}) });
+    }
+  }
+  return rows;
+}
 
 const sourceOf = (id: string): string => String(id).replace(/^raid:[a-z0-9.-]+:/, '');
 
@@ -92,10 +115,46 @@ export interface ArmReport {
   worst: { id: string; containment: number }[];
 }
 
-export function checkArm(rows: Row[], human: Map<string, string>, name: string): { report: ArmReport; clean: Row[] } {
+/**
+ * The people's five-word sequences, pooled per assignment, for a kind of writing where no machine text
+ * has a person's text of its own to be compared with.
+ *
+ * Asked to write the abstract of a real paper, a model can give back the published one, and the check
+ * that catches it compares the two texts of the same document. In the school essays there is no such
+ * pair: a class answered an assignment and so did the models, so the question becomes whether a machine
+ * essay repeats any of the essays the students wrote to that assignment. Pooling the assignment's
+ * essays asks exactly that, and asks it of a much larger body of text than one document, so the
+ * threshold is met more easily -- which is the safe direction for a check whose purpose is to catch
+ * remembered text.
+ */
+export function poolFiveGrams(rows: Row[]): Map<string, Set<string>> {
+  const pool = new Map<string, Set<string>>();
+  for (const r of rows) {
+    const key = r.group ?? '';
+    let set = pool.get(key);
+    if (!set) { set = new Set<string>(); pool.set(key, set); }
+    for (const g of fiveGrams(r.text)) set.add(g);
+  }
+  return pool;
+}
+
+export function checkArm(rows: Row[], human: Map<string, string>, name: string, pool: Map<string, Set<string>> | null = null): { report: ArmReport; clean: Row[] } {
   let sum = 0, unchecked = 0;
   const scored: { row: Row; c: number }[] = [];
   for (const r of rows) {
+    // against the assignment's pooled essays where the kind of writing has no document pairs, and
+    // against this text's own document where it has
+    const against = pool ? pool.get(r.group ?? '') : null;
+    if (pool) {
+      if (!against) { unchecked++; continue; }
+      const grams = fiveGrams(r.text);
+      let hit = 0;
+      for (const g of grams) if (against.has(g)) hit++;
+      const c = grams.size ? hit / grams.size : 0;
+      sum += c;
+      scored.push({ row: r, c });
+      continue;
+    }
     const h = human.get(sourceOf(r.id));
     if (!h) { unchecked++; continue; }
     const c = containment(r.text, h);
@@ -270,7 +329,7 @@ export interface Cleaning {
  * the first check that drops it, so the numbers add up to what was dropped. `foreign` is the
  * documents check 2 leaves out (foreignDocuments), decided over every writer before any arm is cleaned.
  */
-export function cleanArm(rows: Row[], writer: Pick<Writer, 'id' | 'writer'>, human: Map<string, string>, excluded: Set<string>, detect: Detectors, foreign: Set<string> = new Set()):
+export function cleanArm(rows: Row[], writer: Pick<Writer, 'id' | 'writer'>, human: Map<string, string>, excluded: Set<string>, detect: Detectors, foreign: Set<string> = new Set(), pool: Map<string, Set<string>> | null = null):
   { cleaning: Cleaning; clean: Row[]; report: ArmReport | null } {
   const inWindow = rows.filter((r) => !excluded.has(sourceOf(r.id)));
   const dated = inWindow.filter((r) => !foreign.has(sourceOf(r.id)));
@@ -278,13 +337,16 @@ export function cleanArm(rows: Row[], writer: Pick<Writer, 'id' | 'writer'>, hum
   if (writer.writer === 'human') {
     return { cleaning: { ...base, truncated: null, meta: null, unchecked: null, remembered: null, mean_containment: null, kept: dated.length }, clean: dated, report: null };
   }
-  const model = writer.writer === 'claude' ? undefined : writer.writer;
+  // the writer's own length cap decides what counts as cut off, and the arms written here have one of
+  // their own (src/clean.ts CAP_FROM): before they were named there, "claude" fell through to the
+  // lowest RAID threshold and every finished letter that ends on a signature read as cut off
+  const model = writer.writer;
   const cut = new Set(dated.filter((r) => detect.truncated(r.text, model)));
   const talk = new Set(dated.filter((r) => !cut.has(r) && detect.meta(r.text)));
   const cleans = writer.writer !== 'claude';
   const rest = cleans ? dated.filter((r) => !cut.has(r) && !talk.has(r)) : dated;
   const ids = (xs: Set<Row>): string[] => [...xs].map((r) => sourceOf(r.id));
-  const { report, clean } = checkArm(rest, human, writer.id);
+  const { report, clean } = checkArm(rest, human, writer.id, pool);
   return {
     cleaning: {
       ...base,
@@ -329,6 +391,26 @@ const RULES = {
   claude: 'The Claude arm was generated here with nothing discarded: truncated and meta are reported for it, not applied.',
 };
 
+/**
+ * The rules as a kind of writing's cleaning file states them. A kind paired by assignment is checked
+ * differently in three places -- the five-word check reads the students' essays to the same assignment
+ * rather than one document, a name slot under a letter's sign-off is not task talk (src/clean.ts,
+ * SIGNATURE_TAIL), and its model arms are not RAID's -- and its file has to say what was done to it
+ * rather than repeat the RAID wording. The two RAID kinds keep RULES as they are, so their files do
+ * not change.
+ */
+export function rulesFor(genre: Pick<Genre, 'pairing'>): typeof RULES {
+  if (genre.pairing !== 'prompt') return RULES;
+  return {
+    ...RULES,
+    truncated: 'src/clean.ts isTruncated: a model text that stops before it is finished: inside a clause, in a loop, on a bare list marker, at a length the model\'s cap could have stopped it without a finished ending, or at that length inside a quotation or bracket it opened. Model arms only; never the person.',
+    meta: 'src/clean.ts isMetaText: a refusal, a lecture, a preamble, a description of the text instead of the text, a label, a note to the requester, or a slot left to fill ("[Your Name]"), about the task instead of the text. A text with any of these is dropped whole, except that a slot on the lines after a letter\'s sign-off ("Sincerely," and then "[Your Name]") is where a letter puts a name, and a letter that ends that way is kept. Model arms only; never the person.',
+    remembered: `More than ${THRESHOLD * 100}% of the text's five-word sequences also occur in the students' essays written to the same assignment, taken together: no machine essay has a student's essay of its own to be compared with. Every machine arm.`,
+    unchecked: 'A machine essay written to an assignment the person\'s arm has no essays for cannot be checked, and is dropped.',
+    claude: 'The Claude arms were generated here with nothing discarded: truncated and meta are reported for them, not applied.',
+  };
+}
+
 function titlesFor(genre: Genre, generated: Generated | null): Map<string, string> {
   const titles = new Map<string, string>();
   const prompts = genre.prompts ? load<{ source_id: string; title?: string }>(genre.prompts) : null;
@@ -348,6 +430,17 @@ function runGenre(genre: Genre): boolean {
   if (claude && genre.generated && existsSync(path.resolve(genre.generated))) {
     generated = JSON.parse(readFileSync(path.resolve(genre.generated), 'utf8')) as Generated;
     writeFileSync(path.join(OUT, `${claude.raw}.json`), JSON.stringify(generated.texts.map((t) => ({ id: t.source_id, text: t.text }))));
+  }
+
+  // the arms written here: their records are the only copy, so the measured file is written from them
+  // on every run, the same way the Claude abstracts arm above is
+  for (const w of genre.writers) {
+    if (!w.generated) continue;
+    const dir = path.resolve(w.generated);
+    if (!existsSync(dir)) { console.error(`  ${w.id}: ${w.generated} is missing; run the generation first`); continue; }
+    const rows = generatedArm(dir, w.id);
+    if (!rows.length) { console.error(`  ${w.id}: ${w.generated} holds no essay for this arm`); continue; }
+    writeFileSync(path.join(OUT, `${w.raw}.json`), JSON.stringify(rows));
   }
 
   let ok = true;
@@ -385,7 +478,10 @@ function runGenre(genre: Genre): boolean {
   const out = new Set([...excluded, ...foreign]);
 
   const human = new Map(humanRows.filter((r) => !out.has(sourceOf(r.id))).map((r) => [sourceOf(r.id), r.text]));
-  console.log(`\n${genre.label}: five-gram containment against the person's document, threshold ${THRESHOLD}\n`);
+  // no machine text here has a person's text of its own: check 5 asks whether it repeats any essay
+  // the students wrote to the same assignment (poolFiveGrams)
+  const pool = genre.pairing === 'prompt' ? poolFiveGrams(humanRows.filter((r) => !out.has(sourceOf(r.id)))) : null;
+  console.log(`\n${genre.label}: five-gram containment against ${pool ? 'the person\'s texts to the same assignment' : 'the person\'s document'}, threshold ${THRESHOLD}\n`);
   console.log('arm'.padEnd(22) + 'texts'.padEnd(7) + 'dated'.padEnd(7) + 'lang'.padEnd(6) + 'cut'.padEnd(6) + 'meta'.padEnd(6) + 'uncheck'.padEnd(9) + 'mean'.padEnd(8) + 'remembered'.padEnd(12) + 'kept');
   console.log('-'.repeat(90));
   const cleanings: Cleaning[] = [];
@@ -395,7 +491,7 @@ function runGenre(genre: Genre): boolean {
       if (w.writer !== 'claude') { console.error(`  out/${w.raw}.json is missing`); ok = false; }
       continue;
     }
-    const { cleaning, clean, report } = cleanArm(rows, w, human, excluded, SRC_CLEAN, foreign);
+    const { cleaning, clean, report } = cleanArm(rows, w, human, excluded, SRC_CLEAN, foreign, pool);
     cleanings.push(cleaning);
     const n = (x: number | null): string => (x === null ? '-' : String(x));
     console.log(
@@ -422,7 +518,7 @@ function runGenre(genre: Genre): boolean {
   writeFileSync(path.join(dir, 'cleaning.json'), JSON.stringify({
     generated_at: new Date().toISOString(),
     genre: genre.id,
-    rules: RULES,
+    rules: rulesFor(genre),
     dates: dating
       ? {
         applied: datesNote, complete: dating.complete, window: dating.window, documents: corpus.size, excluded: dating.excluded.size,

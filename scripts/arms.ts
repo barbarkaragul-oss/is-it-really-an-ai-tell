@@ -61,8 +61,15 @@ export function loadArm(spec: ArmSpec, dir: string = OUT): Arm | null {
     }
     return null;
   }
-  const rows = JSON.parse(readFileSync(f, 'utf8')) as { id: string; text: string }[];
-  const texts: Text[] = rows.map((r) => ({ id: String(r.id), text: r.text, source: spec.file }));
+  const rows = JSON.parse(readFileSync(f, 'utf8')) as { id: string; text: string; group?: string }[];
+  /**
+   * `group` is the assignment a text was written to, where a kind of writing pairs on that rather than
+   * on the document (src/measure.ts, pairByPrompt). It is carried through untouched: a collector that
+   * writes it means it, and a text without one must keep no field at all, since `exactOptionalPropertyTypes`
+   * tells `measure` apart from a text whose assignment is unknown. Both sides of such a pairing have to
+   * name the assignment the same way -- the slug, not the name the page prints -- or no pair will match.
+   */
+  const texts: Text[] = rows.map((r) => ({ id: String(r.id), text: r.text, source: spec.file, ...(r.group === undefined ? {} : { group: String(r.group) }) }));
   return texts.length ? { id: spec.id, label: spec.label, kind: spec.kind, texts } : null;
 }
 

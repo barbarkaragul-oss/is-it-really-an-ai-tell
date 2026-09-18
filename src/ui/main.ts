@@ -16,6 +16,17 @@ export interface GenreInfo {
   source: { human: string; humanUrl: string; people: string; dates: string; datesUrl: string; licence: string; licenceUrl: string };
   /** markers this kind of writing cannot show in anyone's text, with the reason */
   notRecorded?: Record<string, string>;
+  /**
+   * The footnote the columns of this kind that were written for this project carry, with "{columns}"
+   * where the page fills in which columns those are and how much each of them wrote, and "{caveats}"
+   * where it links the README. It comes from the data because it names writers, and nothing here may
+   * name a writer.
+   */
+  writtenHere?: { note: string; url: string } | null;
+  /** how the table's columns relate, where they are not one set of documents written again by each model */
+  pairs?: string;
+  /** the kind's sentence after "Not covered", where it was added without a published machine side */
+  covered?: string;
 }
 /** where the dating of a kind of writing stands (scripts/build.ts, datingOf) */
 export type Dating =
@@ -32,7 +43,18 @@ interface Row {
 }
 interface Example { id: string; sentence?: string; link?: string }
 interface Cell { occurrences: number; forms: [string, number][]; before: [string, number][]; examples: Example[] }
-interface Doc { source_id: string; title: string; texts: Record<string, string>; person_not_reproduced?: boolean }
+/** the assignment a panel entry is built round, where the writers share no document (scripts/evidence.ts) */
+interface Assignment {
+  slug: string; name: string; text: string; letter: boolean;
+  matched: 'grade and length' | 'grade' | 'assignment only';
+  essays: Record<string, { id: string; grade: number | null; words: number }>;
+}
+/** the person's side of such an entry: numbers over that one assignment, because their text may not be shown */
+interface PersonCounts {
+  arm: string; texts: number; words: number; median_words: number;
+  markers: { marker: string; texts: number; with: number; share: number; occurrences: number | null; words: number; per1000: number | null }[];
+}
+interface Doc { source_id: string; title: string; texts: Record<string, string>; person_not_reproduced?: boolean; assignment?: Assignment; person?: PersonCounts }
 interface ArmCleaning { arm: string; texts: number; dated: number; language?: number; truncated: number | null; meta: number | null; remembered: number | null; unchecked: number | null; kept: number; reported: { truncated: number; meta: number } | null }
 interface Page {
   generated_at: string; reference: string; machine: string;
@@ -41,15 +63,25 @@ interface Page {
   cleaning: { dates: Dating | null; language?: { documents: number; excluded: number } | null; arms: ArmCleaning[] } | null;
 }
 export interface KCount { ai: number; person: number; of: number; tooFew?: number }
-/** what one model's comparison rested on (scripts/measure-all.ts, evidenceOf) */
+/** what one writer's comparison rested on (scripts/measure-all.ts, evidenceOf) */
 export type Evidence = { occurrences: number } | { pairs: number; minority: number };
 export interface GridCell {
   verdict: string; q: number | null; placeboTie: boolean; unit: string; person: number | null; decider: number | null; n: number;
-  k: KCount | null; models: Record<string, { verdict: string; q: number | null; evidence?: Evidence; tooFew?: boolean }> | null;
+  /** one entry per writer this kind counts across, by arm id; null before the measurement wrote a count */
+  k: KCount | null; writers: Record<string, { verdict: string; q: number | null; evidence?: Evidence; tooFew?: boolean }> | null;
 }
-export interface SummaryGenre extends GenreInfo { file: string; texts: number; placebo_disagreements: number; dating?: Dating }
+/**
+ * A kind of writing in the grid. `writers` are the ones its count runs over and `countOver` is how
+ * many that is, both from the registry through the build: the page reads the n of "k of n" here and
+ * never assumes a number of its own, which is what lets a kind with two writers sit beside a kind with
+ * four. `decoding` is the one setting behind all of them, where the corpus fixes one.
+ */
+export interface SummaryGenre extends GenreInfo {
+  file: string; texts: number; placebo_disagreements: number; dating?: Dating;
+  writers: { id: string; short: string; snapshot: string | null }[]; countOver: number; decoding: string | null;
+}
 export interface Summary {
-  generated_at: string; measured: boolean; models: { id: string; short: string; snapshot: string }[]; decoding: string; k_rule: string | null; not_covered: string;
+  generated_at: string; measured: boolean; k_rule: string | null; not_covered: string;
   genres: SummaryGenre[];
   rows: { marker: string; label: string; family: string; belief: boolean; countable: boolean; genres: Record<string, GridCell> }[];
 }
@@ -65,19 +97,25 @@ type Words = [cls: string, text: string, byRate: string, byShare: string];
 /**
  * A word is decided on its rates over every text, a property of the whole text on its shares, so
  * each verdict is explained in the terms of the test that produced it, and in the kind of writing.
+ * Where the writers answered one assignment rather than rewrote one document, the explanation says
+ * so: no two writers there wrote the same text, and a tooltip claiming they did would describe a
+ * pairing that did not happen.
  */
-export function verdictWords(verdict: string, g: Pick<GenreInfo, 'deciderShort' | 'noun'>): Words {
+export function verdictWords(verdict: string, g: Pick<GenreInfo, 'deciderShort' | 'noun'> & Partial<Pick<GenreInfo, 'documents'>>): Words {
   const d = g.deciderShort, docs = g.noun.many;
+  const byAssignment = g.documents === 'assignment';
+  const same = byAssignment ? 'the same assignments' : `the same ${docs}`;
+  const who = byAssignment ? 'the people who answered the same assignments' : `the person who wrote the same ${docs}`;
   const table: Record<string, Words> = {
     'machine marker': ['machine', `${d} marker`,
-      `${d} uses it more often than the person who wrote the same ${docs}, comparing texts of the same length, by more than testing ${MARKERS.length} markers at once would produce by chance.`,
-      `More of ${d}’s texts have it than the person’s on the same ${docs}, and the two 95% intervals do not overlap.`],
+      `${d} uses it more often than ${who}, comparing texts of the same length, by more than testing ${MARKERS.length} markers at once would produce by chance.`,
+      `More of ${d}’s texts have it than the person’s on ${same}, and the two 95% intervals do not overlap.`],
     'register marker': ['register', 'careful writing',
       `The person and ${d} cannot be told apart on it, and both use it more than casual writers do. It marks how formally something is written, not who wrote it.`,
       `The person and ${d} cannot be told apart on it, and more of both their texts have it than casual writing does. It marks how formally something is written, not who wrote it.`],
     'points the other way': ['other', 'more human',
-      `The person uses it more often than ${d} does on the same ${docs}, comparing texts of the same length, by more than testing ${MARKERS.length} markers at once would produce by chance.`,
-      `More of the person’s texts have it than ${d}’s on the same ${docs}, and the two 95% intervals do not overlap.`],
+      `The person uses it more often than ${d} does on ${same}, comparing texts of the same length, by more than testing ${MARKERS.length} markers at once would produce by chance.`,
+      `More of the person’s texts have it than ${d}’s on ${same}, and the two 95% intervals do not overlap.`],
     'no signal': ['none', 'no signal', `No difference between the person and ${d} that the data can support.`, `No difference between the person and ${d} that the data can support.`],
     'not recorded': ['none', 'not recorded', '', ''],
   };
@@ -85,7 +123,7 @@ export function verdictWords(verdict: string, g: Pick<GenreInfo, 'deciderShort' 
 }
 
 /** why a verdict is what it is: the test's own words, or the reason a marker is not recorded here */
-export function whyOf(verdict: string, g: Pick<GenreInfo, 'deciderShort' | 'noun' | 'notRecorded'>, marker: string, countable: boolean): string {
+export function whyOf(verdict: string, g: Pick<GenreInfo, 'deciderShort' | 'noun' | 'notRecorded'> & Partial<Pick<GenreInfo, 'documents'>>, marker: string, countable: boolean): string {
   if (verdict === 'not recorded') return g.notRecorded?.[marker] ?? '';
   const [, , byRate, byShare] = verdictWords(verdict, g);
   return countable ? byRate : byShare;
@@ -97,7 +135,7 @@ export const GLYPH: Record<string, string> = {
 };
 
 /**
- * A model's evidence, in words: "12 uses" for a word; for a property of the whole text, the pairs and
+ * A writer's evidence, in words: "12 uses" for a word; for a property of the whole text, the pairs and
  * how many texts of both sides are on its rarer side ("504 pairs, 1 on the rarer side": everyone but
  * one text has it, so nothing can be told apart).
  */
@@ -105,15 +143,17 @@ const evidenceWords = (e: Evidence | undefined): string =>
   !e ? '' : 'occurrences' in e ? `${e.occurrences} use${e.occurrences === 1 ? '' : 's'}` : `${e.pairs} pairs, ${e.minority} on the rarer side`;
 
 /**
- * "k of 4": how many models the marker separates from the person, in each direction, of those that
- * could be compared. A model whose comparison rests on too little is not counted in "of"; when that is
- * every model, the cell says so instead of "0 of 0".
+ * "k of n": how many of this kind of writing's own models the marker separates from the person, in
+ * each direction, of those that could be compared. The n is whatever that kind counts across, which
+ * the data carries (4 where four models wrote the same documents, 2 where two answered one
+ * assignment); nothing here knows a number. A model whose comparison rests on too little is not
+ * counted in "of"; when that is every model, the cell says so instead of "0 of 0".
  */
-export function kHtml(k: KCount | null, models: GridCell['models'], names: Map<string, string>): string {
+export function kHtml(k: KCount | null, writers: GridCell['writers'], names: Map<string, string>): string {
   // no count before the new measurement, and none for a marker no model could be measured on
   if (!k || (k.of === 0 && !k.tooFew)) return '';
-  const who = models
-    ? Object.entries(models).map(([m, v]) => `${names.get(m) ?? m} ${v.tooFew ? 'too few' : GLYPH[v.verdict] ?? v.verdict}${v.evidence ? ` (${evidenceWords(v.evidence)})` : ''}`).join(', ')
+  const who = writers
+    ? Object.entries(writers).map(([id, v]) => `${names.get(id) ?? id} ${v.tooFew ? 'too few' : GLYPH[v.verdict] ?? v.verdict}${v.evidence ? ` (${evidenceWords(v.evidence)})` : ''}`).join(', ')
     : '';
   const few = k.tooFew ? `, and ${k.tooFew} with too little to compare` : '';
   const title = `Models whose own comparison with the person separates this marker: ${k.ai} toward the model (▲), ${k.person} toward the person (▼), of ${k.of} compared${few}. ${who}`;
@@ -125,7 +165,10 @@ export function kHtml(k: KCount | null, models: GridCell['models'], names: Map<s
   return `<span class="k" title="${esc(title)}">${parts.join(' · ')}</span>`;
 }
 
-export function gridCellHtml(cell: GridCell | undefined, g: SummaryGenre, marker: string, names: Map<string, string>): string {
+/** the names in a kind's count, by arm id: the same short names its own table's columns carry */
+export const writerNames = (g: Pick<SummaryGenre, 'writers'>): Map<string, string> => new Map((g.writers ?? []).map((w) => [w.id, w.short]));
+
+export function gridCellHtml(cell: GridCell | undefined, g: SummaryGenre, marker: string, names: Map<string, string> = writerNames(g)): string {
   if (!cell) return `<td class="gcell"><span class="muted">–</span></td>`;
   const [cls, text] = verdictWords(cell.verdict, g);
   const why = whyOf(cell.verdict, g, marker, cell.unit === 'per 1000 words');
@@ -133,7 +176,7 @@ export function gridCellHtml(cell: GridCell | undefined, g: SummaryGenre, marker
   const numbers = `Person ${fmt(cell.person)}, ${g.deciderShort} ${fmt(cell.decider)} (${cell.unit})${cell.q !== null ? `, q ${cell.q < 0.001 ? '< 0.001' : cell.q.toFixed(3)}` : ''}.`;
   const placebo = cell.placeboTie ? '' : '<span class="flag">placebo disagrees</span>';
   return `<td class="gcell" data-genre="${esc(g.id)}" data-marker="${esc(marker)}" tabindex="0" title="${esc(`${why} ${numbers}`)}">`
-    + `<span class="pill ${cls}">${GLYPH[cell.verdict] ?? ''} ${esc(text)}</span>${kHtml(cell.k, cell.models, names)}${placebo}</td>`;
+    + `<span class="pill ${cls}">${GLYPH[cell.verdict] ?? ''} ${esc(text)}</span>${kHtml(cell.k, cell.writers, names)}${placebo}</td>`;
 }
 
 /**
@@ -203,6 +246,9 @@ function tint(value: number, lo: number, hi: number, pv: number, plo: number, ph
 // how an arm's shares were paired with the person's, for the tooltip
 const paired = (pairing: string | undefined, g: GenreInfo): string => ({
   document: `each paired with the person’s text for the same ${g.noun.one}, both in the same length band`,
+  // not the same document: the two writers answered one assignment, which is as close as this kind of
+  // writing comes to a shared subject, and the tooltip has to say that rather than borrow "document"
+  prompt: `each paired with a person’s ${g.noun.one} written to the same assignment, both in the same length band`,
   length: 'length-matched with the person',
   self: `the person’s own ${g.noun.many}`,
 } as Record<string, string>)[pairing ?? 'length'] ?? 'length-matched with the person';
@@ -226,21 +272,103 @@ function shareCellHtml(page: Page, row: Row, arm: string, tinted: boolean, pairi
 
 // ---- the grid across kinds of writing
 
+/**
+ * The models a kind of writing counts across, under its column head: how many there are, what they
+ * are called, and the one decoding setting behind them where the corpus fixes one. It is written per
+ * kind because the kinds no longer share a set of models, which is also why the caption can no longer
+ * name four of them once for the whole grid.
+ */
+export function countedWords(g: Pick<SummaryGenre, 'writers' | 'countOver' | 'decoding'>): string {
+  if (!g.writers?.length) return '';
+  const how = g.decoding ? `; ${g.decoding}` : '';
+  return `counted across ${g.countOver} model${g.countOver === 1 ? '' : 's'}: ${g.writers.map((w) => w.short).join(', ')}${how}`;
+}
+
+/**
+ * The grid's legend, built from the same words the cells are, so a change to one cannot leave the
+ * other behind. The pills are worded for "the model" rather than for any kind's own decider, because
+ * the legend stands over every column at once and the kinds are decided against different writers.
+ */
+export function legendHtml(): string {
+  const after: Record<string, string> = {
+    'machine marker': ' the model uses it more', 'points the other way': ' the person uses it more',
+    'register marker': ' both, more than casual writers', 'no signal': '', 'not recorded': ' no text of that kind can show it',
+  };
+  return Object.entries(after).map(([v, tail]) => {
+    const [cls, text] = verdictWords(v, { deciderShort: 'model', noun: { one: 'text', many: 'texts' } });
+    return `<span class="pill ${cls}">${GLYPH[v] ?? ''} ${esc(text)}</span>${tail}`;
+  }).join(' · ');
+}
+
+/**
+ * Whether every kind in the grid is decided against the same model and counted over the same models,
+ * each writing the person's own documents again: then the caption names them once, in the words the
+ * page used while every kind came from one corpus, and the column heads need no line of their own.
+ */
+export function sharesOneSet(genres: Pick<SummaryGenre, 'documents' | 'deciderShort' | 'writers' | 'countOver' | 'decoding'>[]): boolean {
+  const [first] = genres;
+  return !!first && genres.every((g) => g.documents !== 'assignment' && g.deciderShort === first.deciderShort && countedWords(g) === countedWords(first));
+}
+
+/** "a", "a and b", "a, b and c" */
+const listed = (xs: string[]): string => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
+
+/**
+ * The grid's caption. Where the kinds share one decider and one set of counted models it is the
+ * caption the page always had, word for word. Where they do not, it says which model each kind is
+ * decided against and what its people wrote, kind by kind, so a kind decided against another model is
+ * never described under the first kind's name, and it sends the reader to the column heads for the
+ * models each kind counts across.
+ */
+export function gridCaption(genres: Pick<SummaryGenre, 'documents' | 'deciderShort' | 'writers' | 'countOver' | 'decoding' | 'inText'>[], measured: boolean): string {
+  const [first] = genres;
+  if (!first) return '';
+  if (sharesOneSet(genres)) {
+    const d = esc(first.deciderShort);
+    // a summary older than this script names no writers per kind; the caption then names none either
+    const names = (first.writers ?? []).map((w) => w.short).join(', ');
+    return measured
+      ? `Each cell is one kind of writing. The label is ${d}’s verdict against the people who wrote the same documents, as in the table below. Under it, how many of the ${first.countOver} models (${esc(names)}${first.decoding ? `; ${esc(first.decoding)}` : ''}) the marker separates from the person there, each decided by the same rules: ▲ toward the model, ▼ toward the person. A model is counted only where there is something to compare: a word that it and the person hardly use, or a property every text has, leaves too little. Click a cell for that kind’s full table.`
+      : `Each cell is one kind of writing, with ${d}’s verdict against the people who wrote the same documents. The count across all ${first.countOver} models appears after the next weekly measurement. Click a cell for the full table.`;
+  }
+  // one clause per decider and kind of pairing, in the grid's order: "X against the people who wrote
+  // the same documents in a and b; Y against the people who answered the same assignments in c"
+  const groups = new Map<string, { d: string; byAssignment: boolean; kinds: string[] }>();
+  for (const g of genres) {
+    const byAssignment = g.documents === 'assignment';
+    const key = `${g.deciderShort}|${byAssignment}`;
+    const x = groups.get(key) ?? { d: g.deciderShort, byAssignment, kinds: [] };
+    x.kinds.push(g.inText);
+    groups.set(key, x);
+  }
+  const who = [...groups.values()].map((x) => `${esc(x.d)} against the people who ${x.byAssignment ? 'answered the same assignments' : 'wrote the same documents'} in ${esc(listed(x.kinds))}`).join('; ');
+  const starred = genres.some((g) => g.deciderShort.endsWith('*') || (g.writers ?? []).some((w) => w.short.endsWith('*')));
+  const mark = starred ? ' A model marked * was run for this project rather than taken from a published corpus; the note under that kind’s table says which, and when.' : '';
+  return (measured
+    ? `Each cell is one kind of writing. The label is one model’s verdict against the people of that kind, as in the table below: ${who}. Under it, how many of that kind’s own models (named under its column head) the marker separates from the person there, each decided by the same rules: ▲ toward the model, ▼ toward the person. A model is counted only where there is something to compare: a word that it and the person hardly use, or a property every text has, leaves too little. Click a cell for that kind’s full table.`
+    : `Each cell is one kind of writing, with one model’s verdict against the people of that kind: ${who}. The count across each kind’s models appears after the next weekly measurement. Click a cell for the full table.`) + mark;
+}
+
+/** the line under the grid: what is not covered, then any kind added without a published machine side */
+export function notCoveredText(notCovered: string, genres: Pick<SummaryGenre, 'covered'>[]): string {
+  const covered = genres.map((g) => g.covered).filter((x): x is string => !!x);
+  return `Not covered: ${notCovered}. Paired sets of a person’s text and models writing the same thing do exist for some of these, but none that can be used here under its terms, so they are left out rather than guessed at.${covered.map((c) => ` ${c}`).join('')}`;
+}
+
 function renderGrid(): void {
-  const names = new Map(summary.models.map((m) => [m.id, m.short]));
+  // a kind's own line of counted models, only where the kinds do not share one the caption can name
+  const perKind = summary.measured && !sharesOneSet(summary.genres);
   const head = `<thead><tr><th>Marker</th>${summary.genres.map((g) => `<th class="gcol"><button type="button" class="glink" data-genre="${esc(g.id)}">${esc(g.label)}</button>`
-    + `<span class="sub">people: ${esc(peopleWords(g))}</span><span class="sub">${g.texts.toLocaleString('en')} ${esc(g.noun.many)}, ${esc(g.deciderShort)} vs the person</span></th>`).join('')}</tr></thead>`;
+    + `<span class="sub">people: ${esc(peopleWords(g))}</span><span class="sub">${g.texts.toLocaleString('en')} ${esc(g.noun.many)}, ${esc(g.deciderShort)} vs the person</span>`
+    + `${perKind && countedWords(g) ? `<span class="sub">${esc(countedWords(g))}</span>` : ''}</th>`).join('')}</tr></thead>`;
   const body = summary.rows.map((r) => `<tr><td>${esc(r.label)}${r.belief ? '<span class="belief">people judge by it</span>' : ''}</td>`
-    + summary.genres.map((g) => gridCellHtml(r.genres[g.id], g, r.marker, names)).join('') + '</tr>').join('');
+    + summary.genres.map((g) => gridCellHtml(r.genres[g.id], g, r.marker)).join('') + '</tr>').join('');
   $('grid').innerHTML = `${head}<tbody>${body}</tbody>`;
-  const modelNames = summary.models.map((m) => m.short).join(', ');
-  const d = esc(summary.genres[0]?.deciderShort ?? 'the model');
-  $('grid-caption').innerHTML = summary.measured
-    ? `Each cell is one kind of writing. The label is ${d}’s verdict against the people who wrote the same documents, as in the table below. Under it, how many of the ${summary.models.length} models (${esc(modelNames)}; ${esc(summary.decoding)}) the marker separates from the person there, each decided by the same rules: ▲ toward the model, ▼ toward the person. A model is counted only where there is something to compare: a word that it and the person hardly use, or a property every text has, leaves too little. Click a cell for that kind’s full table.`
-    : `Each cell is one kind of writing, with ${d}’s verdict against the people who wrote the same documents. The count across all ${summary.models.length} models appears after the next weekly measurement. Click a cell for the full table.`;
+  $('grid-caption').innerHTML = gridCaption(summary.genres, summary.measured);
+  $('grid-legend').innerHTML = legendHtml();
   $('kinds').innerHTML = summary.genres.map((g) => ` <b>${esc(g.label)}:</b> the people’s texts are ${esc(g.source.human)}. ${esc(g.source.dates)} ${esc(datingWords(g.dating, g.noun))} `
     + `(${datesLinked(g.dating) ? `<a href="${esc(g.source.datesUrl)}" rel="noopener">source</a>; ` : ''}${g.humanQuotable ? '' : 'not quoted: '}<a href="${esc(g.source.licenceUrl)}" rel="noopener">${esc(g.source.licence)}</a>.)`).join('');
-  $('not-covered').textContent = `Not covered: ${summary.not_covered}. Paired sets of a person’s text and models writing the same thing do exist for some of these, but none that can be used here under its terms, so they are left out rather than guessed at.`;
+  $('not-covered').textContent = notCoveredText(summary.not_covered, summary.genres);
 }
 
 // ---- one kind of writing: the table
@@ -436,6 +564,40 @@ function foundTable(page: Page, f: Found, writer: string | null): string {
 let docIndex = 0;
 let docArm = '';
 
+/**
+ * The person's side of an assignment panel, where their text may never be shown: the same markers the
+ * table carries, counted over the essays written to this one assignment. It is the answer to the
+ * question the missing column raises -- what did the class do here? -- in the only form the licence
+ * allows, and it is per assignment rather than per corpus so that it answers about these writers.
+ */
+function personTable(page: Page, p: PersonCounts): string {
+  const rows = new Map(page.rows.map((r) => [r.marker, r]));
+  const seen = p.markers.filter((m) => rows.has(m.marker));
+  const counted = seen.filter((m) => m.per1000 !== null);
+  const whole = seen.filter((m) => m.per1000 === null);
+  const n = p.texts.toLocaleString('en');
+  const num = (x: number): string => x.toLocaleString('en');
+  let out = `<p class="muted">${n} student${p.texts === 1 ? '' : 's'} wrote to this assignment, ${num(p.median_words)} words in the middle one, ${num(p.words)} words in all. Every number below is over those ${n} essays alone, not over the whole corpus.</p>`;
+  if (counted.length) {
+    out += '<table><thead><tr><th>In their essays</th><th>times</th><th>per 1000 words</th><th>essays with it</th></tr></thead><tbody>'
+      + counted.map((m) => `<tr><td>${esc(rows.get(m.marker)!.label)}</td><td>${num(m.occurrences ?? 0)}</td><td>${(m.per1000 ?? 0).toFixed(2)}</td><td>${num(m.with)} of ${num(m.texts)}</td></tr>`).join('')
+      + '</tbody></table>';
+  }
+  if (whole.length) {
+    out += '<table><thead><tr><th>True of their essays</th><th>essays</th><th>%</th></tr></thead><tbody>'
+      + whole.map((m) => `<tr><td>${esc(rows.get(m.marker)!.label)}</td><td>${num(m.with)} of ${num(m.texts)}</td><td>${m.share.toFixed(1)}</td></tr>`).join('')
+      + '</tbody></table>';
+  }
+  return out;
+}
+
+/** how level the machine essays of one entry were held, in the page's words */
+const matchedWords: Record<Assignment['matched'], string> = {
+  'grade and length': 'the same grade and the same length band',
+  grade: 'the same grade, with no length band both could fill',
+  'assignment only': 'the assignment alone, since no grade both wrote to was left',
+};
+
 function renderDocument(): void {
   const page = current;
   const section = $('doc-section');
@@ -445,17 +607,40 @@ function renderDocument(): void {
   const docs = page.documents;
   docIndex = ((docIndex % docs.length) + docs.length) % docs.length;
   const d = docs[docIndex]!;
-  const writers = page.writers.map((w) => w.id).filter((a) => d.texts[a]);
+  const a = d.assignment;
+  // the person gets a tab of their own where their text cannot be shown but their counts can: it is
+  // the place their essay would have been, and leaving the column out would read as having no side
+  const writers = page.writers.map((w) => w.id).filter((x) => d.texts[x] ?? (x === page.reference && d.person));
   if (!writers.includes(docArm)) docArm = writers[0] ?? '';
   const hidden = d.person_not_reproduced === true;
-  $('doc-heading').textContent = `One ${g.noun.one}, ${writers.length} writers`;
-  $('doc-caption').textContent = g.titles === 'show'
-    ? `The same prompt, ${g.prompt}, answered ${writers.length} ways. Counted markers are highlighted. Documents are drawn at random from the ones every writer covered, not chosen, and none is about suicide, self-harm, sexual violence, psychosis, overdoses or eating disorders.`
-    : `The same prompt, ${g.prompt}, answered by each model. The title and the person’s ${g.noun.one} are not shown (${g.source.licence}); the person’s text is counted in the table all the same. Documents are drawn at random, not chosen, from those where no model repeats the title, five words in a row of the person’s ${g.noun.one} or eight of anyone’s, and none is about suicide, self-harm, sexual violence, psychosis, overdoses or eating disorders.`;
-  $('doc-title').textContent = g.titles === 'show' && d.title
-    ? `“${d.title}” (${docIndex + 1} of ${docs.length})`
-    : `${g.noun.one[0]!.toUpperCase()}${g.noun.one.slice(1)} ${docIndex + 1} of ${docs.length}${hidden ? ' · the person’s version is not reproduced' : ''}`;
-  $('doc-tabs').innerHTML = writers.map((a) => `<button type="button" role="tab" data-arm="${a}" aria-selected="${a === docArm}">${esc(shortOf(a))}</button>`).join('');
+  $('doc-heading').textContent = a
+    ? `One assignment, ${writers.length} writers`
+    : `One ${g.noun.one}, ${writers.length} writers`;
+  $('doc-caption').textContent = a
+    ? `One assignment, answered by a class and by each model. The assignment is quoted in full, as the class was given it; a student’s ${g.noun.one} never is (${g.source.licence}), and the writers here share no document, so the class’s tab holds their counts for this assignment where an essay would be. The machine ${g.noun.many} are drawn at random, not chosen, held to ${matchedWords[a.matched]}, and none of them holds eight words in a row that exactly one student wrote.`
+    : g.titles === 'show'
+      ? `The same prompt, ${g.prompt}, answered ${writers.length} ways. Counted markers are highlighted. Documents are drawn at random from the ones every writer covered, not chosen, and none is about suicide, self-harm, sexual violence, psychosis, overdoses or eating disorders.`
+      : `The same prompt, ${g.prompt}, answered by each model. The title and the person’s ${g.noun.one} are not shown (${g.source.licence}); the person’s text is counted in the table all the same. Documents are drawn at random, not chosen, from those where no model repeats the title, five words in a row of the person’s ${g.noun.one} or eight of anyone’s, and none is about suicide, self-harm, sexual violence, psychosis, overdoses or eating disorders.`;
+  $('doc-title').textContent = a
+    ? `${a.name} (${docIndex + 1} of ${docs.length})`
+    : g.titles === 'show' && d.title
+      ? `“${d.title}” (${docIndex + 1} of ${docs.length})`
+      : `${g.noun.one[0]!.toUpperCase()}${g.noun.one.slice(1)} ${docIndex + 1} of ${docs.length}${hidden ? ' · the person’s version is not reproduced' : ''}`;
+  const prompt = $('doc-prompt');
+  prompt.hidden = !a;
+  if (a) {
+    const essay = a.essays[docArm];
+    prompt.innerHTML = `<p class="assignment-text">${esc(a.text)}</p>`
+      + `<p class="muted">The assignment, as the class was given it${a.letter ? '; it asks for a letter to the principal, which is why these open and sign off as one' : ''}.`
+      + (essay ? ` The ${esc(g.noun.one)} below is ${esc(essay.id)}${essay.grade === null ? '' : `, written for grade ${essay.grade}`}, ${essay.words} words.` : '')
+      + '</p>';
+  }
+  $('doc-tabs').innerHTML = writers.map((x) => `<button type="button" role="tab" data-arm="${x}" aria-selected="${x === docArm}">${esc(shortOf(x))}</button>`).join('');
+  if (d.person && docArm === page.reference) {
+    $('doc-text').innerHTML = `<p class="muted">No ${esc(g.noun.one)} is shown here, and none is committed to this repository: ${esc(g.source.licence)}. What this project publishes about the class is what it counted.</p>`;
+    $('doc-found').innerHTML = personTable(page, d.person);
+    return;
+  }
   const f = analyse(d.texts[docArm] ?? '');
   $('doc-text').innerHTML = f.html;
   $('doc-found').innerHTML = foundTable(page, f, docArm);
@@ -496,23 +681,48 @@ function captions(page: Page): void {
   const quoted = g.humanQuotable ? '' : ` The people’s ${esc(g.noun.many)} are counted, never quoted (${esc(g.source.licence)}).`;
   // a model's column is a subset once its cut-off, not-an-answer and remembered texts are dropped
   const fewer = models.some((w) => (page.arms.find((a) => a.id === w.id)?.n ?? 0) < (person?.n ?? 0));
-  $('table-caption').innerHTML = `Every column up to ${esc(last?.short ?? 'the last model')} comes from the <b>same ${(person?.n ?? 0).toLocaleString('en')} ${esc(g.noun.many)}</b>: `
+  // where the writers did not write the same documents, the registry says how the columns relate, and
+  // the sentence about one set of documents written again, and the one after it, are not said
+  $('table-caption').innerHTML = (g.pairs
+    ? `The person’s column is <b>${(person?.n ?? 0).toLocaleString('en')} ${esc(g.noun.many)}</b>: <a href="${esc(g.source.humanUrl)}" rel="noopener">${esc(g.source.human)}</a>. ${esc(g.pairs)} `
+    : `Every column up to ${esc(last?.short ?? 'the last model')} comes from the <b>same ${(person?.n ?? 0).toLocaleString('en')} ${esc(g.noun.many)}</b>: `
     + `written by a person (<a href="${esc(g.source.humanUrl)}" rel="noopener">${esc(g.source.human)}</a>), and written again by each model from the same prompt (<a href="https://github.com/liamdugan/raid">RAID</a>)`
     + `${fewer ? `; a model’s column has fewer where its texts were dropped (<a href="#method">how</a>)` : ''}. `
-    + `A difference between those columns is about the writer, not the subject. Tinted cells are well above <span class="swatch up"></span> or below <span class="swatch down"></span> the person. `
+    + `A difference between those columns is about the writer, not the subject. `)
+    + `Tinted cells are well above <span class="swatch up"></span> or below <span class="swatch down"></span> the person. `
     + `The last ${page.context.length} columns are for comparison: everyday casual writing, careful edited writing, and a chatbot answering questions.${quoted} Click a row to see what was counted.`;
-  const claude = page.writers.find((w) => w.short.endsWith('*'));
   const off = page.rows.filter((r) => r.placeboTie === false).length;
   const placebo = off
     ? `the placebo check (the person’s ${g.noun.many} split at random) disagrees on ${off} row${off === 1 ? '' : 's'}, marked in the table`
     : `the placebo check (the person’s ${g.noun.many} split at random) ties on every row`;
-  const claudeArm = claude && page.arms.find((a) => a.id === claude.id);
-  $('table-foot').innerHTML = (claudeArm
-    ? `* Claude was generated for this project (${claudeArm.n} ${esc(g.noun.many)}, reached through Claude Code) and the same system wrote this page; <a href="https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell#a-claude-arm-generated-here">the caveats</a> matter. `
-    : '') + `The verdict compares ${esc(g.deciderShort)} with the person; ${esc(placebo)}.`;
+  $('table-foot').innerHTML = writtenHereNote(page) + `The verdict compares ${esc(g.deciderShort)} with the person; ${esc(placebo)}.`;
   $('cleaning-note').innerHTML = cleaningNote(page);
   const counts = page.arms.map((a) => `${esc(shortOf(a.id))} ${a.n.toLocaleString('en')}`).join(' · ');
   $('generated').innerHTML = `Measured ${esc(page.generated_at.slice(0, 10))}. Texts per arm in ${esc(g.inText)}: ${counts}.`;
+}
+
+/**
+ * The footnote the columns written for this project carry, rather than downloaded from a corpus. Every
+ * column whose name ends in "*" is one of them, and the footnote names all of them with how much each
+ * wrote: where three columns are marked, a reader must not be left thinking the mark is about the
+ * first. The sentence itself comes from the data (scripts/genres.ts, writtenHere), because it names
+ * what wrote them and through what, and nothing in this file may name a writer.
+ */
+export function writtenHereNote(page: Pick<Page, 'genre' | 'writers' | 'arms'>): string {
+  const note = page.genre.writtenHere;
+  const here = page.writers.filter((w) => w.short.endsWith('*'))
+    .map((w) => ({ short: w.short, n: page.arms.find((a) => a.id === w.id)?.n ?? 0 }))
+    .filter((w) => w.n > 0);
+  if (!note || !here.length) return '';
+  const many = page.genre.noun.many;
+  const n = (x: number): string => x.toLocaleString('en');
+  // one marked column needs no name, being the only one; several are listed, so each is accounted for.
+  // The single count is printed as the page always printed it there, without a thousands separator.
+  const columns = here.length === 1
+    ? `${here[0]!.n} ${many}`
+    : `${here.slice(0, -1).map((w) => `${w.short} ${n(w.n)}`).join(', ')} and ${here.at(-1)!.short} ${n(here.at(-1)!.n)} ${many}`;
+  const caveats = `<a href="${esc(note.url)}">the caveats</a>`;
+  return `* ${esc(note.note).replace('{columns}', esc(columns)).replace('{caveats}', caveats)} `;
 }
 
 /** what was dropped before this kind of writing was measured, in numbers */

@@ -1,0 +1,3705 @@
+{
+ "genre": "essays",
+ "protocol_version": "essays-1",
+ "seed": 20260916,
+ "slots_per_arm": 200,
+ "min_human_cell": 20,
+ "human_frame": "data/genres/essays/frame.json",
+ "allocation": [
+  {
+   "prompt": "Cell phones at school",
+   "grade": 8,
+   "human": 744,
+   "share": 0.12709258626580117,
+   "slots": 25
+  },
+  {
+   "prompt": "Community service",
+   "grade": 8,
+   "human": 686,
+   "share": 0.11718483088486505,
+   "slots": 24
+  },
+  {
+   "prompt": "Distance learning",
+   "grade": 10,
+   "human": 117,
+   "share": 0.019986334130509053,
+   "slots": 4
+  },
+  {
+   "prompt": "Distance learning",
+   "grade": 11,
+   "human": 798,
+   "share": 0.13631704817218995,
+   "slots": 27
+  },
+  {
+   "prompt": "Distance learning",
+   "grade": 12,
+   "human": 203,
+   "share": 0.03467714383327639,
+   "slots": 7
+  },
+  {
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8,
+   "human": 738,
+   "share": 0.1260676460539802,
+   "slots": 25
+  },
+  {
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8,
+   "human": 686,
+   "share": 0.11718483088486505,
+   "slots": 23
+  },
+  {
+   "prompt": "Seeking multiple opinions",
+   "grade": 8,
+   "human": 1247,
+   "share": 0.2130167406901264,
+   "slots": 43
+  },
+  {
+   "prompt": "Summer projects",
+   "grade": 10,
+   "human": 91,
+   "share": 0.015544926545951486,
+   "slots": 3
+  },
+  {
+   "prompt": "Summer projects",
+   "grade": 11,
+   "human": 544,
+   "share": 0.09292791253843526,
+   "slots": 19
+  }
+ ],
+ "skipped_cells": [
+  {
+   "prompt": "Distance learning",
+   "grade": 9,
+   "human": 8,
+   "reason": "fewer than 20 human essays in this cell: no machine essay is asked for it"
+  },
+  {
+   "prompt": "Summer projects",
+   "grade": 9,
+   "human": 2,
+   "reason": "fewer than 20 human essays in this cell: no machine essay is asked for it"
+  },
+  {
+   "prompt": "Summer projects",
+   "grade": 12,
+   "human": 3,
+   "reason": "fewer than 20 human essays in this cell: no machine essay is asked for it"
+  }
+ ],
+ "human_in_used_cells": 5854,
+ "human_total": 5867,
+ "note": "No text. The prompt each slot was given is committed with its essay in data/generated/*/<assignment>.json.",
+ "slots": [
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.043",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.024",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.004",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.005",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.019",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.017",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.016",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.002",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.002",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.018",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.004",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g10.004",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.042",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.015",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.011",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.022",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.020",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.007",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.023",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.023",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.012",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.014",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.013",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.010",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.003",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.006",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.006",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.025",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.012",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.013",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.011",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.010",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.003",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.007",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.010",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.020",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.039",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.005",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g12.004",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.021",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.016",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.038",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.009",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.015",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.033",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.022",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.015",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.019",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.036",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.008",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.013",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.020",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.013",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.006",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g10.001",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.012",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.003",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.021",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.014",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.007",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.014",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.005",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.024",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.006",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.017",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.006",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.027",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.021",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.032",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.024",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.004",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.001",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.011",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.012",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.022",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.012",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.021",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.009",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.026",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.023",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.016",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.008",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.011",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.014",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g12.006",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.015",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.020",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g10.002",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.009",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.005",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.001",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.027",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.017",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.001",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.023",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.022",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.001",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.008",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.008",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.002",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.018",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.029",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.012",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.019",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g10.003",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.015",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g12.005",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.003",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.017",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.001",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.022",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.013",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.025",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.009",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.021",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.031",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.002",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.018",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.015",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g10.001",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.004",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.007",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.016",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.035",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.016",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.010",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.005",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.002",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.018",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.018",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.021",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.020",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.017",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.010",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.004",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.007",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.008",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.014",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.024",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.014",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.012",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.017",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.026",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.018",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.003",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.018",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.028",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.019",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g12.002",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.019",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.005",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.005",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.007",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.009",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.004",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.010",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.013",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.003",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.016",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.006",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.002",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.034",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.019",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.037",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.002",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.040",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.007",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.041",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.024",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.008",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.023",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.019",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.010",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g11.001",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.011",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.008",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g10.003",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.017",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.001",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.004",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g12.007",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.015",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g12.001",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.025",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g12.003",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.003",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.011",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.distance-learning.g10.002",
+   "arm": "essays-claude-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.020",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.014",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.community-service.g8.013",
+   "arm": "essays-claude-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.016",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.009",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.022",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.cell-phones-at-school.g8.025",
+   "arm": "essays-claude-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.summer-projects.g11.009",
+   "arm": "essays-claude-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-student.seeking-multiple-opinions.g8.030",
+   "arm": "essays-claude-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.006",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.grades-for-extracurricular-activities.g8.023",
+   "arm": "essays-claude-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-student.mandatory-extracurricular-activities.g8.011",
+   "arm": "essays-claude-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.043",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.024",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g10.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.042",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.015",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.011",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.020",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.014",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.025",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.010",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.039",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g12.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.038",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.009",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.033",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.036",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.013",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g10.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.012",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.024",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.017",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.027",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.032",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.024",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.022",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.012",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.026",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.023",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.011",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g12.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.015",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g10.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.027",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.008",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.018",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.029",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g10.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g12.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.017",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.025",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.031",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g10.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.035",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.010",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.021",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.024",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.014",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.026",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.018",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.028",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g12.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.005",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.013",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.016",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.034",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.019",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.037",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.040",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.041",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.024",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.008",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.019",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g11.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g10.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g12.007",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g12.001",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.025",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g12.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.003",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.distance-learning.g10.002",
+   "arm": "essays-llama3-student",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.community-service.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.016",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.cell-phones-at-school.g8.025",
+   "arm": "essays-llama3-student",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.summer-projects.g11.009",
+   "arm": "essays-llama3-student",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-llama3-student.seeking-multiple-opinions.g8.030",
+   "arm": "essays-llama3-student",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.grades-for-extracurricular-activities.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-llama3-student.mandatory-extracurricular-activities.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.043",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.024",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.019",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.017",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.016",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.018",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g10.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.042",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.015",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.011",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.022",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.020",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.023",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.023",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.012",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.014",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.013",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.010",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.025",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.012",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.013",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.011",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.010",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.010",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.020",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.039",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g12.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.021",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.016",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.038",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.009",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.015",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.033",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.022",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.015",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.019",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.036",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.008",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.013",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.020",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.013",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g10.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.012",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.021",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.014",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.014",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.024",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.017",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.027",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.021",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.032",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.024",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.011",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.012",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.022",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.012",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.021",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.009",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.026",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.023",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.016",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.008",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.011",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.014",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g12.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.015",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.020",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g10.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.009",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.027",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.017",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.023",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.022",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.008",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.008",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.018",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.029",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.012",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.019",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g10.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.015",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g12.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.017",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.022",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.013",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.025",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.009",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.021",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.031",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.018",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.015",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g10.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.016",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.035",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.016",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.010",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.018",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.018",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.021",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.020",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.017",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.010",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.008",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.014",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.024",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.014",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.012",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.017",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.026",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.018",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.018",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.028",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.019",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g12.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.019",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.005",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.009",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.010",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.013",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.016",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.034",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.019",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.037",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.040",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.041",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.024",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.008",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.023",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.019",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.010",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g11.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.011",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.008",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g10.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.017",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.004",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g12.007",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.015",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g12.001",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.025",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g12.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 12
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.003",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.011",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.distance-learning.g10.002",
+   "arm": "essays-claude-plain",
+   "prompt": "Distance learning",
+   "grade": 10
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.020",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.014",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.community-service.g8.013",
+   "arm": "essays-claude-plain",
+   "prompt": "Community service",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.016",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.009",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.022",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.cell-phones-at-school.g8.025",
+   "arm": "essays-claude-plain",
+   "prompt": "Cell phones at school",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.summer-projects.g11.009",
+   "arm": "essays-claude-plain",
+   "prompt": "Summer projects",
+   "grade": 11
+  },
+  {
+   "id": "essays-claude-plain.seeking-multiple-opinions.g8.030",
+   "arm": "essays-claude-plain",
+   "prompt": "Seeking multiple opinions",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.006",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.grades-for-extracurricular-activities.g8.023",
+   "arm": "essays-claude-plain",
+   "prompt": "Grades for extracurricular activities",
+   "grade": 8
+  },
+  {
+   "id": "essays-claude-plain.mandatory-extracurricular-activities.g8.011",
+   "arm": "essays-claude-plain",
+   "prompt": "Mandatory extracurricular activities",
+   "grade": 8
+  }
+ ]
+}

@@ -1,0 +1,886 @@
+{
+ "genre": "essays",
+ "prompt_name": "Community service",
+ "prompt_slug": "community-service",
+ "protocol_version": "essays-1",
+ "assignment": "Some of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.",
+ "assignment_sha256": "722c0c4528888fcb78ef34134d37ff10a41f7177c7659718e0b45ef55e5c5406",
+ "licence": "The assignment text is quoted verbatim from PERSUADE 2.0 (Crossley et al., 2024), CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/). The essays themselves were written for this repository and are under its own licence.",
+ "summary": {
+  "arms": {
+   "essays-llama3-student": {
+    "asked": 24,
+    "written": 24,
+    "median_words": 301,
+    "echoing_the_assignment": 21
+   }
+  },
+  "memorisation": {
+   "measured_against": {
+    "essays": 5867,
+    "five_grams": 2199841
+   },
+   "person_baseline": {
+    "essays": 200,
+    "mean": 0.1325,
+    "max": 0.3156,
+    "above_20_percent": 17,
+    "note": "200 of the people's own essays, each measured against the others the same way. A machine arm near this number is writing like the people; well above it is repeating them."
+   },
+   "note": "The share of each essay's five-word sequences that also occur in the people's essays for this genre, measured against the whole human sample. Read it against person_baseline, not against zero: thousands of essays answering the same seven assignments share a great deal of ordinary phrasing, and a sentence invented for a test already matches about half the time. Well above the baseline is a model repeating writing it has seen.",
+   "arms": {
+    "essays-llama3-student": {
+     "essays": 24,
+     "mean": 0.1807,
+     "max": 0.2955,
+     "above_20_percent": 7,
+     "worst": [
+      {
+       "slot": "essays-llama3-student.community-service.g8.004",
+       "containment": 0.2955
+      },
+      {
+       "slot": "essays-llama3-student.community-service.g8.011",
+       "containment": 0.2591
+      },
+      {
+       "slot": "essays-llama3-student.community-service.g8.002",
+       "containment": 0.25
+      }
+     ]
+    }
+   }
+  },
+  "rejected": []
+ },
+ "essays": [
+  {
+   "slot": "essays-llama3-student.community-service.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:17:11.032Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 109
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.001:seed=109",
+   "text": "Dear Principal,\n\nI think that students should be required to perform community service. I know that some people might think it's taking away from their free time, but I believe that it's worth it. Not only does it help the community, but it also helps us students develop important skills.\n\nFor example, tutoring elementary school children can help them with their homework and understanding of certain subjects. This can not only help the children, but also give us students a chance to practice our communication and teaching skills. I've seen some of my friends who tutor make a real difference in the kids' lives, and it's something that we can all benefit from.\n\nAdditionally, cleaning up litter can help keep our community looking nice and clean. It's something that we can all be proud of, and it can also teach us responsibility and the importance of taking care of our environment. I've seen some of my friends who participate in this type of community service take great pride in their work and feel good about making a difference.\n\nI know that some people might think that requiring community service is taking away from their free time, but I believe that it's worth it. We're lucky to have the opportunities that we do, and it's important that we give back to the community that gives us so much. Plus, it can be a great way to build friendships and learn new skills.\n\nIn conclusion, I think that requiring students to perform community service is a great idea. It can help us develop important skills, make a difference in our community, and give us a sense of pride and accomplishment. I would be happy to participate in community service and I think that it would be a valuable experience for all students.\n\nSincerely,\n[Your Name]",
+   "words": 303,
+   "text_sha256": "dd8009af7764732b4a8d4bcbe13e79e0b8dd7a67980612da675a7f291d4d65fc",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " students should be required to perform community service. "
+   },
+   "seconds": 17.8,
+   "eval_count": 347,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:13:22.662Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 99
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.002:seed=99",
+   "text": "Dear Principal,\n\nI think it's a great idea to require all students to perform community service. I believe it's essential to give back to our community and help those in need. Many of my friends already participate in community service, such as tutoring younger students or cleaning up parks. These activities not only benefit the community but also teach us valuable skills like teamwork, communication, and responsibility.\n\nRequiring community service would not only benefit the community but also benefit us as students. For example, tutoring younger students can help us develop patience and understanding of different learning styles. Additionally, cleaning up parks and neighborhoods can help us develop a sense of pride and ownership in our community.\n\nI also think that requiring community service would be a great way to get more students involved in community activities. Right now, only some students participate, but if it's required, everyone would have the opportunity to get involved. This could lead to a greater sense of community and school spirit.\n\nSome students might argue that community service takes too much time away from what they want to do, but I think that's short-sighted. Taking time to help others can actually improve our mental and physical well-being. It's a chance to step away from our own problems and focus on something bigger than ourselves.\n\nIn conclusion, I think requiring all students to perform community service is a great idea. It would benefit both the community and us as students, and it would be a great way to bring everyone together. I hope you consider my opinion when making your decision.\n\nSincerely,\n[Your Name]",
+   "words": 271,
+   "text_sha256": "75d073a51bee71b7c1cda1961f2e605f4ffcab3bd81425ca61e08ff0ab85c178",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " community service takes too much time away from what they "
+   },
+   "seconds": 16.3,
+   "eval_count": 311,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:47:36.909Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 32
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.003:seed=32",
+   "text": "Dear Principal,\n\nI believe that requiring all students to perform community service would be a great idea. My friends and I have seen firsthand how much of a positive impact it can have on our community.\n\nSome of my friends have been volunteering at a local elementary school, tutoring students who are struggling with their studies. Not only are these students getting help they desperately need, but the tutors are also gaining valuable experience and skills that will benefit them in the long run. For example, one of my friends who tutored last year is now considering a career in education because of the experience she gained. This shows that community service can have a lasting impact on students and help them discover their passions.\n\nOn the other hand, I understand that some students may not have as much time to commit to community service. However, I believe that even small acts of kindness and volunteering can make a big difference. For instance, some of my friends who clean up litter in our neighborhood are making a huge impact by keeping our community clean and beautiful. It's not about taking away from what we want to do, but rather adding something positive to our lives.\n\nRequiring community service would not only benefit the community, but also the students themselves. It would teach us important values such as empathy, responsibility, and teamwork. Additionally, it would give us a sense of purpose and fulfillment that can't be found in any other activity.\n\nIn conclusion, I strongly believe that requiring all students to perform community service would be a great idea. It would have a positive impact on our community and on our own lives. I hope you will consider my opinion and make a decision that will benefit everyone.\n\nSincerely,\n[Your Name]",
+   "words": 300,
+   "text_sha256": "53558dda66b6ec81ab78a931bda71e86738b877a5011a31f1ebb49ba8f2d9f00",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": " all students to perform community service"
+   },
+   "seconds": 17.7,
+   "eval_count": 338,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:36:21.119Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 2
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.004:seed=2",
+   "text": "Dear Principal,\n\nI think that requiring all students to perform community service is a great idea. Many students in our school already participate in community service, and it has a positive impact on the community and on the students themselves.\n\nFor example, some of my friends volunteer to tutor elementary school children, and it not only helps those children learn, but also gives my friends practice in communicating and problem-solving. Other students clean up litter in our park or beach, and it makes a big difference in the appearance of our community.\n\nRequiring all students to participate in community service would help to teach us about responsibility, empathy, and the value of giving back. It would also give us the opportunity to develop important skills, such as teamwork and leadership.\n\nI understand that some students might feel that community service takes too much time away from what they want to do. However, I think that the benefits of community service far outweigh the drawbacks. Even a small amount of time spent helping others can make a big difference.\n\nAdditionally, community service can be a fun and rewarding experience. Many students enjoy the sense of accomplishment they get from helping others, and it can be a great way to meet new people and make friends.\n\nIn conclusion, I believe that requiring all students to perform community service would be a positive thing for our school. It would teach us important values and skills, and would have a positive impact on our community. I hope that you will consider my opinion and make a decision that is good for everyone.\n\nSincerely,\n[Your Name]",
+   "words": 272,
+   "text_sha256": "a42881825a7d8ba229ed3d5def8b0525a71fd3ec08a8960ed2b38db5798e884e",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " community service takes too much time away from what they "
+   },
+   "seconds": 11.4,
+   "eval_count": 306,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:23:18.655Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 126
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.005:seed=126",
+   "text": "Dear Principal,\n\nI think that requiring all students to perform community service is a great idea. I believe that it will help us become more responsible and caring citizens. For example, my friend Sarah tutors elementary school children and it has made a huge difference in their lives. She has told me that she loves seeing the kids learn and grow, and it has also helped her develop patience and leadership skills. If all students had to perform community service, I think we would all benefit from these positive experiences.\n\nOn the other hand, some of my friends think that community service takes too much time away from what they want to do. However, I think that it's a small price to pay for the benefits it provides. For instance, my friend Alex helps clean up litter in our community and it has made a big difference in our town's appearance. He loves seeing the impact that his efforts have, and it has also taught him about the importance of taking care of the environment.\n\nRequiring all students to perform community service will also help us develop important skills like teamwork, communication, and problem-solving. For example, when my friend Emma worked with a group to organize a charity event, she learned how to work with others towards a common goal and how to overcome obstacles. These are skills that will benefit us throughout our lives.\n\nIn addition, I think that requiring community service will help us develop empathy and understanding for others. For instance, when my friend Jake helped out at a food bank, he learned about the struggles that some people face and it made him more grateful for what he has. If all students had to perform community service, I think we would all become more compassionate and caring people.\n\nIn conclusion, I believe that requiring all students to perform community service is a great idea. It will help us develop important skills, become more responsible and caring citizens, and learn about the importance of giving back to our community. I think it's a small price to pay for the many benefits it provides.\n\nSincerely,\n[Your Name]",
+   "words": 360,
+   "text_sha256": "4be48bd54346508fb9bb78eda24fada5266c72c7c0df2cc7fe6ffe90f762e8da",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " community service takes too much time away from what they "
+   },
+   "seconds": 20.8,
+   "eval_count": 406,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:35:54.676Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 159
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.006:seed=159",
+   "text": "Dear Principal,\n\nI think that students should not be required to perform community service. While I understand the importance of helping others and giving back to the community, I believe that forcing students to do it would not be effective. Many students already participate in community service voluntarily, and it's not because they are forced to. My friends who tutor elementary school children do it because they enjoy helping others and feel good about themselves after doing so. Similarly, my friends who clean up litter do it because they care about the environment and want to make a difference.\n\nOn the other hand, requiring students to do community service could have negative consequences. Some students may not have the time or energy to devote to community service, especially if they have heavy course loads or are involved in extracurricular activities. For example, my friend Emma has to take a heavy course load to get into her dream college, and she barely has time to finish her homework, let alone add community service to her schedule. Requiring her to do community service would only add to her stress and make it harder for her to succeed.\n\nAnother concern is that requiring community service could lead to superficial help that doesn't actually make a difference. For instance, if students are forced to clean up litter, they may not take the time to understand the root causes of pollution or find lasting solutions. Similarly, if students are forced to tutor elementary school children, they may not be able to develop meaningful relationships with their students or see the long-term impact of their efforts.\n\nInstead of requiring community service, I think that our school should offer incentives and opportunities for students to participate voluntarily. For example, we could offer extra credit or special privileges for students who complete a certain number of hours of community service. We could also provide resources and support for students who want to start their own community service projects. This way, students can choose to participate in community service if they want to, and it won't add to their stress or affect their ability to succeed in school.\n\nIn conclusion, while community service is important, I don't think that students should be required to participate. Instead, I believe that our school should offer incentives and opportunities for students to participate voluntarily, and let them choose whether or not to get involved.",
+   "words": 403,
+   "text_sha256": "ab759116b543d9e083dd914085e421737cf0ea1c949f0e0b68ee89472575491e",
+   "assignment_echo": {
+    "longest": 43,
+    "snippet": " be required to perform community service. "
+   },
+   "seconds": 23.1,
+   "eval_count": 451,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:26:40.461Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 135
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.007:seed=135",
+   "text": "Dear Principal,\n\nI think that requiring all students to perform community service would be a great idea. Some of my friends are already doing community service and they love it. For example, my friend Emma tutors elementary school children every week and she says it really helps her understand the material better when she teaches it. My friend Jake also cleans up litter and he feels good knowing that he's making a difference in the community.\n\nI understand that some of my friends might think that community service takes too much time away from what they need or want to do. But I think that community service can actually help us with our schoolwork and daily lives. For example, my friend Sarah helped out at a food bank and now she's more motivated to do her math homework because she knows that it's helping people who really need it. Also, community service can help us develop important skills like teamwork, communication, and problem-solving.\n\nAdditionally, I think that community service can help us develop empathy and understanding of other people's perspectives. For example, my friend Michael helped out at a homeless shelter and now he's more aware of the struggles that homeless people face. He's even started a campaign to raise awareness about homelessness in our school.\n\nRequiring all students to perform community service would not only help us develop these important skills, but it would also bring us all together as a school community. It would give us the opportunity to work together and make a positive impact on our community.\n\nIn conclusion, I think that requiring all students to perform community service would be a great idea. It would help us develop important skills, build empathy and understanding, and bring us together as a school community. I hope you will consider my opinion and make a decision that benefits everyone.\n\nSincerely,\n[Your Name]",
+   "words": 315,
+   "text_sha256": "8999d0dfabb43647a61a9ae529da2d1ba6967c60f4b92ac4363565a720995338",
+   "assignment_echo": {
+    "longest": 79,
+    "snippet": " community service takes too much time away from what they need or want to do. "
+   },
+   "seconds": 18.1,
+   "eval_count": 356,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:42:11.960Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 175
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.008:seed=175",
+   "text": "Dear Principal,\n\nI think that requiring all students to perform community service would be a great idea. I believe that it would help us become more responsible and caring members of our community.\n\nFor example, my friend Sarah tutors elementary school children on Saturdays. She loves it because she gets to help them with their homework and see them learn and grow. It also helps her with her own studies because she has to review the material before teaching it. My friend Jake, on the other hand, likes to clean up litter in our park. He thinks it's important to keep our community clean and beautiful. By doing community service, they're not only helping others, but also gaining valuable skills and experiences.\n\nRequiring all students to do community service would also help us develop a sense of social responsibility. It would teach us to think about others and how we can make a positive impact on their lives. We would learn that our actions can make a difference and that we have a role to play in making our community a better place.\n\nSome people might think that requiring community service would take up too much time and be too much work. But I think that it would actually be a great way to spend our time. We could learn new skills, make new friends, and feel good about what we're doing. It would also give us a chance to explore different areas of interest and find what we're passionate about.\n\nIn conclusion, I think that requiring all students to perform community service would be a great idea. It would help us become more responsible and caring members of our community, teach us valuable skills and experiences, and develop a sense of social responsibility. I believe that it would be a positive experience for everyone involved.\n\nSincerely,\n[Your Name]",
+   "words": 309,
+   "text_sha256": "75370ca5fcef4ffd056b4a402bbd74e50ee9fa15788812d6e2401ea9473a29f5",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": " all students to perform community service"
+   },
+   "seconds": 17.9,
+   "eval_count": 348,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:18:33.860Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 113
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.009:seed=113",
+   "text": "Dear Principal,\n\nI think that requiring students to perform community service would be a great idea. My friends who do community service, like tutoring elementary school children, really enjoy it and feel like it's important to help others. It's not just about giving time to others, it's also about learning new skills and gaining new experiences.\n\nFor example, one of my friends who tutors elementary school children has become really good at math because of it. She's even started to enjoy math more now. Another friend who cleans up litter has become more environmentally conscious and now tries to recycle more and turn off the lights when she's not using them.\n\nRequiring students to do community service would also teach us important life skills like responsibility, time management, and teamwork. We would learn to prioritize our time and make sure that we get everything done that we need to do. It would also show us that we're not just individuals, but we're also part of a community and that we need to work together to make it a better place.\n\nI understand that some people might think that community service takes too much time away from what they want to do. But I think that if it's done in a way that's flexible and accommodating, then it wouldn't be a problem. For example, we could do community service during lunch or after school, so it wouldn't interfere with our regular classes.\n\nIn conclusion, I think that requiring students to perform community service would be a great idea. It would help us develop important life skills, give us new experiences, and teach us the value of helping others.",
+   "words": 277,
+   "text_sha256": "90e7b2e48512b73b70279b9d73a901b7b26e52a28550e3f7781a399faa808e0d",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " community service takes too much time away from what they "
+   },
+   "seconds": 16.6,
+   "eval_count": 318,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:34:13.356Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 155
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.010:seed=155",
+   "text": "Dear Principal,\n\nI think students should be required to perform community service. I know that some people might think it's taking away from their free time, but I believe it's an important part of being a good citizen and a responsible person.\n\nFirst of all, community service helps people in need. For example, my friend Sarah tutors elementary school kids who are struggling with their reading and math skills. It's making a big difference in their lives and giving them a chance to succeed. Without community service, these kids might not have anyone to turn to for help.\n\nSecondly, community service teaches us valuable skills like responsibility, teamwork, and communication. When we work together to make a difference, we learn to rely on each other and trust each other. These skills are important for our future success, whether we're going to college or getting a job.\n\nLastly, community service shows us that we're not just individuals, but part of a bigger community. When we take care of our community, we're taking care of ourselves. It's a way to give back for all the good things we have, and it makes us feel good about ourselves.\n\nI know that some people might think community service takes up too much time, but I think it's worth it. If we're only focused on ourselves, we'll miss out on a lot of opportunities to make a difference. I'd be happy to take on community service requirements because I believe it's an important part of being a student here.\n\nSincerely,\n[Your Name]",
+   "words": 257,
+   "text_sha256": "bc419983a6ec90e8c6e1938ea6c6351b9ea2a4fc5634a2bdd877df3fb0b1b0c2",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " students should be required to perform community service. "
+   },
+   "seconds": 15.8,
+   "eval_count": 306,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:46:54.352Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 30
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.011:seed=30",
+   "text": "Dear Principal,\n\nI believe that students should be required to perform community service. I think that it's very important for us to give back to our community and help those in need. For example, some of my friends volunteer at the local animal shelter, walking dogs and playing with cats. These animals are very lonely and grateful for the attention. By requiring us to do community service, we can make a positive impact on our community and learn valuable skills like teamwork and responsibility.\n\nSome people might think that community service takes too much time away from what we want to do. But I think it's actually the opposite. When we're doing something for someone else, we feel good about ourselves and it can give us a sense of purpose. Plus, it's a great way to learn about different cultures and issues that affect our community. For instance, some of my friends have helped out at a food bank, and now they're more aware of the importance of food security.\n\nRequiring us to do community service would also show us that our school values giving back and being a good neighbor. It would be a great way to teach us about the importance of empathy and compassion. And who knows, it might even inspire us to continue doing community service even after we graduate.\n\nIn conclusion, I think that requiring students to perform community service would be a great idea. It would help us develop important skills, give us a sense of purpose, and show us that our school values giving back to the community. I hope you consider my opinion and make a decision that will benefit our school and our community.\n\nSincerely,\n[Your Name]",
+   "words": 286,
+   "text_sha256": "049d4d7faf6802a913103ffff93ca531ce7054f643689e4c4f9679ddd48469ec",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " students should be required to perform community service. "
+   },
+   "seconds": 17.2,
+   "eval_count": 325,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:03:54.190Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 73
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.012:seed=73",
+   "text": "Dear Principal,\n\nI think that students should not be required to perform community service. While I understand the importance of giving back to the community, I believe that forcing students to do so takes away from their individual freedom and interests.\n\nFor example, my friend Emma is an excellent swimmer and spends hours every week practicing to get better. She loves swimming and it helps her relieve stress. If she were required to clean up litter every weekend, she would have to give up her passion for swimming. This would not only take away from her own happiness but also affect her performance in school.\n\nOn the other hand, I have friends who love helping others. They volunteer at the local animal shelter and enjoy every minute of it. They find it fulfilling and it makes them feel good about themselves. But even they would probably complain about being forced to do it every week. It's like taking away their choice and freedom to decide what they want to do with their time.\n\nAnother concern I have is that not everyone has the same interests or talents. Some students might be terrible at certain types of community service and would end up feeling frustrated and disappointed. It's better to give them the freedom to choose what they want to do, whether it's volunteering, playing a sport, or pursuing a hobby.\n\nI understand that community service can be beneficial, but I think that encouraging students to participate is better than requiring them. If we're passionate about helping others, we'll want to do it anyway. And if we don't, that's okay too. We're not going to regret not doing it.\n\nSincerely,\n[Your Name]",
+   "words": 281,
+   "text_sha256": "c403f5904515a5972eccf8b4c0b92306904703a002e0ae32ee5f3083ed745161",
+   "assignment_echo": {
+    "longest": 43,
+    "snippet": " be required to perform community service. "
+   },
+   "seconds": 16,
+   "eval_count": 324,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:47:34.383Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 190
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.013:seed=190",
+   "text": "Dear Principal,\n\nI believe that requiring students to perform community service is a great idea. Not only does it help those in need, but it also teaches us valuable skills and values. For example, my friend Emma tutors elementary school children every week. She says it's really rewarding to see them improve and become more confident in their learning. This shows that community service can have a positive impact on both the people receiving help and the people giving it.\n\nOn the other hand, some of my friends think that community service takes up too much of their time. They might prefer to spend their time on extracurricular activities or focusing on their own interests. However, I think that community service can actually help us become more well-rounded and responsible individuals. For instance, my friend Carlos cleans up litter in his neighborhood every month. He says it's a great way to get some exercise and give back to his community. This shows that community service can fit into our busy schedules and still have a positive impact.\n\nRequiring students to perform community service can also help us develop important skills like empathy, teamwork, and time management. For example, my friend Maya works with seniors at a local nursing home. She says that it's really helped her become more compassionate and understanding of others. This shows that community service can have a positive impact on our personal growth and development.\n\nIn conclusion, I believe that requiring students to perform community service is a great idea. It can have a positive impact on both the people receiving help and the people giving it. It can also help us develop important skills and values that will benefit us throughout our lives. I think it's a great way to teach us about responsibility, empathy, and teamwork, and I would be happy to participate in a community service program.\n\nSincerely,\n[Your Name]",
+   "words": 318,
+   "text_sha256": "1091ddca72e9482ca437e43bc8d359f387f87b89f291624e19cdc20e389879f2",
+   "seconds": 18.8,
+   "eval_count": 363,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:47:15.525Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 189
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.014:seed=189",
+   "text": "Dear Principal,\n\nI think that requiring all students to perform community service is a great idea. Some people might think it takes too much time away from what they want to do, but I believe that giving back to the community is important and can actually help us in the long run.\n\nOne example of this is the tutoring program that some of my friends participate in. They help elementary school children with their homework and studies, and it not only helps those kids but also helps my friends improve their own learning skills. By explaining concepts in a way that's easy for younger students to understand, my friends are forced to think critically and creatively, which can really help them in their own studies.\n\nAnother example is the litter clean-up group that some of my friends are part of. They spend their free time picking up trash and keeping our school and neighborhood clean. Not only does this make our community a more pleasant place to be, but it also teaches us about responsibility and the importance of taking care of our environment.\n\nRequiring all students to perform community service would not only benefit the community but also benefit us as students. It would teach us important skills like teamwork, time management, and leadership. Plus, it would give us a sense of purpose and fulfillment that we might not get from just focusing on our own personal interests.\n\nI think that if we were required to perform community service, it would be a valuable learning experience that would help us grow and develop as students and as people. I believe that it's important for us to give back to our community, and I hope that you will consider requiring all students to participate in community service.\n\nSincerely,\n[Your Name]",
+   "words": 301,
+   "text_sha256": "1630ff5a94d5ea6a736f20ccb88ae3422c0d2e04c766133171b1a21a4d546c05",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": " all students to perform community service"
+   },
+   "seconds": 17,
+   "eval_count": 333,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:20:21.753Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 118
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.015:seed=118",
+   "text": "Dear Principal,\n\nI strongly believe that students should be required to perform community service. I think it's important for us to give back to our community and make a positive impact on the world around us.\n\nSome people might think that requiring community service takes away from our free time, but I think it's worth it. For example, some of my friends who tutor elementary school children really enjoy it and feel fulfilled after seeing the kids learn and grow. It's a great way for us to learn new skills, like patience and communication, and it's also a great way for us to develop empathy and understanding for others.\n\nOn the other hand, some of my friends might think that community service takes away from their personal interests or hobbies. But I think that's not necessarily true. For instance, some of my friends who love music or art might be surprised at how much they enjoy teaching music or art classes to younger kids. It's a great way for us to share our passions with others and make a positive impact.\n\nRequiring community service would also teach us important values like responsibility, hard work, and selflessness. It would show us that there's more to life than just ourselves and that we have a role to play in making our community a better place.\n\nIn conclusion, I think requiring community service would be a great idea. It would not only benefit the community, but it would also benefit us as students. We would learn new skills, develop important values, and make a positive impact on the world. I hope you will consider my opinion and make a decision that will benefit everyone.\n\nSincerely,\n[Your Name]",
+   "words": 284,
+   "text_sha256": "b5592164ed9c5e6e3df76cb3d204474f1bbc20bf5e8c3cbebe82df92dcc08950",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " students should be required to perform community service. "
+   },
+   "seconds": 16.7,
+   "eval_count": 326,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:06:18.099Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 80
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.016:seed=80",
+   "text": "Dear Principal,\n\nI strongly believe that requiring students to perform community service would be an excellent idea. As a student, I've seen firsthand how some of my friends are passionate about giving back to the community. They tutor elementary school children, clean up litter, and participate in other volunteer activities. These experiences not only benefit the community, but also positively impact the students who are involved.\n\nOne of my friends, Sarah, volunteers at a local animal shelter. She spends hours every week helping to care for the animals, and it's clear that it brings her a sense of joy and fulfillment. Similarly, my friend Alex helps out at a food bank, sorting donations and assisting with food drives. These experiences not only give them a sense of purpose, but also teach them valuable skills like responsibility, teamwork, and empathy.\n\nOn the other hand, I understand that some students may feel that community service takes too much time away from their own interests and hobbies. However, I believe that even a small commitment to community service can be incredibly rewarding. For instance, my friend Emma started volunteering at a local nursing home just one hour a week, and she now looks forward to it every week. She's developed meaningful relationships with the residents and has even inspired some of them to start volunteering themselves.\n\nRequiring students to perform community service would not only benefit the community, but also our own personal growth. It would teach us important life skills, such as time management, communication, and problem-solving. Additionally, it would give us the opportunity to develop a sense of social responsibility and empathy, which are essential for building a more compassionate and caring society.\n\nI believe that requiring community service would be a valuable and enriching experience for all students. It would bring our school community together and give us a sense of pride and accomplishment. I urge you to consider making community service a part of our school's curriculum.\n\nSincerely,\n[Your Name]",
+   "words": 332,
+   "text_sha256": "56775a9cabeb6d9af4890d13d605259fc90ca34c130075d4d9822373f70e6e24",
+   "assignment_echo": {
+    "longest": 49,
+    "snippet": " community service takes too much time away from "
+   },
+   "seconds": 19.2,
+   "eval_count": 384,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:42:49.932Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 177
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.017:seed=177",
+   "text": "Dear Principal,\n\nI believe that requiring students to perform community service is a great idea. Many of my friends already do community service and find it incredibly rewarding. For example, my friend Emma tutors elementary school children every Saturday morning. She says it's an amazing way to make a difference in her community and she feels proud of what she's accomplished. Similarly, my friend Jake helps clean up litter in our park on weekends. He says it's a great way to give back and make a positive impact on our environment.\n\nRequiring community service would not only help our community but also help us as students. For one, it would teach us important life skills like teamwork, responsibility, and empathy. Additionally, it would give us a chance to step outside of our own world and understand the needs of others. I think this would be especially beneficial for students who may not have had many opportunities to interact with people from different backgrounds or with different experiences.\n\nSome people might argue that requiring community service takes too much time away from what we want to do. However, I think that's a narrow-minded view. If we're only focused on our own wants and needs, we're missing out on a valuable opportunity to make a positive impact. Plus, many of my friends who do community service actually find that it helps them prioritize what's truly important and gives them a sense of purpose.\n\nIn conclusion, I strongly believe that requiring students to perform community service would be a great decision. It would not only benefit our community but also help us as students grow and develop important life skills. I hope you will consider this when making your decision.\n\nSincerely,\n[Your Name]",
+   "words": 291,
+   "text_sha256": "99103f573998c0b8b7e7c0b8157c8642d1fcd3128afa0b8667283762b75ba710",
+   "assignment_echo": {
+    "longest": 54,
+    "snippet": " community service takes too much time away from what "
+   },
+   "seconds": 16.6,
+   "eval_count": 332,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:24:01.042Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 128
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.018:seed=128",
+   "text": "Dear Principal,\n\nI think that students should be required to perform community service. Some of my friends who do community service, like tutoring elementary school children, say it's really rewarding and helps them learn about responsibility. For example, my friend Sarah has been tutoring a student in math and has seen a big improvement in their grades. She says it's made her feel proud and like she's making a difference.\n\nOn the other hand, some of my friends who don't do community service think it takes up too much time and doesn't affect their lives. But I think it would actually help us become more well-rounded people. We would learn about different social issues and how we can help solve them. Plus, it would give us a chance to meet new people and make connections in our community.\n\nRequiring community service would also help us develop important skills like teamwork, communication, and problem-solving. For instance, my friend Alex has been working with a group to clean up a local park, and he's learned how to work together with others to achieve a common goal.\n\nI understand that some students might not have the time or resources to do community service, but I think that's where the school could step in and provide support. We could have volunteers come in to help students who don't have the resources to participate, or even provide transportation to and from the community service site.\n\nIn conclusion, I think requiring students to perform community service would be a great way to help us develop important skills and become more aware of our community. It would be a valuable experience that would benefit us for the rest of our lives.\n\nSincerely,\n[Your Name]",
+   "words": 289,
+   "text_sha256": "cee3df8e1b2a43c2c1f64df439a06131267687e9c366a3b5dffe5d98358d5ac0",
+   "assignment_echo": {
+    "longest": 60,
+    "snippet": " students should be required to perform community service. s"
+   },
+   "seconds": 16.9,
+   "eval_count": 330,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:14:57.816Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 103
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.019:seed=103",
+   "text": "Dear Principal,\n\nI believe that requiring students to perform community service is a great idea. Some people may think that it takes away from what we want to do, but I think it would actually bring many benefits.\n\nFor example, students who participate in community service may develop important skills like teamwork, time management, and problem-solving. These skills can be applied not just to community service, but also to our academic and personal lives. My friend Emma, who tutors elementary school kids, has noticed that her patience and communication skills have improved since she started volunteering. She has also become more confident and self-assured.\n\nAdditionally, community service can teach us valuable lessons about empathy, compassion, and social responsibility. When we see the positive impact that our efforts can have on others, it can inspire us to make a difference in our own communities. My friend Jake, who helps clean up litter, has told me that it has made him more aware of the environment and the importance of taking care of it.\n\nRequiring community service would also promote a sense of school pride and unity. Imagine if our school had a community service day where everyone came together to make a difference. It would be a great way to build relationships and a sense of belonging among students, teachers, and staff. We would be working together towards a common goal, and that would be an amazing experience.\n\nI understand that some students may feel that community service takes away from what they want to do, but I think that it would be worth it. We would have opportunities to choose our own projects and schedules, so we could still pursue our individual interests. And, who knows, we might discover new passions and talents along the way.\n\nIn conclusion, I believe that requiring community service would be a great idea for our school. It would help us develop important skills, learn valuable lessons, and promote a sense of school pride and unity. I hope you will consider my opinion and make a decision that will benefit all students.\n\nSincerely,\n[Your Name]",
+   "words": 352,
+   "text_sha256": "89abdc69b990af56963343960c38c323f98535f2f0e9098cab439f78e65dba47",
+   "seconds": 21.2,
+   "eval_count": 402,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:54:53.411Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 51
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.020:seed=51",
+   "text": "Dear Principal,\n\nI strongly believe that requiring students to perform community service is a great idea. I think it's essential for students to give back to the community and understand the value of helping others.\n\nFirstly, community service teaches valuable skills such as teamwork, communication, and responsibility. When students work together on a project, they learn to rely on each other and trust one another. This is crucial for building strong relationships and developing leadership skills. For example, when my friend Sarah tutors elementary school kids, she not only helps them with their schoolwork but also builds a bond with them, which is invaluable.\n\nSecondly, community service instills a sense of empathy and compassion in students. When we help others, we realize that there are people in need around us and that we can make a difference. This can be a powerful learning experience, especially for students who may not have faced challenges or hardships before. For instance, when my friend Jake cleans up litter, he not only makes the community a cleaner place but also learns about the importance of taking care of our environment.\n\nSome students may think that community service takes away from what they need or want to do, but I believe that it can actually enhance their lives. When students participate in community service, they develop a sense of purpose and fulfillment, which can be a great motivator. Moreover, community service can help students develop a growth mindset, which is essential for achieving their goals and overcoming obstacles.\n\nIn conclusion, I firmly believe that requiring students to perform community service is a great idea. It teaches valuable skills, instills empathy and compassion, and can enhance students' lives. I hope that you will consider my position and make an informed decision.\n\nSincerely,\n[Your Name]",
+   "words": 298,
+   "text_sha256": "db30a6f58d971795851c6db065286096d947c418d3bce15e209124b2c49936fe",
+   "seconds": 21.1,
+   "eval_count": 348,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:01:37.458Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 67
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.021:seed=67",
+   "text": "Dear Principal,\n\nI believe that students should not be required to perform community service. While I understand that community service is important and can be beneficial, I think it should be a voluntary activity.\n\nSome of my friends who participate in community service, such as tutoring elementary school children, really enjoy it and find it rewarding. They feel like they're making a positive impact on their community, and that's great. However, others who participate in clean-up initiatives or other community service projects might not have as much fun and might even feel like it takes away from their own interests and hobbies.\n\nFor example, one of my friends loves playing soccer and used to play on a travel team. However, when she started volunteering at a local animal shelter, she had to give up playing soccer for a few hours a week. She really misses playing soccer and feels like she's missing out on something she loves.\n\nAnother friend of mine is very into music and loves to play the guitar. However, when she started volunteering at a food bank, she had to give up playing music for a few hours a week. She really misses playing the guitar and feels like it's hard to balance her passion for music with her community service.\n\nI think requiring students to perform community service would take away from their own interests and passions. Students should have the freedom to choose what they want to do with their time, rather than being forced to do something they might not enjoy. If students are required to participate in community service, some might feel resentful or unfulfilled, which could actually have a negative impact on their community and the people they're trying to help.\n\nI think it would be better to encourage students to participate in community service, but not require it. This way, students who are passionate about helping their community can still do so, while students who have different priorities or interests can focus on those things. It's all about giving students the freedom to choose and making sure they're happy and fulfilled.\n\nSincerely,\n[Your Name]",
+   "words": 354,
+   "text_sha256": "13d74591c5e475237bb1ee1a2eb584dc39ae89021c5929e4c36e49fd9fdc0511",
+   "assignment_echo": {
+    "longest": 43,
+    "snippet": " be required to perform community service. "
+   },
+   "seconds": 24.3,
+   "eval_count": 403,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:40:59.646Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 15
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.022:seed=15",
+   "text": "Dear Principal,\n\nI strongly believe that requiring all students to perform community service is a great idea. Many of my friends and I have seen the positive impact that community service has on both the individuals involved and the community as a whole.\n\nOne of my friends, Sarah, tutors elementary school children during her free time. She says that it not only helps the kids improve their grades but also gives her a sense of fulfillment. She enjoys seeing the progress they make and the confidence they gain. I've also seen kids who struggle in certain subjects benefit from having a tutor, and it's amazing to see how a little extra help can make a big difference.\n\nAnother example is the group of students who clean up litter in our community. They not only help keep our environment clean but also set a good example for others to follow. By picking up trash, they show that everyone has a responsibility to help take care of their community.\n\nOn the other hand, some of my friends think that community service takes too much time away from what they want to do. They might be worried that it will cut into their study time or take away from their favorite activities. However, I think that community service can actually help students like this. By giving them a sense of purpose and responsibility, it can help them stay focused and motivated.\n\nRequiring all students to perform community service would not only benefit the community but also benefit the students themselves. It would teach them important values like empathy, kindness, and hard work. It would also give them a sense of accomplishment and pride in their abilities.\n\nIn conclusion, I believe that requiring all students to perform community service is a great idea. It would have a positive impact on both the community and the students, teaching them valuable lessons and giving them a sense of purpose and fulfillment.\n\nSincerely,\n[Your Name]",
+   "words": 328,
+   "text_sha256": "d69a77af1d48beb246f6ae6d9d81d19757a9de80389d66b6ff6418857be6c886",
+   "assignment_echo": {
+    "longest": 59,
+    "snippet": " community service takes too much time away from what they "
+   },
+   "seconds": 21.5,
+   "eval_count": 366,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:42:38.744Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 19
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.023:seed=19",
+   "text": "Dear Principal,\n\nI believe that requiring all students to perform community service would be a positive experience for everyone involved. I understand that some students might think it takes away from what they want to do, but I think it would have many benefits.\n\nFirstly, community service helps students develop important life skills such as teamwork, communication, and responsibility. For example, my friend Alex volunteers at a local animal shelter and has gained a lot of experience working with animals. He's now more confident and has learned how to work effectively with others. I think requiring community service would help all students develop these skills.\n\nAnother benefit is that community service helps students understand the importance of giving back to the community. By giving students the opportunity to help others, we can foster a sense of empathy and compassion. My friend Emma volunteers at a food bank and has seen firsthand how her efforts are making a difference in people's lives. She's now more aware of social issues and is inspired to make a positive impact.\n\nAdditionally, requiring community service would show students that their school values community involvement and that it's an important part of being a responsible citizen. This would send a positive message and encourage more students to get involved.\n\nFinally, I think community service would be a great way to build connections between students and the community. For example, my school has a partnership with a local park where students help clean up and maintain the park. This not only helps the park but also brings students and community members together.\n\nIn conclusion, I believe that requiring all students to perform community service would be a positive experience for everyone involved. It would help students develop important life skills, understand the importance of giving back, and build connections with the community. I think it would be a great way to foster a sense of community and responsibility among students.\n\nSincerely,\n[Your Name]",
+   "words": 326,
+   "text_sha256": "9f6dee752c077a370035216610d7236539499e80787c571ebad0b46f6d342e6d",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": " all students to perform community service"
+   },
+   "seconds": 22.1,
+   "eval_count": 367,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.community-service.g8.024",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Community service",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nSome of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "edd275e43a02e06bc93eb190893732280e6574ca2e91e5ded557925c05f621bd",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:36:09.751Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 1
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.community-service.g8.024:seed=1",
+   "text": "Dear Principal,\n\nI think that requiring all students to perform community service is a great idea. Not only does it help the community, but it also teaches us valuable skills and values.\n\nSome people might think that community service takes too much time away from what they need or want to do, but I think it can actually help us prioritize what's important. For example, my friend Emma tutors elementary school children on Tuesdays and Thursdays, and it's made her realize how much she values education and helping others. She's now more focused on her own studies and is even considering a career in education.\n\nOn the other hand, some of my friends who don't participate in community service might be missing out on opportunities to learn about empathy and responsibility. When we help others, we develop these important skills, which can benefit us in all areas of life. For instance, my friend Carlos volunteers at a local animal shelter, and it's helped him understand the importance of compassion and kindness.\n\nRequiring all students to perform community service would also promote a sense of unity and shared responsibility among our school community. It would show that we're all committed to making a positive impact, regardless of our individual interests or needs.\n\nOf course, some students might have valid reasons for not being able to participate, such as family obligations or personal health issues. In those cases, alternative arrangements could be made to accommodate their needs.\n\nOverall, I believe that requiring all students to perform community service would have numerous benefits, from teaching valuable skills and values to promoting unity and a sense of shared responsibility. I hope you'll consider this idea and make a positive decision for our school community.\n\nSincerely,\n[Your Name]",
+   "words": 293,
+   "text_sha256": "13b5191c78020c03cc1fe1956869be2af076675cf128b0298246c1bd2d57f849",
+   "assignment_echo": {
+    "longest": 77,
+    "snippet": " community service takes too much time away from what they need or want to do"
+   },
+   "seconds": 12.7,
+   "eval_count": 338,
+   "done_reason": "stop"
+  }
+ ]
+}

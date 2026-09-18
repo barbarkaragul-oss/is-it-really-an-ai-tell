@@ -16,16 +16,22 @@
  *     Matching eight arms together means every arm is cut down to the smallest one in every length
  *     bin, and the sample collapses. Each arm is instead matched against the reference human arm on
  *     its own. An arm written from the same documents as the reference is paired document by
- *     document, so both sides cover the same subjects. Any other arm is matched bin by bin on a
- *     seeded shuffle: the corpora are stored grouped by topic, and the first N texts of a bin are
- *     one topic, not a sample. The n and the kind of every pairing are published next to its numbers.
+ *     document, so both sides cover the same subjects. Where nobody wrote from the same document but
+ *     everybody answered the same assignment -- a class given an essay title, each writing their own
+ *     essay -- the kind of writing says so, and the pairing is drawn inside one assignment and one
+ *     length bin: the subjects then match as far as the writing allows, and no further. Any other arm
+ *     is matched bin by bin on a seeded shuffle: the corpora are stored grouped by topic, and the
+ *     first N texts of a bin are one topic, not a sample. The n and the kind of every pairing are
+ *     published next to its numbers, so a reader is never left to assume it was document for document.
  *  3. A TEXT A MARKER CANNOT JUDGE IS LEFT OUT, NOT COUNTED AS "NO".
  *     "Every sentence the same length" says nothing about a text with three sentences. Such a text
  *     is dropped from that marker's shares on both sides of a pairing.
  *  4. A PLACEBO ARM.
  *     One human corpus is split at random and the same decision rules run on both halves. Every
  *     number there should be a tie; where it is not, the method is manufacturing signal and you can
- *     see it.
+ *     see it. A placebo run on four times the text of the comparison it stands next to is a different
+ *     experiment, and ties for a reason the comparison does not share, so a kind of writing can ask
+ *     for the two halves to be cut to that comparison's own size, bin by bin (`placebo: 'matched'`).
  *  5. INTERVALS, AND A CORRECTION.
  *     Wilson intervals at 95% for shares, exact Poisson intervals for rates, an exact test between
  *     rates, and Benjamini-Hochberg across the catalogue, because two dozen markers produce a finding
@@ -33,7 +39,18 @@
  */
 import { MARKERS, words, type Marker } from './markers.js';
 
-export interface Text { id: string; text: string; source: string }
+export interface Text {
+  id: string;
+  text: string;
+  source: string;
+  /**
+   * The assignment this text was written to, where a kind of writing pairs its arms by that rather
+   * than by document: the prompt slug a class and a model were both given. Only `pairByPrompt` reads
+   * it, and only when the kind of writing asks for that pairing, so a corpus that has no assignments
+   * leaves it out and nothing about it changes.
+   */
+  group?: string;
+}
 export interface Arm { id: string; label: string; kind: 'human' | 'machine'; texts: Text[] }
 
 /** share of texts carrying the marker, on a length-matched pairing, among the texts the marker can judge */
@@ -46,10 +63,12 @@ export interface Rate { texts: number; words: number; occurrences: number; per10
 
 /**
  * How an arm was matched with the reference: `document` pairs the two texts written from each
- * document, `length` fills each length bin from a seeded shuffle of both arms, `self` is the
- * reference against itself.
+ * document, `prompt` pairs two texts written to the same assignment and of about the same length
+ * (which is not the same document, and is published as a different word for exactly that reason),
+ * `length` fills each length bin from a seeded shuffle of both arms, `self` is the reference against
+ * itself. A report written before `prompt` existed carries one of the other three, so it still reads.
  */
-export type Pairing = 'document' | 'length' | 'self';
+export type Pairing = 'document' | 'prompt' | 'length' | 'self';
 
 export interface Row {
   marker: string;
@@ -64,6 +83,8 @@ export interface Row {
    * The reference split in two at random. `a`/`b` are the halves' shares, length-matched; `rate` is
    * their rates. `tie` applies the same rule the verdict uses: share intervals for a whole-text marker,
    * the rate test for a countable one, with `p` and `q` its test and its correction across the rows.
+   * How much of the reference the two halves hold depends on `placebo` in the options: the whole arm,
+   * or only as much as the comparison the placebo stands next to (see placeboHalves).
    */
   placebo: { a: Share; b: Share; tie: boolean; rate: { a: Rate; b: Rate }; p: number | null; q: number | null };
   p: number | null;
@@ -111,6 +132,17 @@ function lengthOf(t: Text): number {
   if (n === undefined) { n = words(t.text).length; lengths.set(t, n); }
   return n;
 }
+
+/**
+ * The middle text's length, as the arm summary publishes it: the lower of the two middles on an even
+ * count, which is what a reader comparing two medians wants to be the same rule on both sides. The
+ * evidence prints a median too, over one assignment's texts rather than a whole arm, and asks here for
+ * it rather than keeping a second rule of its own.
+ */
+export const medianWords = (texts: Text[]): number => {
+  const l = texts.map(lengthOf).sort((x, y) => x - y);
+  return l.length ? l[Math.floor(l.length / 2)]! : 0;
+};
 
 /** log of the gamma function (Lanczos, g = 7), accurate to about 15 digits for positive x */
 function logGamma(x: number): number {
@@ -370,8 +402,15 @@ export function benjaminiHochberg(ps: (number | null)[]): (number | null)[] {
   return q;
 }
 
-const BINS: [number, number][] = [[80, 129], [130, 219], [220, 399], [400, 800]];
-const binOf = (t: Text): number => { const n = lengthOf(t); return BINS.findIndex(([lo, hi]) => n >= lo && n <= hi); };
+/**
+ * The length bins a pairing is drawn inside, and the bin a word count falls in (-1 for a text no bin
+ * holds, which can be measured but never paired). They are exported because a collector deciding which
+ * of its texts can ever be paired has to ask the same question this file does: a second copy of the
+ * numbers somewhere else would go quietly out of date the day these move.
+ */
+export const BINS: [number, number][] = [[80, 129], [130, 219], [220, 399], [400, 800]];
+export const binOfWords = (words: number): number => BINS.findIndex(([lo, hi]) => words >= lo && words <= hi);
+const binOf = (t: Text): number => binOfWords(lengthOf(t));
 
 /** a seed of its own for every bin and side, so no two shuffles in a pairing run in step */
 const binSeed = (seed: number, bin: number, side: number): number => (seed + Math.imul(2 * bin + side + 1, 0x9e3779b1)) >>> 0;
@@ -390,6 +429,44 @@ export function pairMatch(a: Text[], b: Text[], seed = DEFAULT_SEED): [Text[], T
     outA.push(...ba.slice(0, take));
     outB.push(...bb.slice(0, take));
   });
+  return [outA, outB];
+}
+
+/**
+ * A seed of its own for every assignment, mixed from its name (FNV-1a) rather than from its position,
+ * so that adding an eighth assignment does not redraw the other seven, and no two of them shuffle in
+ * step. `pairMatch` then splits this again per bin and side, as it does for any other pairing.
+ *
+ * Exported because the evidence draws from the same assignments and has to shuffle them the same way:
+ * a second mixing function over there would drift from this one the day either is touched. The name it
+ * is given need only be stable and distinct -- the evidence passes an assignment and a writer together,
+ * so no two writers walk their essays in step.
+ */
+export const groupSeed = (seed: number, group: string): number => {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < group.length; i++) h = Math.imul(h ^ group.charCodeAt(i), 0x01000193);
+  return (seed + h) >>> 0;
+};
+
+/**
+ * Two arms whose writers answered the same assignments, paired inside one assignment and one length
+ * bin: `pairMatch` per assignment, on that assignment's own seed. A pair is two people (or a person
+ * and a model) writing to the same title, which is as close as this kind of writing comes to a shared
+ * subject -- it is not the same document, and measure() publishes it as `prompt`, never as `document`.
+ *
+ * A text that names no assignment is left out rather than pooled with the others, since a bucket of
+ * unnamed texts would pair on nothing but length while reading as a pairing by assignment. measure()
+ * does not reach that case: it refuses an arm where only some texts name one.
+ */
+export function pairByPrompt(a: Text[], b: Text[], seed = DEFAULT_SEED): [Text[], Text[]] {
+  const groups = [...new Set([...a, ...b].map((t) => t.group).filter((g): g is string => g !== undefined))].sort();
+  const outA: Text[] = [], outB: Text[] = [];
+  for (const g of groups) {
+    // an assignment only one side wrote to comes back empty from pairMatch, which is what it should be
+    const [ga, gb] = pairMatch(a.filter((t) => t.group === g), b.filter((t) => t.group === g), groupSeed(seed, g));
+    outA.push(...ga);
+    outB.push(...gb);
+  }
   return [outA, outB];
 }
 
@@ -454,6 +531,73 @@ export function seededShuffle<T>(items: T[], seed: number): T[] {
   return out;
 }
 
+/**
+ * The cell a text sits in for the placebo: its length bin, and its assignment too where the pairing
+ * is by assignment. A text no bin holds has no cell, exactly as it has no pair.
+ */
+const cellOf = (t: Text, byGroup: boolean): string | null => {
+  const bin = binOf(t);
+  if (bin < 0) return null;
+  return byGroup ? `${bin}:${t.group ?? ''}` : String(bin);
+};
+
+/** how many texts a pairing holds in each cell: the size a calibrated placebo draws each half to */
+function quotaOf(texts: Text[], byGroup: boolean): Map<string, number> {
+  const quota = new Map<string, number>();
+  for (const t of texts) {
+    const cell = cellOf(t, byGroup);
+    if (cell !== null) quota.set(cell, (quota.get(cell) ?? 0) + 1);
+  }
+  return quota;
+}
+
+/** the placebo's own seed: one past the last bin-and-side seed, so it cannot run in step with a pairing's */
+const placeboSeed = (seed: number): number => (seed + Math.imul(2 * BINS.length + 1, 0x9e3779b1)) >>> 0;
+
+/**
+ * The reference split in two, for the placebo.
+ *
+ * With no quota this is the split the two kinds of writing published before the option existed: the
+ * whole arm shuffled once and cut in the middle, so their numbers do not move.
+ *
+ * A quota is the machine arm's own pairing counted per cell, and each half is drawn to that size in
+ * every cell. It matters because the placebo is read as the null of the comparison beside it: a
+ * reference of 1,600 essays split 800 against 800, standing next to a test of 200 against the person,
+ * would see differences that test could never have seen, and its ties would be about the 800. The
+ * draw is on its own seed, so the halves are not the pairing's shuffle read twice. A cell the
+ * comparison does not reach is left out of the placebo as well, and a cell the reference cannot fill
+ * twice over gives as many as it can to each half, never an uneven pair of halves.
+ *
+ * Which comparison it is the null of, exactly: the pairing, and so the shares of a whole-text marker,
+ * which are read on those pairs and nothing else. A word or phrase is not tested on the pairing at all
+ * -- the arm goes against `testedReference`, which for a pairing by assignment is every text the person
+ * wrote (see below) -- so beside a word the calibrated placebo is the null of the smaller side of that
+ * test and not of its shape. It is still much closer to it than the whole arm split in half, which is
+ * why it is used; it is not the same experiment, and a page describing the placebo row should not say
+ * that it is.
+ */
+function placeboHalves(texts: Text[], seed: number, quota: Map<string, number> | null, byGroup: boolean): [Text[], Text[]] {
+  if (!quota) {
+    const shuffled = seededShuffle(texts, seed);
+    const half = Math.floor(shuffled.length / 2);
+    return [shuffled.slice(0, half), shuffled.slice(half)];
+  }
+  const cells = new Map<string, Text[]>();
+  for (const t of seededShuffle(texts, placeboSeed(seed))) {
+    const cell = cellOf(t, byGroup);
+    if (cell === null || !quota.has(cell)) continue;
+    const list = cells.get(cell);
+    if (list) list.push(t); else cells.set(cell, [t]);
+  }
+  const a: Text[] = [], b: Text[] = [];
+  for (const [cell, list] of cells) {
+    const take = Math.min(quota.get(cell)!, Math.floor(list.length / 2));
+    a.push(...list.slice(0, take));
+    b.push(...list.slice(take, 2 * take));
+  }
+  return [a, b];
+}
+
 interface Matched { pairing: Pairing; ref: Text[]; arm: Text[] }
 
 /**
@@ -461,46 +605,104 @@ interface Matched { pairing: Pairing; ref: Text[]; arm: Text[] }
  * shares and rates are still published, but they get no test: a marker no text can carry would add a
  * certain "no difference" to the correction and read as a measured "no signal".
  */
-export function measure(arms: Arm[], opts: { reference: string; casual: string; machine: string; seed?: number; notRecorded?: string[] }): Report {
+export function measure(arms: Arm[], opts: {
+  reference: string;
+  casual: string;
+  machine: string;
+  seed?: number;
+  notRecorded?: string[];
+  /**
+   * How this kind of writing pairs its machine arms with the reference, where the ids cannot say it.
+   * `prompt` pairs inside one assignment and one length bin, and is asked for by the kind of writing
+   * (scripts/genres.ts) rather than guessed: an id tells us two texts were written from one document,
+   * and nothing in an id could tell us two writers were given one assignment. It applies to an arm
+   * only when that arm and the reference name an assignment on every text, so the comparison columns,
+   * which come from other kinds of writing and name none, stay length-matched as they always were; an
+   * arm where only some texts name one stops the run (namesAssignments).
+   */
+  pairing?: 'prompt';
+  /**
+   * How much of the reference the placebo splits: `whole-reference` is the arm cut in half, as the
+   * two kinds of writing published before this option have it, and `matched` cuts both halves to the
+   * size of the machine arm's own pairing, bin by bin (see placeboHalves). A kind of writing that
+   * names a pairing mode gets `matched` unless it says otherwise, because such a kind is new here and
+   * nothing of its is published yet; the kinds that name none keep the old split and the old numbers.
+   */
+  placebo?: 'whole-reference' | 'matched';
+}): Report {
   const find = (id: string): Arm | undefined => arms.find((a) => a.id === id);
   const reference = find(opts.reference);
   if (!reference) throw new Error(`reference arm ${opts.reference} is not among the arms`);
   const seed = opts.seed ?? DEFAULT_SEED;
 
+  /**
+   * Whether an arm can be paired by assignment: every text of it names one. A comparison column comes
+   * from another kind of writing and names none, so it is matched by length as it always was. An arm
+   * where only some texts name one is a collection fault, and quietly matching it by length instead
+   * would hide that in a field few readers look at, so it stops the run.
+   */
+  const namesAssignments = (arm: Arm): boolean => {
+    const named = arm.texts.filter((t) => t.group !== undefined).length;
+    if (named && named < arm.texts.length) {
+      throw new Error(`${arm.id}: ${arm.texts.length - named} of ${arm.texts.length} texts name no assignment, so the arm cannot be paired by one`);
+    }
+    return named > 0;
+  };
+  /**
+   * A kind of writing that asks to pair by assignment and whose reference names none cannot have what
+   * it asked for. Falling back to a length pairing would publish `pairing: 'length'` for a genre whose
+   * registry says `prompt`, which is the mislabel this mode exists to prevent, arriving through the
+   * back door: the arm would still be measured, and only the word beside it would be wrong. So it stops
+   * the run, and the message says where the assignment is lost -- almost always a collector or a loader
+   * that dropped the field between the file and the arm.
+   */
+  if (opts.pairing === 'prompt' && !namesAssignments(reference)) {
+    throw new Error(`${reference.id}: none of its ${reference.texts.length} texts name an assignment, so this kind of writing cannot be paired by one`);
+  }
+  const byPrompt = opts.pairing === 'prompt';
+
   // one pairing per arm, computed once; a marker that cannot judge every text narrows it (below)
   const matched = new Map<string, Matched>();
   for (const a of arms) {
     if (a.id === reference.id) matched.set(a.id, { pairing: 'self', ref: reference.texts, arm: reference.texts });
+    // asked for first, so that ids which happen to look shared can never turn an assignment into a document
+    else if (byPrompt && namesAssignments(a)) { const [ref, arm] = pairByPrompt(reference.texts, a.texts, seed); matched.set(a.id, { pairing: 'prompt', ref, arm }); }
     else if (sharesDocuments(reference.texts, a.texts)) { const [ref, arm] = pairByDocument(reference.texts, a.texts); matched.set(a.id, { pairing: 'document', ref, arm }); }
     else { const [ref, arm] = pairMatch(reference.texts, a.texts, seed); matched.set(a.id, { pairing: 'length', ref, arm }); }
   }
 
-  const shuffled = seededShuffle(reference.texts, seed);
-  const half = Math.floor(shuffled.length / 2);
-  const halfA = shuffled.slice(0, half), halfB = shuffled.slice(half);
+  const machineArm = find(opts.machine);
+  const machinePairing = machineArm && matched.get(machineArm.id);
+  const calibrated = (opts.placebo ?? (opts.pairing ? 'matched' : 'whole-reference')) === 'matched';
+  // the size the placebo is drawn to: the pairing published beside it, which is the n its shares rest on
+  const quota = calibrated && machinePairing ? quotaOf(machinePairing.arm, machinePairing.pairing === 'prompt') : null;
+  const [halfA, halfB] = placeboHalves(reference.texts, seed, quota, machinePairing?.pairing === 'prompt');
 
   /**
    * The pairing a marker is measured on. With no eligibility rule it is the arm's own; otherwise a
-   * document pair survives only when both texts can be judged, and a length match is redrawn from
-   * the texts that can, so the bins are filled again rather than left short.
+   * document pair survives only when both texts can be judged, and a match that was drawn rather than
+   * fixed -- by length, or inside an assignment -- is redrawn from the texts that can, so the bins are
+   * filled again rather than left short.
    */
   const pairingFor = (a: Arm, m: Marker): [Text[], Text[]] => {
     const x = matched.get(a.id)!;
     const ok = m.eligible;
     if (!ok) return [x.ref, x.arm];
     if (x.pairing === 'length') return pairMatch(reference.texts.filter((t) => ok(t.text)), a.texts.filter((t) => ok(t.text)), seed);
+    if (x.pairing === 'prompt') return pairByPrompt(reference.texts.filter((t) => ok(t.text)), a.texts.filter((t) => ok(t.text)), seed);
     const keep = x.ref.map((t, i) => ok(t.text) && ok(x.arm[i]!.text));
     return [x.ref.filter((_, i) => keep[i]), x.arm.filter((_, i) => keep[i])];
   };
   const judged = (texts: Text[], m: Marker): Text[] => (m.eligible ? texts.filter((t) => m.eligible!(t.text)) : texts);
 
-  const machineArm = find(opts.machine);
   /**
    * The person's texts a word's rate test compares the machine arm with. A machine arm written from
    * the reference's documents is compared with the person's texts for the documents it still has:
    * the cleaning drops some of a model's texts (refusals cluster on some subjects, cut-off texts on
    * long ones), and the person's texts for those documents would otherwise stand on one side only.
-   * Any other arm is compared with every reference text.
+   * Any other arm is compared with every reference text -- an arm paired by assignment included: its
+   * pairs are drawn, not fixed, and the person's other essays were written to the same assignments,
+   * so narrowing the reference to the drawn pairs would throw away text the test is entitled to.
    */
   const testedReference = machineArm && matched.get(machineArm.id)?.pairing === 'document'
     ? ((ids) => reference.texts.filter((t) => ids.has(sourceId(t.id))))(new Set(machineArm.texts.map((t) => sourceId(t.id))))
@@ -548,17 +750,13 @@ export function measure(arms: Arm[], opts: { reference: string; casual: string; 
     r.verdict = unrecorded.has(r.marker) ? 'not recorded' : r.countable ? rateVerdict(r, reference.id, opts) : shareVerdict(r, opts);
   });
 
-  const median = (texts: Text[]): number => {
-    const l = texts.map(lengthOf).sort((x, y) => x - y);
-    return l.length ? l[Math.floor(l.length / 2)]! : 0;
-  };
   return {
     generated_at: new Date().toISOString(),
     reference: reference.id,
     machine: opts.machine,
     arms: arms.map((a) => {
       const x = matched.get(a.id)!;
-      return { id: a.id, label: a.label, kind: a.kind, n: a.texts.length, matchedWithReference: x.arm.length, pairing: x.pairing, medianWords: median(a.texts) };
+      return { id: a.id, label: a.label, kind: a.kind, n: a.texts.length, matchedWithReference: x.arm.length, pairing: x.pairing, medianWords: medianWords(a.texts) };
     }),
     rows,
   };

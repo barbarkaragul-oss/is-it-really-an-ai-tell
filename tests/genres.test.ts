@@ -7,18 +7,49 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-test('release 1 has exactly research abstracts and Reddit posts, from RAID', () => {
-  assert.deepEqual(GENRES.map((g) => [g.id, g.raidDomain]), [['abstracts', 'abstracts'], ['posts', 'reddit']]);
+test('three kinds of writing: two from RAID, and the school essays from a corpus of its own', () => {
+  assert.deepEqual(GENRES.map((g) => [g.id, g.raidDomain]),
+    [['abstracts', 'abstracts'], ['posts', 'reddit'], ['essays', undefined]]);
 });
 
-test('every genre: the person first, the four models, GPT-4 decides', () => {
+test('every genre: the person first, and the verdict decided against one of the writers it counts', () => {
   for (const g of GENRES) {
     assert.equal(g.writers[0]!.writer, 'human', `${g.id}: the person comes first`);
     assert.equal(g.writers[0]!.id, g.reference);
     assert.equal(g.writers.filter((w) => w.writer === 'human').length, 1);
-    assert.deepEqual(g.writers.filter((w) => w.tested).map((w) => w.writer), MODELS, `${g.id}: the k-of-4 models`);
-    assert.equal(modelArm(g, 'gpt4')?.id, g.decider, `${g.id}: GPT-4 is the decider`);
+    assert.ok(g.writers.some((w) => w.id === g.decider && w.tested), `${g.id}: the decider is a counted writer`);
+    if (g.raidDomain) {
+      assert.deepEqual(g.writers.filter((w) => w.tested).map((w) => w.writer), MODELS, `${g.id}: the k-of-4 models`);
+      assert.equal(modelArm(g, 'gpt4')?.id, g.decider, `${g.id}: GPT-4 is the decider`);
+    } else {
+      // a kind of writing that is not from RAID has none of RAID's models, and the count runs over the
+      // writers it does have: the essays have two, so the page must say "k of 2" and never "k of 4"
+      assert.deepEqual(g.writers.filter((w) => w.tested).map((w) => w.id), ['essays-claude-student', 'essays-llama3-student']);
+      assert.ok(MODELS.every((m) => modelArm(g, m) === undefined), `${g.id}: no RAID model wrote it`);
+    }
   }
+});
+
+test('the essays: written here, paired by assignment, and the person never published', () => {
+  const essays = genreById.get('essays')!;
+  assert.deepEqual(essays.writers.map((w) => w.id),
+    ['essays-human', 'essays-claude-student', 'essays-llama3-student', 'essays-claude-plain']);
+  assert.deepEqual(essays.writers.map((w) => w.raw), essays.writers.map((w) => w.id));
+  // the plain arm describes, as raid-claude does: quotable, published beside the others, not counted
+  assert.equal(essays.writers.find((w) => w.id === 'essays-claude-plain')!.tested, false);
+  // both Claude columns say so with a star, and the one writer this project did not author is Llama 3
+  assert.deepEqual(essays.writers.filter((w) => w.writer === 'claude').map((w) => w.short), ['Claude*', 'Claude plain*']);
+  assert.equal(essays.writers.find((w) => w.writer === 'llama3')!.short, 'Llama 3*');
+  // two answers to one assignment are not one document written twice, and the pairing says so
+  assert.equal(essays.pairing, 'prompt');
+  assert.equal(essays.placebo, 'matched');
+  assert.equal(essays.documents, 'assignment');
+  assert.ok(essays.assignments, 'the assignments the panel opens with are committed');
+  assert.equal(essays.humanQuotable, false);
+  // nothing is not recorded here: the essays keep their line breaks, so a dash, a list and a heading
+  // can all be typed on either side (data/genres/essays/census.json)
+  assert.equal(essays.notRecorded, undefined);
+  for (const g of GENRES) assert.equal(Boolean(g.pairing), g.id === 'essays', `${g.id}: only the essays pair by assignment`);
 });
 
 test('the abstracts keep the arm ids the published data has always used', () => {
@@ -43,8 +74,10 @@ test('a person\'s text is quotable only in the abstracts, and a Reddit title is 
   }
   assert.equal(genreById.get('posts')!.titles, 'hide');
   assert.equal(genreById.get('abstracts')!.titles, 'show');
-  // a hidden title is still read, from out/, to keep a model's text that repeats it off the page
-  for (const g of GENRES) assert.equal(Boolean(g.hiddenTitles), g.titles === 'hide', g.id);
+  assert.equal(genreById.get('essays')!.titles, 'hide', 'a school essay has no title, so none is shown');
+  // a hidden title is still read, from out/, to keep a model's text that repeats it off the page; the
+  // essays have no titles at all, so there is no file and nothing for the guard to read
+  for (const g of GENRES) assert.equal(Boolean(g.hiddenTitles), g.titles === 'hide' && g.id !== 'essays', g.id);
   assert.ok(COMPARISON.every((c) => c.quotable === false));
 });
 

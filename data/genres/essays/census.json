@@ -1,0 +1,715 @@
+{
+ "generated_at": "2026-09-18T07:32:37.066Z",
+ "genre": "essays",
+ "arm": "essays-human",
+ "about": "The typography of the people's essays, and the catalogue's markers over the same arm. Counts only: no essay, and no part of one, is reproduced. A marker no essay can carry because of the keyboard or the file belongs in the genre's notRecorded rather than in its results, and this file is where that is decided.",
+ "licence": "PERSUADE 2.0 corpus (Crossley et al., 2024), CC BY-NC-SA 4.0",
+ "texts": 5867,
+ "words": 2475440,
+ "typography": [
+  {
+   "id": "em_dash_char",
+   "what": "an em dash, U+2014",
+   "texts": 0,
+   "share": 0,
+   "occurrences": 0
+  },
+  {
+   "id": "en_dash_char",
+   "what": "an en dash, U+2013",
+   "texts": 0,
+   "share": 0,
+   "occurrences": 0
+  },
+  {
+   "id": "double_hyphen",
+   "what": "\"--\", the typewriter dash",
+   "texts": 13,
+   "share": 0.22,
+   "occurrences": 20
+  },
+  {
+   "id": "spaced_hyphen",
+   "what": "a hyphen with a space on both sides",
+   "texts": 22,
+   "share": 0.37,
+   "occurrences": 35
+  },
+  {
+   "id": "curly_double_quotes",
+   "what": "curly double quotation marks",
+   "texts": 0,
+   "share": 0,
+   "occurrences": 0
+  },
+  {
+   "id": "straight_double_quotes",
+   "what": "straight double quotation marks",
+   "texts": 946,
+   "share": 16.12,
+   "occurrences": 3656
+  },
+  {
+   "id": "curly_apostrophe",
+   "what": "a curly apostrophe, U+2019",
+   "texts": 0,
+   "share": 0,
+   "occurrences": 0
+  },
+  {
+   "id": "straight_apostrophe",
+   "what": "a straight apostrophe, '",
+   "texts": 4868,
+   "share": 82.97,
+   "occurrences": 27695
+  },
+  {
+   "id": "no_apostrophe_at_all",
+   "what": "neither apostrophe anywhere in the essay",
+   "texts": 999,
+   "share": 17.03,
+   "occurrences": null
+  },
+  {
+   "id": "contraction",
+   "what": "a contraction of any form, as src/markers.ts counts one",
+   "texts": 4839,
+   "share": 82.48,
+   "occurrences": null
+  },
+  {
+   "id": "contraction_without_an_apostrophe",
+   "what": "a contraction typed with no apostrophe at all (\"dont\", \"im\"), the only kind an essay without apostrophes can have",
+   "texts": 325,
+   "share": 5.54,
+   "occurrences": null
+  },
+  {
+   "id": "wont_without_an_apostrophe",
+   "what": "\"wont\" for \"won't\", which the catalogue's contraction marker does not count",
+   "texts": 437,
+   "share": 7.45,
+   "occurrences": 628
+  },
+  {
+   "id": "ellipsis_char",
+   "what": "an ellipsis character, U+2026",
+   "texts": 0,
+   "share": 0,
+   "occurrences": 0
+  },
+  {
+   "id": "three_dots",
+   "what": "three full stops in a row",
+   "texts": 90,
+   "share": 1.53,
+   "occurrences": 120
+  },
+  {
+   "id": "bold_marks",
+   "what": "\"**\", Markdown bold",
+   "texts": 1,
+   "share": 0.02,
+   "occurrences": 13
+  },
+  {
+   "id": "bullet_line",
+   "what": "a line that starts with a bullet or a number",
+   "texts": 19,
+   "share": 0.32,
+   "occurrences": null
+  },
+  {
+   "id": "heading_line",
+   "what": "a line that starts with \"#\"",
+   "texts": 0,
+   "share": 0,
+   "occurrences": null
+  },
+  {
+   "id": "blank_line",
+   "what": "a blank line, that is, a paragraph break",
+   "texts": 5708,
+   "share": 97.29,
+   "occurrences": null
+  },
+  {
+   "id": "line_break",
+   "what": "any line break at all",
+   "texts": 5708,
+   "share": 97.29,
+   "occurrences": null
+  }
+ ],
+ "placeholder_tokens": {
+  "about": "Every token with an underscore and a capitalised or all-capitals first part, over the whole corpus. \"tokens\" are the ones taken out before counting, with their count in the whole corpus and in the eligible essays: a token that begins with two or more of the words the corpus's anonymisation scheme is built from. \"left_to_the_writer\" counts the rest -- the writer's own capitals and the links some essays paste in, which are left where they are -- without naming them, because they are the students' own words.",
+  "tokens": [
+   {
+    "token": "Generic_Name",
+    "corpus": 3779,
+    "eligible": 1249,
+    "removed": true
+   },
+   {
+    "token": "STUDENT_NAME",
+    "corpus": 1997,
+    "eligible": 895,
+    "removed": true
+   },
+   {
+    "token": "TEACHER_NAME",
+    "corpus": 1067,
+    "eligible": 493,
+    "removed": true
+   },
+   {
+    "token": "SCHOOL_NAME",
+    "corpus": 456,
+    "eligible": 192,
+    "removed": true
+   },
+   {
+    "token": "Generic_School",
+    "corpus": 410,
+    "eligible": 166,
+    "removed": true
+   },
+   {
+    "token": "PROPER_NAME",
+    "corpus": 389,
+    "eligible": 40,
+    "removed": true
+   },
+   {
+    "token": "Generic_City",
+    "corpus": 178,
+    "eligible": 70,
+    "removed": true
+   },
+   {
+    "token": "RELATIVE_NAME",
+    "corpus": 118,
+    "eligible": 47,
+    "removed": true
+   },
+   {
+    "token": "OTHER_NAME",
+    "corpus": 104,
+    "eligible": 45,
+    "removed": true
+   },
+   {
+    "token": "LOCATION_NAME",
+    "corpus": 16,
+    "eligible": 5,
+    "removed": true
+   },
+   {
+    "token": "ADDRESS_NAME",
+    "corpus": 13,
+    "eligible": 2,
+    "removed": true
+   },
+   {
+    "token": "MONTH_DAY_YEAR",
+    "corpus": 10,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "Generic_Names",
+    "corpus": 7,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "Generic_name",
+    "corpus": 5,
+    "eligible": 2,
+    "removed": true
+   },
+   {
+    "token": "PHONE_NUMBER",
+    "corpus": 5,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "Generic_school",
+    "corpus": 3,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "STREET_ADDRESS",
+    "corpus": 3,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "CITY_STATE_ZIP_CODE",
+    "corpus": 2,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "DAY_MONTH_YEAR",
+    "corpus": 2,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "EMAIL_ADDRESS",
+    "corpus": 2,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "Generic_Schools",
+    "corpus": 2,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "Genric_Name",
+    "corpus": 2,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "CITY_STATE",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "COURSE_NAME",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "EMAIL_NAME",
+    "corpus": 1,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "GENERIC_NAME",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "GEneric_School",
+    "corpus": 1,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "Generic_Namee",
+    "corpus": 1,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "Generic_schools",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "Generric_School",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "Genric_City",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "HOTEL_NAME",
+    "corpus": 1,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "LAST_NAME",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "PROEPR_NAME",
+    "corpus": 1,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "RELATIVE_NAMEs",
+    "corpus": 1,
+    "eligible": 1,
+    "removed": true
+   },
+   {
+    "token": "SCHOOL_NAMEto",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "STATE_NAME",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "TEACHER_NAMEif",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   },
+   {
+    "token": "TEST_NAME",
+    "corpus": 1,
+    "eligible": 0,
+    "removed": true
+   }
+  ],
+  "left_to_the_writer": {
+   "distinct": 18,
+   "corpus": 19,
+   "eligible": 1
+  }
+ },
+ "markers": [
+  {
+   "marker": "delve",
+   "label": "“delve”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 2,
+   "share": 0.03,
+   "occurrences": 2,
+   "words": 2475440,
+   "per1000": 0.0008
+  },
+  {
+   "marker": "tapestry",
+   "label": "“tapestry”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 0,
+   "share": 0,
+   "occurrences": 0,
+   "words": 2475440,
+   "per1000": 0
+  },
+  {
+   "marker": "moreover",
+   "label": "“moreover”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 58,
+   "share": 0.99,
+   "occurrences": 68,
+   "words": 2475440,
+   "per1000": 0.0275
+  },
+  {
+   "marker": "furthermore",
+   "label": "“furthermore”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 199,
+   "share": 3.39,
+   "occurrences": 218,
+   "words": 2475440,
+   "per1000": 0.0881
+  },
+  {
+   "marker": "crucial",
+   "label": "“crucial”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 109,
+   "share": 1.86,
+   "occurrences": 127,
+   "words": 2475440,
+   "per1000": 0.0513
+  },
+  {
+   "marker": "realm",
+   "label": "“realm”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 6,
+   "share": 0.1,
+   "occurrences": 6,
+   "words": 2475440,
+   "per1000": 0.0024
+  },
+  {
+   "marker": "showcase",
+   "label": "“showcase”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 12,
+   "share": 0.2,
+   "occurrences": 16,
+   "words": 2475440,
+   "per1000": 0.0065
+  },
+  {
+   "marker": "underscore",
+   "label": "“underscores”",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 0,
+   "share": 0,
+   "occurrences": 0,
+   "words": 2475440,
+   "per1000": 0
+  },
+  {
+   "marker": "leverage",
+   "label": "“leverage” as a verb",
+   "family": "word",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 0,
+   "share": 0,
+   "occurrences": 0,
+   "words": 2475440,
+   "per1000": 0
+  },
+  {
+   "marker": "important_to_note",
+   "label": "“it is (also) important to note” / “worth noting”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 2,
+   "share": 0.03,
+   "occurrences": 2,
+   "words": 2475440,
+   "per1000": 0.0008
+  },
+  {
+   "marker": "in_todays",
+   "label": "“in today’s …”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 59,
+   "share": 1.01,
+   "occurrences": 63,
+   "words": 2475440,
+   "per1000": 0.0255
+  },
+  {
+   "marker": "not_only_but_also",
+   "label": "“not only … but also”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 237,
+   "share": 4.04,
+   "occurrences": 283,
+   "words": 2475440,
+   "per1000": 0.1143
+  },
+  {
+   "marker": "not_x_its_y",
+   "label": "“it’s / this isn’t X, it’s Y”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 12,
+   "share": 0.2,
+   "occurrences": 12,
+   "words": 2475440,
+   "per1000": 0.0048
+  },
+  {
+   "marker": "dive_into",
+   "label": "“dive into” / “let’s explore”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 3,
+   "share": 0.05,
+   "occurrences": 3,
+   "words": 2475440,
+   "per1000": 0.0012
+  },
+  {
+   "marker": "in_conclusion",
+   "label": "“in conclusion” / “in summary” / “to sum (it) up”",
+   "family": "phrase",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 1296,
+   "share": 22.09,
+   "occurrences": 1368,
+   "words": 2475440,
+   "per1000": 0.5526
+  },
+  {
+   "marker": "uniform_sentences",
+   "label": "every sentence the same length",
+   "family": "shape",
+   "belief": false,
+   "countable": false,
+   "texts": 5810,
+   "with": 1958,
+   "share": 33.7,
+   "occurrences": 1958,
+   "words": 2462165,
+   "per1000": 0.7952
+  },
+  {
+   "marker": "em_dash",
+   "label": "a dash, however it is typed",
+   "family": "shape",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 13,
+   "share": 0.22,
+   "occurrences": 25,
+   "words": 2475440,
+   "per1000": 0.0101
+  },
+  {
+   "marker": "em_dash_heavy",
+   "label": "two or more dashes",
+   "family": "shape",
+   "belief": false,
+   "countable": false,
+   "texts": 5867,
+   "with": 6,
+   "share": 0.1,
+   "occurrences": 6,
+   "words": 2475440,
+   "per1000": 0.0024
+  },
+  {
+   "marker": "rule_of_three",
+   "label": "a three-item list (“and” or “or”; a longer middle item only before a serial comma)",
+   "family": "shape",
+   "belief": false,
+   "countable": true,
+   "texts": 5867,
+   "with": 2196,
+   "share": 37.43,
+   "occurrences": 3683,
+   "words": 2475440,
+   "per1000": 1.4878
+  },
+  {
+   "marker": "bulleted_bold",
+   "label": "a bulleted list with bold lead-ins",
+   "family": "shape",
+   "belief": false,
+   "countable": false,
+   "texts": 5867,
+   "with": 0,
+   "share": 0,
+   "occurrences": 0,
+   "words": 2475440,
+   "per1000": 0
+  },
+  {
+   "marker": "no_contraction",
+   "label": "no contractions at all",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "texts": 5867,
+   "with": 1028,
+   "share": 17.52,
+   "occurrences": 1028,
+   "words": 2475440,
+   "per1000": 0.4153
+  },
+  {
+   "marker": "no_first_person",
+   "label": "no first person",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "texts": 5867,
+   "with": 1463,
+   "share": 24.94,
+   "occurrences": 1463,
+   "words": 2475440,
+   "per1000": 0.591
+  },
+  {
+   "marker": "no_personal_detail",
+   "label": "no personal detail",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "texts": 5867,
+   "with": 5297,
+   "share": 90.28,
+   "occurrences": 5297,
+   "words": 2475440,
+   "per1000": 2.1398
+  },
+  {
+   "marker": "no_typo_markers",
+   "label": "no informal spelling at all",
+   "family": "surface",
+   "belief": true,
+   "countable": false,
+   "texts": 5867,
+   "with": 5609,
+   "share": 95.6,
+   "occurrences": 5609,
+   "words": 2475440,
+   "per1000": 2.2659
+  },
+  {
+   "marker": "title_case_headings",
+   "label": "Title Case headings",
+   "family": "surface",
+   "belief": false,
+   "countable": false,
+   "texts": 5867,
+   "with": 0,
+   "share": 0,
+   "occurrences": 0,
+   "words": 2475440,
+   "per1000": 0
+  }
+ ]
+}

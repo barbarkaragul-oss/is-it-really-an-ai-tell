@@ -1,0 +1,933 @@
+{
+ "genre": "essays",
+ "prompt_name": "Cell phones at school",
+ "prompt_slug": "cell-phones-at-school",
+ "protocol_version": "essays-1",
+ "assignment": "Your principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.",
+ "assignment_sha256": "b3491980ffc6386bfdbd252c3fc843aa1c04b09ef9ad6589e6f055e712665a03",
+ "licence": "The assignment text is quoted verbatim from PERSUADE 2.0 (Crossley et al., 2024), CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/). The essays themselves were written for this repository and are under its own licence.",
+ "summary": {
+  "arms": {
+   "essays-llama3-student": {
+    "asked": 25,
+    "written": 25,
+    "median_words": 365,
+    "echoing_the_assignment": 25
+   }
+  },
+  "memorisation": {
+   "measured_against": {
+    "essays": 5867,
+    "five_grams": 2199841
+   },
+   "person_baseline": {
+    "essays": 200,
+    "mean": 0.1325,
+    "max": 0.3156,
+    "above_20_percent": 17,
+    "note": "200 of the people's own essays, each measured against the others the same way. A machine arm near this number is writing like the people; well above it is repeating them."
+   },
+   "note": "The share of each essay's five-word sequences that also occur in the people's essays for this genre, measured against the whole human sample. Read it against person_baseline, not against zero: thousands of essays answering the same seven assignments share a great deal of ordinary phrasing, and a sentence invented for a test already matches about half the time. Well above the baseline is a model repeating writing it has seen.",
+   "arms": {
+    "essays-llama3-student": {
+     "essays": 25,
+     "mean": 0.2215,
+     "max": 0.2957,
+     "above_20_percent": 16,
+     "worst": [
+      {
+       "slot": "essays-llama3-student.cell-phones-at-school.g8.005",
+       "containment": 0.2957
+      },
+      {
+       "slot": "essays-llama3-student.cell-phones-at-school.g8.018",
+       "containment": 0.2899
+      },
+      {
+       "slot": "essays-llama3-student.cell-phones-at-school.g8.010",
+       "containment": 0.2843
+      }
+     ]
+    }
+   }
+  },
+  "rejected": []
+ },
+ "essays": [
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:43:11.000Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 178
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.001:seed=178",
+   "text": "Dear Principal,\n\nI believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better option. There are several reasons why I think this is the case.\n\nFirstly, in today's digital age, many students use their phones as a means of communication and staying connected with their friends and family. By allowing students to bring their phones to school, you would be respecting their need to stay connected and allowing them to maintain relationships that are important to them. This would be especially important for students who have family members who live far away or who have friends who attend different schools.\n\nSecondly, allowing students to bring their phones to school during free times would actually help to reduce distractions during class time. Without the option to use their phones during class, some students may be tempted to sneak peeks or try to get their friends' attention, which could be a distraction and negatively impact their learning. By giving them a designated time to use their phones, you would be giving them a safe and responsible way to use their phones, and they would be less likely to use them during class.\n\nFinally, Policy 1 would allow students to use their phones in a responsible and respectful manner. You could implement rules and consequences for misusing phones during free times, such as no using phones during club time or no taking pictures in the hallways. This would help to teach students how to use their phones responsibly and respect their peers.\n\nOn the other hand, Policy 2, which would not allow students to have phones at school at all, would not take into account the needs and habits of students who already use their phones for important reasons. It would also not provide a responsible outlet for students to use their phones, which could lead to misuse and negative consequences.\n\nIn conclusion, I believe that Policy 1 is the better option because it respects students' needs, reduces distractions during class, and allows for responsible phone use. I hope that you will consider my arguments and implement Policy 1 at our school.\n\nSincerely,\n[Your Name]",
+   "words": 361,
+   "text_sha256": "c64d5d2d9b2247492a4d94b5a5e65435a8977d172a7d16df5dbf38ff1b21c1db",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 21.1,
+   "eval_count": 419,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:19:42.056Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 116
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.002:seed=116",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better option. While some may argue that having phones in school at all is a distraction, I think that allowing students to use their phones during certain times of the day can actually be beneficial.\n\nFirstly, having phones during lunch periods can be a great way to stay connected with friends and family. Many of us rely on our phones to communicate with our loved ones, and not being able to use them during lunch can be frustrating and isolating. Additionally, phones can be a great way to take photos and videos of school events and activities, which can be a fun way to capture memories and share them with others.\n\nAnother benefit of Policy 1 is that it allows students to be responsible and self-regulated. If we're allowed to bring our phones to school, we'll have to learn to use them responsibly and not get distracted during class time. This can actually help us develop better time management skills and learn to prioritize our tasks.\n\nOn the other hand, Policy 2, banning phones from school altogether, seems more restrictive and limiting. Not being able to use our phones at all can be frustrating and unfair, especially for students who rely on them to stay in touch with their families. Additionally, not allowing students to use their phones can actually be a distraction from learning, as students may become more focused on getting away from the rules rather than engaging with the material.\n\nIn conclusion, I believe that Policy 1 is the better option. Allowing students to bring phones to school and use them during certain times of the day can be beneficial for our social and emotional well-being, and can also help us develop important life skills like responsibility and time management. I hope you will consider this policy and give students the freedom to use their phones in a responsible way.\n\nSincerely,\n[Your Name]",
+   "words": 341,
+   "text_sha256": "b2212a30372732fa5465f8933b1b47588eb3c499919dc4d246f3cd62eae6fe84",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 20.1,
+   "eval_count": 391,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:44:34.282Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 24
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.003:seed=24",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. Having phones during these times can actually improve our learning and overall school experience.\n\nFirstly, allowing us to have phones during lunch can be a huge social boost. Many of us rely on our phones to stay connected with our friends and family, and not being able to use them during lunch can feel isolating. With Policy 1, we can use our phones to communicate with friends, take pictures to commemorate special moments, and even participate in group chats about the latest TV shows or movies. This can help us build stronger relationships and reduce feelings of loneliness.\n\nAdditionally, having phones during free periods can actually help us stay organized and on top of our schoolwork. Many of us use our phones to take notes, set reminders, and keep track of assignments and due dates. By allowing us to have phones during these times, we can stay more focused and efficient, which can lead to better grades and a stronger sense of responsibility.\n\nOn the other hand, Policy 2: Do not allow students to have phones at school at all, can have negative consequences. Not having phones can mean that we'll have to rely on other students to communicate important information to us, which can lead to misunderstandings and missed deadlines. It can also make it harder for us to get help when we need it, whether it's finding a spare pencil or asking a teacher for clarification on a concept.\n\nFurthermore, in today's digital age, it's unrealistic to expect students not to have phones at all. We're surrounded by technology everywhere we go, and it's not going away anytime soon. By allowing us to have phones during school, we can learn how to use them responsibly and develop important skills like time management and self-regulation.\n\nIn conclusion, I firmly believe that Policy 1 is the better option. It allows us to stay connected with our friends and family, stay organized and focused, and develop important skills. I hope you'll consider our perspectives and implement Policy 1. Thank you for your time and consideration.\n\nSincerely,\n[Your Name]",
+   "words": 383,
+   "text_sha256": "144d5d08fa590fdf394353b230e85a1aa4809f1ba5d2c5012b5f1b286cacdd55",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 24.3,
+   "eval_count": 455,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:38:54.865Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 10
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.004:seed=10",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better option. I think this policy would have several positive effects on our school.\n\nFirstly, allowing students to have phones during free times would give us a chance to stay connected with our friends and family. Many students rely on their phones to communicate with their parents or guardians during the school day. This policy would enable students to quickly respond to important messages or calls, which could help us feel more at ease and focused during school hours.\n\nSecondly, having phones during lunch and free times would allow us to learn and work together more effectively. Many students use their phones to access educational apps, games, or videos that can enhance our learning experience. For instance, some students might use apps like Duolingo to practice a foreign language or watch educational videos on Khan Academy. This would not only make learning more engaging but also encourage students to take ownership of their education.\n\nThirdly, allowing phones during free times would promote student safety. In case of an emergency, students would be able to quickly contact their parents or authorities if needed. Additionally, having phones would enable students to receive important updates or notifications from their parents or school administrators, which could help prevent misunderstandings or miscommunications.\n\nLastly, I believe that having phones during free times would not significantly disrupt the learning environment. Students would be expected to keep their phones off during class time, which would minimize distractions and allow teachers to focus on teaching. Moreover, students would still have the opportunity to take breaks and socialize with their friends without feeling the need to constantly check their phones.\n\nIn conclusion, I think Policy 1 would have several benefits for our school. It would allow students to stay connected with their loved ones, learn and work together more effectively, promote student safety, and minimize disruptions to the learning environment. I hope you will consider my arguments and choose Policy 1 as the better option for our school.\n\nSincerely,\n[Your Name]",
+   "words": 355,
+   "text_sha256": "3c86f14d96ada520561f545b913f9a366b8aa530f9e1f2ea4822c777608634ff",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 18.8,
+   "eval_count": 412,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:36:40.913Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 3
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.005:seed=3",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better policy. Having a phone at school can have many positive effects on students.\n\nFirstly, having a phone at school allows students to stay connected with their parents or guardians during emergencies. If a student has a family emergency or needs to be reached by their parent, they will be able to do so without having to leave school. This is especially important for students who may be alone or without a way to communicate outside of school.\n\nSecondly, having a phone at school allows students to take photos of their artwork or projects for their parents to see. This can be a great way for students to share their accomplishments with their families and receive feedback. It can also be a way for students to learn from their mistakes and improve their work.\n\nThirdly, having a phone at school allows students to use educational apps or games during lunch or free time. There are many educational apps that can help students learn new things, such as math problems or science facts. This can be a great way for students to learn new things and have fun at the same time.\n\nLastly, having a phone at school allows students to have a sense of independence and responsibility. Students will be able to use their phones during their free time and learn how to be responsible for their own property. This can help students develop important life skills, such as time management and self-motivation.\n\nOn the other hand, Policy 2: Do not allow students to have phones at school at all, may seem like a good idea at first, but it can actually have negative effects. Without phones, students may have to rely on the school's announcements system to get information, which can be outdated or unreliable. This can lead to students feeling left out or uninformed. Additionally, not having a phone at school can make it difficult for students to communicate with each other or share information, which can be important for learning and socialization.\n\nIn conclusion, I believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better policy. Having a phone at school can have many positive effects on students, including staying connected with parents, sharing artwork, using educational apps, and having a sense of independence and responsibility.",
+   "words": 440,
+   "text_sha256": "6629cb1043f05a6c3017a60e857b87981d630d2693d4d6e2353d35e00d4c5211",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 19.8,
+   "eval_count": 502,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:45:31.557Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 26
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.006:seed=26",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option.\n\nFirstly, allowing students to bring phones to school would allow us to stay connected with our families and friends who may be worried about our safety. Many parents and guardians rely on their child's phone to get in touch with them in case of an emergency, and not being able to do so could cause unnecessary stress. By allowing us to bring phones, we can ensure that our parents are able to reach us if something is wrong.\n\nSecondly, having phones during free times like lunch would allow us to do our homework or work on projects during that time. Many students, including myself, often have assignments that need to be completed outside of class, and having a phone would give us the opportunity to get some extra work done. This would not only help us stay organized but also give us a sense of responsibility to manage our time effectively.\n\nThirdly, not allowing phones at all would be too restrictive. As students, we are all different and have different needs. Some students may need to use their phones to communicate with their families, while others may use it to take notes or access important information. By allowing phones during free times, we can find a balance between giving students the freedom to use their phones and ensuring that they are not distracting others.\n\nLastly, I believe that allowing phones during free times would actually improve our focus during class time. Without the stress of not being able to communicate with our families or access important information, we can focus more on our schoolwork and participate more actively in class.\n\nIn conclusion, I strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. It would allow students to stay connected with their families, do their homework, and improve their focus during class time.",
+   "words": 368,
+   "text_sha256": "f78cd793cd0ad09644cbe121bc94f2af34d777043d4b5b888d4ec10f03dda9e9",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 21.9,
+   "eval_count": 416,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:41:47.812Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 17
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.007:seed=17",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better option. I think this policy will benefit students in several ways.\n\nFirstly, having phones during free times can help students stay connected with their friends and family who may be at home or at another school. This can be especially important for students who may not be able to see their friends during lunch or after school. Additionally, being able to quickly communicate with parents or guardians can give students peace of mind, especially during emergency situations.\n\nSecondly, allowing phones during free times can be a great way to help students stay organized. They can use their phones to set reminders, keep track of assignments, and even use apps to help them study. This can be especially helpful for students who may have a lot on their plate and need to stay on top of things.\n\nLastly, I think that not allowing phones at all (Policy 2) would be too restrictive. Students need some freedom and autonomy, and not allowing phones would take away from that. It's not fair to expect students to go without the ability to communicate or stay connected just because it's not allowed.\n\nIn contrast, Policy 1 strikes a good balance between allowing students some freedom and keeping distractions to a minimum. By turning off phones during class time, students will still be able to learn and focus on their studies without any interruptions.\n\nIn conclusion, I believe that Policy 1 is the better option. It allows students some freedom and flexibility while still maintaining a level of discipline and focus during class time. I hope you will consider my opinion and implement Policy 1.\n\nSincerely,\n[Your Name]",
+   "words": 295,
+   "text_sha256": "1e1451b167eb0a6fec1bf4db61994cee97fcba180158e8649affa3b879970f63",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 20.2,
+   "eval_count": 346,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:06:37.479Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 81
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.008:seed=81",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time is the better option. This policy will have a positive impact on students' lives and will not disrupt the learning environment.\n\nFirstly, allowing students to bring phones to school will give us the ability to stay connected with our parents and guardians. This is especially important for students who rely on their phones to communicate with their parents about school events, appointments, or emergencies. With Policy 1, students will be able to quickly respond to their parents' texts or calls during their free time, which will alleviate some of the stress and anxiety that comes with being unable to communicate.\n\nSecondly, having phones during lunch periods and free times will allow students to stay organized and manage their time more effectively. We can use our phones to set reminders for upcoming tests, quizzes, or project deadlines, which will help us stay on top of our schoolwork. Additionally, phones can be used to take photos or videos of our assignments or notes, which can be helpful when reviewing material or preparing for a test.\n\nLastly, not allowing phones at all (Policy 2) will only create more problems. Students will need to find alternative ways to communicate with their parents, which may lead to misunderstandings or missed calls. Moreover, some students may feel left out or isolated if they don't have a phone to use during free time.\n\nIn conclusion, I believe that Policy 1 is the better option. By allowing students to bring phones to school and use them during their free time, we will be able to stay connected with our parents, stay organized, and manage our time more effectively. I hope you will consider this policy and take our thoughts into consideration when making your decision.\n\nSincerely,\n[Your Name]",
+   "words": 322,
+   "text_sha256": "1bcd2ac871fa76e63674eea0368b7f36024034ba8004342d7e4f46f1b75440eb",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 19.4,
+   "eval_count": 379,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:09:26.723Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 88
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.009:seed=88",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. This policy will have a positive impact on students' lives, enhance our learning experience, and improve our overall well-being.\n\nFirstly, allowing students to bring phones to school will provide a sense of freedom and responsibility. We will be able to stay connected with our friends and family during lunch and recess, which is an essential part of our daily lives. Many students rely on their phones to communicate with their parents and siblings, and not being able to use them during school hours can be frustrating and stressful. By allowing us to use our phones during free times, we will be able to manage our personal lives more effectively and feel more connected to the world outside of school.\n\nSecondly, having access to our phones during lunch and recess will encourage us to be more social and interactive. We will be able to take photos, share memes, and engage in conversations with our peers, which is crucial for our emotional and social development. Without phones, we might feel isolated and lonely, which can negatively impact our mental health and well-being.\n\nFurthermore, Policy 1 will also promote responsibility and time management skills. By having our phones during school hours, we will be more likely to use them wisely and efficiently, rather than using them excessively. We will learn to balance our phone use with our academic responsibilities, which is an essential life skill.\n\nIn contrast, Policy 2: Do not allow students to have phones at school at all, will restrict our freedom and creativity. We will be forced to rely on school computers and technology, which may not always be available or functional. Moreover, not being able to use our phones during school hours will lead to a sense of isolation and disconnection from our peers and the world outside of school.\n\nIn conclusion, I firmly believe that Policy 1 is the better option. It will provide us with a sense of freedom and responsibility, encourage social interaction and creativity, and promote time management skills. I urge you to consider the positive impact that this policy will have on our lives and well-being.\n\nSincerely,\n[Your Name]",
+   "words": 394,
+   "text_sha256": "f7d805373ae6d7e241eb1cbcf04e75118b14a67fc7a543ea1d7e1502396dcf5a",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 25.7,
+   "eval_count": 457,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:41:07.747Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 172
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.010:seed=172",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option.\n\nOne of the main reasons I think this policy is better is that it would allow students to stay connected with their families and friends. Many students rely on their phones to communicate with their parents and siblings, and not being able to bring their phones to school could cause unnecessary stress and worry. Additionally, having phones during free times would give students the opportunity to quickly contact their parents or friends in case of an emergency or to get a ride from school.\n\nAnother reason I think this policy is better is that it would allow students to use their phones to help them with their schoolwork. Many students use their phones to take notes, access online resources, and complete assignments. Not being able to use their phones during class time could put students at a disadvantage, especially for students who struggle with writing or typing notes by hand. Having phones during free times would also give students the opportunity to quickly research or fact-check information during class.\n\nI also think that having phones during free times would help to reduce boredom and distractions during these times. Many students get restless and start to get into trouble when they are not allowed to use their phones. By allowing students to bring their phones to school and use them during free times, we could reduce the likelihood of students getting into trouble and increase the chances of them being more focused and productive during these times.\n\nIn contrast, I don't think Policy 2: Do not allow students to have phones at school at all, is a good option. Not allowing students to have phones at school would likely lead to more distractions and disruptions in the classroom, as students would be forced to rely on their classmates or teachers to access information or communicate with their families. This could lead to a loss of productivity and a decrease in student morale.\n\nIn conclusion, I believe that Policy 1 is the better option because it would allow students to stay connected with their families and friends, use their phones to help with their schoolwork, and reduce boredom and distractions during free times. I think this policy would have a positive impact on students' overall school experience and would help to increase their productivity and engagement in class.\n\nSincerely,\n[Your Name]",
+   "words": 427,
+   "text_sha256": "e24bb5908b8a0dc59f7eace158a1caa0a231e78a1b292a0882246fee4a3a2b99",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 24,
+   "eval_count": 475,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:41:54.094Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 174
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.011:seed=174",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better policy. There are several reasons why I think this is the case.\n\nFirstly, having phones during free time allows us to stay connected with our friends and family. Many students use their phones to text or call their parents to let them know about school events or changes in their schedule. Without phones, students would have to rely on payphones or finding a parent's phone, which can be inconvenient and even embarrassing. Additionally, many students use their phones to communicate with friends who may be absent from school. A phone policy that allows for communication during free time can help alleviate some of the stress and worry that can come with feeling disconnected.\n\nSecondly, having phones during free time can actually help with productivity. Many students use their phones to listen to music or podcasts while they work on assignments or study. This can help them stay focused and motivated, which can lead to better academic performance. Additionally, having a phone during free time can give students a chance to take a short break and recharge, which can be especially important during long school days.\n\nLastly, not allowing students to have phones at all can lead to some negative consequences. Without phones, students may resort to other forms of communication that can be harmful or distracting, such as gossiping or playing pranks. Additionally, some students may feel left out or isolated without a phone to connect with others. This can lead to social and emotional issues that can affect their overall well-being.\n\nIn conclusion, I believe that Policy 1 is the better option. It allows for reasonable use of phones during free time, which can help students stay connected, productive, and happy. It also provides a clear and fair boundary between personal and academic time. I urge you to consider this policy and its benefits for our students.\n\nSincerely,\n[Your Name]",
+   "words": 338,
+   "text_sha256": "797047cd21d93256bc295dab58047b81fb0b41211d2a604f19d4eb177ab5c735",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 19.5,
+   "eval_count": 391,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:46:13.185Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 28
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.012:seed=28",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1 is the better option. Allowing students to bring phones to school and use them during lunch periods and other free times, as long as they are turned off during class time, is a more reasonable and fair policy.\n\nOne of the main reasons I think this policy is better is that it will allow students to stay connected with their families and friends during lunch and recess. Many students rely on their phones to stay in touch with their parents and siblings, and not allowing them to have their phones at all could be difficult and stressful for some students. Additionally, having phones during free times will allow students to use their phones to take pictures of school events and activities, which will help them stay connected with their peers and school community.\n\nAnother reason I think Policy 1 is better is that it will give students more flexibility and autonomy. By allowing students to bring their phones to school, they will have more freedom to make their own decisions and choices, which is important for developing problem-solving skills and critical thinking. Additionally, having phones will allow students to use their phones to help them with their schoolwork, such as researching topics or looking up definitions, which will help them stay on top of their assignments and grades.\n\nOn the other hand, Policy 2, which bans phones from school altogether, seems overly restrictive and could have negative consequences. Without phones, students may feel disconnected from their peers and family members, which could lead to feelings of isolation and loneliness. Additionally, banning phones could be seen as a form of punishment, which could lead to negative attitudes towards school and learning.\n\nIn conclusion, I believe that Policy 1 is the better option. It will allow students to stay connected with their families and friends, give them more flexibility and autonomy, and provide a more reasonable and fair approach to the use of phones in school. I hope you will consider my thoughts and choose Policy 1 as the new school policy.\n\nSincerely,\n[Your Name]",
+   "words": 347,
+   "text_sha256": "01dbb95975679e8b547e748a330b152398feefef0cf79b12ac98297ede0b5138",
+   "assignment_echo": {
+    "longest": 106,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, as long as the"
+   },
+   "seconds": 23,
+   "eval_count": 399,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:18:00.508Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 111
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.013:seed=111",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. In my opinion, this policy would have many positive effects on our school community.\n\nFirstly, allowing students to bring phones to school would promote responsibility and time management skills. Students would need to learn to balance their phone use with their other responsibilities, such as completing homework and participating in class discussions. This would help them develop essential skills for success in all areas of their lives.\n\nSecondly, having phones during free times would encourage social interaction and community building. Students could use their phones to take photos with friends, share funny moments, and create lasting memories. This would help foster a sense of belonging and togetherness among students, which is crucial for their emotional well-being and academic performance.\n\nThirdly, allowing phones during lunch periods would provide students with a much-needed break from academic pressure. With the constant demands of homework, tests, and projects, students can feel overwhelmed and stressed. Allowing phones during lunch would give them a chance to relax, recharge, and come back to their studies feeling refreshed and focused.\n\nLastly, having phones turned off during class time would minimize distractions and disruptions in the classroom. While some students might try to sneak peeks at their phones during class, most students would respect the rules and stay focused on their learning.\n\nIn contrast, Policy 2: Do not allow students to have phones at school at all, would likely lead to students feeling disconnected and isolated. Without phones, students would need to rely on other students to get important information, such as assignment due dates or extracurricular schedules, which could lead to confusion and miscommunication. Moreover, some students might feel left out or left behind if they don't have access to phones to communicate with their friends or classmates.\n\nIn conclusion, I firmly believe that Policy 1 is the better option for our school. It would promote responsibility, social interaction, relaxation, and minimize distractions, all while respecting the importance of academic performance. I hope you will consider my arguments and choose the policy that I believe would benefit our school community.\n\nSincerely,\n[Your Name]",
+   "words": 384,
+   "text_sha256": "c9eb5b0d9babf3c691379570e9da68088cfb6b25c9c962b1ae302b13fae2c456",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 23.8,
+   "eval_count": 458,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:27:30.771Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 137
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.014:seed=137",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. There are several reasons why I think this is the case.\n\nFirstly, having phones at school will allow students to stay connected with their families and friends. For many students, phones are a vital means of communication, especially for those who may not have access to computers or tablets. By allowing students to bring their phones to school, you will be giving them the opportunity to stay in touch with loved ones during the school day. This will not only help students feel more connected, but it will also help parents and caregivers feel more at ease knowing that their children are able to communicate with them.\n\nSecondly, having phones at school can actually help students stay more focused during class time. Many students use their phones to set reminders, alarms, and notifications, which can help them stay on track and remember important assignments and deadlines. Additionally, some students may use their phones to take photos or record videos of notes or diagrams, which can be a helpful way to study and review material. By allowing students to bring their phones to school, you will be giving them the tools they need to stay organized and focused.\n\nFinally, having phones at school can also help students develop important skills, such as responsibility and self-regulation. By giving students the freedom to use their phones during free times, you will be teaching them how to use technology responsibly and how to prioritize their time and attention. This will help students develop important life skills that will serve them well both in and out of the classroom.\n\nOn the other hand, Policy 2: Do not allow students to have phones at school at all, may seem like a simpler solution, but it would not be a fair or realistic one. In today's world, phones are an integral part of many students' lives, and taking them away would be like taking away a vital tool. Additionally, there are many risks associated with not allowing students to have phones at school, such as students being unable to communicate with parents or caregivers in case of an emergency.\n\nIn conclusion, I believe that Policy 1 is the better option. It allows students to stay connected with loved ones, stay focused during class time, and develop important skills. I hope that you will consider my opinion and implement this policy.\n\nSincerely,\n[Your Name]",
+   "words": 434,
+   "text_sha256": "5808cde32b7a4d07cf2c9a080eb38364bb8ebfcca2d333d0b2405b574cdd7473",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 25.3,
+   "eval_count": 499,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:44:14.486Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 181
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.015:seed=181",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. This policy would allow students to have a sense of freedom and independence, while still maintaining a level of discipline and respect for the learning environment.\n\nFirst and foremost, allowing students to have phones during free times would greatly improve our ability to stay in touch with friends and family. For example, if someone has a family emergency or needs to communicate with a parent about an important matter, they would be able to do so. Additionally, many students rely on their phones to coordinate group projects and assignments, and being able to use them during lunch or recess would make this process much easier.\n\nAnother benefit of Policy 1 is that it would encourage students to be more responsible and respectful of their peers' privacy. If we are allowed to use our phones during free times, we would be more likely to ask permission before taking a photo or video of someone, and would be less likely to disrupt the learning environment with unnecessary distractions.\n\nOn the other hand, Policy 2: Do not allow students to have phones at school at all, would be overly restrictive and take away a valuable tool that we use every day. Many students use their phones to take notes, access important information, and complete assignments. Banning phones altogether would not only be inconvenient, but would also hinder our ability to learn and succeed in class.\n\nFurthermore, Policy 1 would allow the school to maintain a level of control and supervision over phone use. By only allowing phones to be used during free times, the school could ensure that students are not using their phones to cheat or distract others during class time. This would maintain the balance between giving students freedom and keeping the learning environment safe and respectful.\n\nIn conclusion, I firmly believe that Policy 1 is the better option. It would give students a sense of freedom and independence, while still maintaining a level of discipline and respect for the learning environment. By allowing students to use their phones during free times, the school would be promoting responsibility, respect, and productivity.\n\nSincerely,\n[Your Name]",
+   "words": 388,
+   "text_sha256": "e26b212b081a29b6c746ced3c8d2489297fa5d4b09f8a0736774b9adeef0a29f",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 23,
+   "eval_count": 446,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:21:51.174Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 122
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.016:seed=122",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1 is the better option. By allowing students to bring phones to school and use them during lunch periods and other free times, I think it would have a positive impact on our school and students.\n\nFirstly, not being able to use phones during class time would actually help us focus better. Without the distraction of social media, texting, and gaming, we would be able to pay attention to the teacher and participate more fully in class discussions. This would result in better grades and a stronger understanding of the material.\n\nSecondly, having phones during lunch and free times would allow us to communicate with our friends and family more easily. This would be especially helpful for students who have siblings or parents who work non-traditional hours and can't always be reached by phone at home. It would also give us a chance to share photos and updates with our friends, which would be a great way to build connections and strengthen friendships.\n\nLastly, allowing phones during lunch and free times would give us more autonomy and independence. As middle schoolers, we're learning to take responsibility for ourselves and make good choices. By giving us the freedom to use our phones, you would be showing that you trust us to use this privilege responsibly.\n\nOn the other hand, Policy 2 would likely cause more problems than it would solve. Not allowing phones at school at all would mean that we wouldn't have a way to communicate with our parents or teachers if we need to, which could be a safety concern. It would also mean that we wouldn't be able to access important information or resources that our phones provide, such as maps, calculators, or dictionaries.\n\nIn conclusion, I think Policy 1 is the better choice. By allowing us to use our phones during lunch and free times, you would be giving us the freedom to make good choices and take responsibility for our actions. It would also have a positive impact on our education and well-being.\n\nSincerely,\n[Your Name]",
+   "words": 346,
+   "text_sha256": "31b9fd6005ec29c3114b36f3a00f825137645c4f5450c3ff132fb601837227ec",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 20.6,
+   "eval_count": 402,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:25:35.272Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 132
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.017:seed=132",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the two cell phone policies that you are considering. After thinking about the pros and cons of each policy, I believe that Policy 1 is the better option.\n\nAllowing students to bring their phones to school and use them during lunch periods and other free times would be a great benefit to many students. For one, it would allow us to stay connected with our families and friends. If we have a family emergency or need to reach a parent, we would be able to do so easily. Additionally, we could use our phones to communicate with our friends about after-school plans or homework help. This would not only make our lives easier but also promote responsibility and time management skills.\n\nAnother advantage of Policy 1 is that it would allow us to take notes and organize our assignments more efficiently. With the help of notes apps and digital planners, we could keep track of our homework and due dates much better than we could with paper and pencil. This would reduce the amount of time we spend on homework and studying, giving us more time for other activities.\n\nI also think that Policy 1 would promote creativity and learning. With access to the internet and educational apps, we could work on projects and assignments that are more engaging and challenging. We could also use our phones to research topics and gather information for our projects.\n\nOn the other hand, I don't think that Policy 2 would be a good idea. Not allowing students to have phones at school would not only be inconvenient but also limiting. We would not be able to communicate with our families or friends in case of an emergency, and we would not have access to educational apps or resources that could help us with our schoolwork.\n\nIn conclusion, I believe that Policy 1 is the better option. It would allow us to stay connected, take notes and organize our assignments more efficiently, and promote creativity and learning. I think that this policy would be a great benefit to many students and would help us to be more successful in school.\n\nSincerely,\n[Your Name]",
+   "words": 365,
+   "text_sha256": "a0a4a5249f6a514a4146f9e9fb255e1339665d7db6f983b9b51631630a7d94ca",
+   "assignment_echo": {
+    "longest": 72,
+    "snippet": " phones to school and use them during lunch periods and other free times"
+   },
+   "seconds": 21.4,
+   "eval_count": 415,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:20:05.055Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 117
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.018:seed=117",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the two cell phone policies that you are considering. After thinking about it, I believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better policy.\n\nFirstly, allowing students to bring phones to school will give them the freedom to communicate with their parents or guardians if an emergency arises. For example, if a student is unable to attend school because of a family emergency, they can quickly communicate with their parents to get an update on the situation. Without a phone, this would not be possible, and the student would have to rely on a school secretary or another teacher to pass along the message, which could take a long time.\n\nSecondly, allowing students to use their phones during lunch and free periods will give them the opportunity to work on school projects or complete homework during this time. Many students like to use their phones to take notes or look up information online during these times, and allowing them to do so will help them stay on top of their schoolwork.\n\nLastly, Policy 1 will not disrupt the learning environment. Students will only be allowed to use their phones during specific times, and this will ensure that they are not distracted during class time. In fact, some students may even find that using their phones during free periods helps them to focus better during class time.\n\nOn the other hand, Policy 2: Do not allow students to have phones at school at all, may not be the best option. Without phones, students will have to rely on their classmates or teachers to communicate with them if they need to get in touch with someone. This could lead to misunderstandings and miscommunications, which could cause problems.\n\nIn conclusion, I believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better policy. It will give students the freedom to communicate with their parents or guardians, allow them to work on school projects during free periods, and not disrupt the learning environment.\n\nSincerely,\n[Your Name]",
+   "words": 388,
+   "text_sha256": "5894eadc27991919e71f76521f4f692ff33cab026ea6768138afcd6384f54749",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 23,
+   "eval_count": 448,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:31:20.680Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 147
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.019:seed=147",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better policy. In my opinion, allowing us to have phones during our free time will improve our overall experience at school.\n\nFirstly, having phones during lunch allows us to stay connected with our friends and classmates. Many of us use our phones to send texts, make calls, and even play games together. Not being able to use our phones during lunch would be frustrating and might lead to feelings of loneliness. Moreover, it's a great way for us to take a break from our busy school day and socialize with our peers.\n\nSecondly, allowing us to have phones during free times also gives us the opportunity to learn new skills. Many educational apps and games are available that can help us develop important skills such as problem-solving, time management, and teamwork. These skills are essential for our future success, and having access to phones during school hours can help us develop them in a fun and engaging way.\n\nOn the other hand, Policy 2, banning phones from school altogether, would be too restrictive. Some students might be afraid to bring their phones to school because they might get lost, stolen, or damaged. Additionally, not being able to use our phones at all would make it difficult for us to stay connected with our parents and guardians during school hours.\n\nIn conclusion, I believe that Policy 1 is the better option. It allows us to have some freedom during our free times, learn new skills, and stay connected with our friends and family. I hope you will consider my perspective and implement this policy.\n\nSincerely,\n[Your Name]",
+   "words": 291,
+   "text_sha256": "53255b3a5a3d9f58635237cb077cd5835e6c0b6aabd39c6fa887a33bc46bf4e9",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 17.4,
+   "eval_count": 342,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:08:37.746Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 86
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.020:seed=86",
+   "text": "Dear Principal,\n\nI believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. This policy would allow students to have their phones available for use during their free time, which I believe is essential for our generation.\n\nFirstly, allowing students to have phones during free time would enable them to stay connected with their friends and family. In today's digital age, phones have become an integral part of our daily lives. Without them, we would be disconnected from our loved ones and struggle to keep up with the pace of modern life. Allowing students to have phones during free time would give us the freedom to quickly check in with our families and friends, which is crucial for our mental health and well-being.\n\nSecondly, having phones during free time would allow students to stay organized and keep track of their schedules. With the ability to access our school's website and our assignments, we would be able to plan our time more effectively and stay on top of our work. This would also enable us to quickly look up important dates and deadlines, ensuring that we never miss an important event or test.\n\nFinally, allowing students to have phones during free time would not disrupt the learning environment in the classroom. As long as phones are turned off during class time, they would not be a distraction to our teachers or fellow students. In fact, having our phones available during free time would give us the opportunity to quickly look up information or take a photo to illustrate a point, which would actually enhance our learning experience.\n\nOn the other hand, Policy 2: Do not allow students to have phones at school at all, would be a drastic step that would severely limit our freedom and ability to stay connected. Not allowing students to have phones at all would force us to rely on outdated methods of communication, such as notes and messages, which would be time-consuming and inefficient.\n\nIn conclusion, I strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. This policy would give students the freedom to stay connected, stay organized, and enhance their learning experience, all while not disrupting the learning environment in the classroom. I hope you will consider this policy and give students the opportunity to have their phones available during free time.\n\nSincerely,\n[Your Name]",
+   "words": 443,
+   "text_sha256": "af5627ee0a48850ea3a578919cbbff5ba7f84260aa235e345038a2d086b4d5b4",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 26.1,
+   "eval_count": 504,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:19:00.739Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 114
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.021:seed=114",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. This policy would provide numerous benefits for students while still maintaining a structured learning environment.\n\nFirstly, allowing students to have phones during free times would enable us to stay connected with our friends and family. Many students rely on their phones to communicate with their parents or guardians during the school day. This policy would give us the freedom to make a quick call or send a text to our loved ones if we need to. Additionally, having phones during lunch would allow us to stay in touch with our friends who may not be sitting at the same table, making it easier to catch up and socialize.\n\nAnother reason I support Policy 1 is that it would allow us to access important information and resources more easily. Many teachers assign homework or share important updates through Remind or other messaging apps. Having our phones during free times would enable us to quickly check our messages and complete assignments. This would not only improve our grades but also help us stay organized and prepared for class.\n\nFurthermore, I believe that Policy 1 would encourage digital citizenship and responsibility. Since we would only be allowed to use our phones during free times and have to turn them off during class, we would be forced to prioritize our studies and not get distracted during lessons. This would help us develop better time management skills and learn to use technology in a responsible manner.\n\nOn the other hand, I don't think Policy 2: Do not allow students to have phones at school at all, would be a good idea. Without phones, students would have to rely on alternative methods to communicate, such as walking to the office or waiting until after school to contact someone. This could lead to inconvenience and stress, especially for students who rely heavily on their phones. Additionally, not allowing students to have phones at school would limit our ability to access important information and resources, making it more difficult to stay connected with our teachers and classmates.\n\nIn conclusion, I believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. This policy would provide benefits for students, encourage digital citizenship and responsibility, and maintain a structured learning environment.\n\nSincerely,\n[Your Name]",
+   "words": 434,
+   "text_sha256": "c66552be2d6b70a7c45874328b287e67ef2b68597e52a34af61149ffc9bbcc07",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 26.9,
+   "eval_count": 495,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:52:30.421Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 45
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.022:seed=45",
+   "text": "Dear Principal,\n\nI think Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better policy. There are several reasons why I believe this.\n\nFirst, allowing students to have phones during lunch and free times gives us the ability to stay connected with our friends and family. Many of us use our phones to text or call our parents to let them know we're having a good time or to ask for permission to do something. Without phones, we would have to rely on our parents or teachers to communicate with us, which can be inconvenient and even embarrassing at times.\n\nSecond, phones can be a great tool for learning. There are many educational apps and games that can help us learn new things and make learning fun. For example, we can use apps to practice math problems or learn about different cultures. With phones, we can access these resources anywhere, not just in the classroom.\n\nThird, having phones during lunch and free times can actually help us stay focused during class time. When we're not allowed to have phones, we might get bored or restless, which can lead to misbehavior. But if we know we can use our phones during breaks, we'll be more motivated to stay on task during class.\n\nFinally, Policy 1 is not as harmful as Policy 2. With phones turned off during class, we won't be distracted or disrupt the learning environment. And if we're having trouble with phones, there are rules in place to handle the situation, such as no phone use during assemblies or special events.\n\nIn conclusion, I believe Policy 1 is the better policy. It allows us to stay connected, use phones for learning, stay focused, and have some freedom. I think it would be a great way to balance the responsibilities of having a phone with the benefits it brings.\n\nSincerely,\n[Your Name]",
+   "words": 331,
+   "text_sha256": "666171e038edda29095f4b9cf9bbbda7f00626d872bfdf8daebcc101d26eef68",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 20.7,
+   "eval_count": 391,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:11:36.614Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 94
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.023:seed=94",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better option. While it may seem like allowing phones in school could be a distraction, I truly believe that it can actually be beneficial for students like me.\n\nFirstly, having phones during lunch and free time can actually help us stay connected with our friends and family. For many of us, our phones are the primary way we communicate with our loved ones, and being able to check in with them during lunch can be a huge relief. It can also help us stay organized and keep track of important events and deadlines.\n\nAdditionally, having phones during lunch and free time can actually encourage students to be more responsible and respectful of each other's boundaries. For instance, if we're allowed to take a quick call or text during lunch, we're less likely to try to sneakily take out our phones during class time, which can be distracting for both ourselves and our classmates.\n\nOn the other hand, I don't think Policy 2, not allowing students to have phones at school at all, would be a good option. While it may seem like a way to eliminate distractions, it could actually be more harmful in the long run. For example, what if someone needs to contact a parent in an emergency? Without a phone, it could take a long time to get in touch with them, which could be stressful and even dangerous.\n\nIn conclusion, I think Policy 1 is the better option because it allows students to have a sense of freedom and responsibility during lunch and free time, while still respecting the importance of staying focused during class time. It's a compromise that can benefit everyone involved.\n\nSincerely,\n[Your Name]",
+   "words": 305,
+   "text_sha256": "59f387bfd4cf55847bf30c1c87ca67b4942c137dbb490d6f6b97b643a5ddb7fb",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 17.6,
+   "eval_count": 356,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.024",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:27:55.740Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 138
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.024:seed=138",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. This policy would provide students with the freedom to use their phones responsibly, while also maintaining a distraction-free learning environment during class time.\n\nOne of the main reasons I support Policy 1 is that it would allow students to stay connected with their parents and guardians during the school day. This would provide an added layer of safety and security, as parents could reach their children in case of an emergency or if they are not picking their child up from school on time. Additionally, many students rely on their phones to communicate with their families and stay updated on important events and schedules.\n\nAnother reason I support Policy 1 is that it would allow students to use their phones in a way that is beneficial to their learning. For example, students could use their phones to access educational apps, watch educational videos, or work on group projects during free time. This would provide students with the opportunity to engage with their peers and access educational resources outside of the classroom.\n\nI understand that some people may be concerned about the potential distractions that phones could cause during class time. However, I believe that this can be mitigated by establishing clear rules and expectations for phone use during class. For example, students could be allowed to keep their phones on silent mode and only use them during designated times, such as during lunch or between classes.\n\nIn contrast, Policy 2: Do not allow students to have phones at school at all, seems overly restrictive and would likely cause more harm than good. Without phones, students would have to rely on their classmates or teachers to communicate with their parents or guardians, which could lead to delays and misunderstandings. Additionally, many students rely on their phones to stay organized and keep track of their assignments and schedules, which would be difficult without phones.\n\nIn conclusion, I believe that Policy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time, is the better option. It would provide students with the freedom to use their phones responsibly, while also maintaining a distraction-free learning environment during class time. I hope you will consider my opinion when making a decision on the school's cell phone policy.\n\nSincerely,\n[Your Name]",
+   "words": 430,
+   "text_sha256": "e9b301366dfe5bf8050f9f6802f07202d9ce2e324ab0a7a12265f19c4ded7b01",
+   "assignment_echo": {
+    "longest": 162,
+    "snippet": " policy 1: allow students to bring phones to school and use them during lunch periods and other free times, as long as t"
+   },
+   "seconds": 25,
+   "eval_count": 490,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.cell-phones-at-school.g8.025",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Cell phones at school",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "97258471e6edb5c208f040214e2f7efb62d5268ca5c038d07b1f00f8dbd1e565",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:49:01.844Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 194
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.cell-phones-at-school.g8.025:seed=194",
+   "text": "Dear Principal,\n\nI strongly believe that Policy 1, allowing students to bring phones to school and use them during lunch periods and other free times, is the better option. I think this policy would have a positive impact on our school community and would allow students to stay connected with friends and family while also respecting the classroom environment.\n\nFirstly, allowing students to have phones during lunch periods and free times would give us more opportunities to communicate with our friends and family. This is especially important for students like me who have parents who work late shifts or are away on business trips. With phones, we can quickly text or call them to check in and make sure everything is okay. This would reduce our stress levels and make us feel more secure.\n\nSecondly, allowing students to use phones during free times would encourage socializing and bonding among students. Lunch periods are often the only time we have to hang out with our friends and make plans for the weekend. With phones, we could quickly coordinate and make plans, which would strengthen our friendships and create a more positive school atmosphere.\n\nThirdly, Policy 1 would promote responsible phone use. By allowing us to use phones during free times, we would learn to prioritize our tasks and make smart choices about when to use our phones. This would help us develop good habits and avoid distractions during class time.\n\nOn the other hand, Policy 2, which bans phones altogether, would likely lead to negative consequences. For one, it would make it difficult for students to stay in touch with their loved ones, which could cause undue stress and anxiety. Additionally, it would hinder our ability to communicate with friends and classmates, making it harder to make plans and coordinate.\n\nIn conclusion, I firmly believe that Policy 1 is the better option. It would allow students to stay connected, promote socializing and bonding, and encourage responsible phone use. I urge you to consider these points and adopt Policy 1.\n\nSincerely,\n[Your Name]",
+   "words": 336,
+   "text_sha256": "0149648ec33997de4e3564e9360c3279a2a35707443d38182a46f9d107639b2a",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " students to bring phones to school and use them during lunch periods and other free times, "
+   },
+   "seconds": 19.6,
+   "eval_count": 394,
+   "done_reason": "stop"
+  }
+ ]
+}

@@ -46,9 +46,14 @@ test('a text that stops inside a clause is cut, however short', () => {
   }
 });
 
+// RAID's four models, whose caps these tests were written against; the arms written for this
+// repository have caps of their own (none known for Claude, Ollama's num_predict for Llama 3) and
+// are tested separately below
+const RAID_CAPS = ['chatgpt', 'gpt4', 'llama-chat', 'mistral-chat'];
+
 test('an unfinished ending is cut only at a length the model could have been stopped at', () => {
   const cut = 'The series does a good';
-  for (const [model, cap] of Object.entries(CAP_FROM)) {
+  for (const [model, cap] of Object.entries(CAP_FROM).filter(([m]) => RAID_CAPS.includes(m))) {
     assert.equal(isTruncated(long(cap, cut), model), true, `${model} at its cap`);
     // a shorter text that just ends without a stop is how people and models write casually
     assert.equal(isTruncated(`${filler(3)} Any advice would be appreciated`, model), false, `${model}, short`);
@@ -216,8 +221,28 @@ test('a bare list marker at the end is a cut, a sentence that ends in a number i
   }
 });
 
+test('the arms written here: a signed letter is finished, and only a real cap cuts', () => {
+  const letter = `${filler(40)}\n\nPlease make it required, and please make it fair.\n\nSincerely,\nJordan Whitfield, 8th grade`;
+  const unsigned = `${filler(40)}\n\nThank you for your time and consideration.\n\nSincerely,\n[Your Name]`;
+  // no cap is known for Claude through Claude Code, so length alone never makes a text cut
+  assert.equal(CAP_FROM.claude, Infinity);
+  assert.equal(isTruncated(letter, 'claude'), false);
+  // with no cap, what still marks a cut is a clause left open; an ending that merely lacks a stop does not
+  assert.equal(isTruncated(`${filler(40)} And so, in the end, the principal agreed,`, 'claude'), true, 'a clause left open is still a cut');
+  assert.equal(isTruncated(`${filler(40)} And so the principal agreed`, 'claude'), false);
+  // Llama 3 was run with num_predict 1200, which this scale puts at about 1,300
+  assert.equal(isTruncated(letter, 'llama3'), false);
+  assert.equal(isTruncated(long(CAP_FROM.llama3! + 20, 'The series does a good'), 'llama3'), true);
+  // a letter's name slot is where the name goes, not a template left unfilled
+  assert.equal(metaKind(unsigned), null);
+  assert.equal(metaKind(`${filler(3)} My favourite game is [insert game here] and I play it daily.`), 'placeholder');
+  // the exception reads only the end: a slot in the body of a signed letter is still a slot
+  assert.equal(metaKind(`${filler(3)} We went to [your city] last year.\n\nSincerely,\n[Your Name]`), 'placeholder');
+});
+
 test('a long text that ends inside a quotation or a bracket it opened is a cut, even after a full stop', () => {
-  for (const m of Object.keys(CAP_FROM)) {
+  // 700 is past every RAID cap, and short of the caps of the arms written here
+  for (const m of RAID_CAPS) {
     assert.equal(isTruncated(long(700, 'It feels like I am saying, "I am not good enough for love.'), m), true, m);
     assert.equal(isTruncated(long(700, 'She called it “the best day ever.'), m), true, m);
     assert.equal(isTruncated(long(700, 'We looked at it again (see the part about the doors.'), m), true, m);

@@ -1,12 +1,13 @@
 name: collect
 # Rebuilds the corpora from their public sources and re-measures every marker. The corpus text is
 # never committed: out/ and cache/ stay on the runner, and what lands in the repository is data/ (ids
-# and numbers, plus sentences from the MIT-licensed RAID model arms) and the site in docs/.
+# and numbers, plus sentences from the MIT-licensed RAID model arms and from the essays written for
+# this project) and the site in docs/.
 on:
   workflow_dispatch:
   schedule:
     - cron: '37 6 * * 1'   # Mondays, off the top of the hour: the measurement
-    - cron: '37 6 * * 4'   # Thursdays: only touches the cached RAID rows, so they are not evicted
+    - cron: '37 6 * * 4'   # Thursdays: only touches the cached corpora, so they are not evicted
 
 permissions:
   contents: write
@@ -19,7 +20,8 @@ jobs:
   measure:
     if: github.event.schedule != '37 6 * * 4'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # the essays add about a minute, and the 85 MB PERSUADE download on a week the cache is missing
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -49,11 +51,34 @@ jobs:
         with:
           path: cache/raid
           key: ${{ steps.raid-rows.outputs.cache-primary-key }}
-      # both kinds of writing are named, so a posts corpus that failed to arrive fails the job instead of
-      # being skipped
-      - run: npx tsx scripts/contamination.ts --genres abstracts,posts
-      - run: npx tsx scripts/measure-all.ts --genres abstracts,posts
-      - run: npx tsx scripts/evidence.ts --genres abstracts,posts
+      # School essays: the students' side is PERSUADE 2.0, read from a mirror of three CSVs (85 MB,
+      # https://huggingface.co/datasets/nlpatunt/D_persuade_2) into cache/persuade/. The files are pinned
+      # by size and SHA-256 in scripts/collect-essays.ts, which refuses any other bytes, cached or not, so
+      # the cache is keyed on that script: a new pin downloads again. The cache holds the students'
+      # essays in full: it is never printed and never reaches the repository.
+      - name: Restore the PERSUADE mirror
+        id: persuade
+        uses: actions/cache/restore@v6
+        with:
+          path: cache/persuade
+          key: persuade-${{ hashFiles('scripts/collect-essays.ts') }}
+      # --check first: it fails the job when the committed frame no longer describes the corpus. The plain
+      # run after it rewrites the frame from whatever it read, so after it the check could never fail.
+      - run: npx tsx scripts/collect-essays.ts --check
+      - name: Save the PERSUADE mirror
+        if: steps.persuade.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: cache/persuade
+          key: ${{ steps.persuade.outputs.cache-primary-key }}
+      # the students' arm goes to out/, which is not committed. The machine arms are not generated here:
+      # contamination.ts writes them out of their committed records in data/generated/.
+      - run: npx tsx scripts/collect-essays.ts
+      # every kind of writing is named, so a corpus that failed to arrive fails the job instead of being
+      # skipped; measure-all rewrites data/summary.json from the kinds it ran, so all of them run here
+      - run: npx tsx scripts/contamination.ts --genres abstracts,posts,essays
+      - run: npx tsx scripts/measure-all.ts --genres abstracts,posts,essays
+      - run: npx tsx scripts/evidence.ts --genres abstracts,posts,essays
       - run: npx tsx scripts/claude-matched.ts
       - run: npm test
       # --release refuses abstracts measured without a complete arXiv dating (data/abstracts-dates.json)
@@ -70,7 +95,7 @@ jobs:
 
   # GitHub evicts a cache entry nobody has used for seven days, and the Monday job only uses it once a
   # week, so a Monday that starts a little later than the one before could find it gone and read the
-  # windows again. Restoring it midweek keeps it; this contacts nobody but GitHub.
+  # windows or the mirror again. Restoring them midweek keeps them; this contacts nobody but GitHub.
   keep-cache:
     if: github.event.schedule == '37 6 * * 4'
     runs-on: ubuntu-latest
@@ -84,3 +109,8 @@ jobs:
         with:
           path: cache/raid
           key: raid-rows-${{ hashFiles('collector/raid-windows.json', 'collector/raid-csv.ts', 'collector/fetch-raid.ts') }}
+      - name: Touch the PERSUADE mirror
+        uses: actions/cache/restore@v6
+        with:
+          path: cache/persuade
+          key: persuade-${{ hashFiles('scripts/collect-essays.ts') }}

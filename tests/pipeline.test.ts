@@ -1,7 +1,7 @@
 /**
- * The per-genre pipeline end to end on synthetic corpora: measure-all's k-of-4 count, the evidence
- * script's quoting rules, the build's files and budgets, and the page's wording. No corpus text is
- * used; every text here is made up of numbered filler words.
+ * The per-genre pipeline end to end on synthetic corpora: measure-all's count across each kind's own
+ * writers, the evidence script's quoting rules, the build's files and budgets, and the page's wording.
+ * No corpus text is used; every text here is made up of numbered filler words.
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -12,12 +12,12 @@ import type { Arm, Text } from '../src/measure.js';
 import { MARKERS } from '../src/markers.js';
 import { genreById, MODELS, type Genre } from '../scripts/genres.js';
 import { armsFor } from '../scripts/arms.js';
-import { measureGenre, summaryCell, summarize, separates, evidenceOf, K_RULE, MIN_EVIDENCE } from '../scripts/measure-all.js';
+import { measureGenre, summaryCell, summarize, separates, evidenceOf, K_RULE, MIN_EVIDENCE, type SummaryCell } from '../scripts/measure-all.js';
 import { evidenceFor, documentsFor, exampleFor, makeGuard, makeTextGuard, titlesFor, SENSITIVE } from '../scripts/evidence.js';
-import { findGenres, summaryFor, pageFor, overBudget, datingOf, releaseProblems, BUDGET, type CleaningFile } from '../scripts/build.js';
+import { findGenres, summaryFor, pageFor, pageCell, overBudget, datingOf, releaseProblems, BUDGET, type CleaningFile } from '../scripts/build.js';
 import { sharedDocuments } from '../scripts/claude-matched.js';
 import { fiveGrams, containment } from '../scripts/contamination.js';
-import { verdictWords, gridCellHtml, kHtml, genreFromHash, cleaningNote, datingWords, datesLinked, peopleWords, whyOf, esc, type SummaryGenre } from '../src/ui/main.js';
+import { verdictWords, gridCellHtml, kHtml, writerNames, countedWords, legendHtml, writtenHereNote, gridCaption, notCoveredText, sharesOneSet, genreFromHash, cleaningNote, datingWords, datesLinked, peopleWords, whyOf, esc, type SummaryGenre } from '../src/ui/main.js';
 
 const filler = (word: string, n: number, seed: number): string => Array.from({ length: n }, (_, j) => `${word}${(j + seed) % 7}`).join(' ');
 const DOCS = 60;
@@ -48,37 +48,88 @@ function corpus(g: Genre, docs = DOCS): Arm[] {
 
 const posts = genreById.get('posts')!;
 const abstracts = genreById.get('abstracts')!;
+const essays = genreById.get('essays')!;
 const measuredPosts = measureGenre(posts, corpus(posts))!;
 
-test('k of 4: each model decided on its own, in each direction', () => {
-  const delve = summaryCell(posts, measuredPosts.report, measuredPosts.perModel, 'delve');
+/**
+ * A kind of writing with two counted writers instead of four, whose writers answer an assignment
+ * rather than rewrite a document, so it is paired by assignment and its placebo is calibrated. The
+ * person writes "moreover" everywhere, the decider "delve", the second counted writer "moreover" like
+ * the person, and the descriptive arm neither: "delve" then separates the decider alone (the other
+ * writer has nothing to compare) and "moreover" separates the decider toward the person, of the two
+ * writers this kind has, never of four.
+ */
+function assignmentCorpus(g: Genre, docs = DOCS): Arm[] {
+  const arms: Arm[] = g.writers.map((wr): Arm => {
+    const make = wr.writer === 'human'
+      ? (i: number) => `${filler('word', 150, i)}. Moreover it holds.`
+      : wr.id === g.decider
+        ? (i: number) => `${filler('tok', 150, i)}. We delve into it.`
+        : wr.tested
+          ? (i: number) => `${filler('tok', 150, i)}. Moreover it holds too.`
+          : (i: number) => `${filler('tok', 150, i)}. It holds.`;
+    // every text names the assignment it was written to, which is what this kind pairs on
+    return {
+      id: wr.id, label: wr.label, kind: wr.writer === 'human' ? 'human' : 'machine',
+      texts: Array.from({ length: docs }, (_, i) => ({ id: `${wr.id}:e${i}`, text: make(i), source: wr.id, group: `a${i % 3}` })),
+    };
+  });
+  // the comparison column is another kind of writing and names no assignment: length-matched, as ever
+  arms.push({ id: 'casual-human', label: 'casual', kind: 'human', texts: Array.from({ length: 80 }, (_, i) => ({ id: String(2000 + i), text: `${filler('cas', 150, i)}.`, source: 'c' })) });
+  return arms;
+}
+const measuredEssays = measureGenre(essays, assignmentCorpus(essays))!;
+
+test('the count runs over each kind\'s own writers, in each direction', () => {
+  const delve = summaryCell(posts, measuredPosts.report, measuredPosts.perWriter, 'delve');
   assert.equal(delve.verdict, 'machine marker');
   assert.deepEqual(delve.k, { ai: 2, person: 0, of: 2, tooFew: 2 }, 'nobody else uses it: Llama and Mistral have nothing to compare');
-  assert.deepEqual(Object.keys(delve.models).sort(), [...MODELS].sort());
+  assert.deepEqual(Object.keys(delve.writers).sort(), MODELS.map((m) => `posts-${m}`).sort(), 'keyed by arm, one per tested writer');
   assert.equal(delve.unit, 'per 1000 words');
   assert.equal(delve.person, 0);
   assert.ok(delve.decider! > 5, `GPT-4's rate: ${delve.decider}`);
-  const moreover = summaryCell(posts, measuredPosts.report, measuredPosts.perModel, 'moreover');
+  const moreover = summaryCell(posts, measuredPosts.report, measuredPosts.perWriter, 'moreover');
   assert.equal(moreover.verdict, 'points the other way');
   assert.deepEqual(moreover.k, { ai: 0, person: 3, of: 4, tooFew: 0 });
   // Llama and the person both use it, more than casual writers: register, which the count leaves out
-  assert.equal(moreover.models['llama-chat']!.verdict, 'register marker');
+  assert.equal(moreover.writers['posts-llama-chat']!.verdict, 'register marker');
 });
 
-test('k of 4: a model with too little to compare is not counted in "of", and says why', () => {
+test('a kind with two counted writers counts of 2, and its descriptive arm is not one of them', () => {
+  const counted = essays.writers.filter((w) => w.tested).map((w) => w.id);
+  assert.deepEqual(counted, ['essays-claude-student', 'essays-llama3-student'], 'two, and the plain arm is not among them');
+  const moreover = summaryCell(essays, measuredEssays.report, measuredEssays.perWriter, 'moreover');
+  assert.deepEqual(moreover.k, { ai: 0, person: 1, of: 2, tooFew: 0 }, 'of 2, never of 4');
+  assert.deepEqual(Object.keys(moreover.writers), counted);
+  assert.equal(moreover.writers['essays-llama3-student']!.verdict, 'register marker');
+  // the arm that is there to describe is measured for the table and stays out of the count
+  assert.ok(measuredEssays.report.arms.some((a) => a.id === 'essays-claude-plain'));
+  assert.equal(measuredEssays.perWriter['essays-claude-plain'], undefined);
+  // the decider is not a RAID model here, and its own verdict is still the published one
+  const delve = summaryCell(essays, measuredEssays.report, measuredEssays.perWriter, 'delve');
+  assert.equal(delve.verdict, 'machine marker');
+  assert.equal(delve.writers[essays.decider]!.verdict, delve.verdict);
+  assert.deepEqual(delve.k, { ai: 1, person: 0, of: 1, tooFew: 1 }, 'the other writer never uses it');
+  assert.ok(MODELS.every((m) => !Object.keys(delve.writers).includes(`essays-${m}`)));
+  // the pairing this kind asked for reached the report, and every counted writer got one
+  assert.equal(measuredEssays.report.arms.find((a) => a.id === essays.decider)!.pairing, 'prompt');
+  assert.deepEqual(Object.keys(measuredEssays.perWriter).sort(), [...counted].sort());
+});
+
+test('a writer with too little to compare is not counted in "of", and says why', () => {
   // no writer uses "tapestry": nothing to compare, for every model
-  const tapestry = summaryCell(posts, measuredPosts.report, measuredPosts.perModel, 'tapestry');
+  const tapestry = summaryCell(posts, measuredPosts.report, measuredPosts.perWriter, 'tapestry');
   assert.equal(tapestry.verdict, 'no signal');
   assert.deepEqual(tapestry.k, { ai: 0, person: 0, of: 0, tooFew: 4 });
-  assert.deepEqual(tapestry.models.gpt4, { verdict: 'no signal', q: tapestry.models.gpt4!.q, evidence: { occurrences: 0 }, tooFew: true });
+  assert.deepEqual(tapestry.writers['posts-gpt4'], { verdict: 'no signal', q: tapestry.writers['posts-gpt4']!.q, evidence: { occurrences: 0 }, tooFew: true });
   // GPT-4 separates "delve" on many uses
-  const delve = summaryCell(posts, measuredPosts.report, measuredPosts.perModel, 'delve');
-  assert.deepEqual(delve.models.gpt4!.evidence, { occurrences: DOCS });
-  assert.equal(delve.models.gpt4!.tooFew, false);
+  const delve = summaryCell(posts, measuredPosts.report, measuredPosts.perWriter, 'delve');
+  assert.deepEqual(delve.writers['posts-gpt4']!.evidence, { occurrences: DOCS });
+  assert.equal(delve.writers['posts-gpt4']!.tooFew, false);
   // a property every text on both sides has cannot tell anyone apart, however many pairs
-  const personal = summaryCell(posts, measuredPosts.report, measuredPosts.perModel, 'no_personal_detail');
-  assert.equal(personal.models.gpt4!.tooFew, true);
-  assert.deepEqual(personal.models.gpt4!.evidence, { pairs: personal.n, minority: 0 });
+  const personal = summaryCell(posts, measuredPosts.report, measuredPosts.perWriter, 'no_personal_detail');
+  assert.equal(personal.writers['posts-gpt4']!.tooFew, true);
+  assert.deepEqual(personal.writers['posts-gpt4']!.evidence, { pairs: personal.n, minority: 0 });
   // evidenceOf on its own: a separated marker is never too few, whatever it rests on
   const row = { ...measuredPosts.report.rows.find((r) => r.marker === 'tapestry')!, verdict: 'machine marker' as const };
   assert.equal(evidenceOf(row, 'posts-human', 'posts-gpt4').tooFew, false);
@@ -87,22 +138,28 @@ test('k of 4: a model with too little to compare is not counted in "of", and say
   assert.equal(evidenceOf({ ...few, rate: { ...few.rate, 'posts-gpt4': { ...few.rate['posts-gpt4']!, occurrences: 2 } } }, 'posts-human', 'posts-gpt4').tooFew, true);
 });
 
-test('GPT-4\'s place in the count is its verdict, for every marker', () => {
-  for (const m of MARKERS) {
-    const c = summaryCell(posts, measuredPosts.report, measuredPosts.perModel, m.id);
-    assert.equal(c.models.gpt4!.verdict, c.verdict, m.id);
-    assert.ok(c.k.ai + c.k.person <= c.k.of && c.k.of + c.k.tooFew <= 4, m.id);
+test('the decider\'s place in the count is its verdict, for every marker and kind', () => {
+  for (const [g, m] of [[posts, measuredPosts], [essays, measuredEssays]] as const) {
+    const counted = g.writers.filter((w) => w.tested).length;
+    for (const mk of MARKERS) {
+      const c = summaryCell(g, m.report, m.perWriter, mk.id);
+      assert.equal(c.writers[g.decider]!.verdict, c.verdict, `${g.id} ${mk.id}`);
+      assert.ok(c.k.ai + c.k.person <= c.k.of && c.k.of + c.k.tooFew <= counted, `${g.id} ${mk.id}`);
+    }
+    assert.equal(m.perWriter[g.decider], m.report, 'the decider is not measured twice');
   }
-  assert.equal(measuredPosts.perModel.gpt4, measuredPosts.report, 'the decider is not measured twice');
   assert.equal(separates('register marker'), null);
 });
 
-test('a model that is missing is left out of the count, not counted as no signal', () => {
+test('a writer that is missing is left out of the count, not counted as no signal', () => {
   const arms = corpus(posts).filter((a) => a.id !== 'posts-mistral-chat');
   const m = measureGenre(posts, arms)!;
-  const c = summaryCell(posts, m.report, m.perModel, 'moreover');
+  const c = summaryCell(posts, m.report, m.perWriter, 'moreover');
   assert.deepEqual(c.k, { ai: 0, person: 2, of: 3, tooFew: 0 });
   assert.equal(measureGenre(posts, arms.filter((a) => a.id !== 'posts-gpt4')), null, 'no decider, no genre');
+  // and the same where the kind has two: one writer left, so the count can only reach 1
+  const one = measureGenre(essays, assignmentCorpus(essays).filter((a) => a.id !== 'essays-llama3-student'))!;
+  assert.deepEqual(summaryCell(essays, one.report, one.perWriter, 'moreover').k, { ai: 0, person: 1, of: 1, tooFew: 0 });
 });
 
 test('the summary has a cell for every marker in every measured genre, and states its rule', () => {
@@ -115,6 +172,29 @@ test('the summary has a cell for every marker in every measured genre, and state
   assert.deepEqual(s.genres.map((g) => g.id), ['posts', 'abstracts']);
   assert.equal(s.genres[0]!.texts['posts-human'], DOCS);
   assert.ok(s.not_covered.includes('email'));
+});
+
+test('the summary says, per kind, how many writers the count is over and which they are', () => {
+  const s = summarize([measuredPosts, measuredEssays], '2026-09-17T00:00:00.000Z');
+  const [p, e] = s.genres;
+  assert.equal(p!.count_over, 4);
+  assert.deepEqual(p!.writers.map((w) => w.id), MODELS.map((m) => `posts-${m}`));
+  assert.deepEqual(p!.writers.map((w) => w.short), ['GPT-3.5', 'GPT-4', 'Llama', 'Mistral']);
+  assert.equal(p!.writers[1]!.snapshot, 'gpt-4-0613');
+  assert.equal(p!.decider_short, 'GPT-4');
+  assert.match(p!.decoding!, /greedy decoding/);
+  // the kind with two writers says two, names them, and claims no checkpoint for arms written here
+  assert.equal(e!.count_over, 2);
+  assert.deepEqual(e!.writers.map((w) => w.id), ['essays-claude-student', 'essays-llama3-student']);
+  assert.deepEqual(e!.writers.map((w) => w.snapshot), [null, null]);
+  assert.equal(e!.decider_short, e!.writers[0]!.short);
+  assert.notEqual(e!.decider_short, 'GPT-4');
+  assert.equal(e!.decoding, null, 'no one setting covers a kind whose arms were run here');
+  // every published cell of a kind carries exactly that kind's writers, by arm id
+  for (const r of s.rows) {
+    assert.ok(Object.keys(r.genres.essays!.writers).every((id) => e!.writers.some((w) => w.id === id)), r.marker);
+    assert.ok(r.genres.essays!.k.of + r.genres.essays!.k.tooFew <= 2, r.marker);
+  }
 });
 
 const loaded = (g: Genre, arms: Arm[]) => armsFor(g).flatMap((spec) => {
@@ -386,6 +466,45 @@ test('build: the old single-genre files still build, with verdicts and no count'
   }
 });
 
+test('build: a kind decided against a writer of its own reaches the grid, counted over its own writers', () => {
+  const summary = summarize([measuredPosts, measuredEssays], '2026-09-17T00:00:00.000Z');
+  const grid = summaryFor([{ genre: posts, report: measuredPosts.report }, { genre: essays, report: measuredEssays.report }], summary);
+  const p = grid.genres.find((g) => g.id === 'posts')!;
+  const e = grid.genres.find((g) => g.id === 'essays')!;
+  assert.equal(p.countOver, 4);
+  assert.deepEqual(p.writers.map((w) => w.short), ['GPT-3.5', 'GPT-4', 'Llama', 'Mistral']);
+  assert.match(p.decoding!, /greedy decoding/);
+  // the kind whose two writers were written here: its own decider, its own two columns, no decoding claim
+  assert.equal(e.deciderShort, 'Claude*');
+  assert.notEqual(e.deciderShort, p.deciderShort);
+  assert.equal(e.countOver, 2);
+  assert.deepEqual(e.writers.map((w) => w.short), ['Claude*', 'Llama 3*']);
+  assert.equal(e.decoding, null);
+  assert.ok(e.writtenHere?.note.includes('{columns}'), 'the page fills in which columns are marked');
+  const cell = grid.rows.find((r) => r.marker === 'moreover')!.genres.essays!;
+  assert.deepEqual(cell.k, { ai: 0, person: 1, of: 2, tooFew: 0 });
+  assert.deepEqual(Object.keys(cell.writers!), ['essays-claude-student', 'essays-llama3-student']);
+  const html = gridCellHtml(cell, e, 'moreover');
+  assert.match(html, /▼ 1 of 2 models</);
+  assert.match(html, /Claude\* ▼/);
+  assert.doesNotMatch(html, /of 4 models/);
+  // the four-writer kind beside it is unmoved
+  assert.match(gridCellHtml(grid.rows.find((r) => r.marker === 'moreover')!.genres.posts!, p, 'moreover'), /▼ 3 of 4 models</);
+});
+
+test('build: a summary written before the count ran over each kind\'s writers still names its writers', () => {
+  const cell = summaryCell(posts, measuredPosts.report, measuredPosts.perWriter, 'moreover');
+  const { writers, ...rest } = cell;
+  // the committed file's shape: one entry per RAID model, keyed by the model's name, and no `writers`
+  const legacy = { ...rest, models: Object.fromEntries(Object.entries(writers).map(([id, v]) => [id.replace(/^posts-/, ''), v])) } as unknown as SummaryCell;
+  const out = pageCell(posts, legacy);
+  assert.deepEqual(out.writers, writers, 'the registry says which arm each of those models wrote');
+  assert.deepEqual(out.k, cell.k);
+  assert.equal(pageCell(posts, cell), cell, 'a summary that already has them is passed through untouched');
+  // a kind no RAID model wrote has nothing to recover, and says nothing rather than inventing a column
+  assert.deepEqual(pageCell(essays, legacy).writers, {});
+});
+
 test('build: a genre report without its evidence is an error, and budgets are enforced', () => {
   const dir = mkdtempSync(path.join(tmpdir(), 'broken-'));
   mkdirSync(path.join(dir, 'genres', 'posts'), { recursive: true });
@@ -415,10 +534,16 @@ test('build --release: undated or partly dated abstracts are not published', () 
   assert.deepEqual(releaseProblems([{ genre: posts, cleaning: null }]), []);
 });
 
-const genreMeta = (g: Genre, extra: Partial<SummaryGenre> = {}): SummaryGenre => ({
-  id: g.id, label: g.label, inText: g.inText, noun: g.noun, prompt: g.prompt, reference: g.reference, decider: g.decider, deciderShort: 'GPT-4',
-  titles: g.titles, humanQuotable: g.humanQuotable, documents: g.documents, source: g.source, file: `data/genres/${g.id}.json`, texts: 60, placebo_disagreements: 0, ...extra,
-});
+/** a kind of writing as the grid has it: its own decider and its own counted writers, from the registry */
+const genreMeta = (g: Genre, extra: Partial<SummaryGenre> = {}): SummaryGenre => {
+  const counted = g.writers.filter((w) => w.tested);
+  return {
+    id: g.id, label: g.label, inText: g.inText, noun: g.noun, prompt: g.prompt, reference: g.reference, decider: g.decider,
+    deciderShort: g.writers.find((w) => w.id === g.decider)!.short,
+    writers: counted.map((w) => ({ id: w.id, short: w.short, snapshot: null })), countOver: counted.length, decoding: null,
+    titles: g.titles, humanQuotable: g.humanQuotable, documents: g.documents, source: g.source, file: `data/genres/${g.id}.json`, texts: 60, placebo_disagreements: 0, ...extra,
+  };
+};
 
 test('page: the verdict is worded for its kind of writing and its decider', () => {
   const [cls, text, byRate, byShare] = verdictWords('machine marker', { deciderShort: 'GPT-4', noun: posts.noun });
@@ -431,22 +556,25 @@ test('page: the verdict is worded for its kind of writing and its decider', () =
 });
 
 test('page: a grid cell carries a glyph, the words and the count, never colour alone', () => {
-  const names = new Map([['chatgpt', 'GPT-3.5'], ['gpt4', 'GPT-4'], ['llama-chat', 'Llama'], ['mistral-chat', 'Mistral']]);
+  const names = writerNames(genreMeta(posts));
   const cell = {
     verdict: 'machine marker', q: 0.0001, placeboTie: false, unit: 'per 1000 words', person: 0, decider: 6.5, n: 60,
     k: { ai: 3, person: 1, of: 4 },
-    models: { chatgpt: { verdict: 'machine marker', q: 0.01 }, gpt4: { verdict: 'machine marker', q: 0.0001 }, 'llama-chat': { verdict: 'machine marker', q: 0.02 }, 'mistral-chat': { verdict: 'points the other way', q: 0.03 } },
+    writers: {
+      'posts-chatgpt': { verdict: 'machine marker', q: 0.01 }, 'posts-gpt4': { verdict: 'machine marker', q: 0.0001 },
+      'posts-llama-chat': { verdict: 'machine marker', q: 0.02 }, 'posts-mistral-chat': { verdict: 'points the other way', q: 0.03 },
+    },
   };
-  const html = gridCellHtml(cell, genreMeta(posts), 'delve', names);
+  const html = gridCellHtml(cell, genreMeta(posts), 'delve');
   assert.match(html, /▲ GPT-4 marker/);
   assert.match(html, /▲ 3 of 4 models · ▼ 1 of 4 models/);
   assert.match(kHtml({ ai: 0, person: 0, of: 3 }, null, names), />0 of 3 models</);
   // a model with too little to compare is named in the tooltip, and a cell with none left says so
-  const few = kHtml({ ai: 1, person: 0, of: 1, tooFew: 3 }, { gpt4: { verdict: 'machine marker', q: 0.001, evidence: { occurrences: 12 }, tooFew: false }, chatgpt: { verdict: 'no signal', q: 1, evidence: { occurrences: 1 }, tooFew: true } }, names);
+  const few = kHtml({ ai: 1, person: 0, of: 1, tooFew: 3 }, { 'posts-gpt4': { verdict: 'machine marker', q: 0.001, evidence: { occurrences: 12 }, tooFew: false }, 'posts-chatgpt': { verdict: 'no signal', q: 1, evidence: { occurrences: 1 }, tooFew: true } }, names);
   assert.match(few, />▲ 1 of 1 models</);
   assert.match(few, /and 3 with too little to compare/);
   assert.match(few, /GPT-4 ▲ \(12 uses\), GPT-3\.5 too few \(1 use\)/);
-  const none = kHtml({ ai: 0, person: 0, of: 0, tooFew: 4 }, { gpt4: { verdict: 'register marker', q: null, evidence: { pairs: 504, minority: 1 }, tooFew: true } }, names);
+  const none = kHtml({ ai: 0, person: 0, of: 0, tooFew: 4 }, { 'posts-gpt4': { verdict: 'register marker', q: null, evidence: { pairs: 504, minority: 1 }, tooFew: true } }, names);
   assert.match(none, />too little to compare</);
   assert.match(none, /504 pairs, 1 on the rarer side/);
   assert.equal(kHtml({ ai: 0, person: 0, of: 0, tooFew: 0 }, null, names), '', 'not recorded: no count at all');
@@ -455,8 +583,119 @@ test('page: a grid cell carries a glyph, the words and the count, never colour a
   assert.match(html, /Mistral ▼/);
   assert.match(html, /q &lt; 0\.001/);
   assert.equal(kHtml(null, null, names), '', 'no count before the new measurement');
-  assert.match(gridCellHtml({ ...cell, k: null, models: null, verdict: 'register marker', placeboTie: true }, genreMeta(posts), 'delve', names), /◆ careful writing<\/span><\/td>/);
-  assert.match(gridCellHtml(undefined, genreMeta(posts), 'delve', names), /–/);
+  assert.match(gridCellHtml({ ...cell, k: null, writers: null, verdict: 'register marker', placeboTie: true }, genreMeta(posts), 'delve'), /◆ careful writing<\/span><\/td>/);
+  assert.match(gridCellHtml(undefined, genreMeta(posts), 'delve'), /–/);
+});
+
+test('page: a kind decided against a writer that is not GPT-4 renders its own cell, counted of 2', () => {
+  const g = genreMeta(essays);
+  assert.equal(g.deciderShort, 'Claude*');
+  const cell = {
+    verdict: 'machine marker', q: 0.0002, placeboTie: true, unit: 'per 1000 words', person: 0, decider: 4.2, n: 200,
+    k: { ai: 1, person: 0, of: 2, tooFew: 0 },
+    writers: {
+      'essays-claude-student': { verdict: 'machine marker', q: 0.0002, evidence: { occurrences: 61 }, tooFew: false },
+      'essays-llama3-student': { verdict: 'no signal', q: 0.4, evidence: { occurrences: 9 }, tooFew: false },
+    },
+  };
+  const html = gridCellHtml(cell, g, 'delve');
+  // the verdict is worded for this kind's own decider, and the count over the two writers it has
+  assert.match(html, /▲ Claude\* marker/);
+  assert.match(html, /▲ 1 of 2 models</);
+  assert.doesNotMatch(html, /GPT-4|of 4 models/);
+  // the names in the tooltip are this kind's own columns, taken from the kind rather than from a global list
+  assert.match(html, /Claude\* ▲ \(61 uses\), Llama 3\* – \(9 uses\)/);
+  assert.match(html, /Person 0\.00, Claude\* 4\.20/);
+  // and the four-writer kinds are worded exactly as before
+  assert.match(gridCellHtml({ ...cell, k: { ai: 3, person: 1, of: 4, tooFew: 0 }, writers: null }, genreMeta(posts), 'delve'), /▲ 3 of 4 models · ▼ 1 of 4 models/);
+});
+
+test('page: the column head says how many models a kind counts across, and the legend is built from the cells', () => {
+  assert.equal(countedWords(genreMeta(posts, { decoding: 'greedy decoding, no repetition penalty' })),
+    'counted across 4 models: GPT-3.5, GPT-4, Llama, Mistral; greedy decoding, no repetition penalty');
+  assert.equal(countedWords(genreMeta(essays)), 'counted across 2 models: Claude*, Llama 3*');
+  assert.equal(countedWords({ writers: [], countOver: 0, decoding: null }), '', 'nothing to say before the count exists');
+  const legend = legendHtml();
+  assert.match(legend, /<span class="pill machine">▲ model marker<\/span> the model uses it more/);
+  assert.match(legend, /<span class="pill other">▼ more human<\/span> the person uses it more/);
+  assert.match(legend, /<span class="pill none">· not recorded<\/span> no text of that kind can show it/);
+  assert.doesNotMatch(legend, /GPT-4|Claude/, 'the legend stands over every column, so it names no writer');
+});
+
+test('page: the columns written for this project are all marked, and say so under the table', () => {
+  const arms = [
+    { id: 'essays-human', n: 5867 }, { id: 'essays-claude-student', n: 200 },
+    { id: 'essays-llama3-student', n: 200 }, { id: 'essays-claude-plain', n: 200 },
+  ].map((a) => ({ ...a, label: '', kind: 'machine', matched: 200, medianWords: 500, publishable: true, we: 0 }));
+  const writers = essays.writers.map((w) => ({ id: w.id, short: w.short, long: w.label, quotable: w.quotable }));
+  const note = writtenHereNote({ genre: { ...genreMeta(essays), writtenHere: essays.writtenHere! }, writers, arms });
+  // all three starred columns are named with what each wrote: the mark is not about the first of them
+  assert.match(note, /^\* /);
+  assert.ok(note.includes('Claude* 200, Llama 3* 200 and Claude plain* 200 essays'), note);
+  // written here, when, from what, that the run cannot be replayed and why, and who wrote the page
+  assert.match(note, /written for this project in September 2026/);
+  assert.match(note, /given the assignment alone/);
+  assert.match(note, /cannot be written again word for word/);
+  assert.match(note, /Ollama’s seed did not give back the same essay/);
+  assert.match(note, /Claude Code exposes no sampling settings/);
+  assert.match(note, /The same assistant that wrote the Claude columns also wrote this page/);
+  assert.match(note, /<a href="[^"]+#school-essays">the caveats<\/a> matter\. $/);
+  assert.doesNotMatch(note, /\{columns\}|\{caveats\}/);
+  // one such column is named by what it wrote alone, being the only one marked, and the abstracts'
+  // footnote is the sentence the page carried before the registry held it, byte for byte
+  const one = writtenHereNote({
+    genre: { ...genreMeta(abstracts), writtenHere: abstracts.writtenHere! },
+    writers: [{ id: 'raid-claude', short: 'Claude*', long: '', quotable: true }],
+    arms: [{ ...arms[0]!, id: 'raid-claude', n: 44 }],
+  });
+  assert.equal(one, '* Claude was generated for this project (44 abstracts, reached through Claude Code) and the same system wrote this page; '
+    + '<a href="https://github.com/barbarkaragul-oss/is-it-really-an-ai-tell#a-claude-arm-generated-here">the caveats</a> matter. ');
+  // a kind with nothing written here, or an arm that is not in the measurement, carries no footnote
+  assert.equal(writtenHereNote({ genre: genreMeta(posts), writers, arms }), '');
+  assert.equal(writtenHereNote({ genre: { ...genreMeta(essays), writtenHere: essays.writtenHere! }, writers, arms: [] }), '');
+});
+
+test('page: the grid caption keeps its old words for kinds that share one set of models, and names each decider otherwise', () => {
+  const raid = [genreMeta(abstracts, { decoding: 'greedy decoding, no repetition penalty' }), genreMeta(posts, { decoding: 'greedy decoding, no repetition penalty' })];
+  assert.equal(sharesOneSet(raid), true);
+  // the caption the page carried while every kind came from RAID, word for word
+  assert.equal(gridCaption(raid, true), 'Each cell is one kind of writing. The label is GPT-4’s verdict against the people who wrote the same documents, as in the table below. '
+    + 'Under it, how many of the 4 models (GPT-3.5, GPT-4, Llama, Mistral; greedy decoding, no repetition penalty) the marker separates from the person there, each decided by the same rules: '
+    + '▲ toward the model, ▼ toward the person. A model is counted only where there is something to compare: a word that it and the person hardly use, or a property every text has, '
+    + 'leaves too little. Click a cell for that kind’s full table.');
+  assert.equal(gridCaption(raid, false), 'Each cell is one kind of writing, with GPT-4’s verdict against the people who wrote the same documents. '
+    + 'The count across all 4 models appears after the next weekly measurement. Click a cell for the full table.');
+  // with the essays beside them, no kind is described under another kind's decider
+  const all = [...raid, genreMeta(essays)];
+  assert.equal(sharesOneSet(all), false);
+  const mixed = gridCaption(all, true);
+  assert.match(mixed, /GPT-4 against the people who wrote the same documents in research abstracts and Reddit posts; Claude\* against the people who answered the same assignments in school essays\./);
+  assert.doesNotMatch(mixed, /GPT-4’s verdict|the 4 models/);
+  assert.match(mixed, /A model marked \* was run for this project/);
+  assert.match(gridCaption(all, false), /Claude\* against the people who answered the same assignments in school essays\. The count across each kind’s models/);
+  // the legend names no writer, and is the legend the page always had
+  assert.equal(legendHtml(), '<span class="pill machine">▲ model marker</span> the model uses it more · <span class="pill other">▼ more human</span> the person uses it more · '
+    + '<span class="pill register">◆ careful writing</span> both, more than casual writers · <span class="pill none">– no signal</span> · <span class="pill none">· not recorded</span> no text of that kind can show it');
+});
+
+test('page: "Not covered" is unchanged for the RAID kinds and says the essays are covered where they are measured', () => {
+  const raid = [genreMeta(abstracts), genreMeta(posts)];
+  assert.equal(notCoveredText('email', raid), 'Not covered: email. Paired sets of a person’s text and models writing the same thing do exist for some of these, but none that can be used here under its terms, so they are left out rather than guessed at.');
+  const withEssays = notCoveredText('email', [...raid, { ...genreMeta(essays), covered: essays.covered! }]);
+  assert.match(withEssays, /guessed at\. Student essays are covered, with the machine side written for this project/);
+});
+
+test('page: a verdict in a kind paired by assignment never says the writers wrote the same texts', () => {
+  const g = { deciderShort: 'Claude*', noun: essays.noun, documents: 'assignment' };
+  for (const v of ['machine marker', 'points the other way']) {
+    const [, , byRate, byShare] = verdictWords(v, g);
+    assert.doesNotMatch(byRate + byShare, /the same essays/, v);
+    assert.match(byRate + byShare, /the same assignments/, v);
+  }
+  // a kind whose writers rewrote the person's documents is worded exactly as before
+  assert.equal(verdictWords('machine marker', { deciderShort: 'GPT-4', noun: posts.noun, documents: 'models' })[2],
+    verdictWords('machine marker', { deciderShort: 'GPT-4', noun: posts.noun })[2]);
+  assert.match(verdictWords('machine marker', { deciderShort: 'GPT-4', noun: posts.noun })[2], /^GPT-4 uses it more often than the person who wrote the same posts,/);
 });
 
 test('page: the address picks a known kind of writing only', () => {
@@ -516,10 +755,9 @@ test('page: the dating says whether it is applied, partial or not yet, and what 
 });
 
 test('page: a marker a kind of writing cannot show is "not recorded", with its reason, and no count', () => {
-  const names = new Map([['gpt4', 'GPT-4']]);
   const reason = posts.notRecorded!.bulleted_bold!;
-  const cell = { verdict: 'not recorded', q: null, placeboTie: true, unit: '% of texts', person: 0, decider: 0, n: 500, k: { ai: 0, person: 0, of: 0 }, models: { gpt4: { verdict: 'not recorded', q: null } } };
-  const html = gridCellHtml(cell, genreMeta(posts, { notRecorded: posts.notRecorded! }), 'bulleted_bold', names);
+  const cell = { verdict: 'not recorded', q: null, placeboTie: true, unit: '% of texts', person: 0, decider: 0, n: 500, k: { ai: 0, person: 0, of: 0 }, writers: { 'posts-gpt4': { verdict: 'not recorded', q: null } } };
+  const html = gridCellHtml(cell, genreMeta(posts, { notRecorded: posts.notRecorded! }), 'bulleted_bold');
   assert.match(html, /· not recorded/);
   assert.ok(html.includes(esc(reason)), 'the reason is the tooltip');
   assert.doesNotMatch(html, /of 0 models/);
@@ -529,7 +767,10 @@ test('page: a marker a kind of writing cannot show is "not recorded", with its r
 
 test('page: the script names no writer and no kind of writing; the data does', () => {
   const src = readFileSync(path.resolve('src/ui/main.ts'), 'utf8');
-  assert.doesNotMatch(src, /\b(?:raid|posts)-(?:human|chatgpt|gpt4|llama-chat|mistral-chat|claude)\b/);
+  assert.doesNotMatch(src, /\b(?:raid|posts|essays)-(?:human|chatgpt|gpt4|llama-chat|mistral-chat|claude|claude-student|llama3-student|claude-plain)\b/);
   assert.doesNotMatch(src, /'(?:casual|careful)-human'|hc3-gpt35/);
+  // what wrote an arm, and through what, is the data's to say: the footnote under the table comes from
+  // the registry for exactly this reason (scripts/genres.ts, writtenHere)
+  assert.doesNotMatch(src, /\bClaude\b|\bLlama\b|\bMistral\b|GPT-\d|\bOllama\b|Opus/);
   assert.doesNotMatch(src, /\babstracts?\b|Reddit/);
 });

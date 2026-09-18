@@ -2,9 +2,9 @@
 
 People can tell you what gives away machine-written text. The em dash. The word *delve*. No contractions. Every list has three items.
 
-Almost none of it is measured. This project counts each marker in two kinds of writing, research abstracts and Reddit posts. Each set of documents was written once by a person and again by GPT-3.5, GPT-4, Llama chat and Mistral chat, given the same title. The markers are also counted in casual and careful human writing from before ChatGPT existed. It publishes the rates, the intervals and a placebo column, so a marker can be argued with instead of repeated. Each kind of writing is measured on its own, and the answers differ between them.
+Almost none of it is measured. This project counts each marker in three kinds of writing. Research abstracts and Reddit posts were each written once by a person and again by GPT-3.5, GPT-4, Llama chat and Mistral chat, given the same title. School essays were written by US students to seven assignments, and the same assignments were given here to Claude and to Llama 3. The markers are also counted in casual and careful human writing from before ChatGPT existed. It publishes the rates, the intervals and a placebo column, so a marker can be argued with instead of repeated. Each kind of writing is measured on its own, and the answers differ between them.
 
-**[Open the page →](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)** It has the grid across both kinds of writing, every number below with the sentences behind it, one document written by every writer, and a box to paste your own text into. Nothing you paste leaves the browser.
+**[Open the page →](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)** It has the grid across the three kinds of writing, every number below with the sentences behind it, one document written by every writer, and a box to paste your own text into. Nothing you paste leaves the browser.
 
 [![The page: the grid across both kinds of writing, "moreover" opened in research abstracts (the person's word) and in Reddit posts (GPT-4's), one Reddit post as the models wrote it, and a pasted text set against how often people use each marker](docs/demo.gif)](https://barbarkaragul-oss.github.io/is-it-really-an-ai-tell/)
 
@@ -12,39 +12,39 @@ Almost none of it is measured. This project counts each marker in two kinds of w
 
 ## The findings
 
-Each row below is a marker, and each column one kind of writing. A cell starts with GPT-4's verdict against the person who wrote the same documents (see [How the counting is done](#how-the-counting-is-done)). Next comes how many of the four RAID models (GPT-3.5, GPT-4, Llama chat, Mistral chat) the marker separates from the person in that kind of writing, each model judged by the same rule: ▲ means it points to the model, ▼ to the person. “of n” counts the models that had enough to compare, and “none comparable” means no model did. The numbers come from [`data/summary.json`](data/summary.json).
+Each row below is a marker, and each column one kind of writing. A cell starts with GPT-4's verdict against the person who wrote the same documents (see [How the counting is done](#how-the-counting-is-done)). Next comes how many of the four RAID models (GPT-3.5, GPT-4, Llama chat, Mistral chat) the marker separates from the person in that kind of writing, each model judged by the same rule: ▲ means it points to the model, ▼ to the person. “of n” counts the models that had enough to compare, and “none comparable” means no model did. School essays have two writers instead of four, both run here: their cell starts with the verdict for Claude, told it is a student, against the students who answered the same assignments, and counts over Claude and Llama 3 ([below](#school-essays)). The numbers come from [`data/summary.json`](data/summary.json).
 
-| marker | research abstracts | Reddit posts |
-|---|---|---|
-| “delve” | machine marker · ▲2 of 2 | machine marker · ▲2 of 2 |
-| “tapestry” | no signal · none comparable | no signal · none comparable |
-| “moreover” | **points the other way · ▼4 of 4** | **machine marker · ▲2 of 2** |
-| “furthermore” | register marker · ▲1 ▼1 of 4 | no signal · ▲2 of 4 |
-| “crucial” | machine marker · ▲4 of 4 | machine marker · ▲3 of 4 |
-| “realm” | no signal · 0 of 2 | no signal · 0 of 4 |
-| “showcase” | no signal · 0 of 4 | no signal · ▲1 of 3 |
-| “underscores” | no signal · 0 of 1 | no signal · none comparable |
-| “leverage” as a verb | **machine marker · ▲4 of 4** | **no signal · none comparable** |
-| “it is important to note” / “worth noting” | no signal · none comparable | **machine marker · ▲3 of 4** |
-| “in today’s …” | no signal · none comparable | no signal · 0 of 1 |
-| “not only … but also” | register marker · ▼2 of 4 | **machine marker · ▲3 of 4** |
-| “it’s not X, it’s Y” | no signal · none comparable | no signal · 0 of 4 |
-| “dive into” / “let’s explore” | no signal · none comparable | no signal · 0 of 2 |
-| “in conclusion” / “in summary” / “to sum up” | no signal · 0 of 1 | **machine marker · ▲3 of 4** |
-| every sentence the same length | machine marker · ▲4 of 4 | machine marker · ▲3 of 4 |
-| a dash, however it is typed | **points the other way · ▼4 of 4** | **no signal · ▲1 of 4** |
-| two or more dashes | no signal · 0 of 2 | no signal · 0 of 2 |
-| a three-item list | machine marker · ▲3 of 4 | machine marker · ▲4 of 4 |
-| a bulleted list with bold lead-ins | no signal · none comparable | not recorded |
-| no contractions at all | register marker · none comparable | **points the other way · ▲1 ▼2 of 4** |
-| no first person | register marker · 0 of 1 | no signal · ▲1 ▼1 of 4 |
-| no personal detail | register marker · none comparable | **machine marker · ▲4 of 4** |
-| no informal spelling | register marker · none comparable | **machine marker · ▲4 of 4** |
-| Title Case headings | no signal · none comparable | not recorded |
+| marker | research abstracts | Reddit posts | school essays |
+|---|---|---|---|
+| “delve” | machine marker · ▲2 of 2 | machine marker · ▲2 of 2 | no signal · none comparable |
+| “tapestry” | no signal · none comparable | no signal · none comparable | no signal · none comparable |
+| “moreover” | **points the other way · ▼4 of 4** | **machine marker · ▲2 of 2** | no signal · ▲1 of 2 |
+| “furthermore” | register marker · ▲1 ▼1 of 4 | no signal · ▲2 of 4 | **points the other way · ▲1 ▼1 of 2** |
+| “crucial” | machine marker · ▲4 of 4 | machine marker · ▲3 of 4 | **points the other way · ▲1 ▼1 of 2** |
+| “realm” | no signal · 0 of 2 | no signal · 0 of 4 | no signal · 0 of 2 |
+| “showcase” | no signal · 0 of 4 | no signal · ▲1 of 3 | no signal · ▲1 of 2 |
+| “underscores” | no signal · 0 of 1 | no signal · none comparable | no signal · none comparable |
+| “leverage” as a verb | **machine marker · ▲4 of 4** | **no signal · none comparable** | no signal · none comparable |
+| “it is important to note” / “worth noting” | no signal · none comparable | **machine marker · ▲3 of 4** | no signal · none comparable |
+| “in today’s …” | no signal · none comparable | no signal · 0 of 1 | no signal · ▲1 of 2 |
+| “not only … but also” | register marker · ▼2 of 4 | **machine marker · ▲3 of 4** | **points the other way · ▲1 ▼1 of 2** |
+| “it’s not X, it’s Y” | no signal · none comparable | no signal · 0 of 4 | machine marker · ▲1 of 2 |
+| “dive into” / “let’s explore” | no signal · none comparable | no signal · 0 of 2 | no signal · none comparable |
+| “in conclusion” / “in summary” / “to sum up” | no signal · 0 of 1 | **machine marker · ▲3 of 4** | **points the other way · ▲1 ▼1 of 2** |
+| every sentence the same length | machine marker · ▲4 of 4 | machine marker · ▲3 of 4 | **points the other way · ▲1 ▼1 of 2** |
+| a dash, however it is typed | **points the other way · ▼4 of 4** | **no signal · ▲1 of 4** | no signal · 0 of 2 |
+| two or more dashes | no signal · 0 of 2 | no signal · 0 of 2 | no signal · none comparable |
+| a three-item list | machine marker · ▲3 of 4 | machine marker · ▲4 of 4 | **points the other way · ▲1 ▼1 of 2** |
+| a bulleted list with bold lead-ins | no signal · none comparable | not recorded | no signal · none comparable |
+| no contractions at all | register marker · none comparable | **points the other way · ▲1 ▼2 of 4** | machine marker · ▲2 of 2 |
+| no first person | register marker · 0 of 1 | no signal · ▲1 ▼1 of 4 | points the other way · ▼1 of 2 |
+| no personal detail | register marker · none comparable | **machine marker · ▲4 of 4** | points the other way · ▼1 of 2 |
+| no informal spelling | register marker · none comparable | **machine marker · ▲4 of 4** | no signal · 0 of 2 |
+| Title Case headings | no signal · none comparable | not recorded | no signal · none comparable |
 
-**A tell depends on the kind of writing.** In research abstracts, 5 of the 25 markers are machine markers for GPT-4. In Reddit posts, 10 are. GPT-4's verdict changes between the two kinds for 11 markers, and two more cannot be recorded for posts at all. “Moreover” points to the person in abstracts and to the model in posts. “Leverage” separates all four models from the person in abstracts, and in posts the five writers use it 4 times between them. “In conclusion” and “it is important to note” give no signal in abstracts, and “not only … but also” is a register marker there. In posts, all three separate three of the four models from the person. The dash points to the person in abstracts and, for GPT-4, to nobody in posts. Four markers are machine markers for GPT-4 in both: “delve”, “crucial”, even sentence lengths and three-item lists. Between these two kinds of writing, GPT-4's verdict on a marker in one did not reliably predict its verdict in the other, so nothing here should be read as a verdict on a kind that was not measured. Those kinds are listed in [What is not covered](#what-is-not-covered).
+**A tell depends on the kind of writing.** In research abstracts, 5 of the 25 markers are machine markers for GPT-4. In Reddit posts, 10 are. GPT-4's verdict changes between the two kinds for 11 markers, and two more cannot be recorded for posts at all. “Moreover” points to the person in abstracts and to the model in posts. “Leverage” separates all four models from the person in abstracts, and in posts the five writers use it 4 times between them. “In conclusion” and “it is important to note” give no signal in abstracts, and “not only … but also” is a register marker there. In posts, all three separate three of the four models from the person. The dash points to the person in abstracts and, for GPT-4, to nobody in posts. Four markers are machine markers for GPT-4 in both: “delve”, “crucial”, even sentence lengths and three-item lists. Between these two kinds of writing, GPT-4's verdict on a marker in one did not reliably predict its verdict in the other, so nothing here should be read as a verdict on a kind that was not measured. Those kinds are listed in [What is not covered](#what-is-not-covered). School essays show the same thing inside a single kind: on six markers one of its two models writes the marker more often than the students and the other less often ([below](#school-essays)).
 
-The placebo, which splits each kind's human texts at random and runs the same tests on both halves, ties on every row: 25 of 25 in abstracts, and all 23 tested rows in posts.
+The placebo, which splits each kind's human texts at random and runs the same tests on both halves, ties on every row: 25 of 25 in abstracts, all 23 tested rows in posts, and every row in school essays, where the two halves are cut to the size of the comparison beside them.
 
 ### Research abstracts
 
@@ -111,6 +111,43 @@ RAID gave each model the title of a real Reddit post and had it write the post. 
 **Mistral writes about the poster more than as the poster.** On the paired documents, 35.5% of its posts have no “I”, “my” or “me”, against 4.5% of the person's posts. It often explains the title's subject or talks to the reader instead. The other models write in the first person as the people do, and GPT-3.5 does so slightly more often than the person.
 
 **Even sentence lengths hold, with a smaller gap.** 36.1% of GPT-4's posts have every sentence about the same length, against 23.9% of the person's on the same documents. GPT-3.5 (78.9%) and Mistral (75.0%) are far more even, and Llama (32.1%) does not separate. GPT-4 also writes longer posts than the person (a median of 218 words against 167), the opposite of abstracts (109 against 176).
+
+### School essays
+
+The third kind of writing is built differently, and the difference matters for how to read it. There is no shared document here. US school students answered seven assignments, and Claude and Llama 3 were given the same seven assignments. A model's essay is compared with a student's essay on the same assignment and of about the same length, not with a rewrite of the same text, so these pairs are looser than the ones in abstracts and posts.
+
+**The students.** 5,867 essays from the [PERSUADE 2.0](https://github.com/scrosseye/persuade_corpus_2.0) corpus, written to the seven assignments that need no reading passage, mostly in grade 8 (4,101) and grade 11 (1,342). Three of the seven assignments ask for a letter to the principal. Every essay used here was in the Kaggle Feedback Prize release of December 2021, a year before ChatGPT, and that is checked essay by essay against the official file ([`data/genres/essays/kaggle-2021.json`](data/genres/essays/kaggle-2021.json)). The corpus is CC BY-NC-SA 4.0. The students' essays are counted and never published: no essay, sentence or name of theirs is in this repository or on the page.
+
+**The machine side was written here, and this is the part to be skeptical of.** Three public sets pair student essays with model essays, and none could be used. [OUTFOX](https://github.com/ryuryukke/OUTFOX) sampled its models at temperature 1.3, and most of its essays turn into word salad before they end. [Ghostbuster](https://github.com/vivek3141/ghostbuster-data)'s human essays were published in December 2022 and January 2023, after ChatGPT, so its human column cannot be shown to be human. [ArguGPT](https://github.com/huhailinguist/ArguGPT) does not release its human essays. So each assignment was given, with nothing else, to:
+
+- **Claude*** (Claude Opus 5 through Claude Code), told it is a student in the assignment's grade: 200 essays. This is the verdict column.
+- **Llama 3*** (Llama 3 8B, run on a local machine through Ollama at temperature 1), told the same: 200 essays. It is the one writer in this kind the project did not author.
+- **Claude plain*** (the same Claude, given the assignment alone): 200 essays, shown beside the others and kept out of every test, so you can see what the student framing moves.
+
+The prompt says nothing about length, style or format, and no student's text is in it. Each essay was written in its own session. Every essay is committed with the exact prompt it was given, the model, the date and a hash ([`data/generated/claude-essays`](data/generated/claude-essays), [`data/generated/llama3-essays`](data/generated/llama3-essays)). The essays cannot be regenerated word for word: Ollama returned different essays for the same prompt and seed, and Claude Code does not expose its sampling settings. What can be repeated is the measurement, from the essays as committed. The same assistant that wrote these essays also wrote this page, which is why their columns carry an asterisk.
+
+After the checks, no essay was dropped from any arm. The check for remembered text asks whether a machine essay repeats the students' essays on the same assignment: on average 4.1% of a Claude essay's five-word sequences and 13.7% of a Llama essay's also occur somewhere in those essays, and none comes close to the 50% threshold. Occurrences per thousand words, with the count in brackets ([`data/genres/essays/markers.json`](data/genres/essays/markers.json)):
+
+| marker | students | **Claude\*** | Llama 3\* | Claude plain\* | verdict for Claude | writers |
+|---|---|---|---|---|---|---|
+| “in conclusion” / “in summary” / “to sum (it) up” | 0.55 (1,368) | **0.01 (1)** | 2.51 (189) | 0.01 (1) | points the other way | ▲1 ▼1 of 2 |
+| “not only … but also” | 0.11 (283) | **0.00 (0)** | 1.13 (85) | 0.00 (0) | points the other way | ▲1 ▼1 of 2 |
+| “furthermore” | 0.09 (218) | **0.00 (0)** | 0.80 (60) | 0.00 (0) | points the other way | ▲1 ▼1 of 2 |
+| “moreover” | 0.03 (68) | **0.00 (0)** | 0.42 (32) | 0.00 (0) | no signal | ▲1 of 2 |
+| “crucial” | 0.05 (127) | **0.00 (0)** | 0.17 (13) | 0.00 (0) | points the other way | ▲1 ▼1 of 2 |
+| a three-item list | 1.49 (3,683) | **0.81 (95)** | 4.67 (352) | 0.98 (112) | points the other way | ▲1 ▼1 of 2 |
+| “it’s not X, it’s Y” | 0.00 (12) | **0.25 (29)** | 0.03 (2) | 0.24 (27) | machine marker | ▲1 of 2 |
+| a dash, however it is typed | 0.01 (25) | **0.00 (0)** | 0.03 (2) | 0.05 (6) | no signal | 0 of 2 |
+
+**The same marker points in opposite directions, in the same essays.** On six of the 25 markers, one of the two models writes it more than the students and the other less: “in conclusion”, “not only … but also”, “furthermore”, “crucial”, even sentence lengths and three-item lists. Llama 3 is the writer the checklists describe. It uses “in conclusion” or “in summary” in 94.5% of its essays (the students in 22.1%), writes “not only … but also” ten times as often as they do, and gives 69.0% of its essays sentences of about the same length (the students 33.7%). Claude, told it is a student, does almost none of it: one “in conclusion” in 200 essays, no “furthermore”, no “moreover”, no “crucial”, and even sentence lengths in 2.0% of its essays. On those markers a checklist would take the students for the machine.
+
+**What Claude does instead is its own.** It writes “it’s not X, it’s Y” (“That’s not really getting advice, that’s shopping.”) 29 times, against 12 times in all 5,867 students' essays: 0.25 per thousand words against 0.00. That is its verdict as a machine marker, and Llama 3 does not share it. It also leaves out contractions more often than the students (35.2% of its essays have none, against 17.5%), which is the one marker both models agree on (▲2 of 2).
+
+**The belief markers turn around.** The checklists say machine text lacks the first person and personal detail. Every Claude essay uses “I”, “my” or “me”; 24.9% of the students' essays do not. 14.3% of Claude's essays have no personal detail (“my friend”, “last year”, “when I was”), against 90.3% of the students'. Told it is a student, the model writes the way people imagine a student writes, with more first person and more small stories than the students did. Llama 3 matches the students on both. One caveat belongs here: the corpus removed the students' names from their essays, and the models sign their letters with invented ones (Claude) or leave “[Your Name]” (Llama 3), so nothing about names is compared.
+
+**The student framing is not what makes Claude avoid the checklist.** Given the assignment alone, Claude plain avoids the same words (one “in conclusion” and no “furthermore”, “moreover” or “crucial” in 200 essays) and writes “it’s not X, it’s Y” just as often (0.24). The framing barely moves the belief markers either: without it, 1.5% of the essays have no first person and 17.0% no personal detail, against 0.0% and 14.3% with it.
+
+**Read this kind of writing for what it can show.** These are two models, one of them this project's own assistant, writing in 2026 to assignments students answered before 2022, compared by assignment rather than by document. A difference between the columns can be the writer, the year or the model generation, and this kind cannot separate them. What it does show is that a checklist built from one model's habits can point the wrong way for another, on the same assignment. The placebo, split to the size of the comparison beside it, ties on every row.
 
 ### What the patterns actually caught
 
@@ -327,7 +364,12 @@ The three-item list used to sit in this table. It can be counted, so it now has 
 | **Reddit posts** | | |
 | human (RAID) | Reddit posts from before mid-2021, which RAID took from the 2021 file of [sentence-transformers/reddit-title-body](https://huggingface.co/datasets/sentence-transformers/reddit-title-body) (Pushshift-based, not filtered for bots or spam). Counted, never quoted | 1,338 of 1,375 |
 | GPT-3.5, GPT-4, Llama chat, Mistral chat | RAID texts for the same posts, same models and settings | 1,297 · 1,330 · 878 · 1,204 |
-| **Comparison, both kinds** | | |
+| **School essays** | | |
+| students (PERSUADE 2.0) | US school essays to the seven assignments that need no reading passage, grades 8 to 12, every one of them in the Kaggle Feedback Prize release of December 2021 ([list](data/genres/essays/kaggle-2021.json)). Counted, never quoted | 5,867 of the corpus's 25,996 |
+| Claude* (written here) | Claude Opus 5 through Claude Code, told it is a student in the assignment's grade; each essay in its own session ([records](data/generated/claude-essays)) | 200 |
+| Llama 3* (written here) | Llama 3 8B run on a local machine through Ollama, temperature 1, told the same ([records](data/generated/llama3-essays)) | 200 |
+| Claude plain* (written here) | the same Claude, given the assignment alone; shown beside the others, outside every test | 200 |
+| **Comparison, every kind** | | |
 | casual writing | everyday online comments posted before **2022-11-30**, the day ChatGPT opened (source: Hacker News) | 4,000 |
 | careful writing | edited question-and-answer posts from the same period (source: Stack Exchange: english, academia, writing) | 3,863 |
 | HC3 | GPT-3.5 answering questions. It is a different task, kept as the contrast behind [the hedging correction](#a-correction-worth-stating-plainly) | 4,000 |
@@ -357,28 +399,37 @@ What each check removed, per arm. A text is counted under the first check that d
 | Llama chat | 1,375 | 37 | 271 | 189 | 0 | 878 | 360 | 240 |
 | Mistral chat | 1,375 | 37 | 39 | 95 | 0 | 1,204 | 423 | 164 |
 
+**School essays** ([`cleaning.json`](data/genres/essays/cleaning.json)). “Remembered” here compares a machine essay with all the students' essays on the same assignment, and “pairs” counts assignment pairs in the same length bin.
+
+| arm | essays | not English | cut off | not an answer | remembered | measured | pairs | median words |
+|---|---|---|---|---|---|---|---|---|
+| students | 5,867 | 0 | – | – | – | 5,867 | – | 406 |
+| Claude* | 200 | 0 | reported: 0 | reported: 0 | 0 | 200 | 196 | 570 |
+| Llama 3* | 200 | 0 | 0 | 0 | 0 | 200 | 200 | 371 |
+| Claude plain* | 200 | 0 | reported: 0 | reported: 0 | 0 | 200 | 200 | 566 |
+
 ## What is not covered
 
-Two kinds of writing are measured: research abstracts and Reddit posts. Email, chat, product reviews, and social platforms other than Reddit (such as X, Facebook and LinkedIn) are not covered, and neither is any language but English. Student essays are the next kind of writing planned. Since the findings above change between the two kinds that are measured, nothing here should be read as a verdict on a kind that is not.
+Three kinds of writing are measured: research abstracts, Reddit posts and school essays, the last with its machine side written here rather than taken from a published set. Email, chat, product reviews, and social platforms other than Reddit (such as X, Facebook and LinkedIn) are not covered, and neither is any language but English. University writing is not covered either: the school essays are US grade 8 to 12 work on seven assignments. Since the findings above change between the kinds that are measured, nothing here should be read as a verdict on a kind that is not.
 
 ## How the counting is done
 
-1. **One set of documents, several writers, per kind of writing.** Each kind is a set of documents written before ChatGPT, by a person as far as the source can tell, and the same documents written by four models from the same title ([RAID](https://github.com/liamdugan/raid), MIT; the 2023 checkpoints, greedy decoding, no repetition penalty). Each kind is measured on its own, with its own person, its own placebo and its own correction. Nothing is pooled across kinds.
+1. **One set of documents, several writers, per kind of writing.** Each kind is a set of documents written before ChatGPT, by a person as far as the source can tell, and the same documents written by four models from the same title ([RAID](https://github.com/liamdugan/raid), MIT; the 2023 checkpoints, greedy decoding, no repetition penalty). School essays are built differently: US students answered seven assignments, and two models run here answered the same assignments ([its section](#school-essays)). Each kind is measured on its own, with its own person, its own placebo and its own correction. Nothing is pooled across kinds.
 2. **Checks before counting, in this order.** A text is counted under the first check that drops it.
    1. *Dated* (abstracts only): a document with any arXiv version posted between 2022-11-30 and 2024-06-04, the Last-Modified date of RAID's file, is left out of every column. A document the lookup cannot match to a paper is kept and counted as unmatched.
    2. *Not English*: a document is left out of every column, the person's included, when any writer's text for it has fewer than 12% common English function words.
    3. *Cut off*: a model text that stops before it is finished: inside a clause, in a loop, on a bare list marker, or without a finished ending at a length where the model's cap could have stopped it.
    4. *Not an answer*: a model text that is a refusal, a lecture, a preamble, a description of the text instead of the text, a label, a note to the requester, or a slot left to fill.
-   5. *Remembered*: a model text that shares more than half of its five-word sequences with the person's text for the same document.
+   5. *Remembered*: a model text that shares more than half of its five-word sequences with the person's text for the same document. In school essays, which have no shared document, the comparison is with all the students' essays on the same assignment.
 
    The person's texts are dropped only by the first two checks. For the Claude arm, checks 3 and 4 are reported and not applied. Every arm's counts are in `data/genres/<kind>/cleaning.json`.
 3. **Two measures, each for the kind of marker it suits, and each decides its own verdict.** A word or phrase becomes occurrences per thousand words over every text in the arm. That rate still depends on length: a phrase used once in a text has half the rate in a text twice as long. GPT-4 wrote its abstracts nearly 40% shorter than the people did (a median of 109 words against 176) and its Reddit posts longer (218 against 167). So the tables show the whole-arm rates, but a verdict compares a model with the person only between texts within a tenth of each other in length. A property of the whole text cannot be counted that way, so it is a share, and for a share, length is controlled by the pairing.
-4. **Length is controlled pairwise, and the pairs are not the file's order.** Matching all the arms at once would cut every arm down to the smallest one in every bin; the first attempt at this collapsed a 1,499-text arm to 123. Each arm is matched against the person on its own instead. A model's text, from RAID or from the Claude arm, is paired with the person's text for the same document, and the pair is kept only when both fall in the same length bin. Casual writing, careful writing and HC3 share no documents with the person, so each of their bins is filled from a seeded shuffle. The corpora are stored grouped by topic, and an earlier version that took the first texts of every bin was comparing one topic with another. Every pairing publishes its kind and its n.
+4. **Length is controlled pairwise, and the pairs are not the file's order.** Matching all the arms at once would cut every arm down to the smallest one in every bin; the first attempt at this collapsed a 1,499-text arm to 123. Each arm is matched against the person on its own instead. A model's text, from RAID or from the Claude arm, is paired with the person's text for the same document, and the pair is kept only when both fall in the same length bin. Casual writing, careful writing and HC3 share no documents with the person, so each of their bins is filled from a seeded shuffle. The corpora are stored grouped by topic, and an earlier version that took the first texts of every bin was comparing one topic with another. In school essays a model's essay is paired with a student's essay on the same assignment and in the same length bin, drawn from a seeded shuffle, and the pairing is published as an assignment pairing, never as a document pairing. Every pairing publishes its kind and its n.
 5. **A text a marker cannot judge is left out, not counted as a no.** “Every sentence the same length” says nothing about a text with fewer than five sentences, so such a text is dropped from that marker's shares on both sides of a pairing.
 6. **The writer's own words, read the same way on both sides.** Block quotes, quoted lines and code are removed from the casual and careful writing before anything is counted. A span in double quotes does not count towards three of the belief markers (contractions, first person, personal detail). RAID's human abstracts come wrapped at 79 columns and the models' texts do not, so those line breaks are joined before counting. The people's Reddit posts have no line breaks at all, so every writer's post is read as one line: list marks, heading marks and bold are taken off first, and a post wrapped whole in quotation marks is unwrapped. On Reddit, a hyphen stuck to the word before it and “--” between two words are read as a spaced dash, in every writer's post. Contractions typed without an apostrophe (“dont”, “thats”) count as contractions, and a curly apostrophe is part of a word.
-7. **A placebo arm.** Each kind's human texts are split at random and the same tests run on both halves. Every row should tie, and every row does: 25 of 25 in abstracts, 23 of 23 tested rows in posts. An earlier version split by position, which meant splitting by date, and the placebo disagreed until the split was randomised.
+7. **A placebo arm.** Each kind's human texts are split at random and the same tests run on both halves. Every row should tie, and every row does: 25 of 25 in abstracts, 23 of 23 tested rows in posts, and every row in school essays. The essays have 5,867 students against 200 essays per model, and splitting the students in half would test 2,900 against 2,900, a much larger experiment than the one beside it, so there each half is cut to the size of the comparison, bin by bin. An earlier version split by position, which meant splitting by date, and the placebo disagreed until the split was randomised.
 8. **Intervals, and a correction.** Shares get Wilson intervals. Rates get exact Poisson intervals, and an exact test between them. Both are widened when writers repeat a word within one text, because those occurrences are not independent. Benjamini–Hochberg runs across the markers of one kind of writing and one model, never across kinds, and a word's verdict needs its rate test to survive it.
-9. **GPT-4's verdict, and the count across models.** The verdict in the tables compares GPT-4 with the person, as it always has. For a word or phrase, the length-matched rate test must survive the correction at 0.05. For a whole-text property, the 95% intervals of the shares on document pairs must not overlap. A machine marker means the model has the marker more often. “Points the other way” means the person has it more often. A register marker means the two do not separate, but both sit above casual writing: the marker belongs to the kind of text. The grid adds how many of the four models separate the marker from the person in that kind of writing, each decided by exactly the same rules. A model that does not separate a marker is left out of “of n” when its comparison rests on too little. For a word, that means fewer than 5 uses by the model and the person together. For a whole-text property, it means fewer than 30 document pairs, or fewer than 5 texts on the property's rarer side. The count describes. It is not a further test, and it is not corrected across the four models; each model's q is in [`data/summary.json`](data/summary.json).
+9. **GPT-4's verdict, and the count across models.** The verdict in the tables compares GPT-4 with the person, as it always has; in school essays it compares Claude, told it is a student, with the students, and the count runs over the two writers of that kind. For a word or phrase, the length-matched rate test must survive the correction at 0.05. For a whole-text property, the 95% intervals of the shares on document pairs must not overlap. A machine marker means the model has the marker more often. “Points the other way” means the person has it more often. A register marker means the two do not separate, but both sit above casual writing: the marker belongs to the kind of text. The grid adds how many of the four models separate the marker from the person in that kind of writing, each decided by exactly the same rules. A model that does not separate a marker is left out of “of n” when its comparison rests on too little. For a word, that means fewer than 5 uses by the model and the person together. For a whole-text property, it means fewer than 30 document pairs, or fewer than 5 texts on the property's rarer side. The count describes. It is not a further test, and it is not corrected across the four models; each model's q is in [`data/summary.json`](data/summary.json).
 10. **Not recorded.** A marker that no text of a kind can show (lists and headings in the flat Reddit posts) gets no test, stays out of the correction and is not counted in “of n”.
 
 ## Run it
@@ -389,7 +440,8 @@ npm ci
 npx tsx collector/fetch.ts --want 4000        # Hacker News, Stack Exchange, HC3
 npx tsx collector/fetch-raid.ts --want 1500 --models gpt4,chatgpt,llama-chat,mistral-chat   # research abstracts
 npx tsx collector/fetch-raid.ts --genre posts # Reddit posts: two byte windows of RAID's CSV, cached in cache/raid
-G="--genres abstracts,posts --data /tmp/aitell-data"   # a local run writes to scratch; only the weekly job writes data/
+npx tsx scripts/collect-essays.ts             # school essays: PERSUADE 2.0, 85 MB, cached in cache/persuade
+G="--genres abstracts,posts,essays --data /tmp/aitell-data"   # a local run writes to scratch; only the weekly job writes data/
 npx tsx scripts/contamination.ts $G           # the checks: dated, not English, cut off, not an answer, remembered
 npx tsx scripts/measure-all.ts $G             # per kind of writing: genres/<kind>/markers.json, and summary.json
 npx tsx scripts/evidence.ts $G                # what each pattern matched: genres/<kind>/evidence.json
@@ -404,9 +456,10 @@ The weekly job ([`.github/workflows/collect.yml`](.github/workflows/collect.yml)
 
 ## Limits
 
-- **Five models, and one of them is this repository's own.** Four come from a published benchmark; the Claude arm was generated here, is 44 abstracts against the person's 1,324, and carries the caveats in its own section. No Gemini at all.
+- **Six models, and some of the columns are this repository's own.** Four come from a published benchmark. The Claude arm of the abstracts was generated here, is 44 abstracts against the person's 1,324, and carries the caveats in its own section. In school essays every machine column was written here, by Claude and by Llama 3 run locally, and the essays cannot be regenerated word for word. No Gemini at all.
 - **2023 checkpoints.** The four RAID models are the versions RAID used (`gpt-3.5-turbo-0613`, `gpt-4-0613`, Llama 2 chat, Mistral 7B Instruct v0.1), with greedy decoding only. Newer models and other settings may write differently.
-- **Two kinds of writing for the matched sets, one source for each comparison.** Casual and careful writing show how much of a marker is really about the kind of text, but they are not matched by document, and each comes from a single site. See [What is not covered](#what-is-not-covered).
+- **School essays are paired by assignment, not by document.** A model's essay and a student's essay answer the same assignment; they are not two versions of one text, so those pairs are looser than the others. The students wrote before 2022 and the models in 2026, and that kind cannot separate the writer from the year.
+- **Two kinds of writing matched by document, one by assignment, and one source for each comparison.** Casual and careful writing show how much of a marker is really about the kind of text, but they are not matched by document, and each comes from a single site. See [What is not covered](#what-is-not-covered).
 - **Llama's cut-off texts.** Llama chat often runs into its length limit: 191 of its abstracts and 271 of its posts stop before they are finished and are dropped. Its columns are the smallest (1,013 abstracts and 878 posts), and they lean toward the texts it finished within the limit.
 - **The dating is only as good as the lookup.** 6 abstracts could not be matched to an arXiv paper and are kept undated. A revision made anywhere other than arXiv would not be caught.
 - **The Reddit posts are not filtered for bots or spam.** RAID's source file was not, so a post is from before ChatGPT but not certainly a person's.
@@ -414,10 +467,10 @@ The weekly job ([`.github/workflows/collect.yml`](.github/workflows/collect.yml)
 - **Posts are flat.** The people's posts reached RAID without line breaks, so every writer's post is read as one line. List and heading markers are not recorded for posts, and a model's list survives only as sentences.
 - **Markers are regexes.** “Delve” catches the word and not the idea, and irony is invisible to all of it.
 - **Presence and rate disagree sometimes.** For a word, the verdict follows the rate compared at equal lengths. A whole-arm rate can still lean on one writer's shorter or longer texts, and a word used only in texts of lengths the other side rarely writes has little to be compared with (see Llama's “in conclusion”).
-- **“k of 4” is a count, not a test.** It is not corrected across the four models, and a model left out of “of n” had too little to compare, which is not the same as no difference.
+- **“k of n” is a count, not a test.** It is not corrected across the models, and a model left out of “of n” had too little to compare, which is not the same as no difference.
 - **English only.** A document is left out of every column when any of its writers, the person included, wrote it in another language: 37 Reddit documents, most because the person's post was not in English, a few because a model answered in another language.
 - **This cannot tell you who wrote a text**, and no number of markers will make it able to.
 
 ## License
 
-MIT. The corpora keep their own licences. RAID's model generations are MIT. The human texts inside RAID keep their sources' terms. The arXiv abstracts and their metadata are CC0 and are quoted. The Reddit posts are counted only: they are never quoted or committed, their titles are not shown, and they are referenced by RAID id alone. HC3 is CC BY-SA 4.0 and referenced by id. Hacker News and Stack Exchange content stays with its owners and is linked, not quoted.
+MIT. The corpora keep their own licences. RAID's model generations are MIT. The human texts inside RAID keep their sources' terms. The arXiv abstracts and their metadata are CC0 and are quoted. The Reddit posts are counted only: they are never quoted or committed, their titles are not shown, and they are referenced by RAID id alone. HC3 is CC BY-SA 4.0 and referenced by id. PERSUADE 2.0 (Crossley et al.) is CC BY-NC-SA 4.0: the students' essays are counted only, never quoted or committed, and referenced by id. The essays written for this repository are part of it, MIT. Hacker News and Stack Exchange content stays with its owners and is linked, not quoted.

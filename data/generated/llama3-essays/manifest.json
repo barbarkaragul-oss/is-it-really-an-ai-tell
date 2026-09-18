@@ -1,0 +1,96 @@
+{
+ "genre": "essays",
+ "protocol_version": "essays-1",
+ "one_call_per_essay": true,
+ "nothing_discarded": "every essay a writer returned is here; the checks are reported, not applied",
+ "prompts_built_by": "scripts/generate-essays.ts, promptFor()",
+ "no_human_text": "No essay a person wrote enters a prompt. The only corpus text in a prompt is the assignment, which is the teacher's words.",
+ "licence": "The assignment text is quoted verbatim from PERSUADE 2.0 (Crossley et al., 2024), CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/). The essays themselves were written for this repository and are under its own licence.",
+ "templates": {
+  "plain": "{assignment}\n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+  "student": "You are a student in grade {grade} at a school in the United States. Your teacher\nhas given the class this assignment:\n\n{assignment}\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it."
+ },
+ "arms": [
+  {
+   "id": "essays-llama3-student",
+   "writer": "llama3",
+   "template": "student",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "essays": 200
+  }
+ ],
+ "files": [
+  {
+   "prompt_name": "Cell phones at school",
+   "file": "cell-phones-at-school.json",
+   "essays": 25
+  },
+  {
+   "prompt_name": "Community service",
+   "file": "community-service.json",
+   "essays": 24
+  },
+  {
+   "prompt_name": "Distance learning",
+   "file": "distance-learning.json",
+   "essays": 38
+  },
+  {
+   "prompt_name": "Grades for extracurricular activities",
+   "file": "grades-for-extracurricular-activities.json",
+   "essays": 25
+  },
+  {
+   "prompt_name": "Mandatory extracurricular activities",
+   "file": "mandatory-extracurricular-activities.json",
+   "essays": 23
+  },
+  {
+   "prompt_name": "Seeking multiple opinions",
+   "file": "seeking-multiple-opinions.json",
+   "essays": 43
+  },
+  {
+   "prompt_name": "Summer projects",
+   "file": "summer-projects.json",
+   "essays": 22
+  }
+ ],
+ "memorisation": {
+  "measured_against": {
+   "essays": 5867,
+   "five_grams": 2199841
+  },
+  "person_baseline": {
+   "essays": 200,
+   "mean": 0.1325,
+   "max": 0.3156,
+   "above_20_percent": 17,
+   "note": "200 of the people's own essays, each measured against the others the same way. A machine arm near this number is writing like the people; well above it is repeating them."
+  },
+  "note": "The share of each essay's five-word sequences that also occur in the people's essays for this genre, measured against the whole human sample. Read it against person_baseline, not against zero: thousands of essays answering the same seven assignments share a great deal of ordinary phrasing, and a sentence invented for a test already matches about half the time. Well above the baseline is a model repeating writing it has seen.",
+  "arms": {
+   "essays-llama3-student": {
+    "essays": 200,
+    "mean": 0.1683,
+    "max": 0.3382,
+    "above_20_percent": 53,
+    "worst": [
+     {
+      "slot": "essays-llama3-student.distance-learning.g11.027",
+      "containment": 0.3382
+     },
+     {
+      "slot": "essays-llama3-student.cell-phones-at-school.g8.005",
+      "containment": 0.2957
+     },
+     {
+      "slot": "essays-llama3-student.community-service.g8.004",
+      "containment": 0.2955
+     }
+    ]
+   }
+  }
+ }
+}

@@ -1,9 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtempSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 import {
   containment, checkArm, cleanArm, claudeAgrees, datedExclusions, dayOf, titleKey, DATE_WINDOW, foreignDocuments,
+  generatedArm, poolFiveGrams, rulesFor,
   type Detectors, type DatesFile, type Generated,
 } from '../scripts/contamination.js';
+import { genreById } from '../scripts/genres.js';
 
 const paper = 'We propose a method for segmenting medical images with very few labels and show that it beats every baseline on three public datasets.';
 
@@ -227,4 +232,51 @@ test('dayOf reads ISO dates and arXiv\'s RFC 2822 dates, and refuses anything el
   assert.equal(dayOf('2023-07-25T23:59:00Z'), '2023-07-25');
   assert.equal(dayOf('Thu, 16 Feb 2012 19:13:16 GMT'), '2012-02-16');
   assert.throws(() => dayOf('last summer'));
+});
+
+test('an arm written here is read back from its records, one arm at a time, each essay with its assignment', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'generated-'));
+  const essay = (slot: string, arm: string, text: string) => ({ slot, arm, text });
+  writeFileSync(path.join(dir, 'phones.json'), JSON.stringify({ prompt_slug: 'phones', essays: [essay('a.phones.g8.001', 'arm-a', 'One.'), essay('b.phones.g8.001', 'arm-b', 'Two.')] }));
+  writeFileSync(path.join(dir, 'summer.json'), JSON.stringify({ prompt_slug: 'summer', essays: [essay('a.summer.g8.001', 'arm-a', 'Three.')] }));
+  // the manifest sits in the same directory and holds no essay
+  writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify({ arms: [{ id: 'arm-a' }] }));
+  assert.deepEqual(generatedArm(dir, 'arm-a'), [
+    { id: 'a.phones.g8.001', text: 'One.', group: 'phones' },
+    { id: 'a.summer.g8.001', text: 'Three.', group: 'summer' },
+  ]);
+  assert.deepEqual(generatedArm(dir, 'arm-b').map((r) => r.id), ['b.phones.g8.001']);
+  assert.deepEqual(generatedArm(dir, 'arm-c'), []);
+});
+
+test('the pooled check reads the students of the same assignment, and only them', () => {
+  const student = 'Phones at school let a parent reach a child when the late bus is cancelled and practice runs over the hour.';
+  const people = [
+    { id: 'essays:phones:1', text: student, group: 'phones' },
+    { id: 'essays:summer:1', text: 'Summer projects should be designed by students so that they learn what they care about most.', group: 'summer' },
+  ];
+  const pool = poolFiveGrams(people);
+  const rows = [
+    // a machine essay that repeats a student of its own assignment is remembered
+    { id: 'm.phones.g8.001', text: student, group: 'phones' },
+    // the same words under another assignment are not that assignment's students
+    { id: 'm.summer.g8.001', text: student, group: 'summer' },
+    // an assignment the students did not write to cannot be checked
+    { id: 'm.art.g8.001', text: student, group: 'art' },
+  ];
+  const { report, clean } = checkArm(rows, new Map(), 'machine', pool);
+  assert.deepEqual(report.remembered, ['m.phones.g8.001']);
+  assert.equal(report.unchecked, 1);
+  assert.deepEqual(clean.map((r) => r.id), ['m.summer.g8.001']);
+});
+
+test('the cleaning rules say what was done to each kind, and the RAID kinds keep theirs word for word', () => {
+  const abstracts = rulesFor(genreById.get('abstracts')!);
+  assert.equal(rulesFor(genreById.get('posts')!), abstracts, 'the two RAID kinds share one set of rules');
+  assert.match(abstracts.remembered, /the person's text for the same document/);
+  const essays = rulesFor(genreById.get('essays')!);
+  assert.match(essays.remembered, /essays written to the same assignment/);
+  assert.match(essays.meta, /a letter that ends that way is kept/);
+  for (const k of ['truncated', 'meta'] as const) assert.doesNotMatch(essays[k], /RAID/, k);
+  assert.equal(essays.dated, abstracts.dated);
 });

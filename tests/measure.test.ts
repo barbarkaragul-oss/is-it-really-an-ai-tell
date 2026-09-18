@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  wilson, twoProportionP, twoRateP, lengthMatchedRateTest, benjaminiHochberg, pairMatch, pairByDocument, sourceId, seededShuffle, measure, rate, share,
+  wilson, twoProportionP, twoRateP, lengthMatchedRateTest, benjaminiHochberg, pairMatch, pairByDocument, pairByPrompt, sourceId, seededShuffle, measure, rate, share,
   poissonInterval, type Arm, type Text,
 } from '../src/measure.js';
 import { MARKERS, sentenceLengthCv, byId } from '../src/markers.js';
@@ -161,6 +161,85 @@ test('document pairing: one document on each side, both in the same length bin, 
   assert.equal(r.rows.find((x) => x.marker === 'delve')!.share.model!.reference.n, 10);
 });
 
+/** essays written to one assignment: what a pairing by assignment has to pair inside */
+const essays = (n: number, group: string, length: number, tag: string): Text[] =>
+  Array.from({ length: n }, (_, i) => ({ id: `${tag}${i}`, text: filler(length, i), source: tag, group }));
+
+/** which of the two bins these fixtures use a text falls in, or -1 for a text no bin holds */
+const twoBins = (t: Text): number => {
+  const n = t.text.split(/\s+/).length;
+  return [[80, 129], [130, 219]].findIndex(([lo, hi]) => n >= lo! && n <= hi!);
+};
+
+test('prompt pairing: inside one assignment and one length bin, and nothing across two', () => {
+  // two assignments, two bins, and on each side essays too long or too short for any bin
+  const person: Text[] = [
+    ...essays(10, 'phones', 100, 'p1'), ...essays(4, 'phones', 150, 'p2'),
+    ...essays(6, 'summer', 100, 'p3'), ...essays(8, 'summer', 150, 'p4'),
+    ...essays(3, 'phones', 900, 'p5'), ...essays(2, 'summer', 60, 'p6'),
+  ];
+  const model: Text[] = [
+    ...essays(3, 'phones', 100, 'm1'), ...essays(9, 'phones', 150, 'm2'),
+    ...essays(7, 'summer', 100, 'm3'), ...essays(2, 'summer', 150, 'm4'),
+    ...essays(5, 'phones', 900, 'm5'),
+  ];
+  const [a, b] = pairByPrompt(person, model);
+  // the smaller side of each (assignment, bin) cell: 3 + 4 + 6 + 2
+  assert.equal(a.length, 15);
+  assert.equal(b.length, 15);
+  for (let i = 0; i < a.length; i++) {
+    assert.equal(a[i]!.group, b[i]!.group, `pair ${i} joins two assignments`);
+    assert.equal(twoBins(a[i]!), twoBins(b[i]!), `pair ${i} joins two length bins`);
+    assert.ok(twoBins(a[i]!) >= 0, `pair ${i} rests on a text no bin holds`);
+  }
+  const cell = (ts: Text[], g: string, bin: number) => ts.filter((t) => t.group === g && twoBins(t) === bin).length;
+  const cells = (ts: Text[]) => [cell(ts, 'phones', 0), cell(ts, 'phones', 1), cell(ts, 'summer', 0), cell(ts, 'summer', 1)];
+  assert.deepEqual(cells(a), [3, 4, 6, 2]);
+  assert.deepEqual(cells(b), [3, 4, 6, 2]);
+  // the 900-word and 60-word essays belong to no bin and are dropped on both sides, not paired across bins
+  assert.equal([...a, ...b].filter((t) => /^(p5|p6|m5)/.test(t.id)).length, 0);
+  // an assignment only one side wrote to pairs with nothing at all
+  assert.deepEqual(pairByPrompt(essays(5, 'phones', 100, 'x'), essays(5, 'summer', 100, 'y')), [[], []]);
+  // and a text that names no assignment is left out rather than pooled with the others
+  assert.deepEqual(pairByPrompt(texts(5, () => filler(100), 'u'), essays(5, 'summer', 100, 'y')), [[], []]);
+  // the draw is seeded per assignment: one seed takes the same essays every time, another does not
+  const ids = (seed: number) => pairByPrompt(person, model, seed)[0].map((t) => t.id);
+  assert.deepEqual(ids(5), ids(5), 'the same seed must draw the same sample');
+  assert.notDeepEqual(ids(5), ids(6));
+});
+
+test('prompt pairing is asked for by the kind of writing, and is never reported as a document pairing', () => {
+  const person = [...essays(40, 'phones', 100, 'ph'), ...essays(40, 'summer', 150, 'su')];
+  // the machine arm carries the person's own ids, as forging a document pairing would have them
+  const model = [...essays(20, 'phones', 100, 'ph'), ...essays(20, 'summer', 150, 'su')];
+  const arms: Arm[] = [
+    { id: 'casual', label: 'casual', kind: 'human', texts: texts(60, (i) => filler(100, i), 'c') },
+    { id: 'person', label: 'person', kind: 'human', texts: person },
+    { id: 'model', label: 'model', kind: 'machine', texts: model },
+  ];
+  const opts = { reference: 'person', casual: 'casual', machine: 'model' };
+  const asked = measure(arms, { ...opts, pairing: 'prompt' });
+  const info = (r: typeof asked, id: string) => r.arms.find((x) => x.id === id)!;
+  assert.equal(info(asked, 'model').pairing, 'prompt', 'the ids say document; only the kind of writing may say otherwise');
+  assert.equal(info(asked, 'model').matchedWithReference, 40, 'twenty essays in each of the two cells');
+  assert.equal(info(asked, 'casual').pairing, 'length', 'a column from another kind of writing names no assignment');
+  assert.equal(info(asked, 'person').pairing, 'self');
+  // the shares are read on those pairs, both sides the same size
+  const row = asked.rows.find((x) => x.marker === 'delve')!;
+  assert.equal(row.share.model!.arm.n, 40);
+  assert.equal(row.share.model!.reference.n, 40);
+  // without the option nothing asks for it, and these ids are shared, so the old document pairing stands
+  assert.equal(info(measure(arms, opts), 'model').pairing, 'document');
+  // an arm where only some texts name an assignment is a collection fault, not a length pairing
+  const half: Arm = { ...arms[2]!, texts: model.map((t, i) => (i % 2 ? t : { id: t.id, text: t.text, source: t.source })) };
+  assert.throws(() => measure([arms[0]!, arms[1]!, half], { ...opts, pairing: 'prompt' }), /20 of 40 texts name no assignment/);
+  assert.doesNotThrow(() => measure([arms[0]!, arms[1]!, half], opts), 'a kind of writing that pairs by document never looks at assignments');
+  // a reference that names no assignment cannot give the pairing that was asked for either, and the
+  // run stops instead of publishing "length" for a kind of writing whose registry says "prompt"
+  const bare: Arm = { ...arms[1]!, texts: person.map((t) => ({ id: t.id, text: t.text, source: t.source })) };
+  assert.throws(() => measure([arms[0]!, bare, arms[2]!], { ...opts, pairing: 'prompt' }), /none of its 80 texts name an assignment/);
+});
+
 test('seeded shuffle: reproducible, a permutation, and not the identity', () => {
   const xs = Array.from({ length: 50 }, (_, i) => i);
   const a = seededShuffle(xs, 7), b = seededShuffle(xs, 7), c = seededShuffle(xs, 8);
@@ -210,6 +289,65 @@ test('the placebo ties on a word a few writers repeat, whichever way the split f
     assert.ok(row.placebo.tie, `seed ${seed}: ${row.placebo.rate.a.occurrences} against ${row.placebo.rate.b.occurrences}, q ${row.placebo.q}`);
     assert.equal(row.placebo.rate.a.occurrences + row.placebo.rate.b.occurrences, 300);
   }
+});
+
+test('the placebo is the size and the shape of the comparison it stands next to', () => {
+  // 800 essays over two assignments and two bins; only the long ones say "delve", so the placebo's
+  // occurrences say how many long essays it drew, and its length mix can be read off the numbers
+  const long = (n: number, group: string, tag: string) =>
+    Array.from({ length: n }, (_, i) => ({ id: `${tag}${i}`, text: 'We delve. ' + filler(148, i), source: tag, group }));
+  const person: Text[] = [
+    ...essays(200, 'phones', 100, 'ph'), ...long(200, 'phones', 'phl'),
+    ...essays(200, 'summer', 100, 'su'), ...long(200, 'summer', 'sul'),
+  ];
+  const model: Text[] = [
+    ...essays(30, 'phones', 100, 'mph'), ...long(20, 'phones', 'mphl'),
+    ...essays(25, 'summer', 100, 'msu'), ...long(25, 'summer', 'msul'),
+  ];
+  const arms: Arm[] = [
+    { id: 'casual', label: 'casual', kind: 'human', texts: texts(100, (i) => filler(100, i), 'c') },
+    { id: 'person', label: 'person', kind: 'human', texts: person },
+    { id: 'model', label: 'model', kind: 'machine', texts: model },
+  ];
+  const opts = { reference: 'person', casual: 'casual', machine: 'model' };
+  const row = (r: ReturnType<typeof measure>) => r.rows.find((x) => x.marker === 'delve')!;
+
+  const calibrated = measure(arms, { ...opts, pairing: 'prompt' });
+  assert.equal(calibrated.arms.find((a) => a.id === 'model')!.matchedWithReference, 100, 'the person fills every cell the model has');
+  const placebo = row(calibrated).placebo;
+  assert.equal(placebo.rate.a.texts, 100, 'a placebo of 400 against 400 is not the null of a test of 100');
+  assert.equal(placebo.rate.b.texts, 100);
+  assert.equal(placebo.a.n, 100);
+  assert.equal(placebo.b.n, 100);
+  // and cell by cell: the model has 20 long phones essays and 25 long summer ones, so each half has 45
+  assert.equal(placebo.rate.a.occurrences, 45, 'the halves must follow the comparison bin by bin, not the file');
+  assert.equal(placebo.rate.b.occurrences, 45);
+
+  // asking for the whole reference back gives the old split: four times the texts, and the file's own mix
+  const whole = row(measure(arms, { ...opts, pairing: 'prompt', placebo: 'whole-reference' })).placebo;
+  assert.equal(whole.rate.a.texts, 400);
+  assert.ok(whole.rate.a.occurrences > 150, `half the file is about 200 long essays, got ${whole.rate.a.occurrences}`);
+  // and a kind of writing that names no pairing mode keeps that split without asking, as the published two do
+  assert.equal(row(measure(arms, opts)).placebo.rate.a.texts, 400);
+});
+
+test('an assignment on the texts changes nothing until the kind of writing asks to pair on it', () => {
+  const person = Array.from({ length: 200 }, (_, i) => ({ id: `raid:human:d${i}`, text: 'We delve. ' + filler(120, i), source: 'p' }));
+  const model = Array.from({ length: 100 }, (_, i) => ({ id: `raid:gpt4:d${i}`, text: filler(122, i), source: 'm' }));
+  const arms: Arm[] = [
+    { id: 'casual', label: 'casual', kind: 'human', texts: texts(100, (i) => filler(120, i), 'c') },
+    { id: 'person', label: 'person', kind: 'human', texts: person },
+    { id: 'gpt4', label: 'gpt4', kind: 'machine', texts: model },
+  ];
+  const opts = { reference: 'person', casual: 'casual', machine: 'gpt4' };
+  const bare = measure(arms, opts);
+  const tagged = measure(arms.map((a) => ({ ...a, texts: a.texts.map((t, i) => ({ ...t, group: i % 3 ? 'one' : 'two' })) })), opts);
+  assert.equal(bare.arms.find((a) => a.id === 'gpt4')!.pairing, 'document', 'the two kinds of writing published so far pair by document');
+  assert.equal(
+    JSON.stringify({ ...tagged, generated_at: '' }),
+    JSON.stringify({ ...bare, generated_at: '' }),
+    'a group nobody asked to pair on must not move a single number',
+  );
 });
 
 test('a text the marker cannot judge is left out of its shares, not counted as a no', () => {

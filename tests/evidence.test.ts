@@ -1,8 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtempSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 import { sentenceAround, hits, top, forms, examples, linkFor } from '../src/evidence.js';
-import { byId, MARKERS } from '../src/markers.js';
-import { ARMS } from '../scripts/arms.js';
+import { byId, MARKERS, words as countWords } from '../src/markers.js';
+import { ARMS, loadArms, type ArmSpec } from '../scripts/arms.js';
+import { documentsFor, assignmentDocumentsFor, assignmentsFor, personCountsFor, makeWholeTextGuard, drawMatched, evidenceFor } from '../scripts/evidence.js';
+import { genreById, type Genre } from '../scripts/genres.js';
+import type { Arm, Text } from '../src/measure.js';
 
 const doc = (id: string, text: string) => ({ id, text, source: 't' });
 
@@ -67,12 +73,14 @@ test('links are decided by the arm: a bare number from Stack Exchange is not a H
 test('only arms whose licence allows it are quoted', () => {
   const quoted = ARMS.filter((a) => a.publishable).map((a) => a.id);
   assert.ok(!quoted.includes('casual-human') && !quoted.includes('careful-human') && !quoted.includes('hc3-gpt35'));
-  // RAID's model texts (MIT), arXiv abstracts (CC0) and the Claude arm; never a person's Reddit post
+  // RAID's model texts (MIT), arXiv abstracts (CC0), the Claude arms and the Llama 3 arm written here;
+  // never a person's Reddit post and never a student's essay
   assert.deepEqual(quoted.sort(), [
+    'essays-claude-plain', 'essays-claude-student', 'essays-llama3-student',
     'posts-chatgpt', 'posts-gpt4', 'posts-llama-chat', 'posts-mistral-chat',
     'raid-chatgpt', 'raid-claude', 'raid-gpt4', 'raid-human', 'raid-llama-chat', 'raid-mistral-chat',
   ]);
-  assert.ok(!quoted.includes('posts-human'));
+  assert.ok(!quoted.includes('posts-human') && !quoted.includes('essays-human'));
 });
 
 test('an arm that cannot be quoted gives up its open-ended matches, not just its sentences', () => {
@@ -87,4 +95,194 @@ test('an arm that cannot be quoted gives up its open-ended matches, not just its
 test('the open-ended patterns are marked as such', () => {
   const open = MARKERS.filter((m) => m.openEnded).map((m) => m.id).sort();
   assert.deepEqual(open, ['not_only_but_also', 'not_x_its_y', 'rule_of_three']);
+});
+
+// ---- the panel for a kind of writing whose writers share an assignment and no document
+//
+// Nothing here is a real essay. The rule the panel exists to keep -- a student's essay is never
+// published -- is tested on texts written for the test, so that the test itself can print what it
+// checked; the last test in this file runs the same check over the real corpora when they are there.
+
+const assignmentGenre = (dir: string): Genre => ({
+  ...genreById.get('essays')!,
+  assignments: path.join(dir, 'assignments.json'),
+});
+
+/** the assignments file the genre names, as the collector writes one */
+function writeAssignments(dir: string): void {
+  writeFileSync(path.join(dir, 'assignments.json'), JSON.stringify({
+    prompts: [
+      { slug: 'phones', name: 'Phones', assignment: 'Write a letter to your principal about phones.', letter: true },
+      { slug: 'service', name: 'Service', assignment: 'Should students do community service? Explain your answer.', letter: false },
+    ],
+  }));
+}
+
+/** a sentence every writer uses, so that sharing it is nobody's own words */
+const COMMON = 'Students at this school care about the rules and about each other every single day. ';
+/** a run of words exactly one person wrote; a machine text holding it may never be shown */
+const ONLY_ONE = 'Aardvark banjo crimson dulcimer eggplant fennel gossamer harpsichord. ';
+
+const filler = (n: number): string => COMMON.repeat(n);
+
+function armsFixture(): { arm: Arm; spec: ArmSpec }[] {
+  const spec = (id: string, kind: 'human' | 'machine', publishable: boolean): ArmSpec =>
+    ({ id, label: id, kind, file: `${id}-clean`, publishable });
+  const person: Text[] = [];
+  for (const group of ['phones', 'service'] as const) {
+    for (let i = 1; i <= 6; i++) {
+      // "delve" three times in the phones essays and never in the service ones, so a count that came
+      // from the wrong assignment cannot pass
+      const delve = group === 'phones' && i <= 3 ? 'We delve into it. ' : '';
+      person.push({ id: `essays:${group}:${i}`, text: `${delve}${filler(20)}${i === 1 && group === 'phones' ? ONLY_ONE : ''}`, source: 'p', group });
+    }
+  }
+  const machine = (id: string): Text[] => ['phones', 'service'].flatMap((group) =>
+    [1, 2, 3, 4].map((i): Text => ({
+      id: `${id}.${group}.g8.00${i}`,
+      // the first Claude essay about phones repeats the run only one person wrote, and must be passed over
+      text: `${filler(20)}${id === 'essays-claude-student' && group === 'phones' && i === 1 ? ONLY_ONE : ''}`,
+      source: 'm', group,
+    })));
+  return [
+    { arm: { id: 'essays-human', label: 'people', kind: 'human', texts: person }, spec: spec('essays-human', 'human', false) },
+    { arm: { id: 'essays-claude-student', label: 'Claude', kind: 'machine', texts: machine('essays-claude-student') }, spec: spec('essays-claude-student', 'machine', true) },
+    { arm: { id: 'essays-llama3-student', label: 'Llama 3', kind: 'machine', texts: machine('essays-llama3-student') }, spec: spec('essays-llama3-student', 'machine', true) },
+    { arm: { id: 'essays-claude-plain', label: 'Claude plain', kind: 'machine', texts: machine('essays-claude-plain') }, spec: spec('essays-claude-plain', 'machine', true) },
+  ];
+}
+
+test('a kind of writing with no shared document opens on the assignment, not on a document', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'assignments-'));
+  writeAssignments(dir);
+  const docs = documentsFor(assignmentGenre(dir), armsFixture(), new Map());
+  assert.deepEqual(docs.map((d) => d.source_id), ['phones', 'service'], 'one entry per assignment, in the file\'s order');
+  assert.deepEqual(docs.map((d) => d.assignment?.text), [
+    'Write a letter to your principal about phones.',
+    'Should students do community service? Explain your answer.',
+  ], 'the teacher\'s words, verbatim');
+  // no titles are invented where the corpus has none, and the person's column is named as missing
+  assert.deepEqual(docs.map((d) => d.title), ['', '']);
+  assert.deepEqual(docs.map((d) => d.person_not_reproduced), [true, true]);
+  assert.deepEqual(docs.map((d) => d.assignment?.letter), [true, false]);
+});
+
+test('every assignment in the panel carries at least two machine essays', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'assignments-two-'));
+  writeAssignments(dir);
+  for (const d of documentsFor(assignmentGenre(dir), armsFixture(), new Map())) {
+    const written = Object.entries(d.texts).filter(([, t]) => t.trim().length);
+    assert.ok(written.length >= 2, `${d.source_id} has ${written.length} machine essays, which is not a comparison`);
+    // every essay shown is named, so a reader can find it under data/generated
+    assert.deepEqual(Object.keys(d.assignment!.essays).sort(), written.map(([a]) => a).sort());
+    for (const [arm, t] of written) assert.equal(d.assignment!.essays[arm]!.id.startsWith(`${arm}.${d.source_id}.`), true, `${arm}: the essay named is not one of its own`);
+  }
+});
+
+test('a machine essay that repeats a run only one person wrote is passed over, and the next drawn', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'assignments-guard-'));
+  writeAssignments(dir);
+  const docs = documentsFor(assignmentGenre(dir), armsFixture(), new Map());
+  const phones = docs.find((d) => d.source_id === 'phones')!;
+  assert.equal(phones.texts['essays-claude-student']!.includes('Aardvark banjo'), false);
+  assert.notEqual(phones.assignment!.essays['essays-claude-student']!.id, 'essays-claude-student.phones.g8.001');
+  // and the rule is about one person's words, not about any two texts agreeing: the sentence every
+  // writer used is not anybody's, so it does not keep an essay off the page
+  const guard = makeWholeTextGuard(armsFixture()[0]!.arm, [COMMON.repeat(3), ONLY_ONE.repeat(2)], []);
+  assert.equal(guard(filler(3)), false, 'a run many people wrote is not one person\'s');
+  assert.equal(guard(ONLY_ONE), true, 'a run one person wrote is theirs');
+});
+
+test('the assignment\'s own words do not count as a person\'s, however many people repeat them', () => {
+  const assignment = 'Policy 1: Allow students to bring phones to school and use them during lunch.';
+  // one student restated the assignment, which many of them do, and the model did the same
+  const person: Arm = { id: 'p', label: 'p', kind: 'human', texts: [{ id: '1', text: `${assignment} I agree with that.`, source: 'p' }] };
+  const machine = `In my view, ${assignment} That is the better one.`;
+  assert.equal(makeWholeTextGuard(person, [machine], [])(machine), true, 'without the assignment it reads as the one person\'s');
+  assert.equal(makeWholeTextGuard(person, [machine], [assignment])(machine), false, 'the teacher wrote it, and this project publishes it');
+});
+
+test('the counts beside an assignment are that assignment\'s students, not the whole corpus', () => {
+  const person = armsFixture()[0]!.arm;
+  const phones = personCountsFor(person, 'phones');
+  const service = personCountsFor(person, 'service');
+  assert.equal(phones.texts, 6, 'six people wrote to this assignment, not twelve');
+  assert.equal(service.texts, 6);
+  const delve = (p: typeof phones): number => p.markers.find((m) => m.marker === 'delve')!.occurrences!;
+  assert.equal(delve(phones), 3, 'the three "delve"s are in the phones essays');
+  assert.equal(delve(service), 0, 'and the service essays have none');
+  // the middle essay's length, over these essays alone
+  const lengths = person.texts.filter((t) => t.group === 'phones').map((t) => countWords(t.text).length).sort((a, b) => a - b);
+  assert.equal(phones.median_words, lengths[Math.floor(lengths.length / 2)]);
+  assert.equal(phones.words, lengths.reduce((s, n) => s + n, 0));
+  // a marker with no count has no rate: 0 there would read as "never", not as "never asked"
+  const noCount = phones.markers.find((m) => m.per1000 === null)!;
+  assert.equal(noCount.occurrences, null);
+  assert.equal(MARKERS.find((m) => m.id === noCount.marker)!.count, undefined);
+});
+
+test('the machine essays of an entry are held as level as the arms allow, and the panel says which', () => {
+  const t = (id: string, words: number): Text => ({ id, text: 'word '.repeat(words), source: 'm' });
+  // both writers have a grade-8 essay in the same band
+  const level = drawMatched([
+    { id: 'a', texts: [t('a.x.g8.001', 500), t('a.x.g11.002', 500)] },
+    { id: 'b', texts: [t('b.x.g11.001', 500), t('b.x.g8.002', 450)] },
+  ])!;
+  assert.equal(level.matched, 'grade and length');
+  assert.deepEqual(level.picked.map(([, x]) => x.id), ['a.x.g8.001', 'b.x.g8.002']);
+  // the same grade, but no band both can fill
+  const byGrade = drawMatched([
+    { id: 'a', texts: [t('a.x.g8.001', 500)] },
+    { id: 'b', texts: [t('b.x.g8.001', 150)] },
+  ])!;
+  assert.equal(byGrade.matched, 'grade');
+  // not even a grade in common: the assignment is still shared, and the page is told that is all
+  const byPrompt = drawMatched([
+    { id: 'a', texts: [t('a.x.g8.001', 500)] },
+    { id: 'b', texts: [t('b.x.g11.001', 150)] },
+  ])!;
+  assert.equal(byPrompt.matched, 'assignment only');
+});
+
+test('no person\'s sentence reaches the evidence of a kind of writing built round an assignment', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'assignments-quiet-'));
+  writeAssignments(dir);
+  const loaded = armsFixture();
+  const body = JSON.stringify(evidenceFor(assignmentGenre(dir), loaded, '2026-01-01T00:00:00.000Z', new Map()));
+  for (const t of loaded[0]!.arm.texts) {
+    for (const s of t.text.split(/(?<=[.!?])\s+/).filter((x) => x.trim().length > 30)) {
+      if (COMMON.trim() === s.trim()) continue; // every writer wrote it, so it is nobody's
+      assert.equal(body.includes(s.trim()), false, `${t.id}: a person's sentence reached the evidence`);
+    }
+  }
+});
+
+/**
+ * The same rule over the corpora themselves, where they have been collected. It is the check the
+ * licence rests on, so it is made against every essay rather than a sample: the longest sentence of
+ * each one, which is the least likely of its sentences to be a coincidence, must appear nowhere in
+ * what the panel would publish. Nothing of an essay is printed, only its id if one ever fails.
+ *
+ * A sentence the assignment itself holds is not the student's and is not counted as one: on these
+ * corpora the longest sentence of three essays is the assignment restated, written that way by eight
+ * to forty-three students each, and the assignment is published here in full on purpose.
+ */
+const collectedEssays = ['essays-human', 'essays-claude-student', 'essays-llama3-student', 'essays-claude-plain']
+  .every((a) => existsSync(path.resolve('out', `${a}-clean.json`)));
+
+test('no student\'s essay reaches the panel built from the corpora in out/', { skip: collectedEssays ? false : 'the essays are not collected in out/' }, () => {
+  const genre = genreById.get('essays')!;
+  const docs = assignmentDocumentsFor(genre, loadArms(genre));
+  assert.ok(docs.length, 'the panel is empty');
+  const body = JSON.stringify(docs);
+  const assignment = new Map(assignmentsFor(genre).map((a) => [a.slug, a.assignment]));
+  const students = JSON.parse(readFileSync(path.resolve('out', 'essays-human.json'), 'utf8')) as { id: string; text: string; group: string }[];
+  let checked = 0;
+  for (const s of students) {
+    const longest = s.text.split(/(?<=[.!?])\s+/).map((x) => x.trim()).sort((a, b) => b.length - a.length)[0] ?? '';
+    if (longest.length < 40 || (assignment.get(s.group) ?? '').includes(longest)) continue;
+    checked++;
+    assert.equal(body.includes(longest), false, `${s.id}: a student's sentence reached the panel`);
+  }
+  assert.ok(checked > students.length * 0.9, `only ${checked} of ${students.length} essays were checked`);
 });

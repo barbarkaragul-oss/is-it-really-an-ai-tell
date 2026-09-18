@@ -1,0 +1,197 @@
+{
+ "generated_at": "2026-09-17T20:37:27.257Z",
+ "genre": "essays",
+ "about": "The assignment each class was given, verbatim. These are the teacher's words, not a student's, and they are the only text of this corpus this project reproduces: the machine arms of this genre are given the same assignment, so it has to be published for the comparison to be checkable.",
+ "attribution": "Assignments and essay metadata from the PERSUADE 2.0 corpus (Crossley et al., 2024), https://github.com/scrosseye/persuade_corpus_2.0, used under CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/). No student essay is reproduced here.",
+ "licence": "CC BY-NC-SA 4.0",
+ "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "source": {
+  "corpus": "PERSUADE 2.0",
+  "home": "https://github.com/scrosseye/persuade_corpus_2.0",
+  "citation": "PERSUADE 2.0 corpus (Crossley et al., 2024)"
+ },
+ "letters": "3 of the 7 assignments ask the class for a letter to the principal rather than an essay. The salutation, the first person and the register of those essays follow from the assignment, so \"letter\" and the counts are published per prompt.",
+ "prompts": [
+  {
+   "slug": "distance-learning",
+   "name": "Distance learning",
+   "essays": 1126,
+   "grades": {
+    "9": 8,
+    "10": 117,
+    "11": 798,
+    "12": 203
+   },
+   "modal_grade": 11,
+   "providers": {
+    "Virginia": 1126
+   },
+   "letter": false,
+   "words": {
+    "median": 511,
+    "min": 171,
+    "max": 796
+   },
+   "over_800": {
+    "base": 1956,
+    "dropped": 308,
+    "share": 15.75
+   },
+   "assignment": "Some schools offer distance learning as an option for students to attend classes from home by way of online or video conferencing. Do you think students would benefit from being able to attend classes from home? Take a position on this issue. Support your response with reasons and examples.",
+   "assignment_sha256": "b52c8e4be87737f0c4bfb93504193ab2163b29f4b124c55d96ae8a9a8b572dc3"
+  },
+  {
+   "slug": "summer-projects",
+   "name": "Summer projects",
+   "essays": 640,
+   "grades": {
+    "9": 2,
+    "10": 91,
+    "11": 544,
+    "12": 3
+   },
+   "modal_grade": 11,
+   "providers": {
+    "Virginia": 640
+   },
+   "letter": false,
+   "words": {
+    "median": 546,
+    "min": 144,
+    "max": 800
+   },
+   "over_800": {
+    "base": 1576,
+    "dropped": 285,
+    "share": 18.08
+   },
+   "assignment": "Some schools require students to complete summer projects to assure they continue learning during their break. Should these summer projects be teacher-designed or student-designed? Take a position on this question. Support your response with reasons and specific examples.",
+   "assignment_sha256": "4390841ef8a800f55c145e221bdc26aa7a6ead9dd9884994314b8b3bf48af1ac"
+  },
+  {
+   "slug": "mandatory-extracurricular-activities",
+   "name": "Mandatory extracurricular activities",
+   "essays": 686,
+   "grades": {
+    "8": 686
+   },
+   "modal_grade": 8,
+   "providers": {
+    "Virginia": 686
+   },
+   "letter": false,
+   "words": {
+    "median": 439,
+    "min": 158,
+    "max": 800
+   },
+   "over_800": {
+    "base": 1480,
+    "dropped": 109,
+    "share": 7.36
+   },
+   "assignment": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. ",
+   "assignment_sha256": "7544b654b485f5b7bb176a2d14827b85320ea1d0ddd301ec72e65412e979fdcd"
+  },
+  {
+   "slug": "cell-phones-at-school",
+   "name": "Cell phones at school",
+   "essays": 744,
+   "grades": {
+    "8": 744
+   },
+   "modal_grade": 8,
+   "providers": {
+    "NCES": 744
+   },
+   "letter": true,
+   "words": {
+    "median": 292,
+    "min": 151,
+    "max": 748
+   },
+   "over_800": {
+    "base": 1485,
+    "dropped": 0,
+    "share": 0
+   },
+   "assignment": "Your principal is reconsidering the school's cell phone policy. She is considering two possible policies: \nPolicy 1: Allow students to bring phones to school and use them during lunch periods and other free times, as long as the phones are turned off during class time. \nPolicy 2: Do not allow students to have phones at school at all.\nWrite a letter to your principal convincing her which policy you believe is better. Support your position with specific reasons.",
+   "assignment_sha256": "b3491980ffc6386bfdbd252c3fc843aa1c04b09ef9ad6589e6f055e712665a03"
+  },
+  {
+   "slug": "grades-for-extracurricular-activities",
+   "name": "Grades for extracurricular activities",
+   "essays": 738,
+   "grades": {
+    "8": 738
+   },
+   "modal_grade": 8,
+   "providers": {
+    "NCES": 738
+   },
+   "letter": true,
+   "words": {
+    "median": 281,
+    "min": 151,
+    "max": 719
+   },
+   "over_800": {
+    "base": 1458,
+    "dropped": 2,
+    "share": 0.14
+   },
+   "assignment": "Your principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.",
+   "assignment_sha256": "530c9071a7aa5155adbab26b1654a308d515f0d9d8484cf15d333546e46a6306"
+  },
+  {
+   "slug": "seeking-multiple-opinions",
+   "name": "Seeking multiple opinions",
+   "essays": 1247,
+   "grades": {
+    "8": 1247
+   },
+   "modal_grade": 8,
+   "providers": {
+    "Virginia": 1247
+   },
+   "letter": false,
+   "words": {
+    "median": 465,
+    "min": 152,
+    "max": 800
+   },
+   "over_800": {
+    "base": 1383,
+    "dropped": 131,
+    "share": 9.47
+   },
+   "assignment": "When people ask for advice, they sometimes talk to more than one person. Explain why seeking multiple opinions can help someone make a better choice. Use specific details and examples in your response.",
+   "assignment_sha256": "a0321792990dee98f9892078d728cdccf65e22eba717f1093dfb83691cad2be1"
+  },
+  {
+   "slug": "community-service",
+   "name": "Community service",
+   "essays": 686,
+   "grades": {
+    "8": 686
+   },
+   "modal_grade": 8,
+   "providers": {
+    "NCES": 686
+   },
+   "letter": true,
+   "words": {
+    "median": 281,
+    "min": 151,
+    "max": 755
+   },
+   "over_800": {
+    "base": 1380,
+    "dropped": 0,
+    "share": 0
+   },
+   "assignment": "Some of your friends perform community service. For example, some tutor elementary school children and others clean up litter. They think helping the community is very important. But other friends of yours think community service takes too much time away from what they need or want to do. \nYour principal is deciding whether to require all students to perform community service. \nWrite a letter to your principal in which you take a position on whether students should be required to perform community service. Support your position with examples.",
+   "assignment_sha256": "722c0c4528888fcb78ef34134d37ff10a41f7177c7659718e0b45ef55e5c5406"
+  }
+ ]
+}

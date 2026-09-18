@@ -89,6 +89,20 @@ export const CAP_FROM: Record<string, number> = {
   gpt4: 470,
   'llama-chat': 330,
   'mistral-chat': 330,
+  /**
+   * The arms written for this repository are not RAID's, and neither is their cap. Claude was asked
+   * through Claude Code, which sets no length the essays come near: the school essays average about
+   * 840 on this scale, above every threshold above, and they end where the writer chose to end. Llama 3
+   * was asked through Ollama with num_predict 1200, its own tokens, which is roughly where this
+   * estimate would put 1,300; an essay that long would be one the cap stopped, and none has come close.
+   *
+   * Without these two entries an unknown model takes the lowest threshold, 330, and then any essay
+   * that does not end in a full stop is read as cut off. School letters end "Sincerely," and a name:
+   * 12 of the first 97 essays written here were flagged that way, all of them finished letters, and
+   * the three assignments that ask for a letter would have lost essays the other four kept.
+   */
+  claude: Infinity,
+  llama3: 1300,
 };
 const CAP_UNKNOWN = Math.min(...Object.values(CAP_FROM));
 
@@ -250,12 +264,26 @@ const META: { kind: MetaKind; where: 'start' | 'anywhere'; re: RegExp }[] = [
   { kind: 'placeholder', where: 'anywhere', re: /\[(?!(?:deleted|removed|oc|serious|nsfw|spoiler|spoilers|update|edit|meta|discussion|question|help|advice|sic|ref|pc|ps4|ps5|xbox|us|uk|eu|na|long|rant|vent|request|original|repost|x|tw|cw)\])[a-z][a-z' ]{1,30}\](?!\()/ },
 ];
 
+/**
+ * The end of a letter: a sign-off word on its own line, then at most a line or two. A name slot there
+ * ("Sincerely,\n[Your Name]") is where a letter puts a name, not a template the model failed to fill
+ * in: the letter itself is written, and in the kind of writing where letters are asked for, the
+ * students' own names were taken out of their essays by the corpus, so neither side signs. Without
+ * this exception the slot rule drops a finished letter, and it drops it only where an assignment asks
+ * for one: 69 of the 200 essays of the local model's arm, all of them letters, and none of the texts in
+ * the kinds of writing already published (measured before this was added).
+ */
+const SIGNATURE_TAIL = /\n[ \t]*(?:sincerely|sincerely yours|best|best regards|best wishes|regards|kind regards|warm regards|thank you|thanks|yours truly|yours sincerely|respectfully|respectfully yours)[,.!]?[ \t]*\n[\s\S]{0,120}$/i;
+
 /** Which kind of task talk a model's text holds, or null when it is simply the text. */
 export function metaKind(text: string): MetaKind | null {
   const t = text.trim();
   const opening = t.slice(0, OPENING);
+  const signed = t.replace(SIGNATURE_TAIL, '\n');
   for (const m of META) {
-    if (m.re.test(m.where === 'start' ? opening : t)) return m.kind;
+    // every other rule reads the text as it stands; only the slot rules look past a letter's signature
+    const against = m.where === 'start' ? opening : (m.kind === 'placeholder' ? signed : t);
+    if (m.re.test(against)) return m.kind;
   }
   return null;
 }

@@ -1,0 +1,100 @@
+{
+ "generated_at": "2026-09-18T07:44:12.543Z",
+ "genre": "essays",
+ "rules": {
+  "order": "Each text is counted under the first check that drops it: dated, then language, then truncated, then meta, then remembered.",
+  "dated": "Abstracts only, every arm: a document with any arXiv version posted between 2022-11-30 and 2024-06-04 (the Last-Modified date of RAID's train_none.csv) is left out. Documents the lookup could not date (no paper found, or no version history for the paper found) are kept and counted as unmatched, documents it has no entry for as not_looked_up; complete is false while any document is not looked up.",
+  "language": "Every arm, the person's included: a document is left out when any writer's text for it is not in English, that is, when fewer than 12% of its words are common English function words (src/clean.ts, isEnglish).",
+  "truncated": "src/clean.ts isTruncated: a model text that stops before it is finished: inside a clause, in a loop, on a bare list marker, at a length the model's cap could have stopped it without a finished ending, or at that length inside a quotation or bracket it opened. Model arms only; never the person.",
+  "meta": "src/clean.ts isMetaText: a refusal, a lecture, a preamble, a description of the text instead of the text, a label, a note to the requester, or a slot left to fill (\"[Your Name]\"), about the task instead of the text. A text with any of these is dropped whole, except that a slot on the lines after a letter's sign-off (\"Sincerely,\" and then \"[Your Name]\") is where a letter puts a name, and a letter that ends that way is kept. Model arms only; never the person.",
+  "remembered": "More than 50% of the text's five-word sequences also occur in the students' essays written to the same assignment, taken together: no machine essay has a student's essay of its own to be compared with. Every machine arm.",
+  "unchecked": "A machine essay written to an assignment the person's arm has no essays for cannot be checked, and is dropped.",
+  "claude": "The Claude arms were generated here with nothing discarded: truncated and meta are reported for them, not applied."
+ },
+ "dates": {
+  "applied": "not applicable"
+ },
+ "language": {
+  "threshold": 0.12,
+  "documents": 5867,
+  "excluded": 0,
+  "excluded_ids": []
+ },
+ "arms": [
+  {
+   "arm": "essays-human",
+   "writer": "human",
+   "texts": 5867,
+   "excluded_by_date": 0,
+   "excluded_by_language": 0,
+   "truncated": null,
+   "meta": null,
+   "unchecked": null,
+   "remembered": null,
+   "mean_containment": null,
+   "kept": 5867
+  },
+  {
+   "arm": "essays-claude-student",
+   "writer": "claude",
+   "texts": 200,
+   "excluded_by_date": 0,
+   "excluded_by_language": 0,
+   "truncated": null,
+   "meta": null,
+   "unchecked": 0,
+   "remembered": 0,
+   "mean_containment": 0.0414,
+   "kept": 200,
+   "reported_only": {
+    "truncated": 0,
+    "meta": 0
+   },
+   "dropped": {
+    "truncated": [],
+    "meta": [],
+    "remembered": []
+   }
+  },
+  {
+   "arm": "essays-llama3-student",
+   "writer": "llama3",
+   "texts": 200,
+   "excluded_by_date": 0,
+   "excluded_by_language": 0,
+   "truncated": 0,
+   "meta": 0,
+   "unchecked": 0,
+   "remembered": 0,
+   "mean_containment": 0.1374,
+   "kept": 200,
+   "dropped": {
+    "truncated": [],
+    "meta": [],
+    "remembered": []
+   }
+  },
+  {
+   "arm": "essays-claude-plain",
+   "writer": "claude",
+   "texts": 200,
+   "excluded_by_date": 0,
+   "excluded_by_language": 0,
+   "truncated": null,
+   "meta": null,
+   "unchecked": 0,
+   "remembered": 0,
+   "mean_containment": 0.0413,
+   "kept": 200,
+   "reported_only": {
+    "truncated": 0,
+    "meta": 0
+   },
+   "dropped": {
+    "truncated": [],
+    "meta": [],
+    "remembered": []
+   }
+  }
+ ]
+}

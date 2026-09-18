@@ -1,0 +1,1034 @@
+{
+ "genre": "essays",
+ "prompt_name": "Mandatory extracurricular activities",
+ "prompt_slug": "mandatory-extracurricular-activities",
+ "protocol_version": "essays-1",
+ "assignment": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. ",
+ "assignment_sha256": "7544b654b485f5b7bb176a2d14827b85320ea1d0ddd301ec72e65412e979fdcd",
+ "licence": "The assignment text is quoted verbatim from PERSUADE 2.0 (Crossley et al., 2024), CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/). The essays themselves were written for this repository and are under its own licence.",
+ "summary": {
+  "arms": {
+   "essays-claude-student": {
+    "asked": 23,
+    "written": 23,
+    "median_words": 549,
+    "echoing_the_assignment": 21
+   },
+   "essays-claude-plain": {
+    "asked": 23,
+    "written": 23,
+    "median_words": 528,
+    "echoing_the_assignment": 21
+   }
+  },
+  "memorisation": {
+   "measured_against": {
+    "essays": 5867,
+    "five_grams": 2199841
+   },
+   "person_baseline": {
+    "essays": 200,
+    "mean": 0.1325,
+    "max": 0.3156,
+    "above_20_percent": 17,
+    "note": "200 of the people's own essays, each measured against the others the same way. A machine arm near this number is writing like the people; well above it is repeating them."
+   },
+   "note": "The share of each essay's five-word sequences that also occur in the people's essays for this genre, measured against the whole human sample. Read it against person_baseline, not against zero: thousands of essays answering the same seven assignments share a great deal of ordinary phrasing, and a sentence invented for a test already matches about half the time. Well above the baseline is a model repeating writing it has seen.",
+   "arms": {
+    "essays-claude-plain": {
+     "essays": 23,
+     "mean": 0.058,
+     "max": 0.0894,
+     "above_20_percent": 0,
+     "worst": [
+      {
+       "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.016",
+       "containment": 0.0894
+      },
+      {
+       "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.005",
+       "containment": 0.0837
+      },
+      {
+       "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.006",
+       "containment": 0.0781
+      }
+     ]
+    },
+    "essays-claude-student": {
+     "essays": 23,
+     "mean": 0.066,
+     "max": 0.1193,
+     "above_20_percent": 0,
+     "worst": [
+      {
+       "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.011",
+       "containment": 0.1193
+      },
+      {
+       "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.017",
+       "containment": 0.0853
+      },
+      {
+       "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.004",
+       "containment": 0.0839
+      }
+     ]
+    }
+   }
+  },
+  "rejected": []
+ },
+ "essays": [
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.001",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:57:14.972Z",
+   "settings": "not exposed by the harness",
+   "context_id": "09dc801b-72d5-4824-bf97-d41081c80bc3",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I think activities are great and I'm in two of them myself, but making them a rule takes away the whole point of them.\n\nThe first reason I disagree is that a lot of kids in my school can't stay after school even if they want to. My friend Devin has to take the 3:15 bus because his mom works until 7 and his little sister gets off the elementary bus at 3:40 and somebody has to be home with her. If the principal makes this a rule, what is Devin supposed to do? Either he leaves his sister alone, which is not happening, or he breaks a school rule for something that isn't even his fault. There are also kids who have jobs helping at their family's store, and kids who take care of a grandparent. A rule that a whole group of students physically cannot follow isn't a fair rule. It just punishes the kids who already have the hardest schedules.\n\nSecond, forcing somebody to join something usually makes it worse for everyone there, not better. Last year our school made everyone in my grade go to a study club during activity period. Half the people sat there on their phones or put their heads down, and the kids who actually wanted help couldn't get the teacher's attention because she spent the whole time telling people to stop talking. That's what would happen to clubs too. Imagine you're on yearbook and you actually care about it, and then you get six people who were assigned there and don't want to do anything. Now you're doing their pages on top of yours. The clubs that are good are good because the people in them chose to be there.\n\nSome people would say that students who don't join anything are missing out, and honestly that's true sometimes. Clubs and sports are how I met most of my friends, and my coach is probably the adult at school I talk to the most. But you don't fix that by making a rule. You fix it by having more kinds of activities and better times for them. Our school has basketball, football, yearbook, student council, and that's pretty much it. If you're not into sports and you're not into student government, there's nothing. Add a video game club, a cooking club, an art club, something during lunch so the bus kids can do it too. If you did that, more people would sign up on their own and you wouldn't need to force anybody.\n\nSo instead of a rule, I think the principal should ask students what they would actually want to join, and then figure out how to make those things happen at a time people can get to. That would get way more kids involved than a rule that some of them can't even follow. Making something required doesn't make people care about it. It usually does the opposite.",
+   "words": 504,
+   "text_sha256": "4233ecf9f11e66c81639fabc7fe74c12c48e0594085606e7bc7a28eff2296318",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.002",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:52:32.285Z",
+   "settings": "not exposed by the harness",
+   "context_id": "6f739172-13df-4e6c-894e-a2a6ee37e886",
+   "text": "I disagree with our principal's decision that every student has to be in at least one extracurricular activity. I know she probably means well. She walks past the front doors at 3:15 and sees a hundred kids running for the buses and she thinks we are all missing out on something. But making something required is not the same as making people care about it, and I think this rule would actually end up hurting some of the students it is supposed to help.\n\nMy first reason is that the school does not know what our afternoons look like. My friend Deniz watches her little brother every single day from 3:30 until her mom gets home a little after 6. If she had to join volleyball, either she quits the team in November or her six year old brother sits on the gym bleachers for two hours with nothing to do. There are also kids on my bus route who live almost twenty minutes out, and the late bus only runs on Tuesday and Thursday. So the rule sounds equal but it is not equal at all. It is easy for the kid whose dad can pick him up at five. It is close to impossible for the kid whose family actually needs him at home, and that kid is the one who ends up in the office explaining himself.\n\nMy second reason is that clubs get worse when people are forced into them. Last year I was on the yearbook staff and it was honestly the best part of my week. There were only about nine of us in that computer lab and every single person wanted to be there, so we argued about page layouts and stayed until the custodian kicked us out. Now imagine forty kids get assigned to yearbook because it was the last thing with open spots. Mrs. Kaplan would spend the whole hour telling people to put their phones away instead of teaching anybody how to crop a photo. The people who chose to be there lose their club, and the people who were forced in still do not like it. Nobody wins in that room.\n\nI also think the rule ignores things students already do. My cousin swims for a club team that has nothing to do with our school, and he is in the pool five days a week. A kid in my math class helps at his family's shop on Saturdays and after school. Under this rule none of that counts, which basically tells those students that what they do only matters if the school is the one running it.\n\nNow, somebody is going to say that some kids just need a push, and I will admit that is partly true. I never would have walked into the yearbook room if Mrs. Kaplan had not stopped me in the hall and said she liked the photos I took at the fall festival. But that was an invitation, not a punishment. Those are two different things.\n\nSo instead of a rule, I think our school should add more clubs so there is something for people who do not like sports, run a club fair in September, and add a late bus every day. Ask teachers to personally invite the quiet kids they think would be good at something. Do all of that and most people will join on their own. Make it required and all you really get is a room full of students waiting for the clock to hit four.",
+   "words": 586,
+   "text_sha256": "96db9c70c0daa371268d59dd9323f0aca833b216b46e1ed16c6094c9e809e48a",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.003",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:01:09.840Z",
+   "settings": "not exposed by the harness",
+   "context_id": "be065687-8240-4104-8dd6-12858c8ab67c",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I think activities are a great thing, and I am in two of them myself, but the second you force somebody to do something it stops being the thing it was supposed to be.\n\nThe whole point of a club or a sport is that you picked it. When I joined the yearbook in seventh grade nobody made me. I stayed after school on Tuesdays because I actually wanted to learn how to use the layout program, and I ended up designing two spreads by myself. If Mr. Dawson had walked into my homeroom and announced that I had to pick a club by Friday or else, I probably would have signed up for whatever had the shortest wait and then sat in the back doing nothing. That is what a rule like this creates. You get a bunch of kids who are technically \"participating\" but are really just watching the clock, and they make it worse for the kids who came because they cared.\n\nAnother reason is that this rule does not treat everybody's life the same. Some students have things going on after school that the principal does not know about. My friend Marisol picks up her little brother from the elementary school at 3:15 every single day because her mom works until six. If the school makes activities mandatory, what is she supposed to do, leave a second grader on the sidewalk? Other kids take the bus and the activity bus does not run to their stop. Other kids already have something outside of school, like my cousin who does a dance program at a studio downtown four nights a week, and it would be silly to tell her she also needs a school activity to prove she is involved. A rule that sounds fair in the announcements can be really unfair once it hits real people.\n\nI also think the school would just run out of room. We have maybe fifteen clubs and around four hundred students. If every one of us has to be in something, the popular ones fill up in a day and the rest of us get shoved into whatever is left. Coaches would have kids on the team who do not want to be there, and the teachers who sponsor clubs would suddenly be babysitting twice as many people for the same zero dollars they get paid now.\n\nIf the principal wants more students involved, there are better ways than a rule. The school could ask us what we actually want, because right now there is no club for anybody who likes video games, art, or cooking, and I know for a fact people would show up for those. They could run a club fair in September instead of a poster taped by the office. They could make sure the late bus actually goes everywhere. Getting people to join should be about making things worth joining, not about making a rule and counting heads. Forcing someone to be involved does not make them involved, it just makes them there.",
+   "words": 523,
+   "text_sha256": "ffa178485354333f5e4924988d6ba0d80a610f6ee3787a0479e6cbbab03fdf48",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.004",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:01:02.347Z",
+   "settings": "not exposed by the harness",
+   "context_id": "bbbce952-8934-4c7b-9600-d9400a565104",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I want to be clear that I am not against activities. I run track in the spring and I have been in it since sixth grade, and it is honestly the best part of my year. But there is a big difference between letting students join something and forcing all of them to, and I think forcing it will end up hurting the same clubs the principal is trying to help.\n\nMy main reason is that an activity you are forced into stops being an activity. It turns into another class, just one that happens after the bell. Think about the yearbook. The kids on yearbook stay until five o'clock some nights fixing pages and chasing people down for quotes, and they do it because they actually care how it comes out. Now imagine eight kids get put on yearbook because it was the only thing left with open spots and they had to pick something. Those kids are not going to stay late. They are going to sit there on their phones and the people who wanted to be there will have to do their work for them. That is not fair to anybody, and the yearbook comes out worse than it would have.\n\nMy second reason is that a lot of students at our school already have things going on after school that the principal does not see. My friend Devin watches his little sister every day from three thirty until his mom gets home from her shift at six. He is not being lazy. He is doing something more important than student council. Other kids in my grade have jobs helping out at family businesses, or they go to a mosque or a church program, or they take care of a grandparent. A rule like this says that those things do not count, and that the only way to be a good student is to do a thing the school runs, in the school building, where the school can see you. That sends a bad message to kids who are already doing a lot.\n\nThere is also the bus problem, which nobody thinks about. The activity bus only runs on Tuesdays and Thursdays and it only goes down two routes. If you live out past the highway like I do, and your parents work, you literally cannot get home from a Wednesday practice. Some sports cost money too. Cleats and pads are not cheap, and neither are the trip fees. Before you make something mandatory you have to make sure every single student can actually do it, and right now our school is not there yet.\n\nIf the principal wants more students involved, there are better ways. He could survey us and start clubs people actually asked for, like a video game club or a cooking club, instead of just the ten things we already have. He could add more activity bus days. He could let things like a job or watching a sibling count, if the point is really about students being responsible and involved.\n\nMaking a rule is the fast way. Making activities worth joining is the way that actually works.",
+   "words": 542,
+   "text_sha256": "146b7a9b86595d9e4fffb1174726919c20cd3b669b55e6be17cfd3b5815a6852",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.005",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:57:01.555Z",
+   "settings": "not exposed by the harness",
+   "context_id": "3e272eff-269f-4226-b1b1-ed4679d801bd",
+   "text": "I disagree with the principal's decision that every student has to join at least one extracurricular activity. I think activities are a good thing, and I am in two of them myself, but making them a rule takes away the part that makes them worth doing.\n\nThe main reason I disagree is that a lot of students in my school can't stay after school even if they want to. My friend Danny takes the bus home every day because both his parents work until six. If he stayed for a club, there would be no way for him to get home except walking almost three miles on a road with no sidewalk. There is a late bus but it only runs on Tuesdays and Thursdays, and most clubs don't meet on those days. So under this rule, Danny would either break the rule or his mom would have to leave work early twice a week and lose money. That isn't fair to punish someone for something that isn't their fault. I also know kids who watch younger brothers and sisters after school, and one girl in my science class who helps at her family's store. They already have responsibilities. Adding a required club on top of that is just one more thing making their life harder.\n\nAnother reason is that forcing people into activities actually ruins those activities for the people who chose them. Last year our yearbook club had about twelve people and everybody wanted to be there, so we finished pages on time and it was fun. Now imagine if fifteen more kids showed up only because they had to pick something and yearbook sounded like the easiest one. They wouldn't do their pages, the advisor would spend the whole meeting trying to get them to stop talking, and the people who actually cared would end up doing all the work. I have seen this happen with group projects in class. When one person doesn't want to be there, the whole group slows down. A club full of people who don't want to be there wouldn't really be a club anymore.\n\nSome people would say that requiring activities helps shy students who would never sign up on their own, and honestly that is a decent point. There probably are kids who would love the drama club and never try it. But there is a difference between encouraging someone and forcing them. The school could have a club fair in the first week where every club sets up a table, or teachers could personally invite students they think would be good at something. Coach Miller did that to me in sixth grade for track and I never would have joined otherwise. That worked because it was still my choice in the end.\n\nActivities are supposed to be the part of school you actually pick for yourself. If the school takes that away and makes it another requirement like homework, then it stops being special. I think the principal should keep encouraging students to join things, and fix the late bus problem, but not make it a rule.",
+   "words": 518,
+   "text_sha256": "27a1791438cb087aaffc0721990d73c7e4852676802138eb68bcf20dbd037f09",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.006",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:03:43.508Z",
+   "settings": "not exposed by the harness",
+   "context_id": "cf03ff85-1f41-4554-9b80-e1ae6504b64f",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I am in an activity myself and I like it a lot, but I think that once you force people to do it, it stops being the thing that made it good in the first place.\n\nMy first reason is that the whole point of an extracurricular is that it is extra. It is the one part of the day you picked yourself. I chose to do track, nobody made me, and even when practice is awful and my legs hurt I still show up because it was my decision. If the office had assigned it to me it would feel exactly like third period math, just with more running. When something becomes a requirement it turns into homework, and nobody gets excited about homework.\n\nAnother reason is that it would actually hurt the clubs, not help them. Last year I was on the yearbook staff and there were two kids who only joined because their parents wanted it on a form. They came in, sat in the back, and did not do their pages, so the rest of us had to finish their pages the week before the deadline while Mrs. Pratt kept us after school. Now imagine that but with the whole school having to be somewhere. The clubs would be packed with people who do not want to be there and the people who actually care would end up doing all the work anyway. Coach Daniels only has so many spots on the team too. Where is everybody supposed to go?\n\nThe biggest reason though is that this rule is not fair to certain students, and it is not fair in a way that is hard to see if you have never had to deal with it. My friend Omar goes straight home after school every day because he watches his little brother and sister until his mom gets off work at six. He is not lazy. He is doing a harder job than any of us are doing at chess club. Some kids ride the late bus that only runs on certain days, and some kids have jobs, or church, or a sibling to watch like Omar. A rule like this punishes them for things that are not their fault.\n\nIf the principal wants more students in activities, I think there are better ways. We could have a club fair at the beginning of the year so people actually know what exists, because honestly half of us do not. We could run the late bus every day. We could let students start clubs for things they are already interested in instead of only offering the same six things.\n\nEncouraging people works. Forcing them just makes them sit in the back row and wait for it to be over.",
+   "words": 478,
+   "text_sha256": "b33a71a8de54e1c280a9087e686f095c3ab87e39facb037549c7d3fb74775b05",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.007",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:01:56.914Z",
+   "settings": "not exposed by the harness",
+   "context_id": "caec54af-b2a6-45f1-9c6f-806935a1130d",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I am not against activities at all. I play soccer in the fall and I go to art club on Thursdays, and both of those are honestly the best parts of my week. But making it a rule for everybody takes away the one thing that makes clubs and sports different from regular class, which is that you picked it yourself.\n\nMy biggest reason is that a lot of students in my school really cannot stay after. The activity buses only run on Tuesdays and Thursdays, and if you live out past the highway your parents have to come get you. My friend Marcus watches his little sister every day until his mom gets home from work at six. He is not lazy and he is not avoiding the school, he just has a job to do at home. If the principal makes this a rule, what happens to him? Does he get in trouble for something that is not even his fault? A rule that punishes students for things going on in their family is not a fair rule.\n\nAnother reason is that forcing people into activities actually hurts the activities. Last year our yearbook class had a few people in it who were only there because their schedule got changed and they had nowhere else to go. They did not care about the yearbook at all. They sat there on their phones, and the three or four people who actually wanted to be there ended up doing all the layouts and taking all the pictures themselves. My sister was one of them and she was mad about it for the whole spring. Now imagine if the principal sends in a hundred more students who do not want to be there. The clubs would get crowded with people who are just checking off a box, and the students who love it would end up doing the work for everybody.\n\nI know somebody would say that some kids would never try anything if nobody pushed them, and that is true. There are people who would have loved track and never found out. But the answer to that is not a rule with a punishment attached. The answer is to make it easier to say yes. Our school could have a club fair in September where every club sets up a table, or run one club period during the actual school day so that the buses are not an issue. When our gym teacher personally asked four boys in my class to come to a track practice and just try it, three of them went. Nobody had to force anybody.\n\nSo I think the principal has a good idea buried in a bad decision. He wants more students involved, and that is a goal I agree with. But you cannot order somebody to be interested in something. Give us more choices, better transportation, and a real chance to find what we like, and the clubs will fill up on their own.",
+   "words": 516,
+   "text_sha256": "85c9fbf2c9f40edde1800ead3b4df5432e12ab76f31b51903c7c433117e61255",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.008",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:59:48.374Z",
+   "settings": "not exposed by the harness",
+   "context_id": "28366113-598a-4ecf-a7a6-ad356810ddc7",
+   "text": "I disagree with the principal's decision that every student has to join at least one extracurricular activity. I understand why she wants to do it. She probably thinks kids will make friends and stay out of trouble, and those are good things. But making something required takes away the part that makes it work, which is that you actually want to be there.\n\nThe biggest reason I disagree is that not every student has the time. My friend Marcus watches his little sister every day after school until his mom gets home from her second job at 7:30. He can't stay for yearbook or soccer practice. If the school makes him join something, he either has to leave his sister alone, which is not safe, or get in trouble for not doing what the rule says. That's not fair to him, and it's not something he can control. There are more kids like him than the principal thinks. Some students take the bus and the activity bus doesn't come to their neighborhood. Some have to babysit or work or take care of a grandparent. A rule that punishes you for your family situation is a bad rule.\n\nAnother reason is that it would ruin the activities for the people who really care about them. Think about the yearbook staff. Right now the people on it stay until 5:00 fixing the pages because they want the book to look good. If you dump thirty kids in there who only signed up because they had to, those kids are going to sit on their phones and do nothing, and the people who care will end up doing all the work anyway. I saw this happen in a group project in science last year. Three of us did everything while two people just put their names on it. Forcing people into a club would be that, but for a whole year.\n\nSome people would say that students who are forced to try something might end up loving it, and that does happen sometimes. I'll admit my cousin got dragged to a track meet by his brother and now he runs cross country and it's his favorite thing. But he chose to go back the second time. Nobody wrote him up for skipping. There's a big difference between being encouraged and being required, and the school can encourage students without making it a rule. They could have a club fair in the fall where every club gets a table, or let teachers recommend a club to a student they think would be good at it. That would get more kids involved without punishing the ones who can't.\n\nInstead of a rule with a punishment, the school should fix the reasons students don't join. Add a late bus. Start a few clubs that meet during lunch so people who go straight home can still be part of something. Ask students what clubs they actually want, because right now our school has almost nothing for people who are into art or coding or music that isn't band.\n\nExtracurriculars are supposed to be the part of school you look forward to. The second you make them mandatory, they turn into another class with attendance taken. I think our principal should keep pushing students to join, keep telling us it's worth it, but let us be the ones to decide.",
+   "words": 560,
+   "text_sha256": "9c7f334b4b6a25324761117abe42822521680472e17d0a95a6a6527b2a459125",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.009",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:03:24.756Z",
+   "settings": "not exposed by the harness",
+   "context_id": "445ea545-3227-443a-a5bc-4de8293529b1",
+   "text": "I disagree with our principal's decision that every student has to join at least one extracurricular activity. I think extracurriculars are great, and I'm in two of them myself, but the second you force somebody to do something, it stops being the thing it was supposed to be.\n\nThe word \"extra\" is right there in the name. These activities are supposed to be the part of school that you pick. That's what makes them different from math class. When I signed up for the yearbook, nobody made me, and that's exactly why I stay after on Thursdays and don't complain about it even when we're still cropping pictures at five o'clock. If everybody in the eighth grade got assigned to yearbook, half of them would sit there on their phones waiting for it to be over, and the people who actually want to be there would end up doing all the work. I've seen this happen with group projects a hundred times. The three people who care do everything and the other two put their names on it.\n\nThere's also the fact that not everybody's life after 3:15 looks the same. My friend Daniela watches her little brother every day until her mom gets home from her shift at 6:30. She isn't goofing off. She's doing something more important than student council. There are kids at my school who take care of grandparents, kids who have jobs helping out at a family restaurant, and kids who ride the activity bus forty minutes and would have no way home if they stayed late. A rule that says \"everyone must participate\" doesn't apply to everybody equally. It's easy for a student whose parents can pick them up at five, and it's basically a punishment for a student whose family needs them. Making a rule that some kids literally can't follow is unfair, and it will make those kids feel like they're failing at something that was never their fault.\n\nI also think this policy would hurt the clubs themselves. Coaches and teachers volunteer their own time to run these things. If suddenly forty extra people who don't want to be there show up at chess club, the teacher who runs it has to spend the whole hour on discipline instead of chess. The club gets worse for the people who loved it.\n\nIf our principal wants more students involved, there are better ways to do it. He could run an activity fair in the gym in September so people actually find out what exists, because a lot of kids don't join things just because they don't know about them. He could add a late bus. He could ask students what clubs they actually want, since we don't currently have anything for people who are into art or coding. Those things would get more students to join, and they'd be joining because they wanted to.\n\nMaking something required doesn't make people care about it. It just makes them count the minutes. I'd rather have thirty people in a club who chose it than three hundred who got assigned.",
+   "words": 513,
+   "text_sha256": "5b855c813645cbb6d3ad56a29c8540de910bc4163b0b5274e9c1fa2d6d43b505",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.010",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:59:54.087Z",
+   "settings": "not exposed by the harness",
+   "context_id": "eaf61a6e-3bc5-4fc4-97b9-cba7efa1374d",
+   "text": "I disagree with the principal's decision that every single student has to be in at least one extracurricular activity. I want to say first that I am not against activities, I am on the track team and I like it. But there is a big difference between having activities and being forced into one, and I think making it a rule will actually make things worse instead of better.\n\nMy main reason is that an activity stops being fun the second somebody makes you do it. My cousin's mom signed her up for soccer when she did not want to play, and she spent the whole season standing by the goal praying the ball would go somewhere else. She quit after that season and now she says she hates sports, and she didn't hate them before. That is what a rule like this would do to a bunch of kids in our school. They would show up to the yearbook room, sit in the back on their phones, and not do any pages. Then the people who actually picked yearbook because they wanted it have to do all the work themselves and deal with somebody who doesn't care. So the rule would not just fail for the kids being forced, it would wreck the club for the kids who chose it.\n\nAnother reason is that not everybody's after school time belongs to them. My friend watches his little brother every day until his mom gets home at six, and there is nobody else who can do it. Other kids take the bus, and the activity bus doesn't even go to some neighborhoods, so if they stayed they would have no way home. If the school makes this a requirement, those students are going to be in trouble for something that is not their fault at all, and that is not fair. You should not get marked down because your family needs you.\n\nAlso, a lot of students already do things, the school just doesn't see them. There are people in my grade who take music lessons, or go to a mosque program on Wednesdays, or work at their family's shop on the weekend. Working a register and dealing with customers teaches you more responsibility than some clubs do, honestly. Telling those students they still have to sign up for something at school is telling them that what they already do doesn't count.\n\nI do understand why the principal wants this. Probably she wants everybody to feel like they belong somewhere and to have at least one adult who knows them, and shy kids sometimes never try anything unless somebody pushes them a little. That is a real problem and I am not saying ignore it. But there are better ways to fix it than a rule. The school could have a club fair in the gym where every club sets up a table, or one Friday where you get to try three different clubs for free with no commitment. They could also ask students what clubs they actually want, because right now there isn't a single club for anybody who likes art or video games.\n\nPushing people to try something is good. Forcing them is different, and it usually backfires. I hope the principal will listen to students before she makes this a rule.",
+   "words": 554,
+   "text_sha256": "d9b04f98e4f69bf2c7222b693c728537170997e4108f86df3361f6c13e238912",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.011",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:03:59.592Z",
+   "settings": "not exposed by the harness",
+   "context_id": "0a176715-6fe7-4a6e-bc8e-7850cb3d8641",
+   "text": "I disagree with the principal's decision to make every single student join an extracurricular activity. And I want to be clear that I'm not saying that because I hate clubs. I run cross country and I go to practice even when it is raining and even when Coach makes us do the hill by the tennis courts twice. The whole reason I like it is that I picked it. Nobody signed me up. The second you make something required it turns into homework, and nobody gets excited about homework.\n\nHere is the part I think the principal did not think about. Some kids can't stay after school and it is not because they are lazy. My friend Deniz watches his little brother every day from 3:15 until his mom gets home from work at 6. If the school says he has to join something, then either he gets in trouble for not joining or his brother sits by himself in an apartment for three hours. That is a real problem for him and there is no club that fixes it. There are also the bus kids. Our activity bus only runs Tuesday and Thursday, so if you live out past the highway and your parents both work, you basically can't do anything that meets on a Wednesday. Making a rule doesn't magically give those kids a ride home.\n\nThe other thing is that there is not enough room. Yearbook has like twelve people on it. Student council is an election, so by definition most people who run don't get on. Basketball cuts players every year, my sister got cut twice. So if all 600 of us have to be in something, the school would have to invent a bunch of clubs really fast, and teachers who do not want to run a club would get stuck running one. What you would end up with is a room full of kids who do not want to be there, on their phones, waiting for it to be over. That is worse for the kids who actually wanted a club, because now their club is ruined.\n\nI do get why the principal wants this. He probably read that students in activities get better grades and feel more connected to school. I believe that is true. But I think the reason it's true is that those students wanted to be there in the first place, not that the activity itself did something magic to them. Forcing everybody in doesn't copy the good part, it only copies the sign up sheet.\n\nIf the goal is more students involved, then do it a different way. Have a club fair in September where every club sets up a table so people actually find out what exists, because half the school doesn't know we have a chess club. Run the activity bus more days. Let people try a club for two weeks without committing. Start clubs that students actually ask for. Do all that and I bet more kids join on their own, and they will mean it.\n\nEncourage us. Don't require us.",
+   "words": 512,
+   "text_sha256": "5bbb2a6c9912a2152bd8480112f9d3a7d5a4c9a791d7cddec0e97de4866dec76"
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.012",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:00:13.792Z",
+   "settings": "not exposed by the harness",
+   "context_id": "a5770279-b90d-4115-8132-429adb9f0f89",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I am not against activities at all. I run track in the spring and it is honestly the best part of my year. But there is a big difference between getting to do something and having to do something, and I think forcing everybody into a club would ruin the thing the principal is trying to create.\n\nMy main reason is that an activity you are required to do stops being an activity and turns into another class. The reason track feels good is that nobody made me sign up. I stayed after school because I wanted to, and when practice is hard I keep going because it was my choice. If the school told me I had to be there or I would get in trouble, I think I would start counting the minutes the same way I do in seventh period. You cannot force somebody to have school spirit. You can force them to sit in the room, but that is not the same thing and everybody in the room knows the difference.\n\nThe second reason is that a lot of kids at our school genuinely do not have the time, and the rule would punish them for something that is not their fault. My friend Devin goes straight home every day because he watches his little sister until his mom gets off work at six. There is no club he could join that would fit around that. Other kids have jobs helping at their family's store, or they take care of a grandparent, or they have to catch the regular bus because the activity bus only runs on Tuesdays and Thursdays and they live way out past the highway. Under this rule, all of those students would suddenly be breaking a school policy for doing things that are actually pretty responsible. That does not seem fair at all.\n\nSomething else that would happen is that the clubs themselves would get worse. Think about yearbook. Yearbook only works because the people on it care enough to chase down photos and meet the printing deadline. Now imagine half the staff is made up of people who picked yearbook because it looked like the easiest option on the list. Pages would not get done, and the kids who really wanted to be there would end up doing everyone else's work. The same thing would happen to student council and probably to the teams too, since coaches would be spending practice on people who do not want to run.\n\nI do understand what the principal is going for. There are quiet kids who would love robotics club and just never sign up, and it is true that activities look good on applications later. But there are better ways to get that. The school could add more options so there is actually something for everyone, like a gaming club or a cooking club or a band that is not the school band. It could put a club period into the middle of the school day so that buses and babysitting are not in the way. It could even just have teachers personally invite students they think would be good at something, because getting asked feels completely different from getting ordered.\n\nActivities should be an open door, not a hallway with no other way out. I hope the principal will think about it again.",
+   "words": 577,
+   "text_sha256": "369e04258267eb39e94929f6321d0902bcd846d6232e8585c78d21bb2dd58632",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.013",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:54:39.140Z",
+   "settings": "not exposed by the harness",
+   "context_id": "35a79b96-0600-4a57-8867-8c4e062b4369",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I think activities are great, and I'm in two of them myself, but the second you force somebody to do something it stops being the thing it was supposed to be.\n\nThe main reason is that not every student has the time. My friend Devon goes straight home after school because he watches his little sister until his mom gets off work at six. If the school makes him join something, what is he supposed to do, bring a four year old to basketball practice? There are also kids who have jobs, or who take care of grandparents, or who have a long bus ride and no ride home afterward. Most clubs at our school meet after school, and the late bus only runs on Tuesdays and Thursdays. So a rule like this doesn't hit everybody the same. It's easy for a kid whose parents can pick them up at 4:30 and it's almost impossible for somebody else, and the kid who has it hardest is the one who gets in trouble for not following the rule. That isn't fair.\n\nAnother reason is that forcing people ruins the clubs for the people who actually want to be there. Last year our yearbook had about ten people in it and they all cared about it, and it came out good. Now imagine forty kids get put in there because they had to pick something and yearbook sounded like the easiest one. Half of them don't do their pages, the advisor spends the whole time trying to get people to be quiet, and the ten kids who wanted to make a yearbook end up doing all the work anyway. Sports would be even worse. Nobody wants a teammate who got assigned to the team.\n\nSomebody might argue that students who are forced to try something might find out they love it, and that some kids just need a push. I actually agree that a push can help. But there's a difference between a push and a rule. A teacher saying \"you'd be really good at debate, come to a meeting\" is a push. A rule that says join something or else is not encouragement, it's just one more thing you have to do, and kids are pretty good at telling the difference.\n\nInstead of making it mandatory, the school could make it easier. Run the late bus every day. Have some clubs meet during lunch or during homeroom so the kids who can't stay after school can still be in something. Let students start clubs for things they actually like, like the skateboarding club that got turned down last year. If you make joining easy and worth it, most people will join on their own, and the ones who genuinely can't won't be punished for a situation they didn't choose.",
+   "words": 483,
+   "text_sha256": "fd8c93c5b3de51d68e197471185f3fc2fa16fa459484610e4428407a7ad762ba",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.014",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:57:01.176Z",
+   "settings": "not exposed by the harness",
+   "context_id": "5e2ef253-c761-473e-932b-b6939d41aec7",
+   "text": "I disagree with our principal's decision to make every student join at least one extracurricular activity. I am not against activities. I am on the track team and I helped with the fall play last year, and both of those were some of the best parts of my school year. But the reason they were good is that I chose them. Once you make something a requirement, it stops being the thing kids want to do and becomes one more thing they have to do, like homework or a locker check.\n\nThe biggest problem is that not everyone can stay after school. My friend Maya takes the late bus home, except the late bus only runs on Tuesdays and Thursdays, so if her club met on Mondays she would have no way to get home. Other kids have jobs helping at their family's store, or they watch a younger brother or sister until their parents get off work. My cousin watched her two little brothers every day in eighth grade. If our principal made this rule, she would not have been able to follow it, and she would have been in trouble for something that was not her fault at all. A rule that punishes kids for their family situation is not a fair rule.\n\nThe second problem is that forcing people into activities actually makes the activities worse. Think about the yearbook. The yearbook only comes out if a group of people care enough to take pictures at games, chase down quotes, and stay late in the computer lab in April when the deadline hits. Now imagine half that room is made up of kids who signed up because they had to pick something and yearbook sounded like the least amount of work. They are going to sit there on their phones and the four people who actually care are going to do everything. I have seen this happen in group projects a hundred times. Adding bodies does not add effort.\n\nI know why the principal wants this. He probably read that students who join clubs get better grades and feel more connected to school, and that part is true. But I think he is mixing up the cause and the effect. Kids who are already connected to school are the ones who join clubs. Dragging someone into student council does not suddenly make them love school.\n\nIf the school wants more students involved, there are better ways. Run more late buses. Add clubs that are not sports, like a video game club or a cooking club, so there is something for everyone. Let clubs meet during lunch or during the activity period we already have on Wednesdays. My old middle school had a club fair in September where every club had a table with candy and a sign up sheet, and tons of people joined because it looked fun, not because someone made them.\n\nGetting students involved is a good goal. Making it a rule is the wrong way to get there.",
+   "words": 504,
+   "text_sha256": "afdf158aeebc524eb49be1a3d2f9e349fe188e146ce42ed575904203f0880087",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.015",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:58:02.824Z",
+   "settings": "not exposed by the harness",
+   "context_id": "bed46de7-e444-4493-b7db-1b740ead0bbe",
+   "text": "I disagree with the principal's decision to make every single student join an extracurricular activity. I am not against clubs or sports, I am actually on the track team and I like it, but I liked it because I picked it. Making it a rule takes the whole point out of it.\n\nThe biggest reason is that a lot of kids already have stuff going on after school that nobody at school really knows about. My friend Dalia watches her little brother every day from 3:00 until her mom gets home around 6:30. That is not something she chose either, but it is real and it matters to her family. If the school tells her she has to stay for yearbook on Tuesdays and Thursdays, what is she supposed to do, bring a four year old to the yearbook room? There are also kids who work, kids who take the late bus that only comes once, and kids who have doctor appointments or help at their parents' store. A rule like this acts like everybody's afternoon is empty and it just isn't.\n\nAnother thing is that forcing people ruins the activity for the ones who want to be there. Last year our school made all the eighth graders do the food drive as a \"requirement\" and it was honestly kind of a disaster. Half the people didn't bring anything and sat in the back on their phones while like six of us actually sorted cans. The kids who cared ended up doing everything and got annoyed, and the kids who didn't care still didn't care, they were just there. If you put thirty people in the drama club who don't want to be in drama club, you don't get a better play. You get a bunch of people messing around while the ones who love it are trying to rehearse.\n\nMoney is a part of this too. Sports are not free. My cleats cost forty dollars and that was the cheap ones, plus there is a sports fee and you need a physical from the doctor. Yearbook has dues at our school. If a student has to join something, they might get pushed into whatever is cheapest instead of what they actually want, and that feels unfair to bring up in front of everybody.\n\nI think what the principal actually wants is for more kids to feel connected to the school, and that is a good goal. There are better ways to get it though. They could add more clubs that don't cost anything and meet during lunch or during advisory, so nobody has to figure out a ride home. They could let students start their own clubs, because a lot of us are into things there is no club for, like a skateboarding club or a club for people who draw. And teachers could personally invite kids they think would be good at something, which honestly works way better than a rule.\n\nGetting involved should be a choice. If you make it a requirement, you get people in the room, but you don't get people who want to be there, and that is not the same thing at all.",
+   "words": 528,
+   "text_sha256": "2d1d86278299a6bbfd4a72e19c6c1c829359cd04cfcacd332fc47d2ffe79105f"
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.016",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:54:14.344Z",
+   "settings": "not exposed by the harness",
+   "context_id": "cca8916a-9239-40b3-b5a5-2f56ec3a40d9",
+   "text": "I disagree with the principal's decision that every student has to join at least one extracurricular activity. I understand why she wants to do it, because clubs and sports are fun and they help you make friends, but making them a rule takes away the whole point of them and it also ignores what some kids have going on at home.\n\nThe first reason I disagree is that the word \"extra\" is right there in the name. An extracurricular is supposed to be the thing you do because you want to, not because someone made you. My brother joined the wrestling team last year because he actually loves wrestling, and he went to every single practice even the ones at 6 in the morning. If you make everybody join something, you are going to get a bunch of people sitting in the back of the room on their phones waiting for it to be over. That is not good for them and it is honestly not fair to the kids who care. My cousin is on yearbook at her school and she says the hardest part is the people who signed up and then never show up to help with the pages. If half the club is only there because they have to be, the club gets worse, not better.\n\nThe second reason is that a lot of students have real responsibilities after school. I have a friend named Dylan who walks his little sister home every day and stays with her until his mom gets off work at 6:30. He can't stay for a two hour practice, and it's not because he's lazy. Other kids have jobs, or they take care of a grandparent, or they have a long bus ride, or they go to church stuff on Wednesdays. Some families only have one car. If the school makes a rule like this without thinking about those students, then those students are going to be the ones who get in trouble for something that isn't their fault. That seems backwards to me.\n\nAnother problem is that there might not even be enough spots. Our school has tryouts for basketball, soccer, and volleyball, and every year people get cut. Student council only has a few positions and you have to get elected. So if suddenly every single student in the building needs an activity, where do they all go? Either the school has to add a ton of new clubs, which costs money and needs teachers to run them, or a bunch of kids end up stuck in whatever is left over.\n\nI also think there are costs people forget about. Sports need cleats and pads and sometimes a fee. Band needs an instrument. Not every family can just pay that whenever the school says so.\n\nI do think the school should encourage students to join things. They could have a club fair in the fall where every club sets up a table so people can see what is out there, and they could add clubs for stuff kids actually like, such as video game design or cooking. My old school had an anime club and it was packed every Thursday. Encouraging works. Forcing doesn't.\n\nFor all of those reasons, I think the principal should drop the requirement. Let students choose. If the clubs are good, people will come on their own.",
+   "words": 560,
+   "text_sha256": "d1a19f63ee5ae3751a0cdccd07f89a1322ce191fcff5e3d65441b8f6191a2cae",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.017",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:00:03.543Z",
+   "settings": "not exposed by the harness",
+   "context_id": "b1030485-0f1e-4591-b3bb-6c7fa1e97bfd",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I like clubs and I am on the track team myself, but making something required takes away the whole point of it, and it would hurt a lot of kids who already have too much going on after school.\n\nFirst of all, an extracurricular is supposed to be extra. That is literally in the name. The reason people do yearbook or student council is because they want to, and that is why they stay up late finishing pages or actually show up to meetings. If you force everybody in, you are going to get a bunch of people sitting in the back of the room on their phones waiting for it to be over. My brother had to do a \"club period\" at his old school and he picked chess club because it was the shortest one. He never learned chess. He just sat there for a semester. That is not what the principal wants, but that is what she will get.\n\nAnother reason is that some students really cannot do it. Not everyone's life ends when the bell rings at 3:05. There is a girl in my math class who goes straight home every day to watch her little sister until her mom gets back from work at 6. If she had to stay for a club, her family would have a real problem, and the school would basically be punishing her for something that isn't her fault. Other kids ride the activity bus that only runs twice a week, or they have jobs, or they have to go to physical therapy, or they just get tired because school is already seven hours long. A rule that sounds fair for most people can be really unfair for the ones who are already dealing with the most.\n\nAlso, I think a rule like this would make the activities themselves worse for the people who care about them. Track practice is hard. If half the team was only there because they got assigned, the coach would spend the whole time getting people to actually run instead of coaching. The yearbook staff would have kids who don't do their pages, and then the yearbook comes out late. Student council would turn into study hall. So the students who wanted to be there in the first place end up with a worse experience than before.\n\nSome people would say that students don't know what's good for them and they need a push, and honestly that is a little bit true. I did not want to join track and my friend dragged me to the first practice and now it is my favorite part of the week. But that was a push from a friend, not a rule from an office. Schools can push people without forcing them. Have a club fair in the gym. Let teachers invite students they think would be good at something. Make more clubs that meet at lunch so kids who can't stay late can still join something.\n\nThat would get more people involved without making anybody feel trapped. Requiring it only gets you bodies in a room, and a room full of people who don't want to be there is not a club. It is just more school.",
+   "words": 554,
+   "text_sha256": "319a06ccc26029e9d5ec03490fd1721665182ad3e8bac1d6456c36761a1c719a",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.018",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:00:27.368Z",
+   "settings": "not exposed by the harness",
+   "context_id": "456ebbe1-89e0-4daf-a24e-498bea448282",
+   "text": "I disagree with our principal's decision that every student has to be in at least one extracurricular activity. I like extracurriculars. I'm on the track team and I go to art club almost every Thursday. But there is a big difference between doing something because you want to and doing something because a grown up told you that you have to, and I think making it a rule will actually make our activities worse instead of better.\n\nMy first reason is that a lot of kids already have stuff to do after school that nobody at school sees. My friend Dani watches her little brother every day from 3:00 until her mom gets home at 6:30. That isn't a choice she gets to make. If the school told her she had to join yearbook, she would either have to quit taking care of her brother, which she can't, or she would get in trouble for not following a rule that she never had a way to follow in the first place. That's not fair. I also know kids who take the late bus because they live way out past the highway, and if you stay for practice you basically have to find your own ride. Some families can't do that.\n\nMy second reason is that forcing people to join ruins it for the people who actually care. Last year in art club we had two kids who only came because their parents made them, and honestly they spent the whole time messing around and knocking over the water cups. Mrs. Alvarez had to stop what she was doing over and over just to deal with them. Now imagine that but with every single kid in the school who doesn't want to be there. The track coach would be spending her time chasing down people who don't want to run instead of coaching the people who do. Clubs would get bigger but they wouldn't get better.\n\nI know what people will say to this. They will say extracurriculars help you make friends, and they look good on applications, and some kids need a push. I actually agree with all of that. I was nervous to go to track tryouts and my sister basically shoved me out the door, and I'm glad she did. But there's a difference between a push and a rule. A push is a teacher saying \"hey, you're good at drawing, you should come Thursday.\" A rule is just one more thing you can get written up for.\n\nSo instead of making it mandatory, I think the school should make it easier. Have more clubs that meet during lunch or during advisory so you don't need a ride. Make sure clubs don't cost money, because the sports fee is forty dollars and that's a real reason some kids don't sign up. Let students start their own clubs if there isn't one they like.\n\nIf activities are good, and I think they are, then the answer is to open the door wider. You shouldn't have to push people through it.",
+   "words": 509,
+   "text_sha256": "aaaa1f63e8b6214afa7b6729d433ce12c71a558855637fa3977069d787fbba3a",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.019",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:01:17.448Z",
+   "settings": "not exposed by the harness",
+   "context_id": "186711ba-55d8-4dbd-9f51-d1da2f057baf",
+   "text": "I disagree with the principal's decision that every single student has to join at least one extracurricular activity. I like activities, I'm in two of them myself, but making them a rule takes away the whole point of them, and it isn't fair to a lot of kids at our school.\n\nThe first reason I disagree is that not everybody has time after school. My friend Dani has to pick up her little brother from the elementary school at 3:15 every day because her mom works until six. If the school made her join a club, she would either have to stop taking care of her brother or she would get in trouble for breaking a rule. That isn't fair to her and she didn't do anything wrong. And there are a lot of kids like that. Some help at their family's store, some watch younger siblings, and some live way out on Route 9 and ride the 2:50 bus because it's the only one that goes there. A school rule shouldn't punish people for something that isn't their fault.\n\nThe second reason is that forcing people into activities actually ruins them for the people who want to be there. I'm on the yearbook staff. Last year we had a kid who only signed up because his parents made him, and he never turned in a single one of his pages. In April the rest of us had to stay until five o'clock three days in a row doing his section so the book could get to the printer on time. Now imagine that but with the whole school forced in. Coach Ramirez can't build a soccer team out of people who don't want to run. Student council can't plan a dance with members who are only there because they had to pick something. The clubs would get worse, which is the exact opposite of what the principal wants.\n\nAnother problem is that our school doesn't even have enough activities for everyone. There are about 400 students here and I counted eleven clubs and sports on the poster outside the office. The basketball team keeps twelve people and cuts everybody else, so what happens to the kids who get cut? Do they get marked down for not being in an activity when they tried? And the teachers who run these things are doing it for free on their own time. If every student has to join, those teachers end up with sixty kids in a club, and that's not a club anymore, that's just another class with no grade.\n\nSomebody could argue that being forced into something is good because you might find out you love it. I actually get that. My cousin got made to do track in seventh grade and now it's her favorite thing in the world. But that happens sometimes, not every time, and you can get the same result without a rule. The school could do a club fair in September where every group sets up a table in the gym so people can see what's out there. Teachers could personally invite quiet kids they think would be good at something. That's what my band teacher did to me and it's the whole reason I play trombone now. Nobody had to make it a requirement.\n\nI think what the principal really wants is for students to feel like they belong somewhere and have something they're proud of, and that's a good thing to want. But you can't force somebody to belong. The second it becomes a requirement, it stops being the thing you picked and turns into one more assignment, like homework that starts at four o'clock. If the school wants more students involved, it should add more activities, run a late bus so kids can stay, and let people find the one that actually fits them. That would get more of us in the gym and the yearbook room than any rule ever could.",
+   "words": 656,
+   "text_sha256": "ae7ce6e09b111f5b0647c1f6ef90ef8607f9788b9bb661267830d15b876617b4",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.020",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T21:03:02.017Z",
+   "settings": "not exposed by the harness",
+   "context_id": "1f8a715d-1d6e-472a-b984-fc5f741f0be9",
+   "text": "I disagree with the principal's decision that every student has to join at least one extracurricular activity. I like extracurriculars, I'm on the track team myself, but making them a rule takes away the whole point of them and it also isn't fair to a lot of kids at our school.\n\nThe first reason I disagree is that not everybody can stay after school. My friend Dani has to walk her little brother home every single day because her mom works until six. If the school made her join something, she would either have to quit it after a week or her brother would be sitting outside the elementary school by himself. There are also kids who ride the activity bus, and the activity bus only runs on Tuesdays and Thursdays, so if the club you actually wanted meets on Monday you're out of luck. A rule like this sounds fine if you have a parent who can pick you up, but it isn't the same rule for everyone even if it's written the same for everyone.\n\nAnother reason is that some activities cost money. Being on a sports team means cleats, and cleats are expensive, and so are the fees and the team hoodie that everybody else gets. Yearbook isn't free either. Student council is free but only like twenty people can be on it, so you can't just tell three hundred students to go do that. If the school is going to require something, the school has to pay for it, and I don't think our school has the money for that, because we still have the science room with the sink that doesn't work.\n\nThe biggest reason though is that forcing people ruins it. An activity is supposed to be the part of school you actually pick. When my cousin's school made everyone join a club, half the kids signed up for chess club because it was the easiest one, and then they just sat there on their phones and the kids who actually liked chess couldn't even play a real game. That's worse than having a smaller club with people who want to be there. The teachers who run these clubs are volunteering their own time, and they shouldn't have to babysit people who were ordered to show up.\n\nI do think the principal has a good idea underneath this. Kids who join things do feel more connected to school, and that's real. So instead of making it a rule, she could add more clubs that don't cost anything, run the activity bus every day, and have an activity fair in September so people actually find out what exists. Give students a reason to join instead of a rule that makes them. That way the kids in the club will be there because they want to be, which is the only way any of it works anyway.",
+   "words": 481,
+   "text_sha256": "e216706a0cfdb05b6a43c56180ca538d4888c530b96b767de13f429f347d931e",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.021",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:55:17.132Z",
+   "settings": "not exposed by the harness",
+   "context_id": "185ea920-9d14-483e-8fcf-e189182ef25f",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I understand why he wants to do it, and I am not saying activities are bad. I am in two of them myself. But making it a rule takes the whole point out of it, and there are kids at our school who honestly cannot do it.\n\nThe first reason is that an activity you are forced into stops being fun. Right now the kids on the yearbook staff are there because they actually care about the yearbook. They stay after until five sometimes fixing the layouts. If you fill that room with twenty kids who only signed up because they had to pick something, those kids are going to sit there on their phones and the people who care are going to end up doing all of the work anyway. My brother was on a soccer team in sixth grade that his mom, well our mom, made him join, and he spent the entire season standing in the back of the field pulling up grass. He did not get anything out of it and the coach was annoyed the whole time. That is what our school would be getting, just a bigger version.\n\nThe second reason, and I think this is the bigger one, is that a lot of students already have things after school that nobody at school sees. My friend Ana picks up her little sister from the elementary school every day at 3:15 because her mom works until seven. If the principal makes this a rule, what is Ana supposed to do, leave a six year old standing on the sidewalk? Other kids in my grade have jobs helping at their family's store on weekends, and some kids ride the bus forty minutes to get home and there is no late bus. A rule like this sounds fair because it applies to everybody, but it is really only easy for the students whose parents can pick them up at five. It punishes the kids who already have the most going on.\n\nI also think it will cost the school money and space it does not have. Our gym is already being shared by basketball and volleyball, and Mr. Reyes has said before that the clubs run on almost no budget. If suddenly every single student in the building needs a spot, the school would have to add coaches, advisors, and supplies. I would rather that money go to things like better science equipment than to making a rule work that nobody asked for.\n\nIf the principal wants more students involved, there are better ways. He could add more kinds of clubs so there is something for people who do not like sports, like a cooking club or a video game design club. He could run some clubs during lunch or during homeroom so transportation is not a problem. Advertising them better would help too, because I did not even know we had a chess club until March.\n\nEncouraging students to join something is a good goal. Forcing them is not the way to reach it, and I hope the principal will think about the students it would hurt before he makes it a rule.",
+   "words": 545,
+   "text_sha256": "42a59173e5639456039c881d408961fb36a03d353badecb5f906247c6d85f70e",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.022",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:57:41.353Z",
+   "settings": "not exposed by the harness",
+   "context_id": "35286bbe-4bc1-4f76-bb49-6c1a9dd2dc83",
+   "text": "I disagree with the principal's decision that every student has to join at least one extracurricular activity. I think activities are a good thing and I'm in one myself, but the second you make something required it stops being the thing it was supposed to be.\n\nThe biggest reason is that a lot of students can't stay after school even if they want to. My friend Deshawn rides the activity bus home and it only runs on Tuesdays and Thursdays, so if the club he wanted met on Monday he would just be out of luck. My cousin has to pick up her little brother from the elementary school at 3:15 every single day because her mom works until six. If the school makes her join something, what is she supposed to do, leave a second grader standing on the sidewalk? Making a rule that some kids physically cannot follow isn't fair, it just turns them into rule breakers for something that isn't their fault.\n\nAnother reason is that forcing people to be there ruins it for the people who actually want to be there. I'm on the yearbook staff and we have about twelve people and we all chose it. We stay late in the spring, we argue about the cover, we care if a name is spelled wrong. Now imagine ten people get assigned to yearbook because it was the only thing left with open spots. They sit there on their phones, they don't do their pages, and then the deadline comes and the twelve of us who wanted to be there have to fix everything. That's not the club getting bigger, that's the club getting worse. My track coach says the same thing about tryouts. He would rather have fifteen runners who show up than forty who don't.\n\nSome people would say that students who are forced into an activity might discover something they love. That does happen sometimes, I'll admit that. But you don't need a rule for that, you need better advertising. Our school has a club fair for about twenty minutes during one lunch and half the school doesn't even know what most of the clubs are. If the principal really wants more kids involved, he could add more clubs that meet during the school day, run the late bus every day, or let the clubs actually come talk to our classes. Those things would get more kids to join and they wouldn't punish anybody.\n\nAlso, school isn't the only place people do things. There's a kid in my science class who volunteers at an animal shelter and another one who works at his family's restaurant on weekends. Are those worth less just because they don't have a school sponsor and a sign up sheet? I don't think so. They're probably learning more than I am from sitting in the cafeteria at a club meeting.\n\nI want students to join clubs and teams. I really do. But you can't make someone care by writing it on a schedule. The principal should spend his energy making activities easier to get to and more interesting to hear about, and then he wouldn't have to make anybody do anything.",
+   "words": 531,
+   "text_sha256": "29423b08f4a91f09449b3caf8dbcfe5e3c67511984597629563fb9f07e8dd9f8",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-plain.mandatory-extracurricular-activities.g8.023",
+   "arm": "essays-claude-plain",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite the essay. Return only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "0d7b16ea16d31e56680df24adae1eec1331477cb2f1c2172fceb25e75f721d27",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:52:54.760Z",
+   "settings": "not exposed by the harness",
+   "context_id": "06136544-ee7a-418b-9d40-4283c241377f",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I like clubs and sports, I'm on the track team myself, but the reason I like track is that I picked it. The second you make something required it turns into another class, and a class you didn't sign up for.\n\nThe word extracurricular literally means outside the curriculum. That's the whole point of it. Students already have seven periods a day plus homework, and the hours after school are the only hours we actually get to decide what to do with. Some people want to be at the school until six o'clock and some people want to go home and be quiet for a while, and neither one of those is wrong.\n\nThe biggest problem is that not everybody's life outside of school looks the same. My friend Marcus watches his little sister every day until his mom gets off work at 5:30. If the school told him he had to be at yearbook until 4:15, that is not a fun new opportunity for him, that is a real problem with no solution. There are also kids who ride the activity bus, and the activity bus only runs on Tuesdays and Thursdays at our school, so if the club you wanted meets on Monday you're just out of luck unless somebody can drive you. A rule that says \"everyone must participate\" sounds fair, but it only works for the students who already had a ride and a free afternoon. For everybody else it's a punishment for something they can't control.\n\nSomething else people don't think about is what forcing everyone in would do to the clubs themselves. Right now our student council has about fifteen people and they all actually want to be there, so things get done. If the whole eighth grade got dumped into clubs because they had to be somewhere, you'd have a bunch of kids sitting in the back on their phones waiting for it to be over. That makes it worse for the people who chose it. I've seen this happen with group projects, when one person doesn't care, the whole group slows down.\n\nI think the school should push hard the other way instead. Have a club fair in September, let clubs advertise on the announcements, add a late bus every day so transportation stops being the reason people say no, and start a few clubs that don't exist yet, like a video game design club or a cooking club, so there's something for people who don't play sports. If you make it easy and interesting, most students will join on their own, and the ones who join will mean it.\n\nIn conclusion, I understand what the principal is trying to do. She wants kids to be involved and to feel like they belong somewhere, and that's a good goal. But you can't force somebody to belong. All a rule like that does is create a list of people who technically signed up for something. I'd rather have a school where students join because they want to than a school where everybody's name is on a sheet.",
+   "words": 528,
+   "text_sha256": "5600ed89fa5735869e7b793a5bdb6fb72f21f27edc2e7cfd11e73002298f52cf",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.001",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:45:34.597Z",
+   "settings": "not exposed by the harness",
+   "context_id": "e1df76b7-66d1-4845-8582-d6f59b7f3ff0",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I am in two of them myself, band and track, so it is not like I think activities are bad. I think they are great. But the second you make something a rule it stops being the thing it was, and also some kids in our school really cannot do it, and nobody seems to be thinking about them.\n\nThe biggest problem is transportation. Almost every activity at our school meets after school, which means you are not getting on the 3:05 bus. Activity buses only run on Tuesdays and Thursdays and they only go to three stops. My friend Dominic lives out past the water tower and there is no late bus that goes anywhere near him. His mom works until six. If the principal makes this a rule, Dominic either sits in the front office for two and a half hours doing nothing, or he joins something, quits after a week because he has no ride, and then he is the kid who \"failed\" an activity. That is not fair to him and it was not his fault in the first place.\n\nMoney is another thing people forget about. Sports here are not free. My track shoes were fifty-five dollars and that is the cheap kind, and I know football and lacrosse cost way more with the pay-to-play fee. Yearbook has a fee too. The teacher will say there is a scholarship form and there is, but you have to ask for it in front of everybody in the office, and a lot of people would honestly rather just say they are not interested than do that. So a rule that is supposed to include everyone could end up embarrassing the exact people it is supposed to help.\n\nThen there are kids who already have something after school, it just is not on the principal's list. My cousin Amara watches her little brother every day from 3:30 until her dad gets home. That is a real responsibility. She is basically doing a job, and she would be told she is not involved enough. There are also kids who work on stuff at home like drawing or coding or church group or taking care of a sick grandparent, and none of that counts as an \"extracurricular activity\" because the school did not organize it.\n\nThe last reason is that forcing people ruins the clubs for the people who chose them. In band, if you are there because you want to be there, practice is fun even when it is hard. If half the trumpet section was ordered to be there, they will mess around, they will not practice at home, and everybody sounds worse at the concert. Student council would turn into a room full of people staring at the clock. Clubs work because of the people who actually care.\n\nIf the principal wants more students involved, there are better ways than a rule. Add more late buses. Get rid of the fees or make the form private. Start activities that meet during lunch or during homeroom so busses are not a problem, and count things like taking care of family. Make it so that more people can say yes instead of making it so nobody is allowed to say no. That would actually get more students involved, and the ones who show up would want to be there.",
+   "words": 579,
+   "text_sha256": "427cffc45135d111c2109a9db0795cd7d8354cf3229e7a613cb70ed419d9583d",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.002",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:40:04.180Z",
+   "settings": "not exposed by the harness",
+   "context_id": "6d7a346b-2f22-45ad-8ce1-c4d80e1784f9",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I want to say up front that I am not against activities. I play trombone in the marching band and it is honestly the best part of my week. That is exactly why I think making it a rule is a bad idea. When you force something on people it stops being the thing it was.\n\nMy first reason is that some students really cannot do it, no matter how much they might want to. My friend Marisol gets on the bus at 3:10 every single day because she has to be home to watch her little brother until her mom gets off work at six. There is no club at our school that would work for her. The late bus only runs on Tuesdays and Thursdays and it drops you off at the elementary school, which is almost a mile from her apartment. So what happens to her under this rule? Either she gets in trouble for something that is not her fault, or the school makes an exception for her, and if you start making exceptions then it is not really a rule anymore, it is just a suggestion with extra paperwork. My cousin in another district had a rule like this and half the kids got waivers.\n\nMy second reason is that forcing people to join actually makes activities worse for the people who chose to be there. Think about yearbook. Yearbook needs people who will actually hit the deadline for the sports spread, who will show up on a Saturday to photograph the cross country meet. Now imagine a kid who signed up for yearbook in October because it was the only thing left with open spots and he had to pick something. He is not going to care if the pages are late. And it is not his fault, he never wanted to be there. Last year in band we had two people join late who did not want to be in band, and we spent three weeks of rehearsal on drill they should have learned in one, because they kept messing up the same turn. Everyone got frustrated, including them. The whole point of an extracurricular is that it is extra, it is the thing you picked.\n\nI know what the principal is probably thinking. He probably thinks that there are kids who would love robotics or track and they just never tried it, and if he pushes them a little they will find something they are passionate about. That is a real thing and I am sure it happens sometimes. But there is a difference between pushing someone and requiring them.\n\nIf the school actually wants more kids involved, there are better ways to do it. Run the late bus every day. Add activities that meet during lunch or during advisory so the bus is not a problem. Have a club fair in the first week of school where every club has a table, instead of just a list taped up outside the main office that nobody reads. Let students start their own clubs more easily, because right now you need a teacher sponsor and a form signed by two administrators and most people give up.\n\nMake it easier to say yes. Do not make it illegal to say no.",
+   "words": 562,
+   "text_sha256": "0722c5aa58e0b77f777b5c009c9f0526db2ea5becf82221b2c9e24c804a8fcc8",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.003",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:49:25.949Z",
+   "settings": "not exposed by the harness",
+   "context_id": "1bc7b655-6593-4927-99cb-c31052242353",
+   "text": "I disagree with the principal's decision that every student has to join at least one extracurricular activity. I understand why he wants to do it. He probably thinks it will make kids more involved and happier at school. But making something required takes the whole point out of it, and it is going to cause problems for a lot of students who are already doing enough.\n\nThe first reason I disagree is that some kids have responsibilities after school that nobody at school even knows about. My neighbor Elena watches her little brother every day from 3:00 until her mom gets home at 6:30. If she had to stay for a club, her mom would have to pay somebody or leave work early, and they can't really afford either one. There are students who have jobs, students who take care of grandparents, students who have to take a bus that leaves at 2:45 and there isn't another one. A rule like this sounds fair because it applies to everybody, but it isn't fair, because it is way easier for some people to follow than others.\n\nSecond, forcing people to join actually makes the activities worse for the people who want to be there. I was on the yearbook staff last year and it was great, but we had two kids who got put on it because they had to pick something and yearbook sounded like the easiest one. They didn't do their pages, they messed around, and the rest of us ended up staying late in April finishing their spreads. Same thing happens in sports. A coach doesn't want eleven kids who love soccer and four kids who are only there because of a rule. Those four are going to be on their phones on the bench and bring everybody down. Clubs run on people caring, and you cannot make a rule that makes somebody care.\n\nThe other thing is that our school doesn't have enough activities for everyone anyway. We have maybe fifteen clubs and a bunch of them are already full. If four hundred students all have to sign up for something, where are they going? Somebody is going to have to make fake clubs just so there are enough spots, and then we have a \"walking club\" that meets for twenty minutes and nobody learns anything. Also some activities cost money. Travel soccer has fees, band costs money for an instrument, and if you tell a family they have to do one of these, you are basically sending them a bill.\n\nI do think some students would be better off if they joined something. Some kids go home and do nothing and they would be happier if a teacher pulled them in and said hey, try this. But that should be a teacher noticing one student, not a rule pointed at everybody. The school should add more clubs, make some of them free, put announcements up, maybe have a club fair in September so people know what exists. Invite people instead of ordering them. You will get more kids joining that way anyway, and the ones who join will actually show up and want to be there.",
+   "words": 527,
+   "text_sha256": "8cef94c211f3bef62f8126b53a74993e3c0968084c0d253db5a8ee3feb5d65b8",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.004",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:49:20.993Z",
+   "settings": "not exposed by the harness",
+   "context_id": "47cddf16-8c05-4aa3-b38c-193dedfd1fc4",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I think activities are a good thing, but making them into a rule takes away the whole point of them.\n\nFirst of all, some students can't stay after school even if they want to. My friend Dani has to pick up her little brother from the elementary school every day at 3:15 because their mom works until six. If the principal makes her join something, she either has to stop taking care of her brother or she gets in trouble for breaking a rule she has no control over. There are a lot of students in that situation. Also the late bus at our school only runs on Tuesdays and Thursdays, so if you live far away and your parents work, those are the only two days you can even be here after 2:45. A rule that you can't follow isn't really a rule, it's just a way to get people in trouble.\n\nSecond, when you force somebody to do an activity they don't care about, it makes it worse for the people who actually want to be there. Last year on yearbook there were a couple of people who only signed up because their parents made them, and they never finished their pages, so in April three other people had to stay until five o'clock doing everything. Now imagine adding a whole bunch of students who are only there because of a rule. The kids who love yearbook would end up doing all the work while everybody else sat there on their phones. It would be the same for sports. You can't run a real practice with fifteen people who don't want to run.\n\nNow some people would say that being in an activity helps you make friends and looks good when you apply to high school, and that part is true. I'm on the track team and it is honestly the best part of my week. But I joined because I wanted to, not because somebody made me. If the principal really wants more students involved, he should find out why they aren't joining instead of just making a rule about it. We only have about four clubs and three of them meet on Wednesday at the same exact time. Maybe we need clubs that aren't sports, and maybe one or two of them could meet during lunch or homeroom so students who have to go straight home could still be in something.\n\nIn conclusion, I disagree with this decision. Making it mandatory doesn't create school spirit, it just creates a bunch of people sitting in a room because they have to be. Give us better choices and better times, and students will join on their own.",
+   "words": 465,
+   "text_sha256": "d41d997c95006a7ba7660b804d68ddeabd83d9fe14513cba49852be06e07020a",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.005",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:45:37.431Z",
+   "settings": "not exposed by the harness",
+   "context_id": "2a99515c-f06c-4e0d-9d51-71a1f89f647e",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I think she means well, and I get why she wants it, but forcing people to join stuff is going to make the clubs worse, not better.\n\nThe first reason is that the whole point of an activity is that you picked it. My brother plays travel baseball and he is out there in the cold in March hitting off a tee because he wants to be. If somebody made him do it, he would still be good at it, but he would be miserable and he would probably quit as soon as he could. That is what would happen to a lot of kids at our school. You can make somebody show up to a meeting. You can not make them care what happens at the meeting.\n\nThe second reason is that people would just pick whatever is easiest to get out of, and that would wreck the clubs for the people who actually want to be there. Yearbook is a real example. Yearbook has to get pictures of every single sport and every single club, and they have to get the names spelled right, and they have a real deadline in March where it goes to the printer. If fifteen kids join yearbook because it meets one day a week and it is the easiest thing on the list, then Mrs. Alvarez is not running a yearbook anymore, she is running a study hall with fifteen kids on their phones. Same with student council. Student council is supposed to be the kids who actually want to plan the dance and talk to the administration. It should not be a place people get assigned to.\n\nThe third reason, and I think this is the biggest one, is that this rule is not fair to everybody the same way. Some kids can stay after school and some kids can't, and it has nothing to do with wanting to. My friend Daniela picks up her little brother from the elementary school every single day and watches him until her mom gets home at 6:30. If she has to stay for a club, somebody has to figure out where her brother goes, and that is not something an eighth grader can just figure out. Also our late bus only runs Tuesday and Thursday. So if you live far out and your family only has one car, your whole list of choices is \"whatever meets on Tuesday or Thursday,\" which is basically not a choice at all. A rule that says everybody has to do this is really saying everybody has to do this and some of you have to solve a problem first.\n\nI know what people are going to say back. They will say that kids in activities get better grades and feel more connected to the school, and honestly that is probably true, I have heard teachers say it. But I think that happens because those kids found something they liked and it gave them a reason to be there. It is not the club by itself doing it. You can't get that part by just requiring attendance.\n\nIf the principal wants more kids involved, and I think that is a good goal, there are better ways to do it. Have a real club fair at the beginning of the year instead of just an announcement nobody listens to. Ask us what clubs we actually want, because I know at least six people who would join a cooking club or an esports team if we had one. Run the late bus every day. Or put an activity period inside the school day so the kids who have to leave at 2:45 aren't automatically left out.\n\nMaking it a rule is the fastest way to do it, but it is not the way that works. Give people something worth joining and they will join it.",
+   "words": 658,
+   "text_sha256": "c2138591a24baad68261073050bf8295866e5d9327a796029fb376dc907e2546",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.006",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:51:46.989Z",
+   "settings": "not exposed by the harness",
+   "context_id": "88800573-58b0-4fd8-8107-d5b2e3f3d5d9",
+   "text": "I disagree with our principal's new decision that every single student has to join at least one extracurricular activity. I am not against activities. I run cross country and I like it. But making something required takes the good part out of it, and it is not fair to everybody the same way.\n\nMy first reason is that plenty of kids in this school physically cannot stay after school. My friend Deion picks up his little sister from the elementary school every day at 3:15 because his mom works until six. If the school makes him sign up for something, what is he supposed to do, leave a second grader standing outside by herself? There are also all the bus riders. Our school only runs the activity bus on Tuesdays and Thursdays, so if your club meets on Monday you either get a ride or you walk, and in January it is already getting dark by 5:00. A rule sounds fair when it applies to everybody, but this one would land hardest on the students who already have the most going on at home, and that is backwards.\n\nMy second reason is that the clubs themselves would get worse. Right now yearbook has about fifteen people in it and every one of them wants to be there, which is why the yearbook actually comes out on time. If you flood that room with thirty more people who only signed up because they had to pick something, the same fifteen will end up doing all the work while everybody else sits there on their phones waiting for it to be over. I already know how that feels because of a science project last year where two people out of four did the whole thing. Making people show up does not make them care, it just makes the room more crowded.\n\nThe third reason is the one I think about the most. When you are forced to do a thing, you stop liking it. My cousin was made to take piano for four years and now she will not touch a piano at all. Extracurriculars are supposed to be the one part of school you actually chose. If the principal turns them into another requirement with a sign in sheet, then they are just school with a different name, and kids will pick whatever club sounds easiest instead of whatever they might have loved.\n\nI understand why the principal wants this. People say students in activities get better grades and stay out of trouble, and I believe that is true. But I think it works that way because the kind of student who joins is already interested, not because joining magically fixes someone. Forcing everyone in will not turn the second group into the first group. It will just make the number on the chart look nicer.\n\nIf the school really wants more students involved, there are better ways. Run the late bus every day. Hold some clubs during advisory so bus riders and kids with jobs at home can go. Have a club fair in September so people find out chess club and robotics even exist, because honestly a lot of us do not know what is offered. Make it easier to say yes instead of illegal to say no.\n\nActivities are worth doing. That is exactly why they should stay a choice.",
+   "words": 560,
+   "text_sha256": "c4a4f174aa7a7d569afc4708dae78f8a6455f402f7eb62dd74f15c76132ae69e",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.007",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:49:56.422Z",
+   "settings": "not exposed by the harness",
+   "context_id": "ac698e29-78d9-4a69-a6fe-17bd8dffc7cd",
+   "text": "Our principal decided that every single student has to be in at least one extracurricular activity, like a sport or yearbook or student council. I disagree with this decision. I think activities are great and I'm in one myself, but the second you force somebody to do something, it stops being the thing it was supposed to be.\n\nThe biggest reason I disagree is that a lot of kids at our school have stuff going on after school that nobody sees. My cousin Danny is in 8th grade with me and he watches his little sister every day from 3:15 until his mom gets home at 6. He can't just tell his mom, sorry, the principal says I have to be on the track team now. There's also kids who take the late bus because they live way out past the highway, and if you stay for practice you have to get a ride, and not everybody's parents can leave work at 5 o'clock to come get them. So a rule that sounds fair for everybody is really only fair for the kids who already have rides and free afternoons. The kids who have the least time would get in trouble for something that isn't even their fault.\n\nAnother reason is that forcing people into activities actually makes the activities worse for the people who want to be there. Last year our school did a thing where everyone in my grade had to sign up for the spring talent show or help backstage, and half the backstage crew just sat on the risers on their phones the whole time. The people who actually cared about the show got stuck doing everybody's job. If the principal makes all 600 kids in our school join something, the clubs are going to fill up with people who don't want to be there, and the coach or the advisor is going to spend the whole time getting people to pay attention instead of doing the actual thing. Yearbook doesn't need thirty people who don't care about yearbook.\n\nI know why the principal wants to do it. She probably read that kids in activities get better grades and feel more connected to school, and that's probably true. But I think she has the cause and the effect flipped around. Kids who join clubs are already the kind of kids who want to be at school, so of course their grades look better. Making a kid show up to chess club on Tuesdays isn't going to magically turn him into that kid. It's just going to make him hate Tuesdays.\n\nInstead of a rule, I think the school should fix the reasons people don't join. Have some clubs meet during lunch or during advisory so you don't need a ride. Let students start their own clubs, because right now our options are basically sports, band, and student council, and that's it. Put up posters that actually say what the club does. Make it so more kids can say yes, instead of making it so nobody can say no.\n\nActivities should be something you choose. That's the whole point of them. Taking away the choosing part doesn't make more kids join, it just makes more kids show up.",
+   "words": 537,
+   "text_sha256": "3377740f621d65798fe7dc70ef1c4d32c472deb2752796433c2eeadac34a9de9",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "e in at least one extracurricular activity"
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.008",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:48:18.858Z",
+   "settings": "not exposed by the harness",
+   "context_id": "31bb03d9-00d9-4d33-9f77-5d4f352787f0",
+   "text": "I disagree with the principal's decision that every student has to be in an extracurricular activity. I am saying that as someone who is actually in two of them, track and jazz band, so it is not like I hate activities. I just think that the second you make something required, you kill the exact thing that made it worth doing.\n\nThe whole reason clubs feel different from class is that nobody is making you be there. When I show up to jazz band at 7:15 in the morning, everybody in that room chose to get up early. Mr. Dickerson does not have to beg anyone to practice because we all want to sound good. Now imagine half that room is kids who got assigned there because they had to pick something and band was the only thing that fit their bus schedule. They are not going to practice. They are going to sit there on their phone and count the minutes, and the rehearsal gets worse for everyone who actually wanted to be there. Making it mandatory would not give us more musicians, it would just give us more bodies.\n\nAnother reason is that a lot of students already have things going on after school that the principal does not see. My friend Marisol picks up her little brother from the elementary school every single day at 3:30 because her mom works until six. If the school tells her she has to join something, what is she supposed to do, leave a second grader standing outside? There are also kids who have jobs, kids who take care of a grandparent, kids who go to religious school on Wednesdays. The rule assumes everybody's afternoon is empty and that is just not true. Instead of helping those students it would turn them into rule breakers for doing something responsible.\n\nMoney matters too. People say \"just do a sport\" like sports are free. Cleats are like sixty dollars, and for travel stuff there are fees on top of that. Yearbook needs a laptop at home for a lot of the work. If you require an activity but some activities cost money and some do not, you are basically sorting kids by what their family can afford, and everybody will know it.\n\nI know what the other side would say. They would say that some kids would never try anything if nobody pushed them, and honestly that is a fair point. I probably would not have done track if my science teacher had not told me I should try out. But there is a huge difference between one adult noticing you and saying \"hey, I think you would be good at this,\" and a rule on a piece of paper saying everybody must sign up by October 1st. One of those feels like somebody sees you. The other one feels like homework.\n\nSo if the principal really wants more students involved, she should fix the stuff that keeps people out. Add a late bus so kids who live far away can stay. Get a fund so equipment is not a wall. Let students start their own clubs, because honestly the reason some people are not in anything is that nothing here interests them. Do that and I think the numbers go up on their own, and the kids who join will actually want to be there. That is better than a school full of people who are only in chess club because they had to be.",
+   "words": 581,
+   "text_sha256": "56886c8dd4f75610d88dd9f1431c463fa16f25e854452a225f4e0bbf33ddeda7"
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.009",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:51:33.422Z",
+   "settings": "not exposed by the harness",
+   "context_id": "3261db3d-87d5-4a90-9126-1000abb6a302",
+   "text": "I disagree with the principal's decision to make every student join at least one extracurricular activity. I want to be clear that I actually like extracurriculars. I run cross country in the fall and it is probably my favorite part of school. But liking something and being forced into it are two completely different things, and I think this rule would end up hurting the clubs and the students both.\n\nMy first reason is that the word extra is right there in the name. These activities work because the people in them want to be there. Last year on yearbook my sister said there were two kids who only signed up because their parents made them, and they never turned in their pages, so everybody else had to stay after school two extra days to fix the spring sports spread before the printer deadline. Now imagine that but with the whole school. If you force three hundred people into clubs that only wanted about eighty, you are going to get a lot of kids sitting in the back of the room on their phones while the people who care do all the work. That is not fair to the students who joined because they loved it.\n\nMy second reason is that a lot of students in our school cannot stay after school even if they wanted to. Clubs here meet until about 4:30 and the late bus only runs two routes. My friend Andre has to walk his little brother home from the elementary school every day because his mom does not get off work until 6:00. What is he supposed to do, leave a second grader standing on the sidewalk so he can go to chess club? A rule like this punishes kids for their family situation, and those are usually the kids who already have the most on their plate.\n\nThird, some people already do plenty outside of school that the office would probably not count. I know a kid who has taekwondo four nights a week and another one who works at her family's restaurant on weekends. Making them add a school club on top of that is not building character, it is just adding stress to people who are already busy.\n\nI do understand what the principal is going for. She probably read that students in activities get better grades and feel more connected, and she does not want anyone eating lunch alone or going straight home every day with nothing. That is a good goal. But there is a better way to get there. The school could add a club period into the middle of the day like the middle school in the next town does, so everyone can join something without needing a ride home. They could also run a club fair in September and let students start their own clubs, because right now half the school does not even know we have a robotics team.\n\nGetting more students involved is a great idea. Threatening them with a requirement is not. Give us more choices and a way to actually get to them, and I think you would be surprised how many of us sign up on our own.",
+   "words": 533,
+   "text_sha256": "21c36488a5fe823a3bd0ac3dd7d00221439196ec3b70393629b778be114f6681",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.010",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:48:02.350Z",
+   "settings": "not exposed by the harness",
+   "context_id": "b36820ff-1961-4311-a29f-b7f6043f016d",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I think activities are a good thing and I am in two of them myself, but making them required takes the whole point out of them and it also causes problems for kids whose lives outside of school are complicated.\n\nThe first reason is that an activity you are forced into is not really an activity anymore, it is just more school. I am on the track team and the reason I stay after until 5:00 running 400s in the cold is that I chose it. Nobody made me. My friend Diego got put in a \"leadership club\" last year because his mom signed him up and he sat in the back and did his math homework the entire time. He did not help the club and the club did not help him. If the principal makes everyone join something, a lot of clubs are going to fill up with people like Diego who are just sitting there waiting for it to end. That is worse for the kids who actually wanted to be there. The yearbook staff does not need six people who got assigned to yearbook and do not care if the pictures are blurry.\n\nThe second reason, and I think this is the bigger one, is that some students already have things they have to do after school and those things are not optional either. My cousin watches her little brother every day from 3:30 until her mom gets home at 6:30 because there is nobody else to do it. That is not her being lazy. That is her family needing her. Other kids have jobs, or they take care of a grandparent, or they have a long bus ride, or they go to a different school program in the evening. A rule that says \"everyone must join something\" sounds fair because it applies to everybody the same way, but it does not land on everybody the same way. It lands easy on the kid whose parent can pick him up at 5:00 and it lands hard on the kid who cannot be late.\n\nSomebody will probably say that the rule helps shy students who would never sign up on their own, and honestly that is a fair point. I have seen that happen. There is a kid in my science class who got talked into robotics and now that is his whole personality. But you do not need a rule for that. You need teachers who notice quiet kids and invite them, and you need clubs that are easy to try out without signing your life away. Inviting someone and requiring someone are not the same thing, and the first one works better anyway.\n\nSo instead of making it a rule, I think the school should make it easier. Have an activity fair in September where every club has a table. Run a late bus so kids who do not have rides can stay. Let people try a club for two weeks before they have to commit. Do that and I bet way more students join on their own, and they will actually show up, because they picked it.\n\nForcing people to have fun does not work. It never has. If the principal wants full clubs, she should make the clubs worth joining instead of making the joining required.",
+   "words": 567,
+   "text_sha256": "412710e1dd3d56dbc0dca5782ea9fe62ce27cd4178c8cb5476be140e8496eb10",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.011",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:51:54.913Z",
+   "settings": "not exposed by the harness",
+   "context_id": "dc57c5e8-d51b-44f3-98a4-a7b969f71631",
+   "text": "I disagree with our principal's decision that every student has to join at least one extracurricular activity. I am not against activities. I run cross country in the fall and I would do it even if nobody made me. That is actually my whole point. The reason clubs and sports are good is that the people there picked to be there, and a rule takes that part away.\n\nMy first reason is that a lot of students already have stuff after school that the principal does not see. My friend Devon takes the bus that leaves at 3:15, and it is the only bus that goes out to his road. If he stays for a club his mom has to leave work early to come get him, and she cannot really do that. Other kids watch younger brothers and sisters, or have a job, or go to church stuff, or have to take care of a grandparent. Those are real responsibilities and they are not less important than yearbook. Under this new rule those students would get in trouble for something that is not even their fault.\n\nAnother reason is that forcing people to join hurts the activity itself. Last year in Science Olympiad there were two kids who only came because their parents made them, and honestly they just sat there on their phones the whole time. We still had to count them on our team, so when they did not study their event we lost points at the meet. If the principal makes everybody sign up for something, every club in the building is going to fill up with people who do not want to be there, and the kids who actually care are the ones who end up doing all of the work. That is not fair to them.\n\nSome people would say that the rule is good because it makes shy students try new things, and they might find something they love. I get that, I really do. But you do not have to make it a rule to do that. The school could have a club fair in September where every club gets a table, or teachers could personally invite kids they think would be good at something. My band teacher asked me to try out for jazz band in sixth grade and that is the only reason I did it. Nobody had to write me up.\n\nActivities are supposed to be the part of school you choose. Once it is required it is just more school. I hope our principal will change this decision and find a better way to get students involved.",
+   "words": 438,
+   "text_sha256": "48b8eba1f5db2e45bcc4cd6decb4b8a7859e8889b302d5f48fd025095255bcd6",
+   "assignment_echo": {
+    "longest": 42,
+    "snippet": "in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.012",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:48:29.166Z",
+   "settings": "not exposed by the harness",
+   "context_id": "0c9dc587-e071-4672-a5c3-b6e6ebacd96f",
+   "text": "I disagree with the principal's decision to make every student do at least one extracurricular activity. I want to be clear that I am not against activities. I run track in the spring and I am in art club, and those are honestly the best parts of my week. But there is a big difference between something you choose and something you get assigned, and I think making it a rule would wreck the thing that makes clubs and teams good in the first place.\n\nMy main reason is that a lot of students already have things after school that the office doesn't know about. My friend Marisol watches her little brother every single day from 3:15 until her mom gets home at 6. If she had to stay for yearbook, either her brother sits home alone or her family has to pay somebody, and they can't really do that. Some 8th graders help out at their family's store on weekends and weekdays too. Some people have practice for stuff outside of school, like my cousin does taekwondo at a place downtown and that isn't a school club so it wouldn't even count. Making a rule for everybody assumes everybody's afternoon is empty, and that's just not true.\n\nAnother reason is the late bus. Our late bus only runs Tuesday and Thursday, and it only goes on two routes. So if you live out by the highway like I do, you either get picked up or you don't stay. If the principal makes this a rule she is basically punishing kids for where they live, which they can't control. Before you make a rule you should make sure everyone can actually follow it.\n\nAlso, forcing people into activities makes the activities worse. Last year they made every homeroom send two people to the spirit committee, and half of them sat on their phones the whole time and one kid kept saying \"I don't even want to be here.\" It was annoying for the people who actually cared. Student council should be full of people who want to change something about the school, not people filling out a requirement. A club with ten people who chose it is stronger than a club with thirty people where twenty are counting down the minutes.\n\nI know some people would say that students won't try anything unless they're pushed, and that shy kids especially would miss out. That's a fair point. But there are better ways to push. We could have a club fair in the first week where every club sets up a table, or teachers could personally invite kids they think would be good at something. My art teacher asked me to join art club in 6th grade and that's the only reason I did it. She invited me, she didn't make me, and that's why I stayed for three years.\n\nSo I think the principal should keep encouraging students to join things, and should even add more options like a cooking club or a chess club, but she should not make it mandatory. Requiring it would hurt the students who have real reasons they can't stay, and it would make the clubs themselves less fun for the people who love them.",
+   "words": 538,
+   "text_sha256": "53bccebfffc245b93e94518423504d42bf6fca72e7512f926e23d4cb91975426",
+   "assignment_echo": {
+    "longest": 40,
+    "snippet": " at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.013",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:43:29.185Z",
+   "settings": "not exposed by the harness",
+   "context_id": "2446b9e7-ec7a-4328-804f-856675743f72",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I want to say right away that I am not against activities. I am on yearbook and I do track in the spring, and both of those are honestly the best part of my week. But there is a big difference between something being good and something being required, and I think making it a rule is going to hurt the exact students it is supposed to help.\n\nMy first reason is that a lot of kids already have things after school that nobody signs up for on a clipboard. My friend Marcus watches his little sister every single day from when the bell rings until his mom gets home around 6:30. He cannot stay for basketball, and it is not because he does not care about basketball. He talks about the Sixers constantly. If this rule happens, Marcus is the one who ends up in the office explaining his family's schedule to an adult, and that is not fair to him. It is the same for students who have jobs, or students who ride the bus out past the highway, because our late bus only runs on Tuesday and Thursday. So the rule would land way heavier on some students than others, and usually those are already the students with the most on them.\n\nMy second reason is that making people join something actually ruins it for the people who chose it. Last year on yearbook we had a kid who got stuck in our meeting because of a scheduling thing, and he never once finished his pages. Mrs. Alvarado spent probably half of every Thursday reminding him about deadlines instead of helping the rest of us with layouts, and then in April three of us had to redo his whole sports spread in two days. He was not a bad person. He just did not want to be there, and nobody can make you want to be there. If the whole eighth grade gets pushed into clubs they did not pick, every club turns into that.\n\nAnother thing people are not thinking about is space. Our school has maybe fourteen clubs and a bunch of them have cuts or a size limit. Chess club meets in Mr. Dunn's room and there are twelve chairs. Soccer cut eleven people in the fall. So what happens when four hundred students all need a spot? Either kids get told they have to join something and then get cut from it, which makes no sense, or the school throws together fake clubs just so there are enough seats, and then nobody learns anything anyway.\n\nI know the other side. People say activities help you make friends, keep you out of trouble, and look good later for high school and college applications, and all of that is true. I would not argue with any of it. But you do not get there by making it mandatory. You get there by making the activities worth joining. The school could run an activity fair in September, add the late bus on more days, ask students what clubs they actually want instead of guessing, and let teachers invite kids personally, because being asked by a teacher is the reason I joined yearbook in the first place.\n\nGetting told to do something and choosing to do something feel completely different, even when it is the same activity. I think the principal should spend the energy on getting students to want to join, instead of on a rule that will mostly just create a list of kids who broke it.",
+   "words": 609,
+   "text_sha256": "ad84282fb0886489899a2b5db522a3ef09e5703549e0ba90a4cd8a652358ee53",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.014",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:45:09.589Z",
+   "settings": "not exposed by the harness",
+   "context_id": "53c72973-d6a5-4390-9f88-d36a88eb626d",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I know she probably means well and wants everybody to be involved, but I don't think forcing people is going to work the way she thinks it will.\n\nThe biggest reason is that not everybody can stay after school. My bus leaves at 2:50 and if I miss it my mom can't come get me because she works until 6. There is a late bus but it only runs on Tuesdays and Thursdays, and most practices are Monday Wednesday Friday. So for me to join something I would either have to quit, or my mom would have to change her whole schedule, or I would be sitting in the front office for three hours doing nothing. My friend Marcus has to watch his little sister every day after school until his dad gets home. What is he supposed to do, bring her to soccer? Telling him he has to join yearbook isn't fair when the reason he can't isn't that he's lazy, it's that his family needs him.\n\nAnother reason is that when you force somebody to do something they stop caring about it. Last year we had to do the read-a-thon and everybody had to read for twenty minutes a night and log it. Almost everyone I know just made up the numbers. They wrote down anything so their parents would sign it. If you make kids join a club they don't want to be in, you are going to get a bunch of people sitting in the back of the room on their phones not helping, and that actually makes it worse for the kids who DO want to be there. If I was on student council and half the people only showed up because they had to, nothing would get done and I would be doing all the work.\n\nSome people would say that extracurriculars help you make friends and look good for high school and college, and I agree that is true. I'm in band and I like it a lot. But I chose band. Nobody made me. That is the whole reason I like it. When I go to practice it feels like mine, not like another assignment. If the school stamped \"required\" on it I think it would feel different even if it was the exact same class with the exact same people.\n\nI also think it costs money that some families don't have. Sports have fees and cleats and away games. Even yearbook costs something. My cousin's school made everyone do a club and then the only free ones filled up in two days.\n\nInstead of making it a rule, the school could just make it easier. Have more clubs that meet during lunch or during homeroom, run the late bus every day, and get rid of the fees for people who need help. If the school did that, way more kids would join on their own, and they would actually want to be there. That would fix the real problem, which isn't that students don't care. It's that a lot of us can't.",
+   "words": 529,
+   "text_sha256": "9cfb2faade2051d5fedad510b45df92a70139286654f79e892c66aac4186ece7",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.015",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:46:20.866Z",
+   "settings": "not exposed by the harness",
+   "context_id": "07ff645b-7dc3-416a-b589-dfb9b270903d",
+   "text": "I disagree with the principals decision that every student has to be in at least one extracurricular activity. I know she probably means well and wants everybody to be involved, but making it a rule takes the whole point out of it and it is going to hurt some kids more than it helps them.\n\nThe first reason is that the whole idea of an extracurricular is that it is extra. You pick it because you want to do it. My friend Danny plays the trumpet in jazz band and he stays after school until like 5:30 two days a week and he never complains about it because nobody told him he had to. If you force kids into clubs who dont want to be there, the clubs actually get worse. Think about it. Last year in the spring our yearbook staff had about nine people who all wanted to be there and they got the whole book done on time. Now imagine twenty more people sitting in that room on their phones because a rule said they had to sign up for something and yearbook had open spots. The nine people who cared would end up doing all the work anyway plus dealing with everybody else messing around. That is not fair to them.\n\nAnother reason is that not every family can do it. Some kids ride the bus and there is only one late bus and it leaves at 4:15, so if your practice ends at 5 you need a ride and not everybody has a parent who can leave work at 5. Also some kids have real responsibilities after school. My cousin Maya watches her little brother every single day from 3:00 until her mom gets home around 6:30 and there is nothing she can do about that. Under this rule she would be breaking a school rule for something that is not even her fault. Sports cost money too. My brother did travel soccer for one season and between the cleats, the fee, and the shin guards it was over two hundred dollars. A rule that says everybody must participate sounds fair but it is really only fair to the kids who already have rides and money.\n\nThe last thing is that some students already do stuff outside of school that the school doesnt count. There is a kid in my math class who goes to karate three nights a week and has a brown belt. There are kids who take dance at a studio, or go to church youth group, or have a job helping at their uncles store. Making them join a school club on top of all that is just piling more on for no real reason.\n\nIf the principal wants more kids involved I think there are better ways. She could add more kinds of clubs, like a video game club or a cooking club, because right now our choices are pretty much sports or student council and neither of those is for everybody. She could also add another late bus. Encourage people, advertise it, make announcements, let teachers invite kids personally. That actually works. Forcing it does not.\n\nExtracurriculars are supposed to be the part of school you look forward to. The second you make it mandatory it just becomes another class with homework you didnt sign up for. That is why I disagree.",
+   "words": 557,
+   "text_sha256": "581013fb36fb5f8418c1d3c93c4462d1529af2e00b8267e2dfffa5f7f2377f07",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.016",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:42:10.935Z",
+   "settings": "not exposed by the harness",
+   "context_id": "c29c9fe0-ff98-4ebd-96a0-14609cd13a3e",
+   "text": "I disagree with the principal's decision to make every student do at least one extracurricular activity. I think activities are a good thing and I do one myself, but the second you make something required it stops being the thing it was supposed to be.\n\nThe first reason is that a lot of students already have things going on after school that nobody sees. My friend Daniela has to pick up her little brother from the elementary school every day at 3:15 because her mom works until six. If our school made her join something she would either have to quit, or her brother would be standing outside by himself. Other kids have jobs, or take care of a grandparent, or have to take a bus that comes twenty minutes after the last bell. The principal is only seeing the kids who stay, so it probably looks like everybody could stay if they just wanted to. But that isn't true and a rule like this would punish the students who have the least control over their own time.\n\nThe second reason is that forcing people into clubs actually makes the clubs worse. I'm on the yearbook staff and last year we had two people who obviously did not want to be there. They got put on it because it was the club that still had open spots. They never turned in their pages, they messed around when Ms. Reyna was helping somebody else, and the rest of us ended up doing their spreads in the week before the deadline. If everyone in the whole school has to sign up, every club is going to be full of people like that, and the kids who actually care are going to spend their time babysitting instead of doing the activity. That's the opposite of what the principal wants.\n\nThe third reason is money and space. Sports are not free. Cleats cost money, band instruments cost money, and there is a fee just to be on a team. Also there is only one gym. Our basketball team already has more people trying out than spots on the roster. If six hundred students all need a place to go, where do they go? The school would have to invent a bunch of fake clubs just so there are enough spots, and then students would be sitting in a classroom for an hour doing nothing so they could check a box. Nobody learns anything that way.\n\nI understand why the principal wants this. He probably read that students in activities get better grades and feel more connected to the school. But that is because those students chose to be there, not because somebody made them. If you take a group of people who want to do something and then add a bunch of people who don't, you don't get more of the good thing, you just water it down.\n\nInstead of a rule, the school should make it easier to join. Have a late bus so students who live far away can stay. Make more clubs that don't cost anything, like chess or a cooking club or a video game club, and let students start their own if they have an idea. Have the club fair in September instead of October so people know what exists before everything is already full. If activities are easy to get to and there are enough of them that everybody can find one they actually like, most students will join on their own. That's a much better way to get what the principal wants than making it a requirement.",
+   "words": 599,
+   "text_sha256": "b183624bb6753719a6c4bb6488414b8cba8bbe303e4d3e2e3b50ebaf4ebb5d18",
+   "assignment_echo": {
+    "longest": 40,
+    "snippet": " at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.017",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:48:45.020Z",
+   "settings": "not exposed by the harness",
+   "context_id": "83f473c7-ae37-4377-8d9b-0d1eae1861d8",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I like extracurriculars, I'm in two of them. But making them required takes away the whole point of them, and it would be unfair to a lot of kids who already have things going on after school.\n\nMy first reason is that an activity you are forced into stops being an activity and turns into another class. Last year my friend got signed up for track by his mom when he didn't want to be there. He spent basically the whole season sitting in the grass by the fence complaining about his shins. He didn't get faster, he didn't make friends, and the coach kept having to walk over and deal with him instead of helping the kids who actually showed up to run. Now imagine that times about five hundred. Yearbook would have fifteen people on it and four of them would take pictures. Student council would have members who vote for whatever ends the meeting the quickest. That doesn't make our clubs stronger, it waters them down for the people who care about them.\n\nMy second reason is that not every kid is able to stay after school even if they want to. I ride the bus, and the late bus only runs Tuesday and Thursday. If the club I wanted met on Wednesday, somebody in my family would have to leave work to come get me, and my mom can't just do that. My cousin picks her little brother up every single day and watches him until her parents get home around six. She isn't lazy, she has a job already, it just isn't one the school gives credit for. A rule that makes students break a rule for taking care of their family is not a fair rule, and it would end up punishing the kids who have the least control over their own schedules.\n\nSome people would say that being in activities helps you get into a good high school program or looks good later on. That part is true and I'm not going to pretend it isn't. But there's a big difference between telling students about something and making it mandatory. If our principal really wants more people involved, he should fix the reasons they aren't. Put on more late buses. Add clubs that aren't sports, because right now if you don't play a sport your choices are pretty much yearbook, band, or student council. Let some clubs meet during advisory so it doesn't cost anybody their ride home. If you make it easier to join, more people will join, and they'll actually want to be there.\n\nI'm not saying extracurriculars are bad. Soccer is my favorite part of the school year and I met almost all of my friends on that team. That's exactly why I don't want it to become something people get in trouble for skipping. Students should join because they want to, not because they have to. If the clubs at our school are good, kids will show up on their own.",
+   "words": 520,
+   "text_sha256": "ebd8d7da64ce4c37c0188d1dc7327b9987628c178598cb3f3477130314cc1300",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.018",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:48:32.561Z",
+   "settings": "not exposed by the harness",
+   "context_id": "0ea4ba14-b35d-4fef-b18c-c4d55382e3e7",
+   "text": "I disagree with the principal's decision that every single student has to join an extracurricular activity. I like extracurriculars, I'm on the track team and I go to art club on Thursdays, so I'm not saying they are bad. But making them a rule takes away the whole point of them and it also isn't fair to a lot of kids at our school.\n\nThe first reason is that the word extracurricular already tells you it's extra. It's supposed to be the thing you do because you want to, not the thing you do because somebody is checking a list. When I joined track it was because my friend Maya kept talking about it and I finally went to one practice and liked it. If a teacher had put my name on the roster in September I probably would have hated it just because I didn't pick it. Kids can tell the difference between choosing something and being assigned something, and being assigned something makes it feel like more homework. If everybody is forced in, the clubs will be full of people sitting there on their phones waiting for it to be over, and that ruins it for the people who actually care about it. Our yearbook staff is only nine people but all nine want to be there, and that's why the yearbook gets finished.\n\nThe second reason, and I think this one matters the most, is that some students genuinely can't do it. There are kids in my grade who take care of younger siblings after school because their parents work until six. There is a kid in my math class who watches his little brother every day, and if he had to stay for chess club twice a week nobody would be home with his brother. Other kids ride the bus and there is no activity bus at 5:00, so their only ride home is the regular one at 2:45. If we make participation mandatory, those students get punished for something that isn't their fault at all. A rule that is impossible for some people to follow isn't really a rule, it's just a way of making them feel bad.\n\nSome people would say that being forced to try something is how you discover you like it, and I admit that is sometimes true. My cousin got put in band because of a scheduling mix up and now she plays saxophone all the time. But that happened by accident to one person. You don't need a school wide rule to make that happen, you just need to make it easy and welcoming for people to try things. The school could do a club fair in the first week, or let clubs meet during flex period so bus riders can go, or start new clubs that kids actually asked for like the anime club people have been trying to start for two years.\n\nIf the principal wants more students involved, forcing them is the lazy way to do it. Give people more options and better times and they will show up on their own. That's how you get a club full of people who want to be there instead of a club full of people who have to be.",
+   "words": 539,
+   "text_sha256": "12bf25916df978358448b8718726943be505dc6651a706e7e210370c86959bd5"
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.019",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:48:58.754Z",
+   "settings": "not exposed by the harness",
+   "context_id": "309c0a57-b071-4f3a-ad73-8d992ee1035a",
+   "text": "I disagree with the principal's decision that every single student has to be in at least one extracurricular activity. I like extracurriculars, I'm on the track team myself, but the whole point of them is that you pick them. The second you make something required it stops being the fun part of the day and turns into another class you can't get out of.\n\nMy biggest reason is that a lot of kids at my school already have stuff going on after 3:00 that the school never sees. My friend Danny watches his little sister every afternoon until his mom gets home from her shift at 6:30, because the babysitter costs money they don't have. If the school told him he has to be at yearbook until 4:30 on Tuesdays and Thursdays, that doesn't mean Danny magically gets free time. It means his little sister sits at home by herself, or Danny gets in trouble for not doing an activity he literally cannot do. There are also kids who take the late bus, kids with jobs helping at their family's store, and kids who go to religious school two days a week. A rule that treats everybody the same is only fair if everybody's life is the same, and it isn't.\n\nSecond, forcing people into clubs is going to wreck the clubs for the people who actually want to be there. Think about it. If you get put on the yearbook staff because it was the only thing left with open spots, you are not going to care if the fall sports page has the wrong captions. You're going to sit there on your phone waiting for it to be over, and the three kids who really love yearbook have to do your work plus their own. I saw this happen last year in a group project in social studies, where two people did everything and the other two just put their names on it. Now imagine that but for a whole year, in a club that's supposed to be the good part.\n\nI also don't think the school has the room or the teachers for it. Our school has around 600 students. If every single one of us joined something, that's a lot more coaches, a lot more advisors staying after school, and a lot more gym space and buses, and teachers are already staying late grading. Where is that coming from?\n\nSome people would say that requiring activities helps shy kids, because they would never sign up on their own and then they discover they love robotics or whatever. I get that, and honestly that does happen sometimes. But there's a difference between encouraging somebody and forcing them. If the school really wants more kids involved, they could do a club fair in September, add activities kids actually asked for, and run a late bus so the kids who don't have a ride can stay. That gets more people in without punishing anyone.\n\nExtracurriculars are supposed to be the thing you choose. Take the choosing away and you don't have an activity anymore, you have homework with a uniform. I think the principal should drop the rule and work on making the clubs good enough that people want to join.",
+   "words": 538,
+   "text_sha256": "bd04d94ddcbd836771e8045082a3580d51466edd8c092fef15bb8b59028c3a4e",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.020",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:51:14.586Z",
+   "settings": "not exposed by the harness",
+   "context_id": "02d63e22-1cb4-4fb5-8dbb-f2e1c96dc2bb",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I like extracurriculars, I'm on the track team and I go to art club on Thursdays, so I'm not saying they are bad. What I'm saying is that making them a rule takes the whole point out of them, and it also ignores that a lot of kids in our school have real reasons they can't stay after.\n\nMy first reason is that the second you make something required it stops being something people want to do. Right now the kids at art club are there because they actually want to draw. Nobody is checking a list. If everybody in eighth grade suddenly had to sign up for something, art club would be full of people who are just sitting there waiting for the bell so they can say they went. That would ruin it for the ones who care. My brother told me that at his high school they made a rule like this and people just picked whatever club met the least, which was chess club, and then chess club had forty people and only six of them ever touched a chess board. That isn't participation. That's attendance.\n\nMy second reason, and I think this is the bigger one, is that some students literally cannot do it. My friend Marisol watches her little brother every day after school until her mom gets home at six. If the school told her she had to join something, she would either have to leave her brother alone or get in trouble for not following a rule she has no control over. There are also kids who take the bus from far away, and if you stay after you have to find your own ride home. Not every family has a car sitting there at four o'clock. A rule like this sounds fair because it applies to everyone, but it isn't actually fair, because it costs some people way more than others. The kids who already have rides and free afternoons wouldn't even notice the rule. The kids who don't would be punished for something that's about their family situation, not about them being lazy.\n\nSomebody might argue that extracurriculars help you get into college and teach you teamwork, and that's true, I'm not going to pretend it isn't. But you can teach that without forcing it. The school could add more activities during the school day, or run a few clubs during lunch or advisory period so that everyone can actually get to them. That would get way more students involved than a rule would, and nobody would have to choose between their family and following the rules.\n\nSo I think the principal should not make extracurriculars mandatory. Instead she should make them easier to get to. Forcing people to join something doesn't create school spirit, it just creates a bunch of kids signing a sheet. Real participation has to be a choice or it isn't really participation at all.",
+   "words": 507,
+   "text_sha256": "54222eafff6ea0d46cca0b7f217d6a914a6556280ca38ee0da96080761b02973",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.021",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:43:25.216Z",
+   "settings": "not exposed by the harness",
+   "context_id": "54ec6fc9-2b06-4248-ab92-481b829f333f",
+   "text": "I disagree with the principal's decision that every student has to do at least one extracurricular activity. And I want to say right away that it is not because I hate clubs. I run cross country in the fall and I go to Art Club almost every Thursday, and those are honestly the two best parts of my week. But the reason they are the best parts is that I picked them myself. When you make somebody do something, it stops being the fun part of school and turns into just another class you have to show up for, except this one is after school and you don't even get a grade.\n\nMy first reason is that a lot of kids at our school physically cannot stay after school. My friend Dania rides bus 14 and it leaves at 2:50, and the late bus only runs Tuesday and Thursday. Her mom works until six so there is nobody to come get her. So under this new rule Dania is basically breaking a rule she never had the chance to follow. And here is the part that bugs me the most, she already picks up her little brother from the elementary school every single day and stays with him until her mom gets home. That is a real job with real responsibility, way more than folding shirts for the spirit wear table, but it doesn't count because it is not on the principal's list. If the rule can't see something like that, then the rule is measuring the wrong thing.\n\nMy second reason is that forcing people in will actually make the activities worse for the people who want to be there. Last year on yearbook my sister said there was a kid who got put on the staff because he needed an elective and he just did not care. He had four pages and he turned in two of them and one was blank except for the photo credits, so everybody else stayed late in the lab fixing it three days before the deadline. Now imagine that but it's the whole school. Coach Rivera has like eighteen kids on the track team and he already can't watch everyone's form. Add twenty kids who are only standing there because they have to, and the team gets slower and he spends the whole practice telling people to stop sitting on the high jump mat.\n\nI know what the other side would say, because Mr. Delgado basically said it in the assembly. He said students who are in activities have better grades and feel more connected to school. I believe that is true, I have seen the poster in the office with the graph on it. But I think that gets it backwards. Kids who are already into school are the kids who sign up for stuff. Signing them up doesn't turn them into that kind of kid, it just puts them in the room. You can make somebody attend Student Council. You cannot make them care who wins the vote about the vending machines.\n\nIf the principal wants more kids involved, and I actually think he should want that, there are better ways. Run the late bus all five days. Have a real club fair in September instead of one flyer by the gym door that nobody reads. Start clubs people actually asked for, like a soccer club that isn't a tryout team, or anime club which kids have been asking about for two years. And let things outside of school count, like a job or watching your siblings or playing on a rec league.\n\nMake it easier to say yes instead of making it illegal to say no. That way the kids who join want to be there, and the clubs stay good for everybody who was already in them.",
+   "words": 637,
+   "text_sha256": "fe881a7d64a4a49df818f6510f815613e0b265ffd8fd86574377c1737b0135d1",
+   "assignment_echo": {
+    "longest": 40,
+    "snippet": " at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.022",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:45:44.810Z",
+   "settings": "not exposed by the harness",
+   "context_id": "cad0c588-a722-48e6-a137-d499e638066f",
+   "text": "I disagree with the principal's decision that every student has to be in at least one extracurricular activity. I like extracurriculars, I'm on the track team and I go to art club when I can, but making them required takes the whole point out of them.\n\nThe first reason is that not everybody has time after school, and it's not because they're lazy. My friend Marcus gets off the bus and watches his little sister until his mom gets home from her shift at 6:30. If the school made him join something, either his sister sits home alone or he gets in trouble for not following the rule. Neither one of those is fair to him. There are also kids who take care of grandparents, or who have jobs bagging groceries, or who ride the bus forty minutes to get home because they live out past the highway. The late bus only runs twice a week at our school and it doesn't even go to every stop. So a rule that says \"everybody must join\" is really a rule that says \"everybody who already has an easy ride home must join,\" and that punishes the students who have the most going on in their lives.\n\nSecond, forcing people to join actually makes the activities worse. Think about the yearbook. Right now the yearbook staff is maybe fifteen kids who actually care about photography and layouts, and they stay late in the spring to get it finished. Now imagine you dump forty kids in there who signed up only because they had to pick something off a list and yearbook sounded like the easiest one. They're going to sit on their phones, miss deadlines, and the people who actually wanted to be there end up doing all the work and getting annoyed. That happened with our science fair when it was required in sixth grade. Half the projects were done the night before on posterboard from the gas station, and the kids who really liked science got lost in the pile.\n\nThe other thing is cost. Sports aren't free. Cleats are like fifty dollars and our school charges a thirty-five dollar athletic fee, plus you need a physical from a doctor. Even robotics club asks for money for the competition trips. If you tell a family they must do this, you're telling some families to spend money they were going to use on something else. The school would either have to pay for all of it or quietly let some kids off the hook, and then the rule isn't really a rule anymore.\n\nI do understand what the principal is trying to do. She probably read that students who are in activities get better grades and feel more connected to school, and that's true, but I think she has the cause and effect backwards. Kids do better because they chose something they love, not because an adult assigned it to them. If she wants more students involved, she should add more kinds of clubs so there's something for everybody, run the late bus every day, and cover the fees for people who need help. Then people would join on their own. That's the difference between an invitation and an order, and an invitation works a lot better with eighth graders.",
+   "words": 549,
+   "text_sha256": "dc100c5877bed4cef650c36ecbf6af263146cfec0e63ed2a7f1aeb4d637c50ce",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": "e in at least one extracurricular activity. "
+   }
+  },
+  {
+   "slot": "essays-claude-student.mandatory-extracurricular-activities.g8.023",
+   "arm": "essays-claude-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "claude-opus-5",
+   "harness": "Claude Code subagent, one essay per context",
+   "generated_at": "2026-09-17T20:40:56.196Z",
+   "settings": "not exposed by the harness",
+   "context_id": "f1805e2b-2d3b-4ec3-bd7c-36c956548fcb",
+   "text": "I disagree with our principal's decision that every student has to do at least one extracurricular activity. I think activities are a good thing, and I am actually in two of them, but making them required takes away the whole point of them and it will cause problems for a lot of kids who already have enough going on.\n\nThe main reason I disagree is that an activity you are forced into is not really an activity anymore, it is just more school. Right now I am on the track team because I wanted to be. Nobody made me sign up, and that is part of why I go to practice even when it is cold and I would rather be home. My friend Dario is in jazz band for the same reason. If the school starts assigning people to clubs, you are going to have a bunch of kids sitting in the back of the yearbook room on their phones waiting for it to be over, and that ruins it for the people who actually care about the yearbook. My sister was in student council two years ago and she said the worst part was the people who only joined because it looked good, because they never did any of the work and everyone else had to cover for them.\n\nAnother reason is that not everybody's after school time is free. There are kids in my grade who watch younger brothers and sisters until their parents get home from work. There is a kid in my math class who takes care of his grandmother. Some people have jobs, and some people ride the bus and the activity bus does not even go to all the neighborhoods. My cousin missed two months of soccer last year because his mom works second shift and there was nobody to drive him. A rule like this sounds fair because it applies to everybody, but it does not actually hit everybody the same. The students who will get in trouble for not doing an activity are mostly going to be the students who have the least control over their own afternoons, which is not fair at all.\n\nI know people will say that activities help you make friends, keep you out of trouble, and look good for high school and college. I agree with all of that. That is exactly why I do them. But those things happen because you chose it, not because somebody checked your name off a list. Also, our school only has so many clubs and so many coaches. If every single student has to join something, where are they all going to go? The soccer team already cuts people. We would need way more teachers to stay after school, and they are not getting paid extra for that.\n\nInstead of making it a rule, the principal should make it easier to join. Add clubs that people actually want, like the cooking club kids asked for last year, run the activity bus to every neighborhood, and let clubs meet during lunch or advisory for the kids who have to leave right when the bell rings. If activities are good, and I think they are, then the answer is to open the door wider, not to push people through it.",
+   "words": 549,
+   "text_sha256": "9242c60814d11eab09ee74dbe948820cbcb4ec3ded9ab57fa5c4ff3fadbe4e6c",
+   "assignment_echo": {
+    "longest": 40,
+    "snippet": " at least one extracurricular activity. "
+   }
+  }
+ ]
+}

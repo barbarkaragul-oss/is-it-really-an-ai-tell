@@ -1,0 +1,863 @@
+{
+ "genre": "essays",
+ "prompt_name": "Mandatory extracurricular activities",
+ "prompt_slug": "mandatory-extracurricular-activities",
+ "protocol_version": "essays-1",
+ "assignment": "Your principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. ",
+ "assignment_sha256": "7544b654b485f5b7bb176a2d14827b85320ea1d0ddd301ec72e65412e979fdcd",
+ "licence": "The assignment text is quoted verbatim from PERSUADE 2.0 (Crossley et al., 2024), CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/). The essays themselves were written for this repository and are under its own licence.",
+ "summary": {
+  "arms": {
+   "essays-llama3-student": {
+    "asked": 23,
+    "written": 23,
+    "median_words": 354,
+    "echoing_the_assignment": 23
+   }
+  },
+  "memorisation": {
+   "measured_against": {
+    "essays": 5867,
+    "five_grams": 2199841
+   },
+   "person_baseline": {
+    "essays": 200,
+    "mean": 0.1325,
+    "max": 0.3156,
+    "above_20_percent": 17,
+    "note": "200 of the people's own essays, each measured against the others the same way. A machine arm near this number is writing like the people; well above it is repeating them."
+   },
+   "note": "The share of each essay's five-word sequences that also occur in the people's essays for this genre, measured against the whole human sample. Read it against person_baseline, not against zero: thousands of essays answering the same seven assignments share a great deal of ordinary phrasing, and a sentence invented for a test already matches about half the time. Well above the baseline is a model repeating writing it has seen.",
+   "arms": {
+    "essays-llama3-student": {
+     "essays": 23,
+     "mean": 0.1639,
+     "max": 0.25,
+     "above_20_percent": 6,
+     "worst": [
+      {
+       "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.019",
+       "containment": 0.25
+      },
+      {
+       "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.020",
+       "containment": 0.2442
+      },
+      {
+       "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.004",
+       "containment": 0.233
+      }
+     ]
+    }
+   }
+  },
+  "rejected": []
+ },
+ "essays": [
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:11:18.968Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 93
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.001:seed=93",
+   "text": "I disagree with the principal's decision that all students must participate in at least one extracurricular activity. While I understand the benefits of such activities, I believe that forcing students to participate can lead to negative consequences. For example, some students may have valid reasons for not participating, such as having to care for a family member or having a scheduling conflict. By forcing these students to participate, the school is essentially punishing them for circumstances that are beyond their control.\n\nFurthermore, extracurricular activities are often a source of stress and pressure for many students. For instance, students who are part of sports teams may feel pressured to perform well in order to earn a spot on the team, which can lead to anxiety and decreased enjoyment. Similarly, students who are part of clubs may feel overwhelmed by the demands of club responsibilities, leading to burnout. By requiring all students to participate, the school is essentially setting them up for failure and disappointment.\n\nAdditionally, not all students are naturally inclined to participate in extracurricular activities. Some students may have interests or hobbies that are not reflected in the school's offerings, and forcing them to participate in something they don't enjoy can lead to feelings of boredom and disengagement. This can ultimately lead to a lack of motivation and decreased academic performance.\n\nI believe that the school should focus on providing a variety of extracurricular activities that cater to different interests and needs. This way, students have the opportunity to choose activities that they genuinely enjoy and that align with their passions. By giving students this freedom of choice, the school can promote engagement, motivation, and overall well-being.\n\nIn conclusion, while extracurricular activities can have benefits, I believe that forcing all students to participate can lead to negative consequences. Instead, I think the school should focus on providing a range of activities that cater to different interests and needs, allowing students to choose activities that they genuinely enjoy and that align with their passions.",
+   "words": 334,
+   "text_sha256": "2badb031c61fc82641c51b706c6c3ef13eb116961dd576add6a04918e4bc72c3",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 19.6,
+   "eval_count": 392,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:38:00.988Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 7
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.002:seed=7",
+   "text": "I agree with the decision that all students must participate in at least one extracurricular activity. I think this will greatly benefit our school and our community. One of the main reasons I agree is that extracurricular activities teach important life skills, such as teamwork, communication, and time management. For example, being part of a sports team requires you to work together with your teammates to achieve a common goal. This helps build trust and understanding among team members, which is essential for any future endeavors.\n\nAnother benefit of extracurricular activities is that they provide opportunities for students to develop new interests and passions. For instance, if someone is interested in photography, working on the yearbook committee would be a great way to hone that skill and share it with others. This can help students discover new talents and abilities that they may not have known they had.\n\nAdditionally, participating in extracurricular activities can also have a positive impact on students' academic performance. A study by the National Center for Education Statistics found that students who participate in extracurricular activities tend to have higher GPAs and better attendance records. This is because these activities provide a sense of purpose and fulfillment outside of academics, which can translate to improved focus and motivation in the classroom.\n\nSome people might argue that extracurricular activities are optional and that students should be able to choose whether or not to participate. However, I believe that by making participation mandatory, we will be more likely to see a broader range of students getting involved. This is especially true for students who may not have had the opportunity to participate in extracurricular activities otherwise, such as those who are shy or have limited access to resources.\n\nIn conclusion, I strongly agree that all students should participate in at least one extracurricular activity. These activities provide valuable life skills, opportunities for discovery, and academic benefits that will benefit our school and our community in the long run. By making participation mandatory, we can ensure that every student has the chance to get involved and reap these rewards.",
+   "words": 350,
+   "text_sha256": "46d475e2efa6ee6d5647bd4ca6db33005ec2c5ac99b1dbe8c0235b52e9d89fe7",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 19.7,
+   "eval_count": 411,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:35:10.246Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 157
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.003:seed=157",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. Having a diverse range of activities not only helps students develop new skills and interests, but also fosters a sense of community and school spirit.\n\nOne of the most significant benefits of extracurricular activities is the opportunity for students to develop valuable skills such as teamwork, communication, and leadership. These skills are essential for success in both academics and future careers. For instance, being part of the school soccer team taught me how to work together with my teammates, communicate effectively, and make quick decisions on the field. These skills have also translated to my academic performance, as I've learned to work more effectively with my classmates and participate more actively in class discussions.\n\nAnother advantage of extracurricular activities is the chance for students to discover new passions and interests. Without being forced to participate, some students might never find out that they have a hidden talent or aptitude for a particular activity. For example, I was initially hesitant to join the school choir, but after participating in a few rehearsals, I realized that singing was something I truly enjoyed. I've since become a dedicated member of the choir and have developed a new appreciation for music.\n\nFurthermore, extracurricular activities promote a sense of belonging and school spirit. When students participate in activities, they develop a sense of pride and connection to their school. This, in turn, encourages them to be more engaged and motivated in their academic work. For instance, the student council has organized several successful events, such as school carnivals and charity drives, which have brought the student body together and fostered a sense of community.\n\nLastly, requiring students to participate in extracurricular activities sends a positive message about the importance of balancing academics with extracurricular pursuits. In today's fast-paced world, it's essential for students to develop well-rounded skills and interests that go beyond their academic performance. By encouraging students to participate in activities, the principal is acknowledging that there's more to life than just grades and test scores.\n\nIn conclusion, I believe that requiring students to participate in at least one extracurricular activity is a wise decision. It provides students with valuable skills, allows them to discover new passions, promotes school spirit, and sends a positive message about balancing academics with extracurricular pursuits. I hope that my peers will join me in supporting this decision and embracing the opportunities that extracurricular activities have to offer.",
+   "words": 418,
+   "text_sha256": "61f9d20dc20ee2257fc7f0be11d4289e87ed5ba4a07ad413a714d10b8acffbc2",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 25.9,
+   "eval_count": 502,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:33:57.578Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 154
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.004:seed=154",
+   "text": "I disagree with the decision that all students must participate in at least one extracurricular activity. While I understand the importance of extracurricular activities in developing skills and creating memories, I believe that this decision is too rigid and may not be suitable for every student.\n\nFirstly, some students may not be interested in any extracurricular activities at all. This could be due to a variety of reasons such as lack of time, lack of interest, or even having a physical or mental health condition that prevents them from participating. Forcing these students to participate in an activity that they do not enjoy or are not suited for could lead to negative experiences and a loss of motivation.\n\nSecondly, some students may have other commitments outside of school that prevent them from participating in extracurricular activities. For example, some students may have family responsibilities or work part-time to help support their families. In these cases, the decision to participate in an extracurricular activity would be an added burden that could negatively impact their school performance or family life.\n\nLastly, some students may not have the opportunity to participate in extracurricular activities because of socio-economic factors. For example, some students may not have access to transportation to get to the activity or may not have the financial means to participate in expensive activities. In these cases, the decision would be unfair and would unfairly disadvantage certain students.\n\nIn conclusion, while I understand the importance of extracurricular activities, I believe that the decision to make participation mandatory is too rigid and may not be suitable for every student. I think that the school should provide more options and flexibility for students to participate in activities that they are interested in and that fit their schedules and lifestyles.",
+   "words": 297,
+   "text_sha256": "5477c0b4a89237220c40a6e454a47628fb977d3209e8936192022af7a4fdb506",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 17.8,
+   "eval_count": 347,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:09:47.359Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 89
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.005:seed=89",
+   "text": "I disagree with the principal's decision that all students must participate in at least one extracurricular activity. While I understand the importance of team-building and developing new skills, I believe that not every student will benefit from participating in these activities.\n\nFor some students, particularly those who are more introverted or have academic priorities, participating in an extracurricular activity may not be the best use of their time. For instance, a student who is struggling in math may need to spend extra time after school working on their homework to catch up. In this case, joining a sports team or club may not be the best choice, and instead, they should be encouraged to focus on their studies.\n\nAdditionally, some students may have family or work commitments that make it difficult for them to participate in extracurricular activities. For example, a student who has a part-time job to help support their family may not have the time to join a club or team. In these cases, it's unfair to force them to participate in an activity that they cannot realistically commit to.\n\nFurthermore, some students may not have the skills or talents necessary to excel in a particular extracurricular activity. For instance, a student who is not naturally athletic may not want to join a sports team, and instead, they may want to focus on developing their skills in a different area, such as music or art. In these cases, it's important to recognize that every student has their own strengths and weaknesses, and that it's okay if they don't excel in every area.\n\nIn conclusion, while I understand the value of extracurricular activities, I believe that the principal's decision to require participation is misguided. Not every student will benefit from participating in these activities, and some students may need to focus on their studies, family commitments, or developing their unique skills and talents.",
+   "words": 316,
+   "text_sha256": "5dd00083b2c25d763f17d5e2a07395efc31bb6b234c82df7618a925b0e330cf2",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 20.6,
+   "eval_count": 374,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:50:09.828Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 197
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.006:seed=197",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. I believe this decision will have numerous positive effects on our school community and individual students like me.\n\nFirstly, participating in extracurricular activities will help students develop essential life skills. For instance, being part of the school soccer team requires discipline, teamwork, and communication skills, which are vital in all aspects of life. These skills will not only benefit us in our academic pursuits but also in our personal and professional lives. For example, my friend Alex is on the debate team, and as a result, he has become more confident in expressing his opinions and has improved his public speaking skills.\n\nSecondly, extracurricular activities provide a valuable opportunity for students to explore their interests and passions. Many students, including myself, are not sports enthusiasts, but we may have a hidden talent in music, art, or writing. By participating in these activities, we can discover our strengths and weaknesses, and potentially develop new hobbies and interests. For instance, my friend Emma is on the school choir, and it has helped her develop her singing skills and improved her overall confidence.\n\nThirdly, extracurricular activities bring students together, fostering a sense of community and school spirit. By participating in activities outside of academics, students can build relationships with their peers, teachers, and coaches. This can lead to a stronger sense of belonging and a more positive school environment. For example, our school's annual talent show is a great example of how extracurricular activities can bring students together. It's a time when students can showcase their unique talents and have fun with their peers.\n\nLastly, participating in extracurricular activities can have a direct impact on our academic performance. Research has shown that students who participate in extracurricular activities tend to have better grades, improved attendance, and higher graduation rates. For instance, my friend Jake is on the robotics team, and it has helped him develop his problem-solving skills, which has also benefited his math grades.\n\nIn conclusion, I strongly believe that participating in at least one extracurricular activity is essential for students' personal and academic growth. It provides opportunities to develop life skills, explore interests and passions, foster school spirit, and improve academic performance. I support the principal's decision, and I encourage all students to participate in extracurricular activities to reap these benefits.",
+   "words": 398,
+   "text_sha256": "8ea5a6be77d7e6fd928a42f24530040adc74bd1864fdf6e8b8812869e853b3a9",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 23.8,
+   "eval_count": 490,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:38:44.514Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 166
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.007:seed=166",
+   "text": "I agree with the decision that all students must participate in at least one extracurricular activity. I believe this will have numerous positive effects on our school and individual students.\n\nFirstly, participating in extracurricular activities can help students develop important life skills. For instance, being part of a team in sports teaches us about teamwork, communication, and discipline. Similarly, being on the student council or working on the yearbook helps us learn about leadership, time management, and organization. These skills will benefit us not just in school but also in our future careers and personal lives.\n\nAnother advantage of extracurricular activities is that they provide opportunities for students to explore their interests and passions. By participating in activities we enjoy, we can develop our talents and potentially discover new ones. This can lead to a sense of accomplishment and confidence, which can translate to other areas of our lives.\n\nMoreover, extracurricular activities can help foster a sense of community and school spirit. When students are involved in activities that bring them together, it can create a sense of belonging and unity. This, in turn, can lead to a more positive and supportive school environment.\n\nFurthermore, participating in extracurricular activities can also have academic benefits. Studies have shown that students who are involved in extracurricular activities tend to have better grades and higher test scores. This is because the skills and habits we develop through extracurricular activities, such as time management and prioritization, can translate to our academic work.\n\nFinally, requiring all students to participate in extracurricular activities can help to break down social barriers and cliques. When everyone is involved, it can create a more inclusive and diverse environment, where everyone has the opportunity to make friends and be part of something bigger than themselves.\n\nIn conclusion, I strongly believe that requiring all students to participate in at least one extracurricular activity is a great decision. It will help us develop important life skills, explore our interests and passions, foster a sense of community and school spirit, have academic benefits, and break down social barriers. I hope that my peers and teachers will support this decision and join me in embracing the many benefits that extracurricular activities have to offer.",
+   "words": 370,
+   "text_sha256": "ea525baa2abb0bc0173da27094b225302f7c47ad3fc9da1381d1a1ff445131d2",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 23.4,
+   "eval_count": 449,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:27:05.428Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 136
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.008:seed=136",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. In my opinion, this decision will have numerous positive effects on our school and community.\n\nFirstly, extracurricular activities provide a platform for students to develop their passions and interests outside of academics. For instance, I have always been passionate about music, and joining the school choir has given me the opportunity to express myself and make new friends who share my interest. This not only enriches my high school experience but also fosters a sense of belonging and camaraderie among students. Moreover, extracurricular activities allow students to discover new talents and skills that they may not have known they possessed, which can lead to a sense of accomplishment and confidence.\n\nSecondly, participating in extracurricular activities promotes teamwork, communication, and problem-solving skills. As a member of the school's debate team, I have learned to work effectively with my teammates, think critically, and articulate my thoughts clearly. These skills are not only valuable in academics but also essential in our personal and professional lives. Furthermore, extracurricular activities provide opportunities for students to develop leadership skills, take on responsibilities, and work together towards a common goal, which can lead to a stronger sense of school spirit and community.\n\nThirdly, extracurricular activities provide a much-needed break from the academic pressures of high school. As a student, I face a lot of stress and pressure to perform well academically, and extracurricular activities offer a welcome respite from this pressure. By participating in activities that I enjoy, I am able to recharge and come back to my studies with renewed energy and focus. This, in turn, can lead to improved academic performance and a more balanced lifestyle.\n\nLastly, extracurricular activities can have a positive impact on our community. By participating in activities that give back to the community, such as volunteering or participating in charity events, students can develop empathy and compassion for others, while also making a positive impact on our community.\n\nIn conclusion, I strongly believe that all students should participate in at least one extracurricular activity. These activities provide a platform for students to develop their passions and interests, foster teamwork and communication skills, provide a break from academic pressures, and have a positive impact on our community. I urge my fellow students to support this decision and take advantage of the many opportunities that our school offers.",
+   "words": 404,
+   "text_sha256": "22dd1e190055e69bf31a4664cd285bc0f9dd89a00136195bf707009a396724ec",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 25,
+   "eval_count": 493,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:48:23.191Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 192
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.009:seed=192",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. I believe this decision will have numerous benefits for students and the school as a whole.\n\nFirstly, participating in extracurricular activities helps students develop important life skills, such as teamwork, communication, and problem-solving. For example, if a student joins the school soccer team, they will learn how to work together with teammates to achieve a common goal, and how to communicate effectively with their coach and teammates. These skills are essential in both academic and professional settings.\n\nAnother benefit of extracurricular activities is that they provide students with opportunities to develop their passions and interests outside of the classroom. For instance, if a student loves photography, they can join the yearbook committee and develop their photography skills. This not only allows them to express their creativity but also gives them a sense of purpose and fulfillment.\n\nFurthermore, extracurricular activities provide a chance for students to build lasting relationships with their peers. When students participate in extracurricular activities, they are more likely to form strong bonds with their teammates, classmates, and friends. These relationships can last a lifetime and provide a support system for students as they navigate high school and beyond.\n\nFinally, extracurricular activities can help students develop important character traits, such as perseverance, discipline, and responsibility. For example, if a student is part of the school band, they will need to commit to regular practice sessions and performances. This helps them develop a sense of responsibility and discipline, which are essential qualities for success in all areas of life.\n\nIn conclusion, I strongly believe that participating in extracurricular activities is essential for students' growth and development. It helps students develop important life skills, pursue their passions, build lasting relationships, and develop character traits that will benefit them throughout their lives. I urge my fellow students to support this decision and get involved in extracurricular activities that align with their interests and values.",
+   "words": 331,
+   "text_sha256": "fff833bd8bf0d4a60af3e1a98a059467ebfa34c44de01611da571c401bfa9312",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 20,
+   "eval_count": 401,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:25:59.154Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 133
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.010:seed=133",
+   "text": "I strongly agree with our principal's decision that all students must participate in at least one extracurricular activity. I believe this decision will have a positive impact on our school community and benefit each individual student.\n\nFirstly, participating in extracurricular activities can help students develop important life skills such as teamwork, communication, and problem-solving. For instance, if we had a school sports team, students would learn to work together towards a common goal, support each other, and adapt to changing situations. These skills are essential not only in sports but also in our future careers and personal lives.\n\nMoreover, extracurricular activities provide a sense of belonging and connection to the school community. When students participate in activities that interest them, they are more likely to feel a part of something bigger than themselves. This can lead to increased school spirit, improved morale, and a more positive overall atmosphere. For example, if we had a student council, students would have the opportunity to contribute to the decision-making process and make a difference in the school. This would not only give them a sense of ownership but also help them develop leadership skills.\n\nAnother important benefit of extracurricular activities is that they can help students discover and develop their talents and passions. When students are given the opportunity to pursue activities they enjoy, they are more likely to excel and take pride in their accomplishments. For instance, if we had a music program, students who love music would have the chance to develop their skills, perform in front of their peers, and even potentially receive recognition for their talents.\n\nFinally, participating in extracurricular activities can help students develop important time management and organizational skills. Students would need to balance their schoolwork with their extracurricular commitments, which would require them to prioritize, plan, and manage their time effectively. These skills are essential in all areas of life, and participating in extracurricular activities would give students a head start in developing them.\n\nIn conclusion, I strongly believe that our principal's decision to require all students to participate in at least one extracurricular activity is a great idea. These activities can help students develop important life skills, feel a sense of belonging and connection to the school community, discover and develop their talents and passions, and develop time management and organizational skills.",
+   "words": 389,
+   "text_sha256": "fd0d5b66512c06c6715def78dbcb1a87fa4f57962ce657f87b96b74e2df2fbe0",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 23.9,
+   "eval_count": 463,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:50:54.366Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 199
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.011:seed=199",
+   "text": "I agree with the decision that all students must participate in at least one extracurricular activity. I believe that this requirement will have numerous positive effects on our school community and on individual students.\n\nFirstly, participating in an extracurricular activity will help students develop important skills such as teamwork, communication, and time management. For example, being on the school soccer team requires working together with teammates, relying on each other to achieve a common goal. This not only improves athletic performance but also builds strong relationships among team members. Similarly, being part of the yearbook committee requires individuals to work together to gather content, design pages, and meet deadlines. This develops teamwork and collaboration skills that are essential in all aspects of life.\n\nSecondly, participating in an extracurricular activity will provide students with opportunities to explore their interests and passions outside of the classroom. Many students may have hidden talents or interests that they may not have discovered if they were not given the chance to explore them. For instance, a student who is initially shy may find their voice by joining the school choir. This confidence boost can then translate to other areas of their life, such as academics. On the other hand, a student who loves technology may discover a passion for coding or video production through participating in the school's robotics club.\n\nThirdly, participating in an extracurricular activity will help students develop leadership skills and take on new challenges. Being part of the student council, for example, requires students to take on responsibilities, make decisions, and work with others to achieve goals. This helps build confidence, public speaking skills, and the ability to make tough decisions. These skills are essential for future success, whether it's in the workforce, further education, or personal life.\n\nFinally, participating in an extracurricular activity will provide students with a sense of belonging and identity. Being part of a team or group gives students a feeling of being part of something bigger than themselves. This can help combat feelings of loneliness or isolation that some students may experience. Additionally, being part of an extracurricular activity can help students discover their values and interests, which can guide their future decisions and goals.\n\nIn conclusion, I strongly believe that requiring all students to participate in at least one extracurricular activity is a great decision. It will help students develop important skills, explore their interests and passions, take on new challenges, and feel a sense of belonging. I encourage my fellow students to take on this challenge and make the most of this opportunity.",
+   "words": 428,
+   "text_sha256": "bf38a36be810564dab8b5eedef662bd758cd7626cff7997f308a90dc6d8e8cab",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 25.1,
+   "eval_count": 508,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:28:38.665Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 140
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.012:seed=140",
+   "text": "I disagree with the decision that all students must participate in at least one extracurricular activity. While I understand the importance of extracurricular activities in developing important life skills, such as teamwork and time management, I believe that forcing students to participate goes against the principle of personal freedom.\n\nFor example, some students may have prior commitments, such as taking care of younger siblings or working part-time jobs, that prevent them from participating in extracurricular activities. These students should not be penalized for having responsibilities outside of school. Additionally, some students may have interests or hobbies that are not recognized as extracurricular activities, such as music or art, but are still valuable to them. By forcing them to participate in activities that they may not be interested in, the school may be stifling creativity and passion.\n\nFurthermore, requiring all students to participate in extracurricular activities can create pressure and stress for some students. For instance, a student who is struggling academically may feel overwhelmed by the added responsibility of participating in an extracurricular activity. This can lead to burnout and decreased motivation, rather than increased engagement and enthusiasm.\n\nIn contrast, allowing students to choose whether or not to participate in extracurricular activities can actually lead to increased participation and engagement. Students who are passionate about a particular activity will be more motivated to participate and work hard, leading to a more positive and productive experience. Additionally, students who are not interested in participating in extracurricular activities should not be forced to do so, as this can lead to decreased morale and a negative attitude towards school.\n\nIn conclusion, while extracurricular activities can be beneficial, I believe that forcing all students to participate is not the best approach. Instead, the school should allow students to make their own choices and provide support and resources for those who do choose to participate. This will lead to a more positive and inclusive school culture, where students feel valued and respected.",
+   "words": 328,
+   "text_sha256": "fa024f94efb8cb0635361743b5bc0f49b38a761ba57576a0c06087da3841916c",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 20.1,
+   "eval_count": 396,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:55:20.284Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 52
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.013:seed=52",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. I believe that this decision will have numerous positive effects on our school and community.\n\nFirstly, participating in extracurricular activities helps students develop important life skills such as teamwork, communication, and problem-solving. For instance, if we were to form a school choir, students would need to work together to harmonize their voices, listen to each other's cues, and adapt to changes in the music. These skills are essential in both personal and professional settings. By participating in extracurricular activities, students will have the opportunity to develop and refine these skills in a fun and engaging way.\n\nSecondly, extracurricular activities provide students with the chance to discover their passions and interests outside of the classroom. Some students may be amazing athletes, while others may have a talent for the arts or leadership. By participating in extracurricular activities, students can explore different areas and find what they truly enjoy. This can lead to a more fulfilling school experience and a greater sense of purpose.\n\nThirdly, extracurricular activities bring students and teachers together in ways that may not be possible during regular school hours. For example, if we were to start a school newspaper, students and teachers could collaborate to produce a high-quality publication that showcases school news and events. This can help build stronger relationships between students and teachers, leading to a more positive and supportive school culture.\n\nFinally, participating in extracurricular activities can have a positive impact on students' academic performance. Research has shown that students who participate in extracurricular activities tend to have higher grades and test scores. This is because extracurricular activities provide students with an outlet for stress and a chance to develop important skills that can be applied to their academic work.\n\nIn conclusion, I strongly believe that all students should participate in at least one extracurricular activity. By doing so, students will develop important life skills, discover their passions and interests, build stronger relationships with teachers and peers, and improve their academic performance. I encourage my fellow students to take advantage of this opportunity and make our school a more vibrant and engaging place.",
+   "words": 367,
+   "text_sha256": "836aacdb912902a7df8208e36528ee2540d7d1b8dacc93d6b7a832f33b691d50",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 26.9,
+   "eval_count": 445,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:07:19.380Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 83
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.014:seed=83",
+   "text": "I disagree with the principal's decision that all students must participate in at least one extracurricular activity. While I understand the importance of students being involved in activities outside of the regular school day, I believe that this decision can be too demanding for some students.\n\nFirstly, not all students may have the same interests or abilities. Some students may not be athletic, or they may not have the time to commit to a team or club. This can lead to students feeling pressured and stressed about not meeting the principal's expectations. For example, I know a student in my class who has a part-time job to help support their family, and they may not have the time to participate in an after-school activity. Mandating participation can be unfair to students who are already juggling multiple responsibilities.\n\nSecondly, some students may have personal reasons for not participating in extracurricular activities. For instance, a student may have a family member who is sick and needs their care. Alternatively, a student may be dealing with personal issues that make it difficult for them to commit to an activity. The principal's decision does not take these personal circumstances into account, which can be unfair to students who are already going through a tough time.\n\nLastly, forcing students to participate in extracurricular activities can lead to a lack of authenticity. When students are forced to participate, they may not have a genuine interest in the activity, which can lead to a lack of motivation and commitment. For example, I know a student who was forced to join the school choir, but they never really enjoyed it. If we give students the freedom to choose, they are more likely to be engaged and enthusiastic about the activity they are participating in.\n\nIn conclusion, while I understand the principal's intentions, I believe that mandating participation in extracurricular activities is not the best approach. Instead, we should focus on encouraging and supporting students to find activities that they are genuinely interested in. By giving students the freedom to choose, we can promote engagement, motivation, and a sense of accomplishment.",
+   "words": 354,
+   "text_sha256": "f3af030f891c4103c333d54e58d5e47946b0252220ef0ec0af5a18706bd32fbd",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 20.9,
+   "eval_count": 415,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:15:45.774Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 105
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.015:seed=105",
+   "text": "I disagree with the decision that all students must participate in at least one extracurricular activity. While I understand the benefits of being involved in school, I believe that this requirement is unfair and may actually have negative effects on some students.\n\nFirstly, not all students are naturally inclined towards extracurricular activities. Some students may have other interests or passions that they pursue outside of school, and they shouldn't be forced to join a club or team just to satisfy a requirement. For example, my friend Alex loves to play music and spends most of his free time practicing and writing songs. He shouldn't have to choose between pursuing his passion and joining a school club just to please the principal.\n\nSecondly, requiring all students to participate in extracurricular activities can be overwhelming and stressful. Many students already have a lot on their plates with schoolwork, homework, and other responsibilities. Adding another commitment can be too much, and some students may feel like they're spread too thin. For instance, I have a family member who had to quit a club they loved because they just couldn't handle the extra time commitment. If we're forced to join a club, some students may have to sacrifice their own interests or well-being.\n\nLastly, not all students are naturally good at everything. Just because someone is good at a particular sport or skill doesn't mean they'll enjoy it or be any good at it. Requiring all students to participate in extracurricular activities can be demoralizing for those who are naturally less talented or don't enjoy it. For example, I've seen some students on the school's debate team who just aren't very good at it. They get frustrated and stressed because they're not meeting expectations. It's better to let students choose what they're interested in and what they're good at, rather than forcing them into something they might not enjoy.\n\nIn conclusion, while I understand the benefits of being involved in school, I believe that requiring all students to participate in extracurricular activities is unfair and may have negative effects. It's better to give students the freedom to choose what they're interested in and what they're good at, rather than forcing them into something they might not enjoy.",
+   "words": 374,
+   "text_sha256": "c890c81b06025a7e7d630e0dc0b367b27582d530f4f669abb6aeddb03f7604f5",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 23.6,
+   "eval_count": 449,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:50:40.662Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 40
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.016:seed=40",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. This decision will have numerous benefits for students, including myself, and ultimately enhance our overall educational experience.\n\nFirstly, participating in extracurricular activities will help students develop important life skills, such as teamwork, communication, and time management. For instance, on our school's soccer team, players must work together to achieve a common goal, which promotes trust, cooperation, and mutual respect. These skills are essential in both academic and professional settings, and will serve us well throughout our lives.\n\nSecondly, extracurricular activities provide a sense of belonging and social connection among students. As someone who enjoys art, I would love to join the school's art club and collaborate with like-minded students who share my passion. This will not only give me the opportunity to express myself creatively but also help me build lasting friendships and a sense of community.\n\nThirdly, participating in extracurricular activities can have a positive impact on students' academic performance. Research has shown that students who engage in extracurricular activities tend to have higher GPAs and perform better on standardized tests. This is because these activities require discipline, dedication, and prioritization, which can translate to academic success.\n\nLastly, the principal's decision will encourage students to step out of their comfort zones and explore new interests and passions. I'm interested in photography, and joining the school's photography club will give me the chance to develop my skills and learn from others who share my enthusiasm. This will help me discover new talents and hobbies, which can lead to a more fulfilling and well-rounded life.\n\nIn conclusion, I firmly believe that all students should participate in at least one extracurricular activity. This decision will not only benefit us individually but also contribute to a more vibrant and engaged school community. By working together and pursuing our shared interests, we can create a more positive and supportive learning environment that will benefit us throughout our lives.",
+   "words": 333,
+   "text_sha256": "9bab7671c844cc014f075fba14254d97bc57661df67d566b2a01c1e48cbaa463",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 20.8,
+   "eval_count": 404,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:29:05.317Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 141
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.017:seed=141",
+   "text": "I agree with the decision that all students must participate in at least one extracurricular activity. I believe this decision will have a positive impact on our school community and benefit each individual student in several ways.\n\nFirstly, participating in extracurricular activities helps to develop essential skills such as teamwork, communication, and leadership. For example, being part of the school soccer team requires players to work together towards a common goal, relying on each other's strengths and compensating for each other's weaknesses. This kind of teamwork and communication can translate to other areas of life, such as working on group projects in class. By participating in extracurricular activities, students can develop these valuable skills and become more effective collaborators.\n\nSecondly, extracurricular activities provide a way for students to explore their interests and passions outside of the classroom. For instance, if a student is passionate about music, they can join the school choir or band. This allows them to express themselves creatively and develop their musical skills in a fun and supportive environment. By having the opportunity to pursue their interests, students can develop a sense of purpose and direction, which can positively impact their academic performance and overall well-being.\n\nThirdly, participating in extracurricular activities can help to build a sense of community and school spirit. When students are involved in school activities, they become more invested in their school and develop a sense of belonging. This can lead to a more positive and supportive school culture, where students feel motivated to work together towards common goals. For example, when the student council organizes a school event, such as a charity walk or a talent show, it brings students together from different grade levels and backgrounds, fostering a sense of unity and camaraderie.\n\nFinally, participating in extracurricular activities can provide students with valuable experiences and skills that can benefit them in the long run. For instance, being part of the school newspaper or yearbook staff can teach students about the importance of meeting deadlines, working under pressure, and managing multiple tasks. These skills can be applied to future academic and professional pursuits, such as writing, editing, or publishing.\n\nIn conclusion, I believe that participating in extracurricular activities is essential for students to develop essential skills, explore their interests and passions, build a sense of community, and gain valuable experiences and skills. I agree with the decision that all students must participate in at least one extracurricular activity and encourage my fellow students to do the same. By working together and supporting each other, we can create a positive and inclusive school culture that benefits everyone.",
+   "words": 435,
+   "text_sha256": "445946c1fc342bad1de309f5e1a534c49d671b00b901336c0013f086044de098",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 26.6,
+   "eval_count": 521,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:29:47.827Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 143
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.018:seed=143",
+   "text": "I disagree with the decision that all students must participate in at least one extracurricular activity. While I understand the value of being part of a team or taking on additional responsibilities, not everyone is suited for or interested in these activities.\n\nFirstly, some students may not have the physical ability to participate in sports or other physically demanding activities. For example, a student with a physical disability or chronic illness may not be able to participate in team sports, but that doesn't mean they can't contribute to the school community in other ways. Perhaps they could serve on the student council or help with library events, which would be more suitable for their abilities.\n\nSecondly, some students may not have the time or energy to commit to an extracurricular activity. For instance, a student with a heavy course load or multiple part-time jobs may not have the capacity to take on additional responsibilities. By forcing them to participate in an activity, the school is essentially putting undue stress on these students, which could negatively impact their academic performance and overall well-being.\n\nFinally, some students may simply prefer to focus on their studies or pursue individual interests. For example, a student who is passionate about music or art may prefer to spend their free time honing their skills or working on creative projects. By mandating extracurricular participation, the school is essentially dictating what students should be doing with their free time, which can be stifling and limiting.\n\nIn conclusion, while extracurricular activities can be valuable and enriching, requiring all students to participate is not a one-size-fits-all solution. Instead, the school should offer a range of options and encourage students to explore different areas of interest. This way, students can choose activities that align with their passions and abilities, and the school can promote a sense of community and inclusivity.",
+   "words": 314,
+   "text_sha256": "6bfc94a3c1211848bb8031324427d1a393f569d515cfd729d94d7e881bff8c11",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 19.3,
+   "eval_count": 370,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:32:07.388Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 149
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.019:seed=149",
+   "text": "I disagree with the principal's decision that all students must participate in at least one extracurricular activity. While I understand the value of participating in such activities, I believe that each student should be able to make their own choices about how they want to spend their free time.\n\nFor example, some students may not be naturally good at sports, and may feel embarrassed or self-conscious about trying out for a team. Others may have other interests or hobbies that they are passionate about, and may not see the point of forcing them to join a club or team. By making participation in extracurricular activities mandatory, the principal is essentially saying that every student must be a part of something, no matter how they feel about it.\n\nThis decision also ignores the fact that some students may be dealing with personal issues, such as family problems, health issues, or academic struggles, that make it difficult for them to participate in extracurricular activities. By forcing them to participate, the principal is essentially asking them to put aside their problems and focus on something else, which can be overwhelming and stressful.\n\nFurthermore, making extracurricular activities mandatory takes away the freedom and autonomy that students need to make their own choices about how they want to spend their time. By allowing students to choose whether or not to participate in extracurricular activities, we are giving them the opportunity to develop their own interests and passions, and to take risks and try new things.\n\nIn conclusion, I believe that making participation in extracurricular activities mandatory is not the best approach. Instead, we should be giving students the freedom to make their own choices and decide for themselves whether or not to participate. This will allow them to develop their own interests and passions, and to take risks and try new things.",
+   "words": 308,
+   "text_sha256": "90213ef36996da25396b7494d9086df1bcd94aa826381569dd416fa78e86dfe6",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 18.2,
+   "eval_count": 358,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:46:58.485Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 188
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.020:seed=188",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. This decision will not only benefit the students but also the school as a whole. One of the main reasons I agree with this decision is that it will help students develop important skills and qualities outside of the classroom.\n\nFor example, participating in sports can help students develop teamwork and communication skills, which are essential in any profession. Additionally, it can help students build confidence and discipline, which are crucial for success in academics and beyond. Similarly, working on the yearbook or serving on the student council can help students develop leadership and problem-solving skills, which are valuable in any career.\n\nAnother reason I agree with this decision is that it will encourage students to get involved in their school and community. Extracurricular activities can provide a sense of belonging and identity for students, which is important for their emotional and mental well-being. Moreover, it can help students develop a sense of social responsibility and empathy, which are essential for building strong relationships with others.\n\nFurthermore, this decision will help to create a more diverse and inclusive school community. By requiring all students to participate in at least one extracurricular activity, we can ensure that students from different backgrounds and interests are brought together, which can lead to a more vibrant and diverse school culture.\n\nIn conclusion, I strongly believe that the principal's decision to require all students to participate in at least one extracurricular activity is a great idea. It will help students develop important skills and qualities, encourage them to get involved in their school and community, and create a more diverse and inclusive school culture.",
+   "words": 288,
+   "text_sha256": "66b69ff245799f0f34c2a11ebe3572aada0c3d348b063b33f6ea08d0ae061fb6",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 17.2,
+   "eval_count": 332,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:57:19.751Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 57
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.021:seed=57",
+   "text": "I agree with the principal's decision that all students must participate in at least one extracurricular activity. I believe that this requirement is essential for the development of well-rounded individuals who are equipped to succeed in all aspects of life.\n\nFirstly, participating in extracurricular activities helps students to develop important life skills, such as teamwork, communication, and problem-solving. For instance, if I join the school soccer team, I will have the opportunity to work with my teammates to achieve a common goal, which will require us to communicate effectively and support each other. Similarly, serving on the student council will help me to develop leadership skills, as I will be responsible for making decisions and working with other students to implement them.\n\nSecondly, participating in extracurricular activities provides students with a sense of belonging and identity. When I join the school's debate team, I will be surrounded by like-minded individuals who share my passion for public speaking and argumentation. This sense of belonging will give me a sense of purpose and direction, which is essential for my overall well-being.\n\nThirdly, extracurricular activities offer students the opportunity to develop their interests and talents. For instance, if I am passionate about photography, I can join the school's photography club and learn new skills and techniques from experienced photographers. Similarly, if I am interested in music, I can join the school band or choir and develop my vocal or instrumental skills.\n\nLastly, participating in extracurricular activities helps students to develop time management and organizational skills. When I join the school's volunteer club, I will be responsible for scheduling and coordinating volunteer activities, which will require me to prioritize my tasks and manage my time effectively.\n\nIn conclusion, I believe that the principal's decision to require all students to participate in at least one extracurricular activity is a wise one. Participating in extracurricular activities will help students to develop important life skills, a sense of belonging and identity, their interests and talents, and time management and organizational skills. I strongly support this decision and believe that it will have a positive impact on our school community.",
+   "words": 356,
+   "text_sha256": "ec31a47d1c3c564835c854300d3ca2928d9c4e008944ac8d01bb3b277d380756",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 24.3,
+   "eval_count": 428,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:11:58.226Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 95
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.022:seed=95",
+   "text": "I agree with the decision that all students must participate in at least one extracurricular activity. Having extracurricular activities is essential for students to develop their skills, interests, and friendships outside of the classroom.\n\nFirstly, participating in extracurricular activities helps students develop important skills such as teamwork, communication, and time management. For instance, being on the school soccer team requires players to work together towards a common goal, communicate effectively with their teammates, and manage their time to balance schoolwork and practices. These skills are valuable in all areas of life, including future careers. Moreover, extracurricular activities provide students with the opportunity to try new things and discover their passions. I personally enjoy playing the guitar in the school band, which helps me relax and express myself creatively.\n\nSecondly, extracurricular activities are a great way for students to make lasting friendships. Being part of a team or club provides a sense of belonging and allows students to bond with their peers over shared interests. For example, the students on the school's robotics team work together to design and build a robot, which requires collaboration, problem-solving, and trust. These relationships can be just as important as academic grades in shaping students' high school experiences.\n\nLastly, extracurricular activities provide a vital outlet for students to relieve stress and develop their mental health. Participating in sports or clubs can be a great way to blow off steam and release tension after a long day of classes. Moreover, many extracurricular activities, such as clubs focused on mental health or volunteer work, directly address students' well-being and provide a sense of purpose and fulfillment.\n\nIn conclusion, I strongly believe that requiring all students to participate in at least one extracurricular activity is a great idea. These activities provide students with valuable skills, friendships, and a sense of purpose, which are essential for a well-rounded high school experience. By participating in extracurricular activities, students will develop into more well-rounded, confident, and capable individuals, ready to take on the challenges of the world.",
+   "words": 340,
+   "text_sha256": "fee94f23af6f85f8cde7b776c892d168222c261b70d5c96f949e93dcf78f8d8f",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 21.6,
+   "eval_count": 420,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.mandatory-extracurricular-activities.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Mandatory extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal has decided that all students must participate in at least one extracurricular activity. For example, students could participate in sports, work on the yearbook, or serve on the student council. Do you agree or disagree with this decision? Use specific details and examples to convince others to support your position. \n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "6b475d6aec1116161347a50a99858e132d7d96e856badb9efad3c1c7b86be801",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:42:16.589Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 18
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.mandatory-extracurricular-activities.g8.023:seed=18",
+   "text": "I agree with the decision that all students must participate in at least one extracurricular activity. Having a mandatory participation policy will greatly benefit our school community and the students themselves. First and foremost, participating in extracurricular activities helps students develop important life skills such as teamwork, communication, and problem-solving. For instance, being part of a sports team requires students to work together towards a common goal, trusting each other and relying on each other's strengths and weaknesses. This is a valuable skill that can be applied to all areas of life, not just academics.\n\nMoreover, participating in extracurricular activities provides students with a sense of belonging and identity. When students are part of a team or group, they feel connected to others and have a sense of purpose. This can be especially important for students who may not have a strong social network or who struggle to find their place in the school. For example, I know a student who joined the school choir last year and suddenly felt like she had found her tribe. She made lifelong friends and felt more confident and outgoing.\n\nAdditionally, extracurricular activities provide a much-needed break from the academic rigor of school. Students can use these activities to relax and have fun, which is essential for maintaining a healthy work-life balance. I've seen students who are normally straight-A students completely transform when they're on the field or stage, letting loose and having the time of their lives. This can actually help them perform better academically, as they return to school feeling refreshed and rejuvenated.\n\nFinally, mandatory participation in extracurricular activities encourages students to try new things and step out of their comfort zones. This is especially important for students who may not have had the opportunity to explore their interests or passions outside of school. By forcing students to participate, our principal is giving them the chance to discover new talents and hobbies, which can lead to a lifetime of personal and professional fulfillment.\n\nIn conclusion, I strongly believe that all students should participate in at least one extracurricular activity. It's not just a way to fill time or add to our resumes; it's a way to develop important life skills, build connections with others, and find a sense of purpose and identity. I urge my fellow students and teachers to support this decision and make our school community an even more vibrant and engaging place.",
+   "words": 407,
+   "text_sha256": "619d7897fc8d6a1305fd4392e18c1289692187cf986448457dda942bc1063e46",
+   "assignment_echo": {
+    "longest": 78,
+    "snippet": " that all students must participate in at least one extracurricular activity. "
+   },
+   "seconds": 28.8,
+   "eval_count": 474,
+   "done_reason": "stop"
+  }
+ ]
+}

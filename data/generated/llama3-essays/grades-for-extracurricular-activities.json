@@ -1,0 +1,933 @@
+{
+ "genre": "essays",
+ "prompt_name": "Grades for extracurricular activities",
+ "prompt_slug": "grades-for-extracurricular-activities",
+ "protocol_version": "essays-1",
+ "assignment": "Your principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.",
+ "assignment_sha256": "530c9071a7aa5155adbab26b1654a308d515f0d9d8484cf15d333546e46a6306",
+ "licence": "The assignment text is quoted verbatim from PERSUADE 2.0 (Crossley et al., 2024), CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/). The essays themselves were written for this repository and are under its own licence.",
+ "summary": {
+  "arms": {
+   "essays-llama3-student": {
+    "asked": 25,
+    "written": 25,
+    "median_words": 343,
+    "echoing_the_assignment": 25
+   }
+  },
+  "memorisation": {
+   "measured_against": {
+    "essays": 5867,
+    "five_grams": 2199841
+   },
+   "person_baseline": {
+    "essays": 200,
+    "mean": 0.1325,
+    "max": 0.3156,
+    "above_20_percent": 17,
+    "note": "200 of the people's own essays, each measured against the others the same way. A machine arm near this number is writing like the people; well above it is repeating them."
+   },
+   "note": "The share of each essay's five-word sequences that also occur in the people's essays for this genre, measured against the whole human sample. Read it against person_baseline, not against zero: thousands of essays answering the same seven assignments share a great deal of ordinary phrasing, and a sentence invented for a test already matches about half the time. Well above the baseline is a model repeating writing it has seen.",
+   "arms": {
+    "essays-llama3-student": {
+     "essays": 25,
+     "mean": 0.1387,
+     "max": 0.2222,
+     "above_20_percent": 3,
+     "worst": [
+      {
+       "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.022",
+       "containment": 0.2222
+      },
+      {
+       "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.006",
+       "containment": 0.2197
+      },
+      {
+       "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.020",
+       "containment": 0.2033
+      }
+     ]
+    }
+   }
+  },
+  "rejected": []
+ },
+ "essays": [
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.001",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:03:12.389Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 71
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.001:seed=71",
+   "text": "Dear Principal,\n\nI strongly believe that requiring at least a grade B average to participate in sports or other activities is a bad idea. Many students who have a grade C average are still dedicated and hardworking, and excluding them from extracurricular activities would be unfair.\n\nFirstly, a low grade average does not necessarily mean that a student is not trying or is not good at their activity. Some students might be struggling in certain subjects due to factors such as lack of sleep, family issues, or personal problems. By not allowing them to participate, we are essentially punishing them for circumstances beyond their control. For example, a student who is dealing with a family member's illness might have a lower grade average, but still be a great athlete.\n\nSecondly, requiring a grade B average would be too strict and could lead to students feeling discouraged and unmotivated. Students who are already struggling in school might feel that they are being unfairly punished, and might even drop out of activities altogether. This could negatively impact their self-esteem, academic performance, and overall well-being. In contrast, allowing students to participate in activities regardless of their grade average could actually motivate them to improve their grades, as they would see the connection between their academic performance and their ability to participate.\n\nFinally, excluding students with a grade C average would not necessarily solve the problem of poor academic performance. In fact, it could even exacerbate it, as students would feel more pressure to maintain a certain grade average in order to participate in activities. This could lead to students cheating, copying, or even dropping out of school altogether.\n\nIn conclusion, I think that requiring at least a grade B average to participate in sports or other activities is a bad idea. It would be unfair, discouraging, and could even worsen academic performance. Instead, we should focus on providing support and resources to help students who are struggling, and encourage them to work hard and improve their grades.\n\nSincerely,\n[Your Name]",
+   "words": 339,
+   "text_sha256": "7509a147bd7e0abdfcdd6ba308bd9328611ae212744f7ecb222ef5f13ea673fc",
+   "assignment_echo": {
+    "longest": 83,
+    "snippet": "t requiring at least a grade b average to participate in sports or other activities"
+   },
+   "seconds": 21.8,
+   "eval_count": 396,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.002",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:38:18.814Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 8
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.002:seed=8",
+   "text": "Dear Principal,\n\nI am writing to express my thoughts on the proposed policy change requiring students to have at least a grade B average to participate in sports and other activities. As a student who is passionate about extracurricular activities, I believe that this policy would be detrimental to many students' experiences and well-being.\n\nFirstly, not all students are naturally talented in academics. Some students may struggle with certain subjects, but excel in others. Forcing them to have a grade B average would be unfair and might discourage them from pursuing their interests in sports and activities. This would not only harm their mental health but also stifle their creativity and potential.\n\nSecondly, the pressure to maintain a high grade average would be immense. Students who are already struggling with schoolwork would be forced to prioritize their grades over their passions and interests. This could lead to burnout and decreased motivation. As someone who has experienced the pressure of school, I can attest that it's essential to have a balance between academics and extracurricular activities.\n\nLastly, requiring a grade B average would unfairly punish students who are working hard but not seeing the results they desire. Students who are naturally gifted in sports and activities might be able to get away with a lower grade average, but what about those who are still developing their skills? This policy would not account for individual progress and growth.\n\nInstead, I propose that the school focus on providing resources and support to help students improve their grades. Tutoring programs, extra help sessions, and mentorship opportunities would allow students to develop their skills and achieve their goals without being penalized.\n\nIn conclusion, requiring a grade B average to participate in sports and activities would have negative consequences for many students. It would stifle creativity, encourage burnout, and unfairly punish those who are working hard. I urge you to reconsider this policy and instead focus on supporting students in their academic and extracurricular endeavors.\n\nSincerely,\n[Your Name]",
+   "words": 333,
+   "text_sha256": "6ea1ed038e99843d6ba931e5f52d3d7590f8f0892116306d31e48af36238a218",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 17.8,
+   "eval_count": 392,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.003",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:16:29.153Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 107
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.003:seed=107",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the proposed policy change requiring at least a grade B average to participate in sports and other activities. After careful consideration, I strongly believe that this policy change would have a negative impact on students with a grade C average.\n\nFirstly, requiring a grade B average would create an unfair system. Not all students are naturally inclined towards academics, and that's okay. There are many students who excel in extracurricular activities and sports, but struggle with grades. By forcing them to maintain a certain grade average, you would be excluding students who might be more successful in other areas. For example, I know a student who is an incredible basketball player, but struggles with math. If this policy were in place, he would be discouraged from pursuing his passion, which could lead to disappointment and lack of motivation.\n\nAnother concern is that this policy would put too much pressure on students. As it is, students already have a lot on their plates, with homework, tests, and projects. Adding the expectation of maintaining a certain grade average would only increase stress levels. I've seen students who are already stressed out about grades getting anxious and frustrated when they don't meet expectations. By not allowing them to participate in activities, you would be taking away their stress-relieving outlet and encouraging burnout.\n\nFinally, I believe that grades don't necessarily reflect a student's work ethic or dedication. Just because someone has a grade C average doesn't mean they're not trying or aren't passionate about what they're doing. Some students might be working harder than others, but their learning styles or understanding of the material might be different. By basing participation in activities on grades, you would be penalizing students for factors outside of their control.\n\nIn conclusion, I strongly advise against requiring at least a grade B average to participate in sports and other activities. This policy would be unfair, overly stressful, and would take away from the benefits that extracurricular activities provide. Instead, I suggest focusing on providing resources and support for students who need help with their grades, rather than excluding them from activities.\n\nSincerely,\n[Your Name]",
+   "words": 366,
+   "text_sha256": "d03fac5486d34f404ccde22c94696ed6b16433fbc6c938b2c891afe2aaf42f18",
+   "assignment_echo": {
+    "longest": 71,
+    "snippet": " against requiring at least a grade b average to participate in sports "
+   },
+   "seconds": 22.2,
+   "eval_count": 434,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.004",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:43:30.492Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 179
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.004:seed=179",
+   "text": "Dear Principal,\n\nI am writing to express my opposition to requiring at least a grade B average to participate in sports or other activities. While having a good grade point average is important, it is not the only measure of a student's abilities or potential. Many students who struggle academically may excel in other areas, such as athletics or the arts.\n\nRequiring a minimum grade B average to participate in sports or other activities could be unfair to students who may not have a natural inclination towards academics. For example, I know students who are amazing athletes, but struggle with reading comprehension or math. Should they be punished for not being good in those subjects just because they can run fast or throw a ball well? I don't think so.\n\nAnother reason I disagree with this policy is that it could lead to more stress and anxiety among students. Right now, students have a lot on their plates, from homework to tests to projects. Adding the pressure of needing to maintain a certain grade point average could be detrimental to students' mental health. I think it's important to find ways to encourage students to do well academically, but not at the expense of their overall well-being.\n\nFinally, I think it's worth considering the impact this policy could have on students who are already struggling. A grade C average may not seem like a lot, but it's a good starting point for students who are still developing their skills. Requiring a higher average could be a barrier for students who are just starting to get the hang of things.\n\nIn conclusion, while I understand the desire to promote academic achievement, I think requiring a minimum grade B average to participate in sports or other activities could have unintended consequences. I believe it's more important to encourage students to do well academically while also supporting their overall development and well-being.\n\nSincerely,\n[Your Name]",
+   "words": 323,
+   "text_sha256": "a20f2bcdd530e9de0b4a9e231153ad10be12a6f2968de068878e55cc28ae3d9f",
+   "assignment_echo": {
+    "longest": 84,
+    "snippet": " requiring at least a grade b average to participate in sports or other activities. "
+   },
+   "seconds": 19.5,
+   "eval_count": 371,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.005",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:59:04.188Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 61
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.005:seed=61",
+   "text": "Dear Principal,\n\nI am writing to express my thoughts on the proposed policy change that would require students to have a grade B average in order to participate in sports and other activities. While I understand the importance of maintaining good grades, I strongly believe that this policy would be unfair and have unintended consequences.\n\nFirstly, requiring a grade B average would disproportionately affect students who are struggling in certain subjects but excel in others. For example, a student who is a star athlete might struggle in math but be a straight-A student in English. This policy would prevent them from participating in sports, which could lead to feelings of isolation and low self-esteem. Additionally, it would neglect the fact that students learn and grow at different rates, and what might seem like a simple concept to one student might be challenging for another.\n\nFurthermore, focusing solely on grades can lead to an excessive emphasis on academics at the expense of other important aspects of school life. Extracurricular activities provide valuable opportunities for students to develop social skills, build confidence, and discover new passions. By limiting participation to students with high grades, the school would be denying these benefits to students who may not have the same academic strengths.\n\nMoreover, this policy would create an unfair advantage for students who already have a natural talent for a particular activity. For instance, if a student is naturally gifted in basketball, they would have an easier time maintaining a high grade point average simply because their athletic abilities would give them an edge in other areas of their life. This would further exacerbate the already existing gap between students who are naturally talented and those who are not.\n\nLastly, I believe that there are more effective ways to encourage students to work harder and achieve better grades. For instance, providing additional support and resources for struggling students, offering incentives for academic improvement, and fostering a sense of community and encouragement within the school would all be more effective ways to promote academic excellence.\n\nIn conclusion, while I understand the importance of maintaining good grades, I believe that requiring a grade B average to participate in sports and other activities would be unfair and neglect the many other aspects of school life that are important for students' growth and development. I hope that the school will consider these points and alternative solutions before implementing this policy.\n\nSincerely,\n[Your Name]",
+   "words": 408,
+   "text_sha256": "dfa6a29a22dec29e67b5f324cb6d4ba42333b819be24ac076b91d64bec9e9199",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": " a grade b average to participate in sports "
+   },
+   "seconds": 25.7,
+   "eval_count": 455,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.006",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:59:57.511Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 63
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.006:seed=63",
+   "text": "Dear Principal,\n\nI strongly believe that requiring students to have at least a grade B average to participate in sports or other activities is a bad idea. Many students, including myself, have a grade C average and I think that it would be unfair to punish us for not meeting this standard.\n\nFirst of all, everyone learns at their own pace. Some students might be struggling in one or two subjects, but they might be excelling in others. By making students wait until they have a grade B average, you would be taking away the opportunity for students to participate in activities that they are passionate about and that help them build important skills like teamwork and communication. For example, I love playing basketball and it helps me stay focused and motivated in school. If I had to wait until I got a grade B average to participate, I would probably give up because it would be too hard to wait.\n\nAnother reason why this policy change would be a bad idea is that it would create more stress and pressure on students. Instead of focusing on learning and enjoying their activities, students would be worried about their grades and whether they meet the new standard. This could lead to a decrease in motivation and engagement in school, which would ultimately hurt their academic performance.\n\nFurthermore, requiring a grade B average would not necessarily improve student performance or behavior. Some students might struggle to meet this standard and might even feel like they're not good enough, which could lead to feelings of low self-esteem and depression. On the other hand, students who are already excelling in school might not be motivated to work harder to improve their grades, because they're already doing well.\n\nFinally, I think that this policy change would be unfair to students who are already struggling. Some students have to deal with a lot of personal problems, like family issues or health problems, that affect their ability to focus on their schoolwork. By making students wait until they have a grade B average, you would be taking away the opportunity for these students to participate in activities that help them build resilience and confidence.\n\nIn conclusion, I think that requiring students to have at least a grade B average to participate in sports or other activities is a bad idea. It would be unfair, create more stress and pressure, and might not even improve student performance or behavior. Instead, I think that we should focus on providing support and resources to help students succeed, rather than punishing them for not meeting certain standards.\n\nSincerely,\n[Your Name]",
+   "words": 440,
+   "text_sha256": "ea83d02159b862b38e1458a6a9e0b95c51160d8b6a8d98df5878cc40092b4af5",
+   "assignment_echo": {
+    "longest": 72,
+    "snippet": " at least a grade b average to participate in sports or other activities"
+   },
+   "seconds": 29.4,
+   "eval_count": 492,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.007",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:33:21.314Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 152
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.007:seed=152",
+   "text": "Dear Principal,\n\nI am writing to express my opposition to the proposed policy change that would require students to have at least a grade B average to participate in sports and other activities. While I understand the concern about students' academic performance, I believe that this policy would be unfair and misguided.\n\nFirstly, many students who struggle academically are also passionate and dedicated to their extracurricular activities. Forcing them to choose between their studies and their passions could lead to a decrease in overall student morale and engagement. Activities like sports and clubs provide a much-needed break from the academic grind and allow students to develop important life skills like teamwork, communication, and time management.\n\nSecondly, requiring a grade B average would unfairly punish students who are still learning and growing. We all have off days and weeks, and it's not always possible to maintain a perfect GPA. This policy would label students who are struggling academically as \"unworthy\" to participate in activities, which could have long-lasting negative effects on their self-esteem and confidence.\n\nThirdly, this policy would create an unfair advantage for students who already excel academically. Those students who are naturally more book-smart or have access to better resources would have an easier time maintaining a grade B average, while students who are more struggling would be disproportionately affected. This could lead to an even wider achievement gap and more social divisions within our school community.\n\nLastly, I believe that our school's existing policies and programs, such as homework help and academic support services, are already in place to help students improve their grades. Rather than penalizing students who aren't meeting academic expectations, we should be providing more resources and support to help them succeed.\n\nIn conclusion, I believe that the proposed policy change would be unfair and misguided. Instead of focusing on academic averages, we should be encouraging students to develop a love for learning and a sense of purpose and passion. This will lead to a more well-rounded and happy student body, and ultimately, to a more successful and engaged school community.\n\nSincerely,\n[Your Name]",
+   "words": 354,
+   "text_sha256": "a4fe6e8bbcf0aaa45801ce0e7e167672df03cbaa2c4d9ae4aba68c5638bc1e9f",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 21.7,
+   "eval_count": 415,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.008",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:54:08.210Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 49
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.008:seed=49",
+   "text": "Dear Principal,\n\nI am writing to express my thoughts on the proposed policy change that requires students to have at least a grade B average to participate in sports or other activities. While I understand the concern about student achievement, I strongly believe that this policy change would be unfair and misguided.\n\nFirstly, not all students are naturally good students. Some may struggle with certain subjects or learning styles, but that doesn't mean they are not capable or willing to learn. Requiring a grade B average would disproportionately affect students who are already struggling, leading to decreased motivation and participation. In sports, for example, teamwork and dedication are crucial, and forcing students to choose between their passion and their grades could be detrimental to the overall team dynamic.\n\nSecondly, sports and extracurricular activities have numerous benefits that extend beyond the classroom. They promote physical health, social skills, and character development. By restricting participation based on grades, you would be depriving students of these essential experiences. Moreover, students who excel in sports may not necessarily excel academically, and vice versa. By separating students into \"high-achievers\" and \"non-achievers,\" you would create an environment that emphasizes competition over collaboration and community.\n\nLastly, this policy would create an unfair advantage for students who come from affluent backgrounds, where they have access to private tutors and resources. This would further exacerbate the existing achievement gap, leading to a more unequal and elitist environment. As a public school, we should strive to be inclusive and welcoming to all students, regardless of their background or academic standing.\n\nIn conclusion, I firmly believe that a grade B average requirement would be an unjust and misguided policy change. I urge you to reconsider this proposal and instead focus on providing support and resources to students who need it, while also recognizing the value of extracurricular activities in shaping our students' lives.\n\nSincerely,\n[Your Name]",
+   "words": 317,
+   "text_sha256": "e5b257b0a2dbde178d742a3ef72b3fc6841728ae8840b445681d57dcebefca3b",
+   "assignment_echo": {
+    "longest": 74,
+    "snippet": " at least a grade b average to participate in sports or other activities. "
+   },
+   "seconds": 21,
+   "eval_count": 383,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.009",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:05:11.748Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 77
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.009:seed=77",
+   "text": "Dear Principal,\n\nI am strongly against requiring students to have at least a grade B average to participate in sports and other activities. As a student myself, I believe that this policy would be unfair and detrimental to many students' experiences.\n\nFirstly, not all students are naturally inclined towards academics. Some may struggle in certain subjects, but excel in others. For example, I have a friend who is a math whiz, but struggles with reading and writing. This policy would mean that they would be restricted from participating in activities that they love and are good at, simply because they don't meet the academic requirement. This could lead to students feeling discouraged and unmotivated to do well academically.\n\nSecondly, requiring a grade B average would put a lot of pressure on students to perform well academically. This could lead to students feeling stressed and anxious, which could negatively impact their mental health and overall well-being. Additionally, it could also lead to students feeling like they are not being allowed to pursue their passions and interests, simply because they don't meet the academic requirement.\n\nLastly, I believe that extracurricular activities are an essential part of a well-rounded education. They provide students with opportunities to develop important life skills such as teamwork, communication, and problem-solving. By restricting participation in these activities, we are taking away a valuable learning experience that can have a positive impact on students' lives.\n\nIn conclusion, I strongly believe that requiring students to have at least a grade B average to participate in sports and other activities is not the best policy. Instead, I think that the focus should be on supporting students and providing them with opportunities to succeed, regardless of their academic performance. By doing so, we can create a more inclusive and supportive environment that allows all students to thrive.\n\nSincerely,\n[Your Name]",
+   "words": 311,
+   "text_sha256": "a965fb040d3d6f7ef56957b51ba0c938826c7aa56b17c2a766a5114a7945aece",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 18.7,
+   "eval_count": 367,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.010",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:44:09.958Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 23
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.010:seed=23",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the proposed policy change requiring at least a grade B average to participate in sports or other activities. As a student who has been actively involved in extracurricular activities, I believe that this policy change would be unfair and would negatively impact many students.\n\nFirstly, not all students are naturally inclined towards academics. While some students may excel in both academics and extracurricular activities, others may struggle in one area and excel in the other. By requiring a grade B average, you would be unfairly penalizing students who may not be able to balance their academic and extracurricular responsibilities. Many students who have a grade C average are still hardworking and dedicated to their studies, and it would be unfair to deny them the opportunity to participate in activities they enjoy simply because they are not naturally inclined towards academics.\n\nSecondly, setting a grade B average as a requirement for participation would create an unfair disadvantage for students who are still developing their academic skills. Many students, including myself, have struggled in certain subjects or classes in the past, but have since improved with time and effort. By requiring a grade B average, you would be denying these students the opportunity to learn and grow through participation in extracurricular activities. This could ultimately have a negative impact on their academic and personal development.\n\nFinally, setting a grade B average as a requirement for participation would take away the value of effort and perseverance. Many students who have a grade C average are still working hard and putting in the effort to improve their grades. By requiring a grade B average, you would be rewarding only students who are naturally talented or gifted, and ignoring the hard work and dedication of students who are still developing their skills.\n\nIn conclusion, I believe that setting a grade B average as a requirement for participation in sports or other activities would be unfair and would negatively impact many students. I urge you to reconsider this policy change and to consider the potential consequences it could have on student morale and motivation.\n\nSincerely,\n[Your Name]",
+   "words": 361,
+   "text_sha256": "300cdbf129f2f88bff753c3756d86e36e84352c9c0c3969b8bf31e004bffd19e",
+   "assignment_echo": {
+    "longest": 84,
+    "snippet": " requiring at least a grade b average to participate in sports or other activities. "
+   },
+   "seconds": 21,
+   "eval_count": 412,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.011",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:46:15.224Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 186
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.011:seed=186",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the proposed policy change requiring students to have a minimum grade B average to participate in sports and other activities. While I understand the importance of academic achievement, I strongly believe that this policy change would be unfair and have unintended consequences.\n\nFirstly, requiring a grade B average would disproportionately affect students who are already struggling in certain subjects. Students with a grade C average, like many of my classmates, are not failing, but rather, they are learning and improving with each passing day. By enforcing this policy, you would be penalizing students who are on the cusp of reaching their academic potential. It's unfair to assume that students who are doing \"okay\" are not committed or dedicated enough to excel in their studies.\n\nSecondly, this policy change would create undue stress and pressure on students who are already trying to balance academics and extracurricular activities. Sports and other activities are essential for building teamwork skills, confidence, and overall well-being. By taking away the opportunity for students to participate, you would be denying them the chance to develop these essential skills.\n\nFurthermore, requiring a grade B average would create an unfair advantage for students who are naturally more inclined towards academics. Those students who are already excelling in their studies would have an unfair advantage in the sports and activities, as they would already be doing well in their classes. This would create a sense of exclusivity, where students who are not \"book-smart\" would feel left out and marginalized.\n\nLastly, this policy change would not necessarily translate to improved academic performance. Research has shown that extracurricular activities actually improve academic performance, as students develop time management skills, discipline, and a sense of responsibility. By restricting participation, you would be inadvertently limiting the benefits that these activities bring to our academic performance.\n\nIn conclusion, I believe that requiring a grade B average to participate in sports and activities is an unfair and misguided policy change. I urge you to consider the unintended consequences and to find alternative ways to encourage students to excel in their academics. Perhaps we could explore incentives, such as special privileges or recognition, for students who achieve academic milestones. I believe that this approach would be more effective in promoting academic achievement and student engagement.\n\nSincerely,\n[Your Name]",
+   "words": 393,
+   "text_sha256": "dee044584ef4f31ddc7b9b76f9ca459b12b4dbb808ae0fe34cb65a75c7b7cabf",
+   "assignment_echo": {
+    "longest": 44,
+    "snippet": " a grade b average to participate in sports "
+   },
+   "seconds": 24.6,
+   "eval_count": 458,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.012",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:43:00.561Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 20
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.012:seed=20",
+   "text": "Dear Principal,\n\nI strongly disagree with the proposal to require at least a grade B average to participate in sports and other activities. I believe this policy would have negative consequences for many students, including myself.\n\nFirstly, requiring a high grade average would be unfair to students who are already struggling in certain subjects. Some students may be exceling in math or science but struggling in English or history. This policy would punish them for their weaknesses, even if they're doing well in other areas. I know students who have worked hard to improve their grades, but still struggle to get a B. It would be discouraging to be told they can't participate in activities they love because of a grade that doesn't accurately reflect their overall abilities.\n\nSecondly, this policy would put too much pressure on students. I know that when I'm trying to keep up with my schoolwork, it can be stressful enough. Adding the pressure of needing to maintain a B average to participate in sports or activities would be overwhelming. I've seen students get anxious and stressed out because they feel like they're not good enough, and this policy would only exacerbate the problem.\n\nLastly, I believe that participation in sports and activities is just as important as academic performance. Being part of a team or club helps students develop valuable skills like teamwork, communication, and leadership. It also gives them a chance to relieve stress, make friends, and develop a sense of belonging. By limiting participation to only those who meet a certain grade average, you'd be taking away opportunities for students who are already struggling.\n\nIn conclusion, I think it would be unfair and counterproductive to require a grade B average to participate in sports and activities. Instead, I think we should focus on finding ways to support students who are struggling academically, and encouraging them to participate in activities that bring them joy and help them develop important life skills.\n\nSincerely,\n[Your Name]",
+   "words": 330,
+   "text_sha256": "0355bb9e6d9923dffb4b695a950899d6c6887e71401cb85faefa2ee72dc68b8b",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 21.8,
+   "eval_count": 385,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.013",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:43:48.999Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 22
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.013:seed=22",
+   "text": "Dear Principal,\n\nI strongly disagree with the proposed policy change that requires students to have at least a grade B average to participate in sports and other activities. As a student who has been involved in various extracurricular activities, I believe that this policy would have a negative impact on many students who are eager to participate but may not have a high grade point average.\n\nFirstly, this policy would unfairly punish students who are struggling in certain subjects but excel in others. For example, a student who is having trouble with math may have a C average in that subject, but they could be doing great in science or English. Should they be denied the opportunity to participate in sports or activities because of one subject they're struggling with? I don't think so. This policy would be too broad and could lead to students who are otherwise good students being unfairly penalized.\n\nSecondly, setting a high GPA requirement for extracurricular activities would create an unfair pressure on students to achieve high grades, which could lead to stress and decreased motivation to participate in activities. I know that many students who are involved in sports or other activities do so because it's a way for them to relax and have fun outside of the classroom. If we're forced to worry about our grades all the time, we'll lose the joy and enthusiasm that comes with participating in these activities.\n\nFinally, I think that we should be focusing on developing well-rounded students who can excel in multiple areas, not just academics. By denying students the opportunity to participate in activities, we're not giving them the chance to develop important life skills such as teamwork, communication, and problem-solving.\n\nIn conclusion, I believe that setting a grade B average requirement for extracurricular activities would be unfair and could have negative consequences for many students. I think we should focus on creating opportunities for students to participate in activities that they enjoy, regardless of their grade point average.\n\nSincerely,\n[Your Name]",
+   "words": 339,
+   "text_sha256": "5ffad17a4417a4ee84b17fdbd32e0ba64ecf87f1fa940606882fca539595d917",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 21.2,
+   "eval_count": 391,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.014",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:57:45.711Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 58
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.014:seed=58",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the proposed policy change requiring students to have at least a grade B average to participate in sports or other activities. As a student who values extracurricular activities, I believe that this policy change would be detrimental to the well-being of many students.\n\nFirstly, a grade B average is not achievable for many students, including myself. With the pressure to excel in academics, it is already challenging to maintain a high grade point average. Adding an extracurricular activity requirement would only increase the stress and anxiety levels, leading to a decrease in overall academic performance and mental health. This would be especially true for students who are struggling to keep up with the demands of schoolwork and extracurricular activities.\n\nFurthermore, not all students are naturally inclined towards sports or other activities. Some may have interests in music, art, or other creative pursuits, and should be encouraged to pursue these passions without being penalized. By excluding students with lower GPAs from participating, the school would be stifling creativity and innovation, which are essential for students' personal growth and development.\n\nAdditionally, requiring a grade B average would unfairly penalize students who are already struggling to keep up with academic demands. These students may not have the same opportunities or resources as their peers, and should not be further marginalized by a policy that prioritizes grades over participation. By including all students in extracurricular activities, the school can foster a sense of inclusivity and belonging, which is essential for students' overall well-being.\n\nFinally, the focus on grades would shift the emphasis from the value of extracurricular activities themselves to the GPA required to participate. This would take away from the actual benefits of these activities, such as teamwork, communication, and problem-solving skills, which are essential for students' future success.\n\nIn conclusion, I strongly believe that requiring a grade B average to participate in sports or other activities would be a step in the wrong direction. Instead, the school should focus on promoting inclusivity, creativity, and personal growth by encouraging all students to participate in extracurricular activities, regardless of their academic performance. By doing so, the school can create a positive and supportive environment that values the unique strengths and interests of each student.\n\nSincerely,\n[Your Name]",
+   "words": 386,
+   "text_sha256": "404c0a2757c588e902b491ee40c1c7bf6eb265df8461f7977ef46a7a4f1fa590",
+   "assignment_echo": {
+    "longest": 74,
+    "snippet": " at least a grade b average to participate in sports or other activities. "
+   },
+   "seconds": 25.9,
+   "eval_count": 465,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.015",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:51:50.176Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 43
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.015:seed=43",
+   "text": "Dear Principal,\n\nI strongly believe that requiring a grade B average to participate in sports or other activities is unfair and not beneficial to students. Many students, including myself, have a grade C average, but we still work hard and make an effort in school. Just because we may not be achieving a perfect grade average doesn't mean we should be restricted from participating in activities we enjoy.\n\nRequiring a B average would create undue stress and pressure on students. It would make students feel like they're only doing activities to get good grades, rather than because they genuinely enjoy them. This would take away from the fun and learning experience that comes with participating in extracurricular activities. Many students, including those with a C average, use sports and activities as a way to relieve stress and develop important life skills, such as teamwork and communication.\n\nAdditionally, not all students are natural academics. Some may struggle with certain subjects, but they excel in other areas. Forcing them to achieve a B average would be unfair and could lead to students feeling like they're not good enough, which could negatively impact their self-esteem and confidence.\n\nAnother concern is that this policy would disproportionately affect lower-income students. Students from low-income families may have to work part-time jobs to help support their families, which could affect their ability to achieve a B average. By requiring a B average, the school would be penalizing students who may not have the same opportunities as their peers.\n\nIn conclusion, I believe that requiring a grade B average to participate in sports or other activities is not a fair or effective policy. It would create undue stress, discriminate against certain students, and take away from the positive aspects of participating in extracurricular activities. Instead, the school should focus on providing support and resources to help students achieve their academic goals, regardless of their grade average.\n\nSincerely,\n[Your Name]",
+   "words": 325,
+   "text_sha256": "4a7ce8384360bc91a21a41f046ab8d406a319a03e580ff7daaa21901847d2725",
+   "assignment_echo": {
+    "longest": 63,
+    "snippet": " a grade b average to participate in sports or other activities"
+   },
+   "seconds": 19.5,
+   "eval_count": 376,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.016",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:22:31.023Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 124
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.016:seed=124",
+   "text": "Dear Principal,\n\nI am writing to express my opposition to requiring a grade B average to participate in sports or other activities. I believe that this policy change would be unfair and would negatively impact students who already struggle in school.\n\nFirstly, not all students are naturally inclined towards academics. Some of us may have a stronger interest in sports or other extracurricular activities, and requiring a grade B average would mean that we would have to choose between doing well in school and pursuing our passions. For example, I have always loved playing soccer, and it helps me to stay focused and motivated in school. If I were forced to choose between doing well in school and playing soccer, I would likely choose the former, which would mean that I would have to give up something that is important to me.\n\nSecondly, requiring a grade B average would create an unfair advantage for students who are already naturally inclined towards academics. These students would have an easier time achieving a high grade average, and would therefore have an advantage over students who are not as naturally inclined towards academics. This would create an unfair competition that would make it even harder for students who struggle in school to succeed.\n\nFinally, I believe that requiring a grade B average would take away from the purpose of extracurricular activities. These activities are meant to be fun and to provide a break from the stresses of schoolwork. If students are required to achieve a certain grade average in order to participate, it would take away from the enjoyment of these activities and would make them feel more like chores than hobbies.\n\nIn conclusion, I strongly believe that requiring a grade B average to participate in sports or other activities would be unfair and would have a negative impact on students who struggle in school. I think that extracurricular activities should be available to all students, regardless of their grade average, as long as they are willing to put in the effort and work hard to achieve their goals.\n\nSincerely,\n[Your Name]",
+   "words": 349,
+   "text_sha256": "ceab6e3a441507ab92d1086c2a213c31262185ca87b6b9af329af2cd9ab9dab7",
+   "assignment_echo": {
+    "longest": 65,
+    "snippet": " a grade b average to participate in sports or other activities. "
+   },
+   "seconds": 20.6,
+   "eval_count": 394,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.017",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:10:59.376Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 92
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.017:seed=92",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the proposed policy change requiring students to have at least a grade B average to participate in sports or other activities. I strongly believe that this policy would be unfair and hurtful to many students, including myself.\n\nFirstly, a grade B average is a high expectation, especially for middle school students. Many students struggle with certain subjects, and it's not uncommon to see a grade C or D in one or two subjects. This policy would exclude many students who are still developing their study habits and learning skills. It would be unfair to hold students to such a high standard, especially when many extracurricular activities are meant to be enjoyable and a break from academics.\n\nSecondly, requiring a grade B average would create a lot of pressure and stress on students. Many students already feel anxious about their grades, and this policy would add an extra layer of worry. It would be unfair to expect students to excel academically while also performing well in extracurricular activities. Students should be able to have fun and learn from their mistakes without feeling like they're in danger of being excluded from activities they love.\n\nLastly, requiring a grade B average would negatively impact the overall school environment. Many students who might be interested in joining sports or other activities might feel discouraged from trying out due to fear of not meeting the grade requirement. This would not only be disappointing for the students but also take away from the overall energy and enthusiasm of the school community.\n\nIn conclusion, I believe that requiring a grade B average to participate in sports or other activities would be an unfair and unrealistic expectation. Students should be allowed to participate in extracurricular activities regardless of their grades, as long as they are committed to their responsibilities and showing improvement. I hope you will consider my opinion and choose a policy that promotes inclusivity, enjoyment, and growth for all students.\n\nSincerely,\n[Your Name]",
+   "words": 337,
+   "text_sha256": "c8407e9aece6984fdc230d6ed48551c25fec6a8078718ba6cc9da9d584ac434e",
+   "assignment_echo": {
+    "longest": 74,
+    "snippet": " at least a grade b average to participate in sports or other activities. "
+   },
+   "seconds": 20.2,
+   "eval_count": 388,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.018",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:38:36.094Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 9
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.018:seed=9",
+   "text": "Dear Principal,\n\nI am strongly against requiring at least a grade B average to participate in sports or other activities. While a good academic record is important, it does not necessarily translate to success in extracurricular activities.\n\nRequiring a grade B average would be unfair to students who may not be as naturally inclined towards academics, but still work hard and show dedication in their extracurricular activities. For example, some students might struggle with math or science, but excel in sports or music. By making academic performance the only factor, you would be excluding students who have other strengths and talents.\n\nMoreover, focusing too much on academics can lead to burnout and stress. Students who are good in sports or other activities may not be as motivated to do well in school if they feel like they're being held back by the threat of losing their extracurricular privileges. This could lead to decreased overall performance and a negative impact on students' mental health.\n\nAdditionally, requiring a grade B average would disproportionately affect students from lower-income families who may not have the same access to resources and tutoring as their more affluent peers. This would create an unfair advantage and further exacerbate existing inequalities.\n\nLastly, there are many examples of successful individuals who excelled in extracurricular activities despite not being high-achieving students. For instance, famous athletes like Michael Jordan and Tom Brady didn't have stellar GPAs, but they went on to achieve greatness in their respective sports.\n\nIn conclusion, I believe that academic performance should not be the sole determining factor for participation in extracurricular activities. Instead, we should focus on promoting well-rounded development, encouraging students to explore their passions, and recognizing the value of their unique strengths and talents. Thank you for considering our perspectives.\n\nSincerely,\n[Your Name]",
+   "words": 301,
+   "text_sha256": "41bc5d8b0468942b74089d2c43127a8f713eaa739c481f921dc6ecf206b2d20f",
+   "assignment_echo": {
+    "longest": 92,
+    "snippet": " against requiring at least a grade b average to participate in sports or other activities. "
+   },
+   "seconds": 17.3,
+   "eval_count": 361,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.019",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:37:02.286Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 4
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.019:seed=4",
+   "text": "Dear Principal,\n\nI strongly believe that requiring students to have at least a grade B average to participate in sports or other activities is not the best idea. I understand that you want students to take their education seriously, but I think this policy would have negative effects on many students.\n\nFirst of all, many students in our school struggle to achieve a grade B average. In fact, I know a lot of students who work really hard and try their best, but still can't seem to get a B average. If this policy were implemented, these students would be excluded from participating in sports or activities that they love and that help them develop important skills like teamwork, communication, and discipline. This could lead to a lack of motivation and even lower grades, which would be a vicious cycle.\n\nAnother concern I have is that this policy would create an unfair advantage for students who are already naturally good students. Those students who are already getting As and Bs would have an easy time meeting the new requirement, while students who are struggling to get a C average would be at a disadvantage. This would create a divide between students who are naturally more academic and those who are not. In an environment where we're supposed to be promoting inclusivity and equality, this policy would be a step backward.\n\nFurthermore, I think that focusing solely on grades is not the best way to measure a student's worth or abilities. There are many students who are amazing athletes, artists, or leaders, but may not be the most book-smart. Should we really be excluding them from participating in activities that help them grow and develop as people just because they're not meeting a certain grade average? I don't think so.\n\nFinally, I think that this policy would take away from the spirit of teamwork and camaraderie that comes with participating in sports and activities. When we're all working together towards a common goal, we learn to rely on each other, support each other, and grow as individuals. If this policy were implemented, it would create a sense of competition and individualism that would go against the very purpose of these activities.\n\nIn conclusion, I don't think requiring at least a grade B average to participate in sports or other activities is the right decision. I think it would be unfair to students who are struggling, create an advantage for those who are already naturally good students, and take away from the spirit of teamwork and camaraderie. I hope you will consider the negative effects this policy would have and choose a different approach to encourage students to take their education seriously.\n\nSincerely,\n[Your Name]",
+   "words": 454,
+   "text_sha256": "a151ad051e6fff764ca0ce3e1d15cdc5c858bbbd4fdb156078c1b3e2ede7b0ce",
+   "assignment_echo": {
+    "longest": 82,
+    "snippet": " requiring at least a grade b average to participate in sports or other activities"
+   },
+   "seconds": 21.4,
+   "eval_count": 516,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.020",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T20:48:41.138Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 35
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.020:seed=35",
+   "text": "Dear Principal,\n\nI strongly believe that requiring students to have at least a grade B average to participate in sports and other activities is unfair and unnecessary. Many students, including those who have a grade C average, work hard and deserve the opportunity to participate in extracurricular activities.\n\nFirstly, requiring a grade B average would unfairly punish students who may be struggling in certain subjects. For example, a student who is excellent in math and science but struggles with English may still have a grade C average overall. This student should still be allowed to participate in sports and other activities, as they are showing proficiency in other areas.\n\nAdditionally, requiring a grade B average would put too much pressure on students to achieve a certain grade. This could lead to students feeling stressed and anxious about their grades, which could negatively impact their mental health and overall well-being. Extracurricular activities are meant to be a way for students to have fun and develop new skills, not a source of added stress.\n\nFurthermore, requiring a grade B average would unfairly impact students who may be participating in extracurricular activities for the first time. For example, a student who has never played a sport before may not have a high grade average because they are new to the activity and still learning the skills. This student should still be given the opportunity to participate and learn from their experiences, regardless of their grade average.\n\nFinally, requiring a grade B average would not necessarily ensure that students are more responsible or successful in their activities. There are many students who have a grade C average but are still excellent athletes or performers. These students should be allowed to participate in their activities without being penalized for their grades.\n\nIn conclusion, I believe that requiring students to have at least a grade B average to participate in sports and other activities is unfair and unnecessary. Students should be allowed to participate in extracurricular activities regardless of their grade average, as long as they are showing a willingness to learn and improve.",
+   "words": 349,
+   "text_sha256": "8b06923107427aa861a49d69c89107a13bd6a9899731ac59bc982f86c1d98e34",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 20.5,
+   "eval_count": 395,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.021",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:04:53.035Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 76
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.021:seed=76",
+   "text": "Dear Principal,\n\nI strongly believe that requiring at least a grade B average to participate in sports or other activities is not a fair or effective way to improve academic performance. Many students who are passionate about extracurricular activities are not necessarily struggling in school, and vice versa.\n\nFor instance, some students who have a grade C average may still be working hard and doing their best, but simply struggle with certain subjects or have learning difficulties that can't be overcome with more effort. By penalizing them for their academic struggles, we are not addressing the root of the issue, which may be a lack of resources, poor teaching, or individual learning needs. This policy change would unfairly punish students who are already facing challenges and may even lead to increased stress and decreased motivation.\n\nOn the other hand, students who are high achievers in academics may not necessarily be the best fit for sports or other activities. Some students may be naturally more inclined towards teamwork, competition, or creative expression, and these skills are just as valuable as academic ones. By allowing students to participate in activities based on their interests and strengths, we can foster a more well-rounded and happy student body.\n\nAdditionally, this policy would likely lead to decreased participation in extracurricular activities, which can have negative impacts on students' social, emotional, and physical well-being. Many students rely on these activities as a way to build friendships, develop important life skills, and stay physically active. By taking away these opportunities, we would be depriving students of essential experiences that can shape their character and prepare them for adulthood.\n\nIn conclusion, I believe that requiring at least a grade B average to participate in sports or other activities would not be an effective or fair way to improve academic performance. Instead, we should focus on providing students with resources and support to help them succeed in all areas of their lives, and allow them to participate in activities that bring them joy and fulfillment.\n\nSincerely,\n[Your Name]",
+   "words": 341,
+   "text_sha256": "37650b164ef9cd94184998d50ff1c69519351b1072efda205220919a3b963153",
+   "assignment_echo": {
+    "longest": 83,
+    "snippet": "t requiring at least a grade b average to participate in sports or other activities"
+   },
+   "seconds": 19.5,
+   "eval_count": 393,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.022",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:48:42.249Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 193
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.022:seed=193",
+   "text": "Dear Principal,\n\nI strongly believe that requiring students to have at least a grade B average to participate in sports or other activities is not a good idea. I think that it will actually have a negative impact on the students who are struggling in certain subjects.\n\nFirstly, not all students are naturally good at sports or activities. Some students may be very talented at one thing, but not so good at another. For example, I am not very good at math, but I excel at science and language arts. If the new policy was put into place, I would not be able to participate in science club or the school's debate team because my math grade is not good enough. This would be very unfair, as I am already working hard to improve my math skills.\n\nSecondly, I think that the new policy would put too much pressure on students. If we have to worry about our grades in addition to trying to do well in our activities, it could be overwhelming. I know that I would feel stressed out and anxious about not meeting the grade B average requirement. This could actually cause students to become disinterested in their activities and not have as much fun.\n\nLastly, I think that the new policy would not really help students to improve their grades. Some students might get discouraged and stop trying if they don't meet the requirement, which would actually make their grades worse. Instead, we should be focusing on helping students to find ways to succeed and enjoy their activities, regardless of their grades.\n\nIn conclusion, I do not think that requiring a grade B average to participate in sports or activities is a good idea. I think it would be unfair, put too much pressure on students, and not really help students to improve their grades. I would like to see alternative solutions that would encourage students to work hard and succeed, without adding more stress and pressure.\n\nSincerely,\n[Your Name]",
+   "words": 334,
+   "text_sha256": "90bb5d384ad57a53e9748e12141d0600f44c0ab7ffd7e620cd2260bc8402ef6a",
+   "assignment_echo": {
+    "longest": 72,
+    "snippet": " at least a grade b average to participate in sports or other activities"
+   },
+   "seconds": 19,
+   "eval_count": 378,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.023",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:50:29.287Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 198
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.023:seed=198",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the possible policy change that requires students to have at least a grade B average to participate in sports or other activities. As a student who is passionate about sports and extracurricular activities, I believe that this policy would have a negative impact on students who work hard but may not necessarily excel academically.\n\nOne of the main reasons I disagree with this policy is that it would create an unfair situation for students who are not naturally inclined to excel in academics. Some students may be more talented in music, art, or sports, but their grades might not reflect that. By forcing them to have a certain grade point average, you would be discouraging them from pursuing their passions and interests. This could lead to a decline in student morale and engagement, which would ultimately affect their overall academic performance.\n\nAnother concern I have is that this policy would put undue pressure on students to perform well academically. With the added stress of maintaining a certain grade point average, students might become more anxious and burnt out. This could lead to decreased motivation and a lack of enjoyment in their activities. I believe that the focus should be on developing a well-rounded individual, not just a student who excels in academics.\n\nFurthermore, I think that this policy would overlook the importance of extracurricular activities in students' lives. Participating in sports or clubs can help students develop important life skills such as teamwork, communication, and time management. These skills are essential for success in academics and beyond, but they are often overlooked in the pursuit of academic excellence.\n\nIn conclusion, I believe that requiring at least a grade B average to participate in sports or other activities would have negative consequences for many students. It would create an unfair situation, put undue pressure on students, and overlook the importance of extracurricular activities. I hope that you will consider the opinions of students like me and reconsider this policy change.\n\nSincerely,\n[Your Name]",
+   "words": 343,
+   "text_sha256": "1cc40493bdbf9075a6d1afaa5c7388447b29fabdc26da1daae52098918bf2c8d",
+   "assignment_echo": {
+    "longest": 83,
+    "snippet": "t requiring at least a grade b average to participate in sports or other activities"
+   },
+   "seconds": 19.5,
+   "eval_count": 397,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.024",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:02:24.471Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 69
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.024:seed=69",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the proposed policy change that would require students to have at least a grade B average to participate in sports and other activities. As a student who is passionate about extracurricular activities, I believe that this policy would be unfair and would have negative consequences for many students.\n\nFirstly, not all students are naturally talented in academics. Some of us may struggle to understand certain concepts, and no matter how hard we try, we may not be able to achieve a grade B average. This policy would punish students who are already struggling, rather than providing them with the support they need to succeed. In my opinion, schools should focus on helping students who are struggling, rather than penalizing them for not being able to meet unrealistic expectations.\n\nSecondly, extracurricular activities are not just about sports and competition. Many of us participate in activities such as choir, drama, and volunteer work because we genuinely enjoy them and find them fulfilling. These activities provide us with opportunities to develop our social skills, build relationships with peers, and learn important life skills such as teamwork and communication. If we are forced to choose between participating in these activities and focusing solely on our grades, many of us may end up losing out on valuable experiences that benefit our overall development.\n\nFinally, requiring a grade B average to participate in activities would create an unfair and unrealistic standard. Many students may be able to maintain a high GPA, but this does not necessarily mean that they are more deserving of participating in activities. Every student should have the opportunity to participate and benefit from these experiences, regardless of their academic performance.\n\nIn conclusion, I believe that the proposed policy change would be unfair and would have negative consequences for many students. I urge you to consider the potential impact on students who are struggling or not naturally talented in academics, as well as the value of extracurricular activities for overall development. I hope that you will reconsider this policy and instead focus on providing support and opportunities for all students to succeed.\n\nSincerely,\n[Your Name]",
+   "words": 362,
+   "text_sha256": "9b9ebb0d01d485ebbe04ae1a70d97b978f7e2a96279c412aae5f3ea7e099b6fe",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 23.5,
+   "eval_count": 414,
+   "done_reason": "stop"
+  },
+  {
+   "slot": "essays-llama3-student.grades-for-extracurricular-activities.g8.025",
+   "arm": "essays-llama3-student",
+   "prompt_name": "Grades for extracurricular activities",
+   "grade": 8,
+   "prompt_text": "You are a student in grade 8 at a school in the United States. Your teacher\nhas given the class this assignment:\n\nYour principal is considering changing school policy so that students may not participate in sports or other activities unless they have at least a grade B average. Many students have a grade C average. \nShe would like to hear the students' views on this possible policy change. Write a letter to your principal arguing for or against requiring at least a grade B average to participate in sports or other activities. Be sure to support your arguments with specific reasons.\n\nWrite your essay and hand it in. It is one draft, written in class, not revised.\nReturn only the essay itself, with nothing before or after it.",
+   "prompt_sha256": "da7922158e5ff3967bbb36f9c251efcf88dec1ed4d11dd429c3d8246fa3606dc",
+   "protocol_version": "essays-1",
+   "model": "llama3:latest",
+   "harness": "Ollama, on this machine",
+   "generated_at": "2026-09-17T21:45:02.263Z",
+   "settings": {
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "options": {
+     "temperature": 1,
+     "num_predict": 1200,
+     "seed": 183
+    },
+    "stream": false,
+    "endpoint": "/api/generate",
+    "attempts": 1
+   },
+   "context_id": "ollama/api/generate:essays-llama3-student.grades-for-extracurricular-activities.g8.025:seed=183",
+   "text": "Dear Principal,\n\nI am writing to express my opinion on the proposed policy change that requires students to have at least a grade B average to participate in sports and other activities. I strongly believe that this policy change would be unfair and unproductive for many students.\n\nFirstly, requiring a grade B average would be too high for many students. Students like my friend, John, who has a grade C average, would be discouraged from participating in sports and activities that they truly enjoy. This would not only affect their physical health but also their mental well-being. Many students rely on these activities to relieve stress and anxiety, and without them, they might feel lost and disconnected from their peers.\n\nSecondly, setting a high academic standard would not necessarily guarantee better grades or better sports performance. Research has shown that students who are forced to focus solely on academics can suffer from decreased motivation and burnout. On the other hand, students who have a balance between academics and extracurricular activities tend to perform better academically and are more engaged in school.\n\nThirdly, not all students are naturally good at academics. Some students may have learning disabilities or may simply need extra time to understand complex concepts. Setting a high academic standard would unfairly punish these students who are already struggling to keep up.\n\nLastly, requiring a grade B average would take away from the original purpose of extracurricular activities. These activities were designed to promote teamwork, communication, and social skills, not to serve as a reward for good grades. By allowing students with lower grades to participate, we are fostering a more inclusive and supportive environment that values individual growth and development.\n\nIn conclusion, I believe that requiring a grade B average to participate in sports and activities would be unfair and unproductive for many students. I suggest that the school consider alternative solutions, such as offering tutoring or mentorship programs to help students improve their grades. By doing so, we can encourage students to excel academically while also promoting a healthy balance between academics and extracurricular activities.\n\nSincerely,\n[Your Name]",
+   "words": 352,
+   "text_sha256": "75bce56fe43aee9b9be3ccc94cf7c2d74e68f3993e9a827949df0bb57bbd7064",
+   "assignment_echo": {
+    "longest": 53,
+    "snippet": " at least a grade b average to participate in sports "
+   },
+   "seconds": 24.8,
+   "eval_count": 413,
+   "done_reason": "stop"
+  }
+ ]
+}
