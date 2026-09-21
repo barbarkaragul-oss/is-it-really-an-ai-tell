@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T07:58:54.103Z",
+ "generated_at": "2026-09-21T13:21:44.444Z",
  "genre": "essays",
  "arm": "essays-human",
  "about": "One row per kept essay: its id, the grade it was written in, the testing provider that collected it, how long it is, its length bin, and 16 hex of the SHA-256 of the text this project measures -- but never the text. The prompt is the middle of the id. The essays stay in cache/persuade/ and out/, neither of which is committed, and this project does not quote them anywhere.",
