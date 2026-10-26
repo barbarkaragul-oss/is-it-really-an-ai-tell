@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T13:57:50.675Z",
+ "generated_at": "2026-10-26T13:36:20.440Z",
  "genre": "abstracts",
  "rules": {
   "order": "Each text is counted under the first check that drops it: dated, then language, then truncated, then meta, then remembered.",
