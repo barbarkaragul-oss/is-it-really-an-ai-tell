@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T16:32:05.675Z",
+ "generated_at": "2026-11-23T18:52:10.598Z",
  "genre": "posts",
  "rules": {
   "order": "Each text is counted under the first check that drops it: dated, then language, then truncated, then meta, then remembered.",
